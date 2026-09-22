@@ -73,8 +73,8 @@ jobs:
           pattern: setup-*
           path: dist/
           merge-multiple: true
-      # Některé nástroje trousí do dist/ pomocné soubory — do releasu nepatří.
-      - run: rm -f dist/default.gitignore dist/.DS_Store
+      # `uv build` vytváří dist/.gitignore — do releasu nepatří.
+      - run: rm -f dist/.gitignore dist/.DS_Store
       - name: GitHub Release
         uses: softprops/action-gh-release@v2
         with:
