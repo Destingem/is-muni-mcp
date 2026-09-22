@@ -15,6 +15,9 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/).
 - `setup --client codex|vscode|cursor` (nový modul `targets.py` — zápis
   Codex TOML po sekcích bez poškození komentářů).
 - One-click badge VS Code / Cursor v README (deep-linky).
+- ChatGPT desktop app: potvrzeno, že sdílí Codex konfiguraci
+  (`~/.codex/config.toml`) a spouští lokální stdio servery — Setup/`setup`
+  pro Codex ho tedy pokrývá také (jen restartovat aplikaci).
 
 ## [1.1.0] — 2026-09-22
 

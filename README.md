@@ -28,7 +28,7 @@ Vyberte si svého AI klienta — terminál není potřeba ani v jednom případ�
 | Klient | Jak na to |
 |---|---|
 | **Claude Desktop** | Stáhněte **`is-muni-mcp.mcpb`** z [Releases](https://github.com/Destingem/is-muni-mcp/releases), dvojklik, vyplňte učo + heslo. Hotovo. |
-| **Codex, Claude Code, VS Code, Cursor** | Stáhněte **Setup aplikaci** pro svůj systém z [Releases](https://github.com/Destingem/is-muni-mcp/releases), dvojklik — otevře se průvodce v prohlížeči, kde vyplníte učo + heslo a zaškrtáte klienty. Hotovo. |
+| **Codex, ChatGPT desktop, Claude Code, VS Code, Cursor** | Stáhněte **Setup aplikaci** pro svůj systém z [Releases](https://github.com/Destingem/is-muni-mcp/releases), dvojklik — otevře se průvodce v prohlížeči, kde vyplníte učo + heslo a zaškrtáte klienty. Hotovo. (ChatGPT desktop čte stejnou konfiguraci jako Codex — stačí ho po instalaci restartovat.) |
 
 Soubory v Releasu:
 
@@ -85,7 +85,7 @@ Když časem vyprší (typicky dny až týdny), stačí `login` zopakovat.
 ```bash
 is-muni-mcp setup --client claude-desktop   # zapíše konfiguraci za vás
 is-muni-mcp setup --client claude-code      # přes `claude mcp add`
-is-muni-mcp setup --client codex            # ~/.codex/config.toml (CLI i IDE extenze)
+is-muni-mcp setup --client codex            # ~/.codex/config.toml (Codex CLI, IDE extenze i ChatGPT desktop)
 is-muni-mcp setup --client vscode           # uživatelské mcp.json
 is-muni-mcp setup --client cursor           # ~/.cursor/mcp.json
 # tip: grafický průvodce (i bez terminálových znalostí): is-muni-mcp wizard
@@ -131,7 +131,9 @@ Když nechcete použít `setup`, přidejte server ručně. Příkaz je vždy `is
 claude mcp add is-muni -- is-muni-mcp
 ```
 
-**Codex** — do `~/.codex/config.toml` (platí pro CLI i IDE extenzi):
+**Codex a ChatGPT desktop** — do `~/.codex/config.toml` (CLI, IDE extenze
+i ChatGPT desktop app sdílí tuto konfiguraci a spouští lokální stdio servery;
+po zápisu stačí restartovat aplikaci, stav ukáže `/mcp`):
 
 ```toml
 [mcp_servers.is-muni]
@@ -143,10 +145,14 @@ startup_timeout_sec = 60
 stroj vytisknete příkazem `is-muni-mcp setup --client json`
 (VS Code: `setup --client vscode --print-only`, Cursor: `... cursor ...`).
 
-**ChatGPT a další klienti bez lokálního stdio** — ChatGPT umí jen vzdálené
-MCP servery (URL), neumí spouštět lokální příkazy. Pro tento případ server umí
-i HTTP transport — musíte ho ale provozovat sami (např. na vlastním VPS)
-a ChatGPT pak napojit na jeho URL:
+**ChatGPT desktop app** — umí lokální stdio servery přes sdílenou Codex
+konfiguraci (viz **Codex** výše): stačí `is-muni-mcp setup --client codex`
+nebo Setup aplikace a restart ChatGPT. Žádný vzdálený server není potřeba.
+
+**ChatGPT web a další klienti bez lokálního stdio** — webové ChatGPT umí jen
+vzdálené MCP servery (URL). Pro tento případ server umí i HTTP transport —
+musíte ho ale provozovat sami (např. na vlastním VPS) a ChatGPT pak napojit
+na jeho URL:
 
 ```bash
 is-muni-mcp serve --transport streamable-http --host 127.0.0.1 --port 8000
