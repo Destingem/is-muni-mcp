@@ -6,8 +6,9 @@ pro existující konfigurace klientů). Subpříkazy:
     is-muni-mcp login     přihlášení učem + heslem (uloží session)
     is-muni-mcp status    ověření, že přihlášení funguje
     is-muni-mcp logout    smazání uložené session
-    is-muni-mcp setup     zápis do konfigurace Claude Desktop / Claude Code
+    is-muni-mcp setup     zápis serveru do konfigurace MCP klienta
     is-muni-mcp serve     spuštění serveru (stdio / streamable-http)
+    is-muni-mcp wizard    grafický průvodce instalací v prohlížeči
 """
 
 from __future__ import annotations

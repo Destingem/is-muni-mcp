@@ -176,12 +176,13 @@ def _make_handler(state: _State) -> type[BaseHTTPRequestHandler]:
             self.end_headers()
             self.wfile.write(data)
 
-        def do_GET(self) -> None:  # noqa: N802
+        def do_GET(self) -> None:
             if not self._check_token():
                 return
             self._send(_form_page(state))
 
-        def do_POST(self) -> None:  # noqa: N802
+        def do_POST(self) -> None:
+            from .auth import login as do_login
             from .auth import save_cookie, verify_cookie
             from .client import IsMuniError
             from .targets import detect_targets, write_target
@@ -206,8 +207,6 @@ def _make_handler(state: _State) -> type[BaseHTTPRequestHandler]:
                     command, args = install_server_binary()
                 except OSError as e:
                     raise IsMuniError(f"Instalace serveru selhala: {e}") from e
-                from .auth import login as do_login
-
                 try:
                     header = do_login(uco, password)
                 finally:
@@ -219,7 +218,7 @@ def _make_handler(state: _State) -> type[BaseHTTPRequestHandler]:
                     try:
                         path = write_target(client_id, command, args)
                         results.append((labels[client_id], path, "OK"))
-                    except Exception as e:  # noqa: BLE001
+                    except Exception as e:
                         results.append((labels[client_id], "", f"Chyba: {e}"))
                 state.done = True
                 state.deadline = min(state.deadline, time.time() + AFTER_DONE_SEC)
@@ -237,7 +236,9 @@ def run_wizard(port: int = 0, open_browser: bool = True) -> str:
     url = f"http://127.0.0.1:{server.server_address[1]}/?token={state.token}"
     print(f"Průvodce běží na {url}")
     if open_browser:
-        threading.Timer(0.3, lambda: webbrowser.open(url)).start()
+        timer = threading.Timer(0.3, lambda: webbrowser.open(url))
+        timer.daemon = True
+        timer.start()
     server.timeout = 1.0
     try:
         # Po dokončení handler zkrátí deadline (rezerva na dočtení stránky).

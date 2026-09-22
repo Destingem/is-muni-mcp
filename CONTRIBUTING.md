@@ -41,3 +41,17 @@ Nejčastější údržba: IS MUNI občas změní HTML a parser přestane fungova
 - Jeden PR = jedna věc. Popište, co a proč se mění.
 - Uveďte, že prošly `pytest` a `ruff`.
 - Změny chování pro uživatele zaznamenejte do `CHANGELOG.md`.
+
+## Release buildy (pro maintainery)
+
+Verze žije na třech místech (hlídají to testy): `pyproject.toml`,
+`src/is_muni_mcp/__init__.py` a `mcpb/manifest.json`.
+
+```bash
+uv run python mcpb/build.py --out dist/is-muni-mcp.mcpb   # .mcpb (vyžaduje node/npx)
+pip install pyinstaller pillow
+python packaging/build_bin.py --out dist/setup            # Setup binárky pro aktuální OS
+```
+
+Vydání: push tagu `vX.Y.Z` → workflow postaví wheel, `.mcpb` i Setup binárky
+pro všechny platformy, publikuje na PyPI a přiloží vše ke GitHub Releasu.

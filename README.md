@@ -5,9 +5,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 MCP server pro studenty Masarykovy univerzity — propojí AI agenty
-(Claude Desktop, Claude Code, …) s Informačním systémem MU, aby pomohli
-s plánováním studia: rozvrh, deadliny, e-maily, známky, body z bloků,
-studijní materiály a další.
+(Claude Desktop, Codex, ChatGPT desktop, Claude Code, VS Code, Cursor, …)
+s Informačním systémem MU, aby pomohli s plánováním studia: rozvrh,
+deadliny, e-maily, známky, body z bloků, studijní materiály a další.
 
 > **Nikdy nic nemění.** Server pouze čte data (GET + POST jen na povolené
 > čtecí endpointy, typicky AJAX vyhledávání) — neumí odesílat poštu,
@@ -181,7 +181,8 @@ docker run -i --rm -v is-muni-config:/config is-muni-mcp         # server přes 
 - `is-muni-mcp logout` — smaže uloženou session.
 - Proměnné prostředí (přednost před uloženou session, vhodné pro servery
   a CI): `ISMU_COOKIE` (celý řetězec), `ISMU_SESSION` + `ISMU_CREDS`,
-  nebo `ISMU_COOKIE_FILE`. Vzor viz [`.env.example`](.env.example).
+  `ISMU_COOKIE_FILE`, nebo `ISMU_UCO` + `ISMU_PASSWORD` (automatické
+  přihlášení i obnova expirované session). Vzor viz [`.env.example`](.env.example).
 - Stažené binární soubory: `ISMU_DOWNLOAD_DIR` (výchozí `~/.cache/is-muni-mcp`).
 
 ## Vývoj a testy

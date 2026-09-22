@@ -58,11 +58,9 @@ def auto_login() -> str:
     Používá se, když není žádná jiná session (typicky .mcpb instalace)
     a při automatické obnově expirované session. Heslo se nikam neukládá.
     """
-    from .client import IsMuniError as _IsMuniError
-
     uco, password = env_credentials()
     if not uco or not password:
-        raise _IsMuniError(
+        raise IsMuniError(
             "Chybí přihlášení k IS MUNI a nejsou k dispozici údaje pro "
             "automatické přihlášení. Spusťte `is-muni-mcp login`."
         )

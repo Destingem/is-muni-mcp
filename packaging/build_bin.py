@@ -43,7 +43,7 @@ def make_icons(workdir: Path) -> dict[str, str]:
         icns = workdir / "icon.icns"
         src.save(icns)
         out["icns"] = str(icns)
-    except Exception as e:  # noqa: BLE001
+    except Exception as e:
         print(f".icns ikonu se nepodařilo vyrobit ({e}) — macOS build bez ikony.")
     return out
 
