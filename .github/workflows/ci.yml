@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - run: uv build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
@@ -46,7 +46,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: uv run python mcpb/build.py --out dist/is-muni-mcp.mcpb
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: mcpb
           path: dist/is-muni-mcp.mcpb

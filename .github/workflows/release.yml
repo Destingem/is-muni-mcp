@@ -37,7 +37,7 @@ jobs:
       - name: Asset (Linux)
         if: runner.os == 'Linux'
         run: cp dist/setup/is-muni-mcp "dist/${{ matrix.asset }}" && chmod +x "dist/${{ matrix.asset }}"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: setup-${{ runner.os }}-${{ runner.arch }}
           path: dist/${{ matrix.asset }}
