@@ -2,6 +2,7 @@
 
 import os
 import stat
+import sys
 
 import httpx
 import pytest
@@ -131,9 +132,10 @@ def test_save_load_roundtrip(tmp_path, monkeypatch):
     path = auth.save_cookie("__Host-issession=A; __Host-iscreds=B")
     assert path == str(tmp_path / "is-muni-mcp" / "cookie.txt")
     assert auth.load_stored_cookie() == "__Host-issession=A; __Host-iscreds=B"
-    mode = stat.S_IMODE(os.stat(path).st_mode)
-    assert mode == 0o600, oct(mode)
-    assert auth.stored_cookie_permissions_ok()
+    if sys.platform != "win32":  # Windows nemá unixová práva souborů
+        mode = stat.S_IMODE(os.stat(path).st_mode)
+        assert mode == 0o600, oct(mode)
+        assert auth.stored_cookie_permissions_ok()
     assert auth.clear_stored_cookie() is True
     assert auth.clear_stored_cookie() is False
     with pytest.raises(IsMuniError, match="login"):
@@ -141,6 +143,8 @@ def test_save_load_roundtrip(tmp_path, monkeypatch):
 
 
 def test_save_cookie_srovna_prava(tmp_path, monkeypatch):
+    if sys.platform == "win32":  # Windows nemá unixová práva souborů
+        pytest.skip("unixová práva souborů")
     monkeypatch.setenv("XDG_CONFIG_HOME", str(tmp_path))
     path = auth.save_cookie("a=b")
     os.chmod(path, 0o644)

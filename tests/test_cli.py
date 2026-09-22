@@ -31,10 +31,31 @@ def test_setup_claude_desktop_print_only(capsys):
     assert "is-muni" in data["mcpServers"]
 
 
-def test_setup_claude_code_print_only(capsys):
+def test_setup_claude_code_print_only(capsys, monkeypatch):
+    import shutil
+
+    real_which = shutil.which
+    # deterministicky: `claude` existuje → poradí terminálový příkaz
+    monkeypatch.setattr(
+        shutil, "which", lambda name: "/usr/bin/claude" if name == "claude" else real_which(name)
+    )
     rc = main(["setup", "--client", "claude-code", "--print-only"])
     assert rc == 0
     assert "claude mcp add is-muni" in capsys.readouterr().out
+
+
+def test_setup_claude_code_print_only_bez_binarky(capsys, monkeypatch):
+    import shutil
+
+    real_which = shutil.which
+    # deterministicky: `claude` chybí → JSON náhled
+    monkeypatch.setattr(
+        shutil, "which", lambda name: None if name == "claude" else real_which(name)
+    )
+    rc = main(["setup", "--client", "claude-code", "--print-only"])
+    assert rc == 0
+    data = json.loads(capsys.readouterr().out)
+    assert "is-muni" in data["mcpServers"]
 
 
 def test_login_cookie_spatny_format(capsys):
