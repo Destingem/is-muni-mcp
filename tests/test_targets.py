@@ -8,6 +8,13 @@ import pytest
 from is_muni_mcp import targets
 
 
+@pytest.fixture(autouse=True)
+def _izolace_appdata(tmp_path, monkeypatch):
+    # Na Windows vedou některé cesty přes %APPDATA% — přesměrovat do tmp,
+    # aby testy nezapisovaly do skutečného profilu ani ho nečetly.
+    monkeypatch.setenv("APPDATA", str(tmp_path / "appdata"))
+
+
 def test_write_codex_novy_soubor(tmp_path):
     home = str(tmp_path)
     path = targets.write_codex("/bin/is-muni-mcp", [], home)
@@ -109,13 +116,10 @@ def test_detect_targets(tmp_path, monkeypatch):
 
 
 def test_cesty_pod_tmp_home(tmp_path):
+    # Díky _izolace_appdata vedou i APPDATA cesty (win) pod tmp.
     home = str(tmp_path)
     assert targets.codex_config_path(home).startswith(home)
     assert targets.cursor_mcp_path(home).startswith(home)
     assert targets.vscode_mcp_path(home).startswith(home)
     assert targets.claude_code_config_path(home).startswith(home)
-    # claude desktop na macu/linuxu taky pod home (na win pod APPDATA)
-    import sys
-
-    if sys.platform != "win32":
-        assert targets.claude_desktop_config_path(home).startswith(home)
+    assert targets.claude_desktop_config_path(home).startswith(home)

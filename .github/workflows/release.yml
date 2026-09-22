@@ -26,7 +26,19 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pyinstaller pillow
+      # Projekt musí být importovatelný, jinak PyInstaller slepí binárku bez něj.
+      - run: pip install -e .
       - run: python packaging/build_bin.py --out dist/setup
+      - name: Smoke test binárky (macOS)
+        if: runner.os == 'macOS'
+        run: dist/setup/"IS MUNI Setup.app"/Contents/Resources/is-muni-mcp --version
+      - name: Smoke test binárky (Windows)
+        if: runner.os == 'Windows'
+        run: dist/setup/IS-MUNI-Setup.exe --version
+        shell: bash
+      - name: Smoke test binárky (Linux)
+        if: runner.os == 'Linux'
+        run: dist/setup/is-muni-mcp --version
       - name: Zabalený asset (macOS .app do zipu)
         if: runner.os == 'macOS'
         run: ditto -c -k --sequesterRsrc --keepParent "dist/setup/IS MUNI Setup.app" "dist/${{ matrix.asset }}"

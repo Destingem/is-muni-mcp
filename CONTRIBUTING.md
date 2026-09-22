@@ -50,6 +50,7 @@ Verze žije na třech místech (hlídají to testy): `pyproject.toml`,
 ```bash
 uv run python mcpb/build.py --out dist/is-muni-mcp.mcpb   # .mcpb (vyžaduje node/npx)
 pip install pyinstaller pillow
+pip install -e .                                          # projekt musí být importovatelný!
 python packaging/build_bin.py --out dist/setup            # Setup binárky pro aktuální OS
 ```
 

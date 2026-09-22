@@ -20,13 +20,15 @@ def send_recv(proc: subprocess.Popen, payload: dict) -> dict:
 
 
 def test_stdio_initialize_and_list_tools():
-    env = {**os.environ, "ISMU_COOKIE": "dummy; dummy2"}
+    # PYTHONUTF8: server v subprocessu musí psát UTF-8 i na Windows (jinak cp1252).
+    env = {**os.environ, "ISMU_COOKIE": "dummy; dummy2", "PYTHONUTF8": "1"}
     proc = subprocess.Popen(
         SERVER_CMD,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.DEVNULL,
         text=True,
+        encoding="utf-8",
         cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
         env={**env, "PYTHONPATH": "src"},
     )
@@ -89,8 +91,9 @@ def test_stdio_live_status_call():
         stdout=subprocess.PIPE,
         stderr=subprocess.DEVNULL,
         text=True,
+        encoding="utf-8",
         cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        env={**os.environ, "PYTHONPATH": "src"},
+        env={**os.environ, "PYTHONPATH": "src", "PYTHONUTF8": "1"},
     )
     try:
         send_recv(

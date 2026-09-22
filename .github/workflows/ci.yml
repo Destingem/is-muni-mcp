@@ -8,6 +8,7 @@ on:
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: ["3.10", "3.11", "3.12", "3.13"]
@@ -60,6 +61,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pyinstaller pillow
+      # Projekt musí být importovatelný, jinak PyInstaller slepí binárku bez něj.
+      - run: pip install -e .
       - run: python packaging/build_bin.py --out dist/setup
       - run: dist/setup/is-muni-mcp --version
       - run: >-
