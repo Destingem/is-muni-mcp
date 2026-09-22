@@ -83,7 +83,12 @@ def detect_targets(home: str = "") -> list[Target]:
     candidates = [
         ("claude-desktop", "Claude Desktop", claude_desktop_config_path(home), None),
         ("claude-code", "Claude Code", claude_code_config_path(home), "claude"),
-        ("codex", "Codex a ChatGPT desktop (sdílená konfigurace)", codex_config_path(home), "codex"),
+        (
+            "codex",
+            "Codex a ChatGPT desktop (sdílená konfigurace)",
+            codex_config_path(home),
+            "codex",
+        ),
         ("vscode", "VS Code", vscode_mcp_path(home), "code"),
         ("cursor", "Cursor", cursor_mcp_path(home), "cursor"),
     ]
