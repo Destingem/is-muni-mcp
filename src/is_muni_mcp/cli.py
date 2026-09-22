@@ -15,9 +15,7 @@ from __future__ import annotations
 import argparse
 import getpass
 import json
-import os
 import shutil
-import subprocess
 import sys
 
 from . import __version__
@@ -105,57 +103,48 @@ def cmd_logout(_args: argparse.Namespace) -> int:
     return 0
 
 
-def _claude_desktop_config_path() -> str:
-    if sys.platform == "darwin":
-        return os.path.expanduser("~/Library/Application Support/Claude/claude_desktop_config.json")
-    if os.name == "nt":
-        base = os.environ.get("APPDATA", "")
-        return os.path.join(base, "Claude", "claude_desktop_config.json")
-    return os.path.expanduser("~/.config/Claude/claude_desktop_config.json")
-
-
 def cmd_setup(args: argparse.Namespace) -> int:
+    from .targets import SERVER_NAME, preview_target, write_target
+
     command, cmd_args = _server_command_args()
-    entry = {"command": command}
+    entry: dict = {"command": command}
     if cmd_args:
         entry["args"] = cmd_args
 
-    if args.client == "claude-code":
-        claude = shutil.which("claude")
-        if claude and not args.print_only:
-            r = subprocess.run([claude, "mcp", "add", "is-muni", "--", command, *cmd_args])
-            return r.returncode
-        print("Spusťte v terminálu:")
-        print(
-            f"  claude mcp add is-muni -- {command}"
-            + (f" {' '.join(cmd_args)}" if cmd_args else "")
-        )
-        return 0
-
-    if args.client == "claude-desktop":
-        path = _claude_desktop_config_path()
-        if args.print_only:
-            print(json.dumps({"mcpServers": {"is-muni": entry}}, indent=2))
-            return 0
-        config: dict = {}
-        if os.path.exists(path):
-            with open(path, encoding="utf-8") as f:
-                config = json.load(f)
-        config.setdefault("mcpServers", {})["is-muni"] = entry
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(config, f, indent=2, ensure_ascii=False)
-            f.write("\n")
-        print(f"Zapsáno do {path}")
-        print("Restartujte Claude Desktop — v chatu se objeví nástroje `is-muni`.")
-        return 0
-
     if args.client == "json":
-        print(json.dumps({"mcpServers": {"is-muni": entry}}, indent=2))
+        print(json.dumps({"mcpServers": {SERVER_NAME: entry}}, indent=2))
         return 0
 
-    print(f"Neznámý klient: {args.client}", file=sys.stderr)
-    return 2
+    if args.print_only:
+        if args.client == "claude-code" and shutil.which("claude"):
+            print("Spusťte v terminálu:")
+            print(
+                f"  claude mcp add is-muni -- {command}"
+                + (f" {' '.join(cmd_args)}" if cmd_args else "")
+            )
+            return 0
+        try:
+            print(preview_target(args.client, command, cmd_args))
+        except ValueError as e:
+            print(f"Chyba: {e}", file=sys.stderr)
+            return 1
+        return 0
+
+    try:
+        path = write_target(args.client, command, cmd_args)
+    except (ValueError, RuntimeError) as e:
+        print(f"Chyba: {e}", file=sys.stderr)
+        return 1
+    print(f"Zapsáno do {path}")
+    print("Restartujte klienta — objeví se nástroje `is-muni`.")
+    return 0
+
+
+def cmd_wizard(args: argparse.Namespace) -> int:
+    from .wizard import run_wizard
+
+    run_wizard(port=args.port, open_browser=not args.no_browser)
+    return 0
 
 
 def cmd_serve(args: argparse.Namespace) -> int:
@@ -201,7 +190,7 @@ def build_parser() -> argparse.ArgumentParser:
     pc.add_argument(
         "--client",
         required=True,
-        choices=["claude-desktop", "claude-code", "json"],
+        choices=["claude-desktop", "claude-code", "codex", "vscode", "cursor", "json"],
         help="Cílový klient (json = jen vytisknout konfiguraci).",
     )
     pc.add_argument(
@@ -222,6 +211,11 @@ def build_parser() -> argparse.ArgumentParser:
     pv.add_argument("--port", type=int, default=8000)
     pv.add_argument("--path", default="/mcp")
     pv.set_defaults(func=cmd_serve)
+
+    pw = sub.add_parser("wizard", help="Grafický průvodce v prohlížeči (instalace bez terminálu).")
+    pw.add_argument("--port", type=int, default=0, help="Port (0 = náhodný).")
+    pw.add_argument("--no-browser", action="store_true", help="Neotevírat prohlížeč (vypíše URL).")
+    pw.set_defaults(func=cmd_wizard)
     return p
 
 

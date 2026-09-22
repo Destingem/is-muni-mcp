@@ -9,7 +9,41 @@ permissions:
   id-token: write
 
 jobs:
+  build-setup:
+    strategy:
+      matrix:
+        include:
+          - os: macos-14 # arm64
+            asset: IS-MUNI-Setup-macos-arm64.zip
+          - os: windows-latest
+            asset: IS-MUNI-Setup-windows-x64.exe
+          - os: ubuntu-latest
+            asset: is-muni-mcp-linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyinstaller pillow
+      - run: python packaging/build_bin.py --out dist/setup
+      - name: Zabalený asset (macOS .app do zipu)
+        if: runner.os == 'macOS'
+        run: ditto -c -k --sequesterRsrc --keepParent "dist/setup/IS MUNI Setup.app" "dist/${{ matrix.asset }}"
+      - name: Asset (Windows)
+        if: runner.os == 'Windows'
+        run: cp dist/setup/IS-MUNI-Setup.exe "dist/${{ matrix.asset }}"
+        shell: bash
+      - name: Asset (Linux)
+        if: runner.os == 'Linux'
+        run: cp dist/setup/is-muni-mcp "dist/${{ matrix.asset }}" && chmod +x "dist/${{ matrix.asset }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: setup-${{ runner.os }}-${{ runner.arch }}
+          path: dist/${{ matrix.asset }}
+
   release:
+    needs: build-setup
     runs-on: ubuntu-latest
     environment: release
     steps:
@@ -22,6 +56,11 @@ jobs:
       - run: uv run pytest -q
       - run: uv build
       - run: uv run python mcpb/build.py --out dist/is-muni-mcp.mcpb
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: setup-*
+          path: dist/
+          merge-multiple: true
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
       - name: GitHub Release

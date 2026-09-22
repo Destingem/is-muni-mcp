@@ -1,6 +1,6 @@
 [project]
 name = "is-muni-mcp"
-version = "1.1.0"
+version = "1.2.0"
 description = "Read-only MCP server pro studenty MU: propojení AI agentů s IS MUNI (kalendář, výuka, pošta, notifikace, poznámkové bloky, studijní materiály)."
 readme = "README.md"
 requires-python = ">=3.10"

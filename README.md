@@ -21,23 +21,41 @@ connects AI agents to IS MUNI (timetable, deadlines, mail, grades, course
 materials). Quickstart below is in Czech; commands are the same in any
 language. See [CONTRIBUTING](CONTRIBUTING.md) and [SECURITY](SECURITY.md).*
 
-## Instalace bez terminálu (doporučeno pro studenty) 🖱️
+## Instalace na 1 klik (bez terminálu) 🖱️
 
-Terminál vůbec nepotřebujete — stačí Claude Desktop a 3 kliknutí:
+Vyberte si svého AI klienta — terminál není potřeba ani v jednom případě:
 
-1. Stáhněte si soubor **`is-muni-mcp.mcpb`** ze stránky
-   [Releases](https://github.com/Destingem/is-muni-mcp/releases) (nejnovější verze).
-2. **Dvojklikem** ho otevřete (nebo přetáhněte do okna Claude Desktop) —
-   objeví se instalační dialog.
-3. Vyplňte své **učo a primární heslo** do IS MUNI a potvrďte.
+| Klient | Jak na to |
+|---|---|
+| **Claude Desktop** | Stáhněte **`is-muni-mcp.mcpb`** z [Releases](https://github.com/Destingem/is-muni-mcp/releases), dvojklik, vyplňte učo + heslo. Hotovo. |
+| **Codex, Claude Code, VS Code, Cursor** | Stáhněte **Setup aplikaci** pro svůj systém z [Releases](https://github.com/Destingem/is-muni-mcp/releases), dvojklik — otevře se průvodce v prohlížeči, kde vyplníte učo + heslo a zaškrtáte klienty. Hotovo. |
 
-Hotovo. Claude Desktop si sám zařídí zbytek (Python, závislosti) a server se
-pak přihlašuje sám — i když session vyprší, obnoví si ji bez ptaní.
-V chatu se pak ptejte třeba: *„Co mám příští týden v rozvrhu?“*,
-*„Jaké se blíží deadliny?“*, *„Mám nějaké nepřečtené e-maily?“*
+Soubory v Releasu:
 
-> Heslo slouží jen k přihlášení (spravuje ho zabezpečené úložiště Claude
-> Desktopu); server si ukládá pouze session. Detaily viz [SECURITY](SECURITY.md).
+- `IS-MUNI-Setup-macos-arm64.zip` — macOS (Apple Silicon; rozbalit, otevřít `IS MUNI Setup.app`)
+- `IS-MUNI-Setup-windows-x64.exe` — Windows (stáhnout, dvojklik)
+- `is-muni-mcp-linux-x64` — Linux (stáhnout, spustit `./is-muni-mcp wizard`)
+- `is-muni-mcp.mcpb` — Claude Desktop (dvojklik)
+
+> ⚠️ Aplikace není placeně podepsaná (to stojí ~2500 Kč/rok), takže macOS
+> při prvním otevření zahlásí neověřeného vývojáře: klikněte **pravým tlačítkem
+> → Otevřít → Otevřít**. Na Windows SmartScreen podobně: **Další informace →
+> Přesto spustit**. Kód je open-source — sestavení si můžete ověřit ve
+> [workflow](.github/workflows/release.yml), nic si nestahuje z internetu.
+>
+> Heslo slouží jen k přihlášení a nikam se neukládá; server si drží pouze
+> session. Detaily viz [SECURITY](SECURITY.md).
+
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3Fname%3Dis-muni%26config%3D%257B%2522type%2522%253A%2520%2522stdio%2522%252C%2520%2522command%2522%253A%2520%2522uvx%2522%252C%2520%2522args%2522%253A%2520%255B%2522is-muni-mcp%2522%255D%257D)
+[![Add to Cursor](https://img.shields.io/badge/Cursor-Add_MCP-000000?style=flat-square&logo=cursor&logoColor=white)](cursor://anysphere.cursor-deeplink/mcp/install?name=is-muni&config=eyJ0eXBlIjogInN0ZGlvIiwgImNvbW1hbmQiOiAidXZ4IiwgImFyZ3MiOiBbImlzLW11bmktbWNwIl19)
+
+*Tlačítka výše přidají server do VS Code / Cursoru jedním kliknutím
+(vyžadují nainstalovaný `uvx` a předchozí `is-muni-mcp login` —
+jednodušší je Setup aplikace, která umí obojí).*
+
+Pak se ptejte třeba: *„Co mám příští týden v rozvrhu?“*,
+*„Jaké se blíží deadliny?“*, *„Mám nějaké nepřečtené e-maily?“*,
+*„Kolik mám bodů v poznámkových blocích?“*
 
 ## Rychlý start s terminálem (3 kroky)
 
@@ -67,6 +85,10 @@ Když časem vyprší (typicky dny až týdny), stačí `login` zopakovat.
 ```bash
 is-muni-mcp setup --client claude-desktop   # zapíše konfiguraci za vás
 is-muni-mcp setup --client claude-code      # přes `claude mcp add`
+is-muni-mcp setup --client codex            # ~/.codex/config.toml (CLI i IDE extenze)
+is-muni-mcp setup --client vscode           # uživatelské mcp.json
+is-muni-mcp setup --client cursor           # ~/.cursor/mcp.json
+# tip: grafický průvodce (i bez terminálových znalostí): is-muni-mcp wizard
 ```
 
 Pak restartujte klienta a ptejte se třeba: *„Co mám příští týden v rozvrhu?“*,
@@ -109,8 +131,17 @@ Když nechcete použít `setup`, přidejte server ručně. Příkaz je vždy `is
 claude mcp add is-muni -- is-muni-mcp
 ```
 
+**Codex** — do `~/.codex/config.toml` (platí pro CLI i IDE extenzi):
+
+```toml
+[mcp_servers.is-muni]
+command = "is-muni-mcp"
+startup_timeout_sec = 60
+```
+
 **Obecné `mcp.json`** (VS Code, Zed, …) — totéž co výše; konfiguraci pro svůj
-stroj vytisknete příkazem `is-muni-mcp setup --client json`.
+stroj vytisknete příkazem `is-muni-mcp setup --client json`
+(VS Code: `setup --client vscode --print-only`, Cursor: `... cursor ...`).
 
 **ChatGPT a další klienti bez lokálního stdio** — ChatGPT umí jen vzdálené
 MCP servery (URL), neumí spouštět lokální příkazy. Pro tento případ server umí
@@ -154,7 +185,7 @@ git clone https://github.com/Destingem/is-muni-mcp.git
 cd is-muni-mcp
 uv sync --group dev
 uv run pytest            # fixture testy parserů + test MCP protokolu (offline)
-uv run ruff check src tests mcpb && uv run ruff format --check src tests mcpb
+uv run ruff check src tests mcpb packaging && uv run ruff format --check src tests mcpb packaging
 ISMU_LIVE_MCP=1 uv run pytest tests/test_mcp.py -q   # + živé volání přes protokol (potřebuje přihlášení)
 ```
 

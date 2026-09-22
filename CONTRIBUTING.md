@@ -23,8 +23,8 @@ uv run pytest -q
    Nikdy necommitujte cookie, hesla ani výpisy ze skutečného IS.
 3. **Nový parser = nový test.** Každá změna parseru potřebuje fixture
    (redigovanou!) a test v `tests/test_parsers.py`.
-4. **Lint musí projít:** `uv run ruff check src tests mcpb` a
-   `uv run ruff format --check src tests mcpb`.
+4. **Lint musí projít:** `uv run ruff check src tests mcpb packaging` a
+   `uv run ruff format --check src tests mcpb packaging`.
 
 ## Když IS změní stránky
 

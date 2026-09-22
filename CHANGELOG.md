@@ -2,6 +2,20 @@
 
 Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/).
 
+## [1.2.0] — 2026-09-22
+
+### Přidáno
+
+- **Setup aplikace bez terminálu** pro Codex, Claude Code, VS Code a Cursor:
+  stažení z Releases → dvojklik → průvodce v prohlížeči (učo + heslo,
+  výběr klientů, instalace serveru, zápis configů). Nový příkaz
+  `is-muni-mcp wizard` (localhost, token v URL, auto-vypnutí).
+- PyInstaller buildy v releasu (`IS-MUNI-Setup-macos-arm64.zip`,
+  `IS-MUNI-Setup-windows-x64.exe`, `is-muni-mcp-linux-x64`) + CI smoke test.
+- `setup --client codex|vscode|cursor` (nový modul `targets.py` — zápis
+  Codex TOML po sekcích bez poškození komentářů).
+- One-click badge VS Code / Cursor v README (deep-linky).
+
 ## [1.1.0] — 2026-09-22
 
 ### Přidáno

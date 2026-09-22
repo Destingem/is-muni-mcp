@@ -19,8 +19,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: uv sync --group dev
-      - run: uv run ruff check src tests mcpb
-      - run: uv run ruff format --check src tests mcpb
+      - run: uv run ruff check src tests mcpb packaging
+      - run: uv run ruff format --check src tests mcpb packaging
       - run: uv run pytest -q
 
   build:
@@ -50,3 +50,20 @@ jobs:
         with:
           name: mcpb
           path: dist/is-muni-mcp.mcpb
+
+  packaging:
+    # Kouřový test PyInstaller buildu (plný matrix až v releasu).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyinstaller pillow
+      - run: python packaging/build_bin.py --out dist/setup
+      - run: dist/setup/is-muni-mcp --version
+      - run: >-
+          echo '{"jsonrpc":"2.0","id":1,"method":"initialize",
+          "params":{"protocolVersion":"2024-11-05","capabilities":{},
+          "clientInfo":{"name":"t","version":"0"}}}'
+          | ISMU_COOKIE="dummy; dummy2" dist/setup/is-muni-mcp | grep -q '"result"'

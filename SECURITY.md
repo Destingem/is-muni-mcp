@@ -18,6 +18,11 @@
   automaticky jen při nakonfigurovaných `ISMU_UCO` + `ISMU_PASSWORD`).
 - Veškerá komunikace jde přímo mezi vaším počítačem a `is.muni.cz` /
   `muni.islogin.cz` přes HTTPS. Žádný náš server mezi tím není.
+- **Setup aplikace / wizard:** průvodce běží jen na `127.0.0.1` s náhodným
+  tokenem v URL a po dokončení (nebo 15 minutách) se sám vypne. Binárky
+  v Releasu se staví veřejně v GitHub Actions z tohoto repozitáře
+  ([workflow](.github/workflows/release.yml)) — nejsou placeně podepsané,
+  proto OS při prvním spuštění varuje (viz README).
 
 ## Na co si dát pozor
 

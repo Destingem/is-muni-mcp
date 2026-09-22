@@ -2,7 +2,7 @@
   "manifest_version": "0.4",
   "name": "is-muni",
   "display_name": "IS MUNI",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Read-only propojení AI s Informačním systémem Masarykovy univerzity: rozvrh, deadliny, e-maily, známky, studijní materiály.",
   "long_description": "IS MUNI MCP server pro studenty Masarykovy univerzity. Po instalaci vyplníte své učo a primární heslo do IS — server se pak sám přihlašuje a umí jen číst data (rozvrh, deadliny, pošta, známky, body z bloků, soubory, diskuse, vývěska). Nikdy nic v IS nemění. Heslo se používá pouze k přihlášení, ukládá se jen session.",
   "author": {
