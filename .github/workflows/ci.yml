@@ -19,8 +19,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: uv sync --group dev
-      - run: uv run ruff check src tests
-      - run: uv run ruff format --check src tests
+      - run: uv run ruff check src tests mcpb
+      - run: uv run ruff format --check src tests mcpb
       - run: uv run pytest -q
 
   build:
@@ -33,3 +33,20 @@ jobs:
         with:
           name: dist
           path: dist/
+
+  mcpb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: uv run python mcpb/build.py --out dist/is-muni-mcp.mcpb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcpb
+          path: dist/is-muni-mcp.mcpb

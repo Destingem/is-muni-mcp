@@ -15,9 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - run: uv sync --group dev
       - run: uv run pytest -q
       - run: uv build
+      - run: uv run python mcpb/build.py --out dist/is-muni-mcp.mcpb
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
       - name: GitHub Release

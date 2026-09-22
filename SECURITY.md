@@ -2,14 +2,20 @@
 
 ## Jak se zachází s vašimi údaji
 
-- **Heslo se nikam neukládá.** Příkaz `is-muni-mcp login` ho použije jednou
-  pro přihlášení k `muni.islogin.cz` a pak ho zahodí (nikdy se neloguje
-  ani nevypisuje).
+- **Heslo serverem jen proteče.** Použije se jednou pro přihlášení
+  k `muni.islogin.cz` a pak se zahodí (nikdy se neloguje ani nevypisuje).
+  Samotný server si ho nikam neukládá.
 - **Ukládá se pouze session cookie** (`__Host-issession` + `__Host-iscreds`)
   do `~/.config/is-muni-mcp/cookie.txt` s právy **0600** (čte jen váš uživatel).
+- **.mcpb instalace:** učo a heslo vyplněné v instalačním dialogu spravuje
+  zabezpečené úložiště Claude Desktopu a serveru je předává jen jako
+  proměnné prostředí (`ISMU_UCO` / `ISMU_PASSWORD`) pro automatické
+  (znovu)přihlašování. Kdo nechce heslo svěřit ani Desktopu, může místo
+  .mcpb použít terminálovou instalaci s `is-muni-mcp login`.
 - **Server je read-only** — umí data z IS jen číst, nic v něm neměnit.
   Výjimka: samotné přihlášení (odeslání formuláře na islogin.cz), které je
-  oddělené v modulu `auth.py` a spouští ho výhradně uživatel příkazem `login`.
+  oddělené v modulu `auth.py` a spouští ho uživatel (příkazem `login`,
+  automaticky jen při nakonfigurovaných `ISMU_UCO` + `ISMU_PASSWORD`).
 - Veškerá komunikace jde přímo mezi vaším počítačem a `is.muni.cz` /
   `muni.islogin.cz` přes HTTPS. Žádný náš server mezi tím není.
 

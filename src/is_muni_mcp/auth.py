@@ -38,6 +38,42 @@ class LoginError(IsMuniError):
     """Přihlášení se nezdařilo (špatné údaje / neočekávaná odpověď IS)."""
 
 
+#: Proměnné prostředí pro automatické přihlášení (např. z .mcpb balíčku,
+#: kde je vyplní uživatel v instalačním dialogu Claude Desktopu).
+UCO_ENV_VAR = "ISMU_UCO"
+PASSWORD_ENV_VAR = "ISMU_PASSWORD"
+
+
+def env_credentials() -> tuple[str, str]:
+    """Učo + heslo z proměnných prostředí (prázdné řetězce, když chybí)."""
+    return (
+        os.environ.get(UCO_ENV_VAR, "").strip(),
+        os.environ.get(PASSWORD_ENV_VAR, ""),
+    )
+
+
+def auto_login() -> str:
+    """Přihlásí se údaji z prostředí a session uloží. Vyhodí LoginError.
+
+    Používá se, když není žádná jiná session (typicky .mcpb instalace)
+    a při automatické obnově expirované session. Heslo se nikam neukládá.
+    """
+    from .client import IsMuniError as _IsMuniError
+
+    uco, password = env_credentials()
+    if not uco or not password:
+        raise _IsMuniError(
+            "Chybí přihlášení k IS MUNI a nejsou k dispozici údaje pro "
+            "automatické přihlášení. Spusťte `is-muni-mcp login`."
+        )
+    try:
+        header = login(uco, password)
+    finally:
+        del password
+    save_cookie(header)
+    return header
+
+
 def config_dir() -> str:
     """Adresář pro konfiguraci (vytvoří ho, pokud chybí)."""
     base = os.environ.get("XDG_CONFIG_HOME") or os.path.expanduser("~/.config")

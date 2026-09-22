@@ -21,9 +21,28 @@ connects AI agents to IS MUNI (timetable, deadlines, mail, grades, course
 materials). Quickstart below is in Czech; commands are the same in any
 language. See [CONTRIBUTING](CONTRIBUTING.md) and [SECURITY](SECURITY.md).*
 
-## Rychlý start (3 kroky)
+## Instalace bez terminálu (doporučeno pro studenty) 🖱️
 
-Potřebujete jen Python 3.10+ a své učo + primární heslo do IS MUNI.
+Terminál vůbec nepotřebujete — stačí Claude Desktop a 3 kliknutí:
+
+1. Stáhněte si soubor **`is-muni-mcp.mcpb`** ze stránky
+   [Releases](https://github.com/Destingem/is-muni-mcp/releases) (nejnovější verze).
+2. **Dvojklikem** ho otevřete (nebo přetáhněte do okna Claude Desktop) —
+   objeví se instalační dialog.
+3. Vyplňte své **učo a primární heslo** do IS MUNI a potvrďte.
+
+Hotovo. Claude Desktop si sám zařídí zbytek (Python, závislosti) a server se
+pak přihlašuje sám — i když session vyprší, obnoví si ji bez ptaní.
+V chatu se pak ptejte třeba: *„Co mám příští týden v rozvrhu?“*,
+*„Jaké se blíží deadliny?“*, *„Mám nějaké nepřečtené e-maily?“*
+
+> Heslo slouží jen k přihlášení (spravuje ho zabezpečené úložiště Claude
+> Desktopu); server si ukládá pouze session. Detaily viz [SECURITY](SECURITY.md).
+
+## Rychlý start s terminálem (3 kroky)
+
+Pro Claude Code, VS Code, Zed a další klienty. Potřebujete Python 3.10+
+a své učo + primární heslo do IS MUNI.
 
 **1. Instalace** (jednou z možností):
 
@@ -135,7 +154,7 @@ git clone https://github.com/Destingem/is-muni-mcp.git
 cd is-muni-mcp
 uv sync --group dev
 uv run pytest            # fixture testy parserů + test MCP protokolu (offline)
-uv run ruff check src tests && uv run ruff format --check src tests
+uv run ruff check src tests mcpb && uv run ruff format --check src tests mcpb
 ISMU_LIVE_MCP=1 uv run pytest tests/test_mcp.py -q   # + živé volání přes protokol (potřebuje přihlášení)
 ```
 

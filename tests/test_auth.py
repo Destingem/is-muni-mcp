@@ -175,5 +175,91 @@ def test_cookie_header_chybi_navede_na_login(tmp_path, monkeypatch):
     monkeypatch.delenv("ISMU_COOKIE_FILE", raising=False)
     monkeypatch.delenv("ISMU_SESSION", raising=False)
     monkeypatch.delenv("ISMU_CREDS", raising=False)
+    monkeypatch.delenv("ISMU_UCO", raising=False)
+    monkeypatch.delenv("ISMU_PASSWORD", raising=False)
     with pytest.raises(IsMuniError, match="is-muni-mcp login"):
         load_cookie_header()
+
+
+# -- automatické přihlášení (.mcpb / ISMU_UCO + ISMU_PASSWORD) ----------------
+
+
+def test_env_credentials(tmp_path, monkeypatch):
+    monkeypatch.setenv("ISMU_UCO", " 990001 ")
+    monkeypatch.setenv("ISMU_PASSWORD", "heslo")
+    assert auth.env_credentials() == ("990001", "heslo")
+    monkeypatch.delenv("ISMU_UCO")
+    monkeypatch.delenv("ISMU_PASSWORD")
+    assert auth.env_credentials() == ("", "")
+
+
+def test_auto_login_ok(tmp_path, monkeypatch):
+    monkeypatch.setenv("XDG_CONFIG_HOME", str(tmp_path))
+    monkeypatch.setenv("ISMU_UCO", "990001")
+    monkeypatch.setenv("ISMU_PASSWORD", "heslo")
+    monkeypatch.setattr(auth, "login", lambda u, p: "__Host-issession=NOVA; __Host-iscreds=X")
+    header = auth.auto_login()
+    assert "NOVA" in header
+    # session se uložila pro příště
+    assert "NOVA" in auth.load_stored_cookie()
+
+
+def test_auto_login_bez_udaju(tmp_path, monkeypatch):
+    monkeypatch.setenv("XDG_CONFIG_HOME", str(tmp_path))
+    monkeypatch.delenv("ISMU_UCO", raising=False)
+    monkeypatch.delenv("ISMU_PASSWORD", raising=False)
+    with pytest.raises(IsMuniError, match="login"):
+        auth.auto_login()
+
+
+def test_cookie_header_auto_login(tmp_path, monkeypatch):
+    """Bez uložené session se load_cookie_header přihlásí sám."""
+    monkeypatch.setenv("XDG_CONFIG_HOME", str(tmp_path))
+    monkeypatch.delenv("ISMU_COOKIE", raising=False)
+    monkeypatch.delenv("ISMU_COOKIE_FILE", raising=False)
+    monkeypatch.delenv("ISMU_SESSION", raising=False)
+    monkeypatch.delenv("ISMU_CREDS", raising=False)
+    monkeypatch.setenv("ISMU_UCO", "990001")
+    monkeypatch.setenv("ISMU_PASSWORD", "heslo")
+    monkeypatch.setattr(auth, "login", lambda u, p: "__Host-issession=AUTO; __Host-iscreds=X")
+    assert "AUTO" in load_cookie_header()
+
+
+def test_client_obnovi_session_a_zopakuje(monkeypatch):
+    """GET po expiraci 1× obnoví session a požadavek zopakuje."""
+    from is_muni_mcp.client import IsMuniClient, NotAuthenticatedError
+
+    c = IsMuniClient.__new__(IsMuniClient)
+    c._headers = {"Cookie": "stara"}
+    sentinel = object()
+    pokusy = []
+
+    def fake_get_once(path):
+        pokusy.append(path)
+        if len(pokusy) == 1:
+            raise NotAuthenticatedError("vypršela")
+        return sentinel
+
+    c._get_once = fake_get_once
+    monkeypatch.setattr(auth, "auto_login", lambda: "__Host-issession=NOVA; __Host-iscreds=X")
+    assert c.get("/auth/") is sentinel
+    assert len(pokusy) == 2
+    assert "NOVA" in c._headers["Cookie"]
+
+
+def test_client_obnova_jen_jednou(monkeypatch):
+    """Když ani obnovená session nefunguje, chyba probublá ven."""
+    from is_muni_mcp.client import IsMuniClient, NotAuthenticatedError
+
+    c = IsMuniClient.__new__(IsMuniClient)
+    c._headers = {"Cookie": "stara"}
+
+    def porad_expirovano(path):
+        raise NotAuthenticatedError("vypršela")
+
+    c._get_once = porad_expirovano
+    volani = []
+    monkeypatch.setattr(auth, "auto_login", lambda: volani.append(1) or "nova")
+    with pytest.raises(NotAuthenticatedError):
+        c.get("/auth/")
+    assert len(volani) == 1  # obnova se pokusila právě jednou

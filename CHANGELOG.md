@@ -2,6 +2,17 @@
 
 Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/).
 
+## [1.1.0] — 2026-09-22
+
+### Přidáno
+
+- Instalace bez terminálu: **`.mcpb` balíček** pro Claude Desktop (dvojklik,
+  učo + heslo v instalačním dialogu, Python i závislosti zařídí Desktop).
+  Sestavení: `python mcpb/build.py`; releasy ho přikládají automaticky.
+- Automatické přihlášení serveru z `ISMU_UCO` + `ISMU_PASSWORD` (první běh
+  i tichá obnova expirované session s jedním retry).
+- CI job `mcpb` (validace manifestu + build balíčku).
+
 ## [1.0.0] — 2026-09-22
 
 První produkční vydání.
