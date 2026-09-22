@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.env
+.env.*
+!.env.example
+secrets/
+cookies*.txt
+*cookie*.txt
+.DS_Store
+# Soukromé pracovní soubory (nepatří do repozitáře)
+materialy-podzim2026/
+*.mcpb

@@ -1,0 +1,3124 @@
+<!DOCTYPE html>
+<html class="no-js auth" lang="cs">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Osobní stránka Jan Novák</title>
+<link href="https://is.muni.cz/auth/osoba/990001" rel="canonical">
+<link href="/favicon.ico" rel="icon" sizes="32x32">
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/css/r6/foundation.min.css?_v=ab3b2b3" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r/icons/foundation-icons.css?_v=d866a73" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/prvky.css?_v=2d7af96" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6.css?_v=f11632e" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/motiv/1.css?_v=9421c26" media="screen" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6-print.css?_v=d1a07b2" media="print" rel="stylesheet" type="text/css">
+<style>/* Podrobné vyhledávání */
+#app_content .filtr_box .validator-group-content {
+        margin-bottom: 0;
+}
+#app_content .filtr_box .fakulta label,
+#app_content .filtr_box .osoba label {
+        display: flex;
+        align-items: center;
+        min-height: 2.5rem;
+        line-height: 1.4;
+        margin-bottom: 6px;
+}
+#app_content .filtr_box .fakulta label img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: .7rem;
+        margin-left: .2rem;
+}
+#app_content .filtr_box .fakulta label img,
+#app_content .filtr_box .fakulta label input,
+#app_content .filtr_box .osoba label input {
+	flex: 0 0 auto; /* toto nechceme flexovat, jinak někde zlobí */
+}
+#app_content .filtr_box .fakulta label img[class*="logo-14"] { /* na MU chceme podbarvit bíle kulaté Mka */
+        background-color: #fff;
+        border-radius: 50%;
+}
+
+
+/* vyhledávací pole */
+#maly_formular {
+	z-index: 15;
+	margin: 2rem 0 3rem 0;
+}
+
+/* Editační lišta na mém profilu */
+#muj_profil_edit_lista {
+	margin-top: -1.5rem;
+	margin-bottom: 1.5rem;
+}
+#muj_profil_edit_lista div > .button,
+#muj_profil_edit_lista .edit_lista_foto_dropmenu .button {
+	margin-right: .5rem;
+	height: 2.4285rem;
+}
+#muj_profil_edit_lista .edit_lista_foto_dropmenu .button {
+	top: -1px;
+	padding-right: 1.8rem;
+}
+#muj_profil_edit_lista .edit_lista_foto_dropmenu {
+	display: inline-block;
+}
+#muj_profil_edit_lista .edit_lista_foto_dropmenu .is-dropdown-submenu {
+	min-width: 320px;
+}
+#muj_profil_edit_lista .edit_lista_foto_dropmenu .is-dropdown-submenu a {
+	display: block;
+}
+#muj_profil_edit_lista .edit_lista_foto_dropmenu .is-dropdown-submenu a i {
+	margin-right: .75rem !important;
+}
+#muj_profil_edit_lista div > .button:last-of-type {
+	margin-right: 0 !important;
+}
+
+#muj_profil_edit_lista .button i {
+	margin-top: -10px;
+	margin-bottom: -10px;
+	margin-right: .5rem;
+	margin-left: -.3rem;
+	font-size: 1.6rem;
+}
+#muj_profil_edit_lista .edit_lista_foto_dropmenu .button i {
+	margin-top: -8px;
+}
+@media screen and (min-width: 75em) { /* xlarge */
+	#muj_profil_edit_lista > .xlarge-expand {
+		position: relative;
+	}
+	#muj_profil_edit_lista > .xlarge-expand:before {
+		content: '';
+		display: inline-block;
+		margin-right: 1.07143rem;
+		margin-left: -1.07143rem;
+		height: 34px;
+		border-left: 1px solid #cacaca;
+		position: absolute;
+		bottom: 1rem;
+	}
+}
+
+/* fotka s údaji */
+@media screen and (min-width: 64em) { /* large */
+	#app_content .ident_sl_zaklad {
+		border-right: 1px solid #b6b6b6;
+	}
+}
+@media screen and (max-width: 63.9375em) { /* small a medium */
+	#app_content .ident_sl_odkazy {
+		margin-top: 1.5rem;
+		margin-bottom: 1rem;
+	}
+}
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+	.medium-offset-only-3 {
+		margin-left: 25%;
+	}
+}
+
+#identita_profil_new #foto {
+	position: relative;
+	display: inline-block;
+}
+#identita_profil_new #foto img {
+	border: 1px solid #dbdbdb;
+	padding: 3px;
+}
+#identita_profil_new #foto > span.privileg {
+	float: right;
+	display: block;
+	background: rgba(255,255,255,.5);
+	min-width: 1rem;
+	font-size: 12px;
+	position: absolute;
+	padding: 10px 10px 2px 5px;
+	top: 1px;
+	right: 1px;
+	line-height: 1rem;
+}
+#identita_profil_new #foto .lide_change_foto {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-top: 3px;
+	padding-left: 4px;
+	width: 100%;
+	height: 100%;
+}
+#identita_profil_new #foto .lide_foto_odkazy {
+	display: block;
+}
+
+#identita_profil_new .foto_odkazy > a {
+	display: block;
+}
+#identita_profil_new .ident_sl_zaklad h2 > span[title]:hover {
+	text-decoration: underline dotted;
+}
+#identita_profil_new #status {
+	font-size: 1.14285rem; /* 16px */
+	margin-top: -.25rem;
+	margin-bottom: .5rem;
+}
+#identita_profil_new #status #jmena_drive {
+	margin-bottom: .3rem;
+	margin-top: -.5rem;
+	display: block;
+	font-size: .92857rem; /* 13px */
+}
+#identita_profil_new #disclaimer {
+	margin-bottom: .5rem;
+}
+#identita_profil_new .covid_test {
+	margin-bottom: .5rem;
+}
+#identita_profil_new .zarazeni_a_pracoviste .hvst_funkce_zkratka_prac {
+	margin-bottom: 1rem;
+}
+
+/* v editaci ve sloupci s odkazy vedle fotky lepší pozice pro tl. změnit */
+#identita_profil_new .ident_sl_odkazy > div[class^="_lide_"] > div > div {
+	display: inline-block;
+	margin-right: .5rem;
+}
+
+/* ******** */
+/* covid info */
+.covid-info {
+	font-size: .857142rem; /* 12 px */
+	background: #f5f5f5;
+	padding: .5rem;
+	margin: .5rem 0 .5rem -.5rem;
+}
+
+
+/* ******** */
+/* Informace mezi fotkou a tabítkama */
+
+#spravy, #bezprav, #priv_info, #pozvanka, #toto_jsem, #antiscraping {
+	display: block;
+	padding: 0.5rem 1rem;
+	margin: 1rem 0;
+	background-color: #fffaf5;
+	border-left: 2px solid #fc9603;
+}
+#bezprav, #toto_jsem {
+	background-color: #f3f8f0;
+	border-color: #00a442;
+}
+#priv_info {
+	background-color: #f7f2f9;
+	border-color: #8430a0;
+}
+#antiscraping {
+	background-color: #fef7f7;
+	border-color: #c91717;
+}
+.lide_osoba_hlasky .lide_osoba_hlaska + .lide_osoba_hlaska {
+	margin-top: -.5rem !important;
+}
+#spravy h4, #bezprav h4, #antiscraping h4 {
+	display: block;
+	font-size: .857142rem; /* 12px */
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 0;
+}
+#spravy .button, #bezprav .button {
+	margin-bottom: 0;
+}
+#pozvanka {
+	background-color: #f0fafd;
+	border-color: #00a1de;
+}
+
+/* Můj student */
+#identita_profil_new + #muj_student_kontejner {
+	margin-top: 1.5rem;
+}
+#vztah_k_osobe .lide_muj_student_soucasne {
+	margin-left: -.5rem;
+	margin-right: -.5rem;
+}
+#vztah_k_osobe .lide_muj_student_soucasne > .column {
+	padding: 0 .5rem;
+	margin-bottom: 1rem;
+}
+#vztah_k_osobe .lide_muj_student_soucasne > .column > div {
+	border-top: 1px solid var(--bordersedy);
+	border-bottom: 1px solid var(--bordersedy);
+	margin-bottom: 1rem;
+	padding: .5rem .5rem 2.78571rem .5rem; /* bottom: ochranná zóna pro operace */
+	position: relative;
+	height: 100%;
+}
+#vztah_k_osobe .lide_muj_student_soucasne > .column > div.muj_student_naposledy {
+	min-height: 0;
+	padding-bottom: .5rem;
+}
+#vztah_k_osobe .lide_muj_student_soucasne > .column > div:hover,
+#vztah_k_osobe .lide_muj_student_minule > .column > div:hover {
+	border-color: var(--bgbox);
+	background-color: var(--bgbox);
+}
+#vztah_k_osobe .muj_student_kod {
+	font-size: .85714rem; /* 12px */
+	line-height: 1.42857rem; /* 20px, sjednocení s h4.nadpisek */
+	width: max-content;
+}
+#vztah_k_osobe .muj_student_nazev {
+	display: block;
+	margin: 0;
+	font-size: 1.07142rem; /* 15px */
+}
+#vztah_k_osobe .lide_muj_student_soucasne .muj_student_operace a,
+#vztah_k_osobe .lide_muj_student_minule .muj_student_operace a {
+	display: inline-block;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: .3rem 0 0 .3rem;
+	border-radius: 50%;
+}
+#vztah_k_osobe .lide_muj_student_soucasne .muj_student_operace a:hover,
+#vztah_k_osobe .lide_muj_student_minule .muj_student_operace a:hover {
+	background-color: var(--bg);
+}
+#vztah_k_osobe .lide_muj_student_soucasne .muj_student_nazev {
+	margin-top: .3rem;
+}
+#vztah_k_osobe .lide_muj_student_soucasne .muj_student_operace {
+	position: absolute;
+	bottom: 0;
+	margin-left: -.5rem;
+}
+#vztah_k_osobe .muj_student_vztah {
+	font-weight: 400;
+	color: #888;
+	margin-bottom: 0;
+	line-height: 1.42857rem; /* 20px */
+}
+#vztah_k_osobe .lide_muj_student_minule > .column > div {
+	padding: .3rem .3rem .3rem 0;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--bordersedy);
+}
+#vztah_k_osobe .lide_muj_student_minule > .column:last-of-type > div {
+	border-bottom: none;
+}
+#vztah_k_osobe .lide_muj_student_minule > .column > div > .lide_muj_student_flex_skupina {
+	flex: 1 1 0;
+}
+#vztah_k_osobe .lide_muj_student_minule > .column > div > .muj_student_operace {
+	flex: 0 0 auto;
+	max-width: 100%;
+}
+#vztah_k_osobe .lide_muj_student_minule .muj_student_kod,
+#vztah_k_osobe .lide_muj_student_minule .muj_student_vztah {
+	margin-bottom: -2px;
+}
+#vztah_k_osobe .lide_muj_student_minule .muj_student_nazev,
+#vztah_k_osobe .lide_muj_student_minule .muj_student_operace {
+	display: inline-block;
+}
+#vztah_k_osobe .lide_muj_student_minule .muj_student_nazev {
+	margin-right: 1.5rem;
+}
+
+
+/* ******* */
+/* tabítka */
+#lide_karty + .tabs-content > div {
+	min-height: 35rem;
+	min-height: calc(100vh - 45px - 50px - 200px) /* výška okna - výška horní lišty - výška tabítek - výška patičky */
+}
+#lide_karty + .tabs-content > div:only-child {
+	min-height: 10rem;
+}
+@media screen and (max-width: 39.9375em) {
+	#lide_karty + .tabs-content {
+		min-height: calc(100vh - 45px - 50px - 415px) /* výška okna - výška horní lišty - výška tabítek - výška patičky */
+	}
+}
+#lide_karty + .tabs-content .tabs-panel {
+	padding-left: 2.5rem;
+}
+#lide_karty + .tabs-content h3.nadpis-sekce {
+	margin-bottom: 1.5rem;
+}
+.lide_tabulka + h3.nadpis-sekce {
+	margin-top: 4rem;
+}
+.lide_doktorsti {
+	margin-bottom: 2rem;
+}
+#profil_kontejner h3.nadpis-sekce:nth-child(n+2) {
+	margin-top: 2rem;
+}
+.lide_cinnost_odkazy {
+	margin-top: 1rem;
+}
+.lide_cinnost_odkazy > a {
+	display: inline-block;
+}
+.lide_cinnost_odkazy > span.oddelovac {
+	margin: 0 1rem;
+	display: inline-block;
+}
+table.tab_udaje_table {
+	margin: .5rem -.5rem 2rem -1.5rem;
+	width: calc(100% + 2rem);
+}
+table.tab_udaje_table tr, table.tab_udaje_table tbody,  table.tab_udaje_table thead, table.tab_udaje_table td, table.tab_udaje_table th {
+	border: none;
+	text-align: left;
+	background: none !important;
+}
+table.tab_udaje_table tbody td, table.tab_udaje_table tbody th {
+	padding: .2rem 1rem .2rem 1.5rem;
+}
+table.tab_udaje_table tbody th, .tab_udaje_table .column-th {
+	width: 14rem;
+	vertical-align: top;
+}
+@media screen and (max-width: 39.9375em) {
+	table.tab_udaje_table tbody th, .tab_udaje_table .column-th {
+		width: 100%;
+		margin-top: 1.5rem;
+	}
+}
+table.tab_udaje_table tbody th, .tab_udaje_table .column-th h4 {
+	font-weight: 600;
+	color: #0a0a0a;
+	font-family: Open Sans,Arial,sans-serif !important;
+	font-size: 1rem;
+}
+
+table.tab_udaje_table_hover tbody tr:hover td:not([colspan]) {
+	background-color: rgba(0,0,0,.01) !important;
+}
+.motiv-tmavy table.tab_udaje_table_hover tbody tr:hover td:not([colspan]) {
+	background-color: rgba(255,255,255,.01) !important;
+}
+
+table.tab_udaje_table td.ucitelske_prokliky {
+	width: 4rem;
+}
+@media screen and (max-width: 39.9375em) {
+	table.tab_udaje_table tbody th, table.tab_udaje_table td.ucitelske_prokliky {
+		width: 100%;
+	}
+}
+
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a {
+	padding: 0 .5rem 0 .5rem;
+	margin: 0 -.5rem 0 -.5rem;
+	color: #e0e0e0;
+}
+table.tab_udaje_table tr:hover td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a {
+	color: #888
+}
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a:hover,
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a:focus,
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a:active,
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a:hover *,
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a:focus *,
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a:active * {
+	text-decoration: none !important;
+	color: var(--barva1);
+}
+table.tab_udaje_table td.ucitelske_prokliky .dropdown .is-dropdown-submenu-parent > a:after {
+	display: none;
+}
+
+table.tab_udaje_table tbody td ul.bez_odrazek, .tab_udaje_table .column-td ul.bez_odrazek, .tab_udaje_table .ul_bez_odrazek ul {
+	margin-left: 0;
+}
+table.tab_udaje_table tbody td ul.bez_odrazek li, .tab_udaje_table .column-td ul.bez_odrazek li {
+	margin-bottom: .5rem;
+}
+.tab_udaje_table .column-td .rozklikavatko-nadpis {
+	display: inline-block;
+	margin-bottom: .5rem;
+}
+.tab_udaje_table .column-td .rozklikavatko-nadpis:not(.is-active) {
+	margin-bottom: 1.5rem;
+}
+.tab_udaje_table .ul_bez_odrazek ul > li:before {
+	display: none;
+}
+/* TODO: je potřeba napsat pravidla pro small, kde se tabulka stackuje */
+
+/* údaj nerozbalovaci */
+table.tab_udaje_table thead th {
+	background-color: var(--bg) !important;
+	padding: .5rem 1.5rem;
+	margin-top: 1.5rem;
+}
+/* privileg barvení úprava - takto složitě, protože musíme nechat .privileg, aby fungovalo odmazání privileg údajů na stránce */
+table.tab_udaje_table.privileg tbody * { /* aby nebyla celá tabulka nepřehledně fialová */
+	color: var(--text) !important;
+}
+table.tab_udaje_table.privileg tbody a {
+	color: var(--barva1) !important;
+}
+table.tab_udaje_table.privileg tbody a:hover {
+	color: var(--btn-prim-hover) !important;
+}
+.motiv-tmavy table.tab_udaje_table.privileg tbody a:hover {
+	color: var(--barva1) !important;
+}
+table.tab_udaje_table.privileg thead * { /* Privileg hlavičku chceme barvit a nebarvila se */
+	color: #ab24de !important;
+}
+table.tab_udaje_table.privileg .nedurazne { /* aby nebyla celá tabulka nepřehledně fialová */
+	color: var(--text-nedurazny) !important;
+}
+table.tab_udaje_table.privileg .ko { /* aby nebyla celá tabulka nepřehledně fialová */
+	color: var(--barvako) !important;
+}
+table.tab_udaje_table.privileg .privileg { /* ale zase privileg uvnitř privileg chceme barvit */
+	color: var(--barvaprivileg) !important;
+}
+table.tab_udaje_table.privileg tr,
+table.tab_udaje_table.privileg thead th {
+	background-color: #f5ecf9 !important; /* Privileg studium chceme tabulku podbarvit */
+}
+/* údaj rozbalovací */
+table.tab_udaje_table span.tab_udaje_table_rozbal {
+	display: block;
+	color: var(--text);
+	padding: .5rem 2.5rem .5rem 1.5rem; /* zrcadlím rodiče + vpravo víc kvůli šipce */
+	margin: -.5rem -1.5rem;
+	position: relative;
+}
+table.tab_udaje_table span.tab_udaje_table_rozbal:after {
+	display: block;
+	width: 0;
+	height: 0;
+	border: 5px inset;
+	content: "";
+	border-bottom-width: 0;
+	border-top-style: solid;
+	border-color: var(--barva1) transparent transparent;
+	right: 1rem;
+	top: 50%;
+	position: absolute;
+}
+table.tab_udaje_table span.tab_udaje_table_rozbal[aria-expanded="true"]:after {
+	border: 5px inset;
+	border-top-width: 0;
+	border-bottom-style: solid;
+	border-color: transparent transparent var(--barva1) transparent;
+}
+table.tab_udaje_table span.tab_udaje_table_rozbal:hover, table.tab_udaje_table span.tab_udaje_table_rozbal:focus {
+	background-color: #eee;
+	text-decoration: none !important;
+}
+
+._lide_konzultacni_hodiny {
+	margin-bottom: 2rem;
+}
+.tab_udaje_table .publikace_zaznam .publikace_telo {
+	padding-left: .7rem;
+	border-left: 1px solid var(--bordersedy-dark);
+	margin-bottom: 1rem;
+	margin-top: .2rem;
+	font-size: .857142rem; /* 12px */
+}
+.tab_udaje_table .publikace_zaznam .publikace_telo,
+.tab_udaje_table .publikace_zaznam .publikace_telo a {
+	color: #777; /* nedurazne je sice #888, ale tady je 12px písmo a je tak nutné kompenzovat tmavší barvou */
+}
+.tab_udaje_table .publikace_zaznam .publikace_telo + .publikace_url {
+	margin-top: -.8rem;
+}
+.tab_udaje_table .publikace_zaznam .publikace_url {
+	padding-left: .7rem;
+	font-size: .857142rem; /* 12px */
+}
+.tab_udaje_table .publikace_zaznam .publikace_url a {
+	margin-left: -.1rem;
+}
+.tab_udaje_table .zivotopis_dalsi_var {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+}
+.tab_udaje_table .zivotopis_dalsi_var .rozklikavatko-obsah .button {
+	margin-bottom: var(--5px);
+}
+.tab_udaje_table .zivotopis_dalsi_var.dalsi_var_privileg {
+	color: initial!important;
+}
+.tab_udaje_table .skoleni_potvrzeni_info {
+	font-size: .92857rem; /* 13px */
+}
+.tab_udaje_table .skoleni_potvrzeni_info .ko,
+.tab_udaje_table .skoleni_potvrzeni_info a,
+.tab_udaje_table .skoleni_potvrzeni_info .js_plpas_obal {
+	font-size: 1rem;
+}
+.dalsi_var_privileg.nedurazne {
+	color: var(--text-nedurazny) !important;
+}
+.button.secondary.dalsi_var_privileg {
+	color: var(--barva1) !important;
+}
+.aka_odznaky_nadpis_mt {
+	margin-top: 1.28571rem; /* 18px */
+}
+
+/**/
+#vidijen {
+	display: block;
+	padding: 0.5rem 1rem;
+	margin: -1rem 0 1rem;
+	//background-color: #fffaf5;
+	border-left: 2px solid #fc9603;
+}
+#vidijen h4 {
+	display: block;
+	font-size: .857142rem; /* 12px */
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 0;
+}
+.tabs-container + .lide-foot {
+	margin-top: -2rem;
+}
+/* TMAVÝ DESIGN */
+.motiv-tmavy #_studium_pracoviste table.tab_udaje_table.privileg tr,
+.motiv-tmavy #_studium_pracoviste table.tab_udaje_table.privileg thead th { 
+	background-color: var(--bgbarva-hlaska-privileg) !important; 
+}
+
+.motiv-tmavy table.tab_udaje_table tbody th, 
+.motiv-tmavy .tab_udaje_table .column-th h4 { 
+	color: var(--nadpisek); 
+}
+
+.motiv-tmavy table.tab_udaje_table.privileg tbody * { 
+	color: var(--nadpisek) !important; 
+}
+
+.motiv-tmavy #spravy, 
+.motiv-tmavy #bezprav, 
+.motiv-tmavy #priv_info, 
+.motiv-tmavy #pozvanka, 
+.motiv-tmavy #toto_jsem, 
+.motiv-tmavy #antiscraping { 
+	border-color: var(--barva4);
+	background-color: var(--bgbarva-hlaska-maybe); 
+}
+
+.motiv-tmavy #bezprav, 
+.motiv-tmavy #toto_jsem { 
+	border-color: var(--barva2);
+	background-color: var(--bgbarva-hlaska-ok); 
+}
+
+.motiv-tmavy #priv_info { 
+	border-color: var(--barva7);
+	background-color: var(--bgbarva-hlaska-privileg);
+}
+
+.motiv-tmavy #antiscraping { 
+	border-color: var(--barva3); 
+	background-color: var(--bgbarva-hlaska-ko);
+}
+
+.motiv-tmavy #pozvanka {
+	border-color: var(--barva1);
+	background-color: var(--bgbarva-hlaska-modra);
+}
+
+.motiv-tmavy table.tab_udaje_table thead th { 
+	background-color: var(--bgbarva-seda3)!important; 
+}
+
+.motiv-tmavy table.tab_udaje_table span.tab_udaje_table_rozbal:hover,
+.motiv-tmavy table.tab_udaje_table span.tab_udaje_table_rozbal:focus {
+	background-color: var(--bgbarva-sedahover);
+}
+
+.motiv-tmavy table.tab_udaje_table a.tab_udaje_table_rozbal { 
+	color: var(--text); 
+}
+
+.motiv-tmavy #vztah_k_osobe .lide_muj_student_soucasne > .column > div { 
+	border-color: var(--bordersedy); 
+}
+
+.motiv-tmavy #vztah_k_osobe .lide_muj_student_soucasne > .column > div:hover,
+.motiv-tmavy #vztah_k_osobe .lide_muj_student_minule > .column > div:hover {
+	border-color: var(--bordersedy);
+	background-color: var(--bgbarva-sedahover) 
+}
+
+</style>
+<script src="/js/r6/jquery.js?_v=3736f12"></script>
+<script src="/js/error.js?_v=e23fead"></script>
+<script src="/js/r6/foundation.js?_v=a06b727"></script>
+</head>
+<body class="cs auth skola_14 motiv-1 motiv-svetly">
+<a href="#left_menu" class="show-on-focus print-hide">Přeskočit na hlavní menu</a><a href="#sticky_panel" class="show-on-focus print-hide">Přeskočit na horní lištu</a><a href="#hlavicka" class="show-on-focus print-hide">Přeskočit na hlavičku</a><a href="#app_menu_items" class="show-on-focus print-hide">Přeskočit na aplikační menu</a><a href="#app_content" class="show-on-focus print-hide">Přeskočit na obsah</a><a href="#paticka" class="show-on-focus print-hide">Přeskočit na patičku</a>
+<div id="content" class="left_menu_enabled">
+	<div id="zdurazneni-sticky" class="zdurazneni-sticky print-hide" role="alert" aria-atomic="true"></div>
+	<div id="rows_wrapper">
+		<div class="foundation-design-z">
+			<nav id="sticky_panel" >
+	<div class="row">
+		<div class="column">
+			<div class="ikony">
+				
+				<a href="#" class="sticky-icon show-for-1280-only float-right" data-toggle="header_menu" title="Hlavní menu" aria-label="Hlavní menu"><i class="isi-menu" aria-hidden="true"></i></a><nav id="header_menu" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<ul class="items">
+		<li class="ikony">
+			<a href="/auth/osoba/990001?lang=en;setlang=en" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a>
+			<a href="/auth/osoba/990001" class="jmeno_small show-for-small-only">
+	Novák, J.
+</a>
+			<a href="#" title="Odhlášení ze systému" class="sticky-icon is-logout-menu show-for-small-only">
+	<i class="isi-power" aria-hidden="true"></i>
+	<span class="show-for-sr">Odhlášení ze systému</span>
+</a>
+		</li>
+		<li class="noitem">
+			<a href="/auth/" class="domu">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+			
+		</li>
+		<li class="noitem"><label class="moje_apl">Moje aplikace<a href="#" class="toggle_edit_mode"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a></label></li><li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+	</ul>
+</nav><a href="#" class="sticky-icon sticky-zivot float-right" data-toggle="header_zivot" title="Život na MU" aria-label="Život na MU"><i class="isi-zivot" aria-hidden="true"></i><span class="pocet"></span></a><div id="header_zivot" class="dropdown-pane bottom zivot_wrap" data-dropdown data-close-on-click="true" aria-labelledby="dd-lbl-zivot"></div><a href="#" class="sticky-icon show-for-medium float-right" data-toggle="header_oblibene" title="Oblíbené" aria-label="Oblíbené"><i class="isi-hvezdicka" aria-hidden="true"></i></a><div id="header_oblibene" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<div id="oblibene" class="oblib_sled">
+		<h5 class="barva4">S hvězdičkou</h5>
+		<div id="oblibene_loading" data-loading-size="medium">
+		</div>
+	</div>
+	<div id="sledovane" class="oblib_sled">
+		<h5 class="barva3"><a href="/auth/udalosti/nastav_log">Sledované</a></h5>
+		<div id="sledovane_loading" data-loading-size="medium">
+		</div>
+		<ul class="vertical menu">
+		</ul>
+	</div>
+</div><a href="#" class="sticky-icon prepinac-vyhl float-right" title="Vyhledávání" aria-label="Vyhledávání" data-toggle="is_search"><i class="isi-lupa" aria-hidden="true"></i></a><div id="is_search" class="dropdown-pane bottom search-dropdown" data-dropdown data-close-on-click="true">
+	<form method="POST" action="/auth/vyhledavani/" role="search">
+		<div class="input-group">
+			<input class="input-group-field input_text" type="search" name="search" autocomplete="off" role="searchbox">
+			<div id="is_search_x" class="is_input_x input-group-button"><i class="isi-x"></i></div>
+			<div class="input-group-button">
+				<input type="submit" class="button" value="Vyhledat">
+			</div>
+		</div>
+	</form>
+	<div id="is_search_results"></div>
+</div><span style="display: none;"><a id="male_vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span><span class="hide-for-1280-only"><a href="/auth/osoba/990001?lang=en;setlang=en" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a></span><a href="/auth/osoba/990001" class="jmeno sticky-item show-for-medium">	Jan Novák, učo&nbsp;990001</a><a href="#" class="sticky-icon is-logout float-right show-for-medium" title="Odhlášení ze systému" data-toggle="is_logout">
+		<i class="isi-power" aria-hidden="true"></i>
+		<span class="show-for-sr">Odhlášení ze systému</span>
+	</a>
+<div id="is_logout" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	
+	<form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" action="/auth/system/logout.pl" id="prvek_9899272"><div class="row">
+	<div class="column"><button id="prvek_3001969" class="expanded button" type="submit" name="odhlasit" value="1">Odhlásit se</button><div class="odhlasit_vse"><label class="validator-group-content" for="odhlasit_vse"><input id="odhlasit_vse" name="odhlasit_vse" type="checkbox" value="1">odhlásit ze všech zařízení</label><span class="form-error" data-form-error-for="odhlasit_vse"><span class="form-error-text"></span></span></div></div>
+</div>
+</form>
+</div>
+			</div>
+		</div>
+	</div>
+</nav>
+			<div class="row">
+	<div class="column">
+		<div id="left_menu_wrap">
+			<div id="left_menu_offset_wrap">
+				<nav id="left_menu" aria-label="Hlavní menu" role="navigation" class="hide-for-1280-only">
+					<div class="items">
+						<div>
+							<a href="/auth/" class="domu menuitem">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+						</div>
+						
+						
+						<div class="moje_apl_wrap"><a href="#" class="toggle_edit_mode menu_icon"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a><label class="moje_apl">Moje aplikace</label></div>
+						<ul class="tags" aria-label="Odkazy hlavního menu">
+							<li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+						</ul>
+						<div class="add"><a href="#" aria-label="Přidat"><i class="isi-plus isi-inline" title="Přidat" aria-hidden="true"></i></a></div>
+						<div class="buttons">
+							<button class="reset button secondary small" data-tooltip data-show-on="all" title="Obnoví implicitní položky menu.">Reset</button>
+							<button class="hotovo button small">Hotovo</button>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+			<header class="row hlavicka" id="hlavicka">
+	<div class="small-5 medium-3 columns znak skola14">
+		<a href="/auth/" class="stitek skola_14" title="Informační systém Masarykovy univerzity" aria-label="Informační systém Masarykovy univerzity"></a>
+	</div>
+	<div id="is-prepinace" class="small-7 medium-9 columns">
+		
+		<div id="prepinace">
+        <ul aria-hidden="true" class="is-switch dropdown menu" data-dropdown-menu data-click-open="true" data-closing-time="0" data-autoclose="false" data-disable-hover="true" data-close-on-click="true" data-force-follow="false" data-close-on-click-inside="false" data-alignment="right">
+                
+                
+                
+        </ul>
+        <ul class="show-for-sr">
+                
+                
+                
+        </ul>
+</div>
+	</div>
+</header><div id="drobecky" class="row">
+	<div class="column">
+		<span class="wrap"><a href="/auth/" title="Informační systém MU" accesskey="0" class="drobecek_logo"> </a><span class="sep last"> <i class="isi-zobacek-vpravo"></i><span class="show-for-sr">&gt;</span> </span><a href="/auth/lide/" class="drobecek_app" accesskey="1">Lidé</a> <a class="pin_red" title="Přidat tuto aplikaci mezi MOJE APLIKACE" aria-label="Přidat tuto aplikaci mezi MOJE APLIKACE"><i class="isi-pripinacek sponka" aria-hidden="true"></i></a></span>
+	</div>
+</div><div id="app_header_wrapper" class="row align-justify show-for-medium">
+	<div class="medium-12 column">
+		<h1 id="app_header"><div class="large-9 xlarge-9"><span id="app_name">Osobní stránka Jan Novák</span></div></h1>
+	</div>
+	<div class="shrink column">
+		<div id="app_header_image"></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+		<div id="app_menu" class="">
+			<nav role="navigation" id="app_menu_items" aria-label="Aplikační menu">
+	<a href="/auth/lide/" class="polozka app-menu-hidden lide drobecek_app isi-rozcestnik" accesskey="1">Lidé</a><a href="/auth/osoba/990001" class="polozka app-menu-hidden active noloader _moje">Moje osobní stránka</a><a href="/auth/lide/lide_komentare?uco=990001" class="polozka app-menu-hidden noloader komentare">Komentáře</a><a href="/auth/lide/lide_znami" class="polozka app-menu-hidden noloader znami">Moji známí</a><a href="/auth/lide/nastaveni" class="polozka app-menu-hidden nastaveni">Nastavení</a>
+	<ul role="menu" aria-label="Další položky" class="dropdown menu" data-dropdown-menu id="app_menu_small" data-disable-hover="true" data-autoclose="false" data-click-open="true">
+		<li>
+			<a href="#">Více</a>
+			<ul class="menu">
+				<li class='polozka_parent'><a href="/auth/lide/" class="polozka app-menu-hidden lide drobecek_app isi-rozcestnik" accesskey="1">Lidé</a></li><li class='polozka_parent'><a href="/auth/osoba/990001" class="polozka app-menu-hidden active noloader _moje">Moje osobní stránka</a></li><li class='polozka_parent'><a href="/auth/lide/lide_komentare?uco=990001" class="polozka app-menu-hidden noloader komentare">Komentáře</a></li><li class='polozka_parent'><a href="/auth/lide/lide_znami" class="polozka app-menu-hidden noloader znami">Moji známí</a></li><li class='polozka_parent'><a href="/auth/lide/nastaveni" class="polozka app-menu-hidden nastaveni">Nastavení</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+		</div>
+	</div>
+</div><!--[if lt IE 9]><div id="prvek_5320107" class="zdurazneni varovani ie_warning"><h3 class="zdurazneni-nadpis">Varování:</h3><h3>Váš prohlížeč Internet Explorer je zastaralý.</h3><p>Jsou známa bezpečnostní rizika a prohlížeč možná nedokáže zobrazit všechny prvky této a dalších webových stránek.</p></div><![endif]-->
+		</div>
+		<div id="app_content_row" class="row"><main id="app_content" class="column" role="main">
+<div class="row collapse">
+	<div class="column small-12 medium-9 large-6">
+		<div id="maly_formular"><form data-abide novalidate method="get" enctype="application/x-www-form-urlencoded" action="/auth/lide/" id="prvek_3783213" name="osoba" role="search">
+<input type="hidden" name="ag" value="os">
+<div id="vyhledavani_form" class="input-group">
+	 <div class="input-group-label isi-postava-hledat" aria-hidden="true"></div>
+	<input autocomplete="off" class="input-group-field" id="input_hledat" name="search" placeholder="Zadejte jméno a příjmení" role="searchbox" type="search"><span class="form-error" data-form-error-for="input_hledat"><span class="form-error-text"></span></span>
+	<a href="#" id="vyhledavani_form_x" class="input-group-button" aria-label="Clear input"><i class="isi-x isi-inline" aria-hidden="true"></i></a>
+	<button type="submit" id="vyhledavani_send_form" class="input-group-button" aria-label="Vyhledat"><i class="isi-lupa isi-inline" aria-hidden="true"></i><span class="show-for-sr">Vyhledat</span></button>
+	
+</div><input id="searchid" name="searchid" type="hidden"></form><span style="display: none;"><a id="vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span></div>
+	</div>
+</div>
+			<div id="editacni_lista"><div id="muj_profil_edit_lista" class="row">
+	<div class="shrink column"><label>Upravit:</label><a href="/auth/osoba/990001?edmp=1" class="edmp_link button secondary"><i class="isi-tuzka isi-large-right" aria-hidden="true"></i>Celý profil</a>
+					<ul class="dropdown menu edit_lista_foto_dropmenu" data-dropdown-menu data-click-open="true" data-disable-hover="true">
+						<li>
+							<a href="#" class="button secondary"><i class="isi-nahled isi-large" aria-hidden="true"></i>Fotografii</a>
+							<ul class="menu">
+								<li><a href="/auth/lide/foto_nastaveni"><i class="isi-photo isi-large-right" aria-hidden="true"></i>Nastavení zobrazování fotografie</a></li>
+								<li><a href="/auth/pers/edoklady_foto"><i class="isi-credit-card isi-large-right" aria-hidden="true"></i>Nahrát fotografii z eDokladu</a></li>
+								<li><a href="/auth/lide/foto_nahrani_sek"><i class="isi-postava isi-large-right" aria-hidden="true"></i>Změnit soukromou podobenku</a></li>
+							</ul>
+						</li>
+					</ul>
+				<a href="/auth/mail/settings?zpet=%2Fauth%2Fosoba%2F990001" class="button secondary"><i class="isi-mail isi-large" aria-hidden="true"></i>Nastavení e-mailu</a><a href="/auth/lide/lide_edit" class="button secondary"><i class="isi-nastaveni isi-large" aria-hidden="true"></i>Chování aplikace</a></div>
+	<div class="small-12 xlarge-expand column"><label>Zkontrolovat:</label><a href="/auth/people/kontrola_udaju?zpet=%2Fauth%2Fosoba%2F990001" class="button secondary"><i class="isi-ankety isi-large" aria-hidden="true"></i>Osobní údaje</a></div>
+</div>
+</div>
+<div class="row" id="identita_profil_new">
+	<div class="columns small-4 medium-3 large-2 ident_sl_foto">
+		<div id="foto"><img src="/auth/lide/foto?uco=990001;bezprav=1;typ=prim" title="Oficiální fotografie Jan Novák" alt="Oficiální fotografie Jan Novák" data-foto_typ="prim" width="159" height="193" /></div><div class="foto_odkazy mt-05 font-size-S"></div>
+		
+	</div>
+	<div class="columns small-8 medium-9 large-4 ident_sl_zaklad">
+		<h2><span title="Jméno">Jan</span> <span title="Příjmení">Novák</span></h2>
+		<div id="status" class="profil_subboxik">učo 990001</div>
+		
+		
+		
+	</div>
+	<div class="columns small-12 medium-9 medium-offset-only-3 large-6 align-self-middle ident_sl_odkazy">
+		
+		
+		<div class="profil_subboxik isi-prepend isi-prep__large isi-mail" id="email"><B><A HREF="/auth/mail/mail_posli?to=990001%40mail.muni.cz">990001@mail.muni.cz</A></B></div>
+		
+		<div class="profil_subboxik isi-uschovna isi-prepend isi-prep__large lide_uschovnax"><a href="/auth/dok/depository_in?vybos_vzorek=990001">Vložení souborů do Úschovny</a></div>
+		
+	</div>
+</div>
+<div class="tabs-container ">
+				<ul class="tabs  tabs-toolkit tabs-noflex-large" data-tabs id="lide_karty" data-match-height="0"><li class="tabs-title is-active" ><a aria-selected="true" id="studium_pracoviste" class="tabs-a is-active os_tab" href="#_studium_pracoviste" data-content-id="_studium_pracoviste">Studium</a></li><li class="tabs-title" ><a id="profil" class="tabs-a os_tab" href="#_profil" data-content-id="_profil">Profil</a></li><li class="tabs-title" ><a id="predpisy_a_skoleni" class="tabs-a os_tab" href="#_predpisy_a_skoleni" data-content-id="_predpisy_a_skoleni">Školení a předpisy</a></li></ul>
+				<div class="tabs-content" data-tabs-content="lide_karty"><div class="tabs-panel" id="_studium_pracoviste"><div class="profil_subboxik lide_studium"><h3 class="nadpis-sekce">Studium</h3><div class="studium_text"><table id="tab_studia_1000001" class="tab_udaje_table stack-on-small "><thead><tr><th class="stud-sbal" colspan="3"><strong>Bezpečnostní a strategická studia</strong>, Fakulta sociálních studií</th></tr></thead><tbody><tr><th>Program</th><td>
+						<b>FSS B-BSS <a href="/auth/program/23190/bezpecnostni-a-strategicka-studia">Bezpečnostní a strategická studia</a></b>, bakalářský studijní program</td></tr>
+<tr><th>Forma</th><td>prezenční sdružené</td></tr>
+<tr><th>Stav</th><td><span class="nedurazne">řádný zápis</span></td></tr>
+<tr><th rowspan="6">Plány</th><td><strong>FSS BSS02 <a href="/auth/plan/23191/bezpecnostni-a-strategicka-studia">Bezpečnostní a strategická studia</a></strong></td></tr><tr><td>1. semestr</td></tr><tr><td>bakalářský prezenční hlavní</td></tr><tr><td><strong>FSS POL03 <a href="/auth/plan/23198/politologie">Politologie</a></strong></td></tr><tr><td>1. semestr</td></tr><tr><td>bakalářský prezenční vedlejší</td></tr></tbody></table></div></div></div><div class="tabs-panel" id="_profil"><div id="profil_kontejner"></div>
+</div><div class="tabs-panel" id="_predpisy_a_skoleni"><div id="predpisy_a_skoleni_kontejner"></div>
+</div></div>
+				</div>
+<div class="row lide-foot pt-05">
+	<p class="nedurazne small-12 large-8 column"></p>
+	<p class="small-12 large-4 text-right column"><a href="/auth/nzo/xla:U2FsdGVkX1_94td3FYMsQxDwO4-jTJDgk1VzqfQjSwY6UwcEkR52SeXfNxy9in2CvEXs5oZqqRV5p1gwZzqgr6_ZQ_ur5ri9B61kdzDZTMc" class="nedurazne">Nahlásit závadný obsah</a></p>
+</div>
+</main></div>
+		
+		<div class="foundation-design-z foot_clear">
+			
+	<div class="row">
+		
+	</div>
+	<footer id="paticka" class="">
+		<div class="row">
+			<div class="columns small-12 medium-6 paticka_logo">
+	<a href="/auth/"><span class="show-for-sr">IS MU</span></a>
+	<div>
+		Informační&nbsp;systém Masarykovy&nbsp;univerzity
+		<div class="footer_about">
+			<a href="https://is.muni.cz/nas_system/">Více o IS MU</a>, provozuje <a href="https://www.fi.muni.cz/">Fakulta informatiky MU</a>
+		</div>
+		
+	</div>
+</div>
+<div class="columns small-6 medium-3">
+	<div class="footer_podpora">
+	<a href="/auth/podpora/">Potřebujete poradit?</a>
+	<span class="kont_email"><a href="/auth/mail/mail_posli?to=istech%40fi.muni.cz">istech@fi.muni.cz</a></span>
+</div>
+	<div class="footer_napoveda">
+		<a href="/auth/napoveda/">Nápověda</a>
+	</div>
+	<div class="row">
+		<div class="columns small-12 display-none">
+			<div class="footer_zoomy">
+				<a href="" rel="nofollow"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="columns small-6 medium-3 nastaveni_col">
+	<div class="footer_datum">
+		<span title="Dnes je 38. (sudý) týden.">18. 9. 2026 <span style='padding: 0 0.6em'>|</span> 20:28</span>
+		<a href="/system/cas" title="Dnes je 38. (sudý) týden." class="footer_cas">Aktuální datum a&nbsp;čas</a>
+	</div>
+	<div>
+	<div class="row collapse">
+	<div class="column small-12 medium-6 footer_nastaveni"><a href="/auth/system/nastaveni">Nastavení</a></div>
+	<div class="column small-12 medium-6 footer_privacy"><a href="/auth/privacy/">Soukromí</a></div>
+</div>
+
+	
+</div>
+</div>
+			<div class="right-border"></div>
+			<div class="left-border"></div>
+		</div>
+		<a href="#hlavicka" class="skip_up" title="Skočit na začátek stránky">
+			Nahoru
+		</a>
+	</footer>
+
+		</div>
+	</div>
+</div>
+<div class="reveal" id="vyhledavani_reklamace" role="region" data-append-to=".foundation-design-z:first" data-reveal="">
+	<div class="row">
+		<div  class="column reveal-content">
+			<h2>Nenašli jste, co jste hledali?</h2><div class="nedurazne"><h3 class="subheader">Hledaný výraz: <em id="vyhledavani_reklamace_hledany_vyraz"></em></h3></div><form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" id="prvek_7193909" onsubmit="return false;"><textarea autocomplete="off" data-valid-min="3" data-validator="min" id="prvek_3808041" placeholder="Očekával jsem, že najdu..." rows="8" wrap="soft"></textarea><span class="form-error" data-form-error-for="prvek_3808041"><span class="form-error-text"></span></span><div id="vyhledavani_reklamace_bottom" class="row">
+	<div class="column"><div class="zdurazneni potvrzeni mb-0"><h3>Úspěšně uloženo. (<span id="vyhledavani_reklamace_countdown">0</span>)</h3></div><div class="zdurazneni chyba nelze_ulozit mb-0"><h3>Nelze uložit. Zkuste to prosím později.</h3></div></div>
+	<div class="shrink column"><button id="vyhledavani_reklamace_odeslat" class="mb-0 button" type="submit">Odeslat</button></div>
+</div>
+</form>
+		</div>
+	</div>
+	<div class="modal-btns"><button class="close-button" type="button" aria-label="Zavřít" data-close><span aria-hidden="true">&times;</span></button></div>
+</div>
+
+
+<script src="/js/is.js?_v=8a35e31"></script>
+<script src="/js/jquery-ui-1.12.1-sortable-r6.min.js?_v=611662c"></script>
+<script src="/js/log-kliknuto.js?_v=d448124"></script>
+<script>"use strict";
+
+is.Define.module('Lide', function(namespace, $) {
+	var data_profil = { 'uco': undefined, 'predchozi_jmena': undefined };
+	var data_cgipars = {};
+	var natahujeSe = {};
+	var vyuka_dotahnout_mesice = { 'od': undefined, 'do': undefined, 'od_strucne': undefined, 'do_strucne': undefined, 'je_init': undefined, 'je_init_strucne': undefined };
+
+	return {
+		init: function() {
+			var loader = new is.Loader(
+				'#app_content',
+				// '#app_content a, #drobecky a[href*="/auth/lide"], #app_menu_items .polozka'
+				//'#drobecky a[href*="/auth/lide"], #app_menu_items .polozka:not("._moje")'
+				// '#app_content a[href*="/auth/lide"], #drobecky a[href*="/auth/lide"], #app_menu_items .polozka:not(".noloader")'
+				// '#app_content a[href*="/auth/lide"], #drobecky a[href*="/auth/lide"], #app_menu_items .polozka:not(".noloader")'
+				// '#app_content a[href*="/auth/lide"], #app_menu_items .polozka:not(".noloader")'
+				// '#app_content a[href*="/auth/lide"]:not(a[href*="/auth/lide/lide_"]), #app_menu_items .polozka:not(".noloader")'
+				'#app_menu_items .polozka:not(".noloader")'
+			).before(function() {
+				$('#vyhledavani_form').isSearch('destroy');
+			}).after(function() {
+				is.Foundation.safe_init('#app_content');
+				search_init();
+				os_tab_events();	// events_init()
+			});
+
+			search_init();
+			events_init();
+			prepocitej_vztahy_init();
+		},
+		set_data_profil: set_data_profil,
+		set_data_cgipars: set_data_cgipars,
+		set_vyuka_dotahnout_mesice: set_vyuka_dotahnout_mesice,
+		napln_muj_student: napln_muj_student,
+		nastavit_zobrazovani_predch_jmen: nastavit_zobrazovani_predch_jmen,
+		priprav_editaci_zobrazovani_znamek: priprav_editaci_zobrazovani_znamek,
+		priprav_editaci_zobrazovani_studia: priprav_editaci_zobrazovani_studia,
+		sbal_table_studium: sbal_table_studium,
+		prepinani_profilove_fotky: prepinani_profilove_fotky,
+		priprav_vyber_hvst: priprav_vyber_hvst,
+		pripravEditaci: pripravEditaci,
+		zivotopis_events_init: zivotopis_events_init,
+		// focus_input_hledat: focus_input_hledat,
+		skryj_sipku_nasept_vysl: skryj_sipku_nasept_vysl
+	};
+
+	function set_data_profil (perl_data) {
+		$.extend(data_profil, perl_data);
+	}
+
+	function set_data_cgipars (perl_data) {
+		$.extend(data_cgipars, perl_data);
+	}
+
+	function set_vyuka_dotahnout_mesice (je_strucne, data) {
+		var strucne = '';
+		if (je_strucne) {
+			strucne = '_strucne';
+		}
+		if (! vyuka_dotahnout_mesice['je_init'+strucne]) {
+			vyuka_dotahnout_mesice['od'+strucne] = data.vyuka_dotahnout_mesice['od'];
+			vyuka_dotahnout_mesice['do'+strucne] = data.vyuka_dotahnout_mesice['do'];
+			vyuka_dotahnout_mesice['je_init'+strucne] = 1;
+		}
+	}
+
+	function search_init () {
+		$("#input_hledat").val($("#searchid").val())
+		$('#input_hledat').on('blur propertychange keyup input paste', function() {
+			$("#searchid").val($("#input_hledat").val())
+		});
+
+		$('#vyhledavani_form').isSearch({
+			limit:		8,
+			clear_button:	'#vyhledavani_form_x',
+			agenda:		[ is.session.get("auth") ? 'L' : 'l' ],
+			debug_wrap: '#priv_vyhledavani_debug_options',
+			mode:		'lide',
+			mode_opts_get:	function() {
+				var volby = [];
+				var ret;
+				$("input[name='fakulty']:checked").each(function() {
+					volby.push($(this).val());
+				});
+				if ($('#zam').prop("checked")) {
+					volby.push('z');
+				}
+				if ($('#stud').prop("checked")) {
+					volby.push('s');
+				}
+				if ($('#neaktivni').prop("checked")) {
+					volby.push('n');
+				}
+				ret = volby.join('|');
+				// console.log(ret);
+				return ret;
+			},
+		});
+	};
+
+	function prepocitej_vztahy_init () {
+		var prepocitat;
+		if (is.run_data) {
+			prepocitat = is.run_data.get('prepocitej_vztahy');
+		}
+		if (prepocitat) {
+			is.Ajax.request('/auth/lide/prepocitej_vztahy_ajax.pl', {});
+		}
+	};
+
+	function napln_muj_student () {
+		/* Dynamicke nacteni vztahu "Muj student" */
+		var uco;
+		var $isrq;
+		if ($("#muj_student_kontejner").length) {
+			uco = data_profil.uco;
+			$isrq = lide_request({ loading: { parent: $("#muj_student_kontejner"), insertMethod: 'before', size: 'medium' } });
+			$isrq.request({ "op" : "muj_student",  "uco" : uco }).done(function(retData) {
+				$("#muj_student_kontejner").html(retData.xresult);
+				$("#muj_student_kontejner").fadeIn();
+			});
+		}
+	};
+
+	function nastavit_zobrazovani_predch_jmen (data) {
+		set_data_profil(data);
+		var $isrq_a;
+		$("#nastav_pred_jmena").on('click', function(e) {
+			e.preventDefault();
+			var novy_stav = (data_profil.predchozi_jmena.stav == 0) ? 1 : 0;
+			var $isrq;
+			var ajaxSettings;
+			if ($isrq_a) {
+				$isrq = $isrq_a;
+			} else {
+				ajaxSettings = { loading: { parent: $("#nastav_pred_jmena"), insertMethod: 'after', size: 'inline' }, seq_request_skip: true };
+				$isrq_a = $isrq = lide_request(ajaxSettings);
+			}
+			$isrq.request({ 'op' : 'edit_predchozi_jmena', 'hodnota': novy_stav }).done(function(retData) {
+				if (novy_stav) {
+					// Zobrazovani jsme zapli
+					data_profil.predchozi_jmena.stav = 1;
+					$("#jmena_drive").removeClass('privileg');
+					$("#jmena_drive").text(data_profil.predchozi_jmena.jmena_drive);
+					$("#nastav_pred_jmena").text(is.ldb.get('skryt_driv_jm'));
+				} else {
+					// Zobrazovani jsme zrusili
+					data_profil.predchozi_jmena.stav = 0;
+					//$("#jmena_drive").addClass('privileg');
+					$("#jmena_drive").text('');
+					$("#nastav_pred_jmena").text(is.ldb.get('zobra_driv_jm'));
+				}
+			});
+		});
+	};
+
+	function lide_request (addSettings) {
+		var url = is.session.get("auth")+"/lide/lide_ajax";
+		var settings = {
+			url: url,
+			data: data_cgipars
+		};
+		$.extend(settings, addSettings);
+		var $isrq = new is.Ajax(settings);
+		return $isrq;
+	}
+
+	/* === Pro tab Školení a předpisy === */
+	function pracuji_zap ($link_obal) {
+		// $link_obal.data('old', $link_obal.html());
+		// $link_obal.html('<span class="icon_pracuji" style="display: inline-block;"></span>');
+		var $loading = new is.Loading({
+			parent		: $link_obal,		// [povinny parametr] rodic do ktereho se ma motatko vlozit (cokoli co lze vlozit jako argument jQuery $())
+			insertMethod	: 'toggle',		// jQuery metoda, ktera je pouzita pro vlozeni motatka do parenta
+								// pri zobrazeni motatka skryje puvodni obsah a po skryti motatka puvodni obsah znovu zobrazi (pouziva jQuery metodu 'html')
+			delay		: 0,			// doba neconosti, za kterou se ma motatko objevit (zaporne cislo -> motatko se nezobrazi)
+			size		: 'inline',		// velikost - ['', 'medium', 'small', 'inline']
+			// color	: ''			// barva - ['', 'dark']
+		});
+		$loading.show();
+		return $loading;
+	}
+
+	function prodlouzit_lhutu_skoleni ($link, hromadne, linky, zprac) {
+		var $isrq;
+		var ajaxSettings;
+		var $loading;
+		var komu = $link.data('komu');
+		var skoleni_id = $link.data('skoleni_id');
+		var $ok_obal = $link.closest('.js_plpas_obal').find('.js_plpas_ok_obal');
+		var $ch_obal = $link.closest('.js_plpas_obal').find('.js_plpas_ch_obal');
+		var $link_obal = $link.closest('.js_plpas_link_obal');
+		var $hromlink_obal = $('#js_plpas_link_vse_obal');
+		if (! hromadne) {
+			$hromlink_obal.hide();
+		}
+		$ok_obal.hide();
+		$ch_obal.hide();
+		$loading = pracuji_zap($link_obal);
+		//
+		$isrq = lide_request({ seq_request_skip: true });
+		// $isrq.before(function() {});
+		// $isrq.after(function() {});
+		//
+		$isrq.request({
+			"op"		: "skoleni_prodlouzit_lhutu",
+			"komu"		: komu,
+			"skoleni_id"	: skoleni_id,
+		}).done(function(vysledek) {
+			var vysl = vysledek.split('#', 2);
+			var ok = vysl[0];
+			var pozadovana_akce_html = vysl[1];
+			if (ok === 'ok') {
+				if (pozadovana_akce_html) {
+					$('#pozadovana_akce_skoleni_'+skoleni_id).html(pozadovana_akce_html);
+				}
+				$link_obal.hide();
+				$ok_obal.show();
+				if (hromadne) {
+					++ zprac.ok;
+				}
+			} else {
+				// $link_obal.html($link_obal.data('old'));
+				$loading.hide();
+				$ch_obal.show();
+				if (hromadne) {
+					++ zprac.chyba;
+				}
+			}
+		}).fail(function() {
+			// $link_obal.html($link_obal.data('old'));
+			$loading.hide();
+			$ch_obal.show();
+			if (hromadne) {
+				++ zprac.chyba;
+			}
+		}).always(function() {
+			var $nextlink;
+			if (hromadne) {
+				++ zprac.hotovo;
+				$nextlink = linky.shift();
+				if ($nextlink) {
+					prodlouzit_lhutu_skoleni ($nextlink, hromadne, linky, zprac);
+				} else {
+					if (zprac.celkem > 0 && zprac.chyba == zprac.celkem) {
+						// $hromlink_obal.html($hromlink_obal.data('old'));
+						zprac.hloading.hide();
+					} else {
+						$hromlink_obal.fadeOut();
+					}
+				}
+			}
+		});
+	}
+
+	/* ================================== */
+
+	function os_tab_events () {
+		/* OSOBNI STRANKA: Taby */
+		$('.os_tab')
+			.off('.'+namespace)
+			.on("js.isTabs."+namespace, function(event, js_params, $content, tab) {
+				var idTabu = tab.anchor_id;
+				nastavHashEdmpLinku(idTabu);
+				nactiObsahTabu(idTabu, $content, js_params, {});
+				//pridejUdalostiUpravyVyskyTabu($content);
+		});
+	}
+
+	var konzultacni_strucne_fck_nacten = false;
+
+	function events_init () {
+		/* OSOBNI STRANKA: Studium - Studijní (priv) nebo Student - rozbalit/sbalit */
+		$('#app_content').on('click', '.studijni_linky_link, .student_linky_link', function(evt) {
+			evt.preventDefault;
+			var $this = $(this);
+			var id = $this.data('id');
+			var co = $this.hasClass("studijni_linky_link") ? 'studijni' : 'student';
+			if ($(this).hasClass("rozbal")) {
+				$this.removeClass("rozbal").addClass("sbal");
+				$("#"+id+"_"+co+"_linky").fadeIn(50);
+			} else {
+				$this.removeClass("sbal").addClass("rozbal");
+				$("#"+id+"_"+co+"_linky").hide();
+			}
+		});
+
+		init_rozbalovani_table_studium();
+
+		/* OSOBNI STRANKA: Taby */
+		os_tab_events();
+
+		/* OSOBNI STRANKA: Výuka - Dotahuje vic vyuky na strance vse nebo na strance vyuka */
+		(function () {
+			var $isrq_a;
+			var $isrq_s;
+			$('#app_content').on('click', '#vic_vyuky_strucne, #vic_vyuky', function(e) {
+				e.preventDefault();
+				var $clicked_link = $(this);
+				var strucne = '';
+				var uco = data_profil.uco;
+				var $isrq;
+				var ajaxSettings;
+
+				if ($clicked_link.prop('id') === 'vic_vyuky_strucne') {
+					strucne = '_strucne';
+				}
+
+				if (strucne && $isrq_s) {
+					$isrq = $isrq_s;
+				} else if (!strucne && $isrq_a) {
+					$isrq = $isrq_a;
+				} else {
+					ajaxSettings = { loading: { parent: $clicked_link, insertMethod: 'after', size: 'medium' }, seq_request_skip: true };
+					$isrq = lide_request(ajaxSettings);
+					if (strucne) {
+						$isrq_s = $isrq;
+					} else {
+						$isrq_a = $isrq;
+					}
+				}
+
+				$isrq.request({
+					"op": "vyuka-doplneni",
+					"uco": uco,
+					"od": vyuka_dotahnout_mesice['od'+strucne],
+					"do": vyuka_dotahnout_mesice['do'+strucne]
+				}).done(function(retData) {
+					var data = retData.xresult;
+					vyuka_dotahnout_mesice['od'+strucne] = parseInt(retData.od);
+					vyuka_dotahnout_mesice['do'+strucne] = parseInt(retData.do);
+					$clicked_link.parent().before(data);
+					is.Foundation.safe_init($clicked_link.parent().parent());
+					if ($clicked_link.parent().parent().find(".info").length) {
+						/* Zobrazeno (i) V dalších obdobích osoba nevyučovala */
+						$clicked_link.remove();
+					}
+				});
+			});
+		})();
+
+		/* OSOBNI STRANKA: Školení a předpisy */
+		$('#predpisy_a_skoleni_kontejner').on('click', '.js_plpas_link', function(e) {
+			e.preventDefault();
+			var $link = $(this);
+			prodlouzit_lhutu_skoleni($link, false, [], {});
+		});
+
+		$('#predpisy_a_skoleni_kontejner').on('click', '#js_plpas_link_vse', function(e) {
+			e.preventDefault();
+			var zprac = {
+				"ok"		: 0,
+				"chyba"		: 0,
+				"hotovo"	: 0,
+				"celkem"	: 0,
+			};
+			var linky = [];
+			// pracuji_zap($('#js_plpas_link_vse_obal'));
+			var $hloading = pracuji_zap($('#js_plpas_link_vse_obal'));
+			zprac.hloading = $hloading;
+			$('#predpisy_a_skoleni_kontejner .js_plpas_link').each(function() {
+				var $link = $(this);
+				linky.push($link);
+			});
+			zprac.celkem = linky.length;
+			var $link = linky.shift();
+			prodlouzit_lhutu_skoleni($link, true, linky, zprac);
+		});
+
+		/* Můj student - Výuka v minulosti */
+		$('#muj_student_kontejner').on('click', '#muj_student_vyuka_v_minulosti', function(e) {
+			var $this = $(this);
+			var $isrq = lide_request({ seq_request_skip: true });
+			$isrq.request({
+				"op"		: 'pref_muj_student_vyuka_v_minulosti',
+				"hodnota"	: ($this.hasClass('is-active') ? 0 : 1)
+			});
+		});
+
+		/* Editacni lista - Konzultacni hodiny */
+		$('#editacni_lista').on('click', '#edli_but_konz_hod', function() {
+			var $modal = $('#konzultacni_hodiny_modal');
+			$modal.foundation('open');
+			// is.Reveal.open($modal);
+			var $modal_obsah = $('#konzultacni_hodiny_modal_content');
+			var loadd = { 'parent': $modal_obsah, 'insertMethod': 'html' };
+			var $isrq = lide_request({ loading: loadd });
+			var ms = new Date().getTime();
+			$isrq.request({ 'op': 'jen_konzultacni_hodiny', 'dummy': ms }).done(function(retData) {
+				var rethtml = retData.html;
+				var retjs = retData.js;
+				if (rethtml) {
+					$modal_obsah.html(rethtml+retjs);
+				}
+			});
+		});
+		$('#konzultacni_hodiny_modal').on('click', '.close-button', function() {
+			$('#konzultacni_hodiny_modal_content').html('');
+			konzultacni_strucne_fck_nacten = false;
+		});
+	};
+
+	function nastavHashEdmpLinku (id_sekce) {
+		var url_edmp_link = $('.edmp_link').attr("href");
+		if (url_edmp_link) {
+			url_edmp_link = zmenHashProURL(url_edmp_link, id_sekce);
+			$('.edmp_link').attr('href', url_edmp_link);
+		}
+	}
+
+/*	function pridejUdalostiUpravyVyskyTabu ($content) {
+		// console.log($content.attr('id'));
+		$content.on('click', 'a.rozbal, a.sbal, ._lide_edit, .js-ok_vyska_tabu', function(evt) {
+			var $this = $(this);
+			var $tc = $this.closest('.tabs-content');
+			var $tp = $this.closest('.tabs-panel');
+			var $tk = $this.closest('.tabs-panel').children().eq(0);*/
+/*
+console.log($tc.css('height'));
+console.log($tp.css('height'));
+console.log($tk.css('height'));
+*/
+/*			$tp.css('height', '');
+			$tc.css('height', '');
+
+
+		});
+	}*/
+
+	function zmenHashProURL (url, novyHash) {
+		if (url && novyHash) {
+			url = url.replace(/#.*?$/, '');
+			url += '#' + novyHash;
+		}
+		return url;
+	}
+
+	/* >>> ------------------------------------------------------------------------------------------------------------------------------------------------------ >>> */
+
+
+	/**
+	 * Obsah natahovany ajaxem
+	 */
+
+	function natahniObsah(idTabu, data, $content, strucne, spec_params) {
+		var $isrq;
+
+		if (_natahujeSe_get(idTabu, strucne)) {
+			return;
+		}
+
+		var idTabuCil = idTabu;
+
+		if (strucne) {
+			idTabuCil += '_strucne';
+			data['subop'] += '_strucne';
+		}
+
+		var kontejner = idTabuCil+'_kontejner';
+		var div = $('#'+kontejner);
+
+		if ((div.length && div.text() === '') || spec_params.nacti_force) {
+			$isrq = _load_isqr(idTabu, div, strucne);
+			$isrq.request(data).done(function(retData) {
+				var returnedData = retData.xresult;
+				if (returnedData) {
+					div.fhtml(returnedData);
+				} else {
+					div.html('&nbsp;');
+				}
+			//	_stranka_neposkocit($content);
+			});
+		}
+	}
+
+	function natahniObsah2(idTabu, data, $content, strucne) {
+		var $isrq;
+
+		if (_natahujeSe_get(idTabu, strucne)) {
+			return;
+		}
+
+		var idTabuCil = idTabu;
+
+		var kontejner = idTabuCil+'_kontejner';
+		var div = $('#'+kontejner);
+
+		var kontejnerS = idTabuCil+'_strucne'+'_kontejner';
+		var divS = $('#'+kontejnerS);
+
+		if (! div.html()) {
+			$isrq = _load_isqr(idTabu, divS, strucne);
+			$isrq.request(data).done(function(retData) {
+				var returnedData = retData.xresult;
+				if (returnedData) {
+					if (idTabuCil === 'skolitel') {
+						div.html(returnedData);
+						divS.html(returnedData);
+					} else {
+						div.html($(returnedData).find('#'+idTabuCil).html());
+						divS.html($(returnedData).find('#'+idTabuCil+'_strucne').html());
+					}
+					var skripty = $(returnedData).filter("script");
+					$("body").append(skripty);
+				//	_stranka_neposkocit($content);
+					/**/
+					if (idTabuCil === 'akademie_is') {
+						var akademie_is_u_fotky = $(returnedData).find("#akademie_is_u_fotky").html();
+						$("akademie_is_u_fotky").html(akademie_is_u_fotky);
+					} else if (idTabuCil === 'predpisy_a_skoleni') {
+						var predpisy_a_skoleni_podbarvit_tab = $(returnedData).find("#predpisy_a_skoleni_podbarvit_tab").text();
+						if (predpisy_a_skoleni_podbarvit_tab === '1') {
+							$('#predpisy_a_skoleni').closest('.tabs-title').addClass("podbarvit_tab");
+						} else {
+							$('#predpisy_a_skoleni').closest('.tabs-title').removeClass("podbarvit_tab");
+						}
+					}
+				} else {
+					// div.html('&nbsp;');
+				}
+			});
+		}
+	}
+
+	function _load_isqr(idTabu, div, strucne) {
+		var $isrq;
+		var loadd;
+
+		if (strucne) {
+			loadd = {
+				'parent': div,
+				'insertMethod': 'html',
+				// 'insertMethod': 'html',
+				// 'insertMethod': 'prepend',
+				// 'delay': 0,
+			};
+		} else {
+			loadd = {
+				'parent': $('#'+idTabu),
+				'size': 'inline'
+			};
+		}
+		$isrq = lide_request({ loading: loadd });
+
+		$isrq.before(function() {
+			_natahujeSe_set(idTabu, strucne, true);
+		});
+
+		$isrq.after(function() {
+			_natahujeSe_set(idTabu, strucne, false);
+		});
+
+		return $isrq;
+	}
+
+	function _natahujeSe_set (idTabu, strucne, bool) {
+		natahujeSe[idTabu+(strucne?':s':'')] = bool;
+	}
+
+	function _natahujeSe_get (idTabu, strucne) {
+		return natahujeSe[idTabu+(strucne?':s':'')];
+	}
+
+	function _stranka_neposkocit ($content) {
+		/* Panel kratsi, panel delsi => aby delsi nepretekl */
+		$(window).trigger('changed.zf.mediaquery');
+		/* Panel delsi, scroll, panel kratsi => aby stranka neposkocila */
+		$content.parent().css('height', $content.css('height'));
+	}
+
+	/**
+	 * Definuje ajaxove natahovani dat, co se ma nacist kam.
+	 */
+	function nactiObsahTabu(idTabuIn, $content, js_params, spec_params) {
+		/* Dynamicke nacitani */
+		var idTabuCil;
+		var data;
+		var jak;
+		var zpracujTaby;
+		var strucne = false;
+		var idTabu;
+
+		if (idTabuIn === "vse") {
+			zpracujTaby = [ "skolitel", "profil", "akademie_is", "predpisy_a_skoleni", "dobrovolnictvi", "projekty", "vyuka", "zivotopis", "publikace", "dila", "spv" ];
+			strucne = true;
+		} else {
+			zpracujTaby = [ idTabuIn ];
+		}
+
+		while (idTabu = zpracujTaby.shift()) {
+			data = {};
+			data['vedidk'] = js_params.vedidk;
+			jak = 1;
+			//
+			if (idTabu === "skolitel") {
+				data['uco'] = js_params.uco;
+				data['op'] =  idTabu;
+				jak = 2;
+			} else if (idTabu === "profil") {
+				data['uco'] = js_params.uco;
+				data['op'] =  idTabu;
+				data['uroven'] = js_params.uroven;
+				jak = 2;
+			} else if (idTabu === "akademie_is") {
+				data['uco'] = js_params.uco;
+				data['op'] =  idTabu;
+				jak = 2;
+			} else if (idTabu === "predpisy_a_skoleni") {
+				data['uco'] = js_params.uco;
+				data['op'] =  idTabu;
+				jak = 2;
+			} else if (idTabu === "dobrovolnictvi") {
+				data['uco'] = js_params.uco;
+				data['op'] =  idTabu;
+				jak = 2;
+			} else if (idTabu === "projekty") {
+				data['uco'] = js_params.uco;
+				data['op'] =  idTabu;
+				jak = 2;
+			} else if (idTabu === "vyuka") {
+				// Kvuli IE9, ktery divne pouziva cache a po ulozeni
+				// nove hodnoty konzultacnich se stejne nacita stara
+				// nacachovana hodnota, musime pouzit
+				// dummy parametr, ktery zabezpeci prenacteni pokazde
+				var ms = new Date().getTime();
+				data['uco'] = js_params.uco;
+				data['op'] = 'vyuka-zaklad';
+				data['subop'] = idTabu;
+				data['dummy'] = ms;
+			} else if (idTabu === "zivotopis") {
+				data['uco'] = js_params.uco;
+				data['op'] = 'zivotopis';
+				data['subop'] = 'zivotopis';
+				if ($('#zivotopis').data('pjv')) {
+					data['pjv'] = $('#zivotopis').data('pjv');
+				} else {
+					data['pjv'] = js_params.pjv;
+				}
+			} else if (idTabu === "publikace" || idTabu === "dila" || idTabu === "spv") {
+				data['uco'] = js_params.uco;
+				data['op'] =  idTabu;
+				data['subop'] = idTabu;
+				data['uroven'] = js_params.uroven;
+			}
+			//
+			if (data['op']) {
+				if (jak === 1) {
+					natahniObsah(idTabu, data, $content, strucne, spec_params);
+				} else {
+					natahniObsah2(idTabu, data, $content, strucne);
+				}
+			}
+		}
+	}
+
+	function zivotopis_events_init () {
+		$('#app_content').off('click', '.zivotopis_pjv').on('click', '.zivotopis_pjv', function(evt) {
+			/* Pozadovana jazykova varianta zivotopisu - prepinace jazykovych variant na karte Zivotopis */
+			evt.preventDefault();
+			var $this = $(this);
+			$('#zivotopis').data('pjv', $this.data('pjv'));
+			nactiObsahTabu('zivotopis', $('#_zivotopis'), { 'uco': data_profil.uco }, { 'nacti_force' : true });
+		});
+	}
+
+	// function focus_input_hledat () {
+	// 	$('#input_hledat').focus();
+	// }
+
+	function skryj_sipku_nasept_vysl () {
+		$('<style>#vyhledavani_form .leva_strana, #vyhledavani_form .cast-sipka { display: none; }</style>').appendTo('head');
+	}
+
+	/* <<< ------------------------------------------------------------------------------------------------------------------------------------------------------ <<< */
+
+	/**
+	 * Umoznuje nastaveni zobrazovani znamek
+	 */
+	function priprav_editaci_zobrazovani_znamek (studium_table_id, studium_id) {
+		var $isrq_a;
+
+		/* Ukaz nastaveni */
+		$("#" + studium_table_id + " a._lide_studium_edit_znamky").on('click', function(e){
+			e.preventDefault();
+			if ($(this).hasClass("rozbal")) {
+				$(this).removeClass("rozbal").addClass("sbal");
+				$(this).parents("table").find("._lide_studium_znamky_form").fadeIn('fast');
+			} else {
+				$(this).removeClass("sbal").addClass("rozbal");
+				$(this).parents("table").find("._lide_studium_znamky_form").hide();
+			}
+		});
+
+		/* Storno */
+		$("#" + studium_table_id + " ._lide_studium_znamky_form a._lide_storno").on('click', function(e){
+			e.preventDefault();
+			$(this).parents("table").find("a._lide_studium_edit_znamky").removeClass("sbal").addClass("rozbal");
+
+			var edit_form = $(this).parents("table").find("._lide_studium_znamky_form");
+			edit_form.hide();
+
+			/* Vraceni hodnot k puvodnim */
+			// Zverejneni znamek
+			var orig = edit_form.find("._lide_orig_znamky_zverejneni").text();
+			edit_form.find("input[name='" + studium_table_id + "_ZNAMKY_ZVEREJNENI']").each(function(){
+
+				if ($(this).val() == orig) {
+					$(this).prop("checked", true);
+				} else {
+					$(this).prop("checked", false);
+				}
+			});
+		});
+
+		/* Uloz */
+		$("#" + studium_table_id + " ._lide_studium_znamky_form input[type='button']._lide_uloz").on('click', function(e){
+			e.preventDefault();
+			var znamky = '';
+			var tabulka = $(this).parents("table");
+			var edit_form = tabulka.find("._lide_studium_znamky_form");
+
+			znamky = edit_form.find("input[name='" + studium_table_id + "_ZNAMKY_ZVEREJNENI']:checked").val();
+
+			var $isrq;
+			var ajaxSettings;
+			if ($isrq_a) {
+				$isrq = $isrq_a;
+			} else {
+				ajaxSettings = {
+					loading: { parent: $("#" + studium_table_id + " ._lide_studium_znamky_form input[type='button']._lide_uloz"), insertMethod: 'after', size: 'inline' },
+					seq_request_skip: true
+				};
+				$isrq_a = $isrq = lide_request(ajaxSettings);
+			}
+
+			$isrq.request({ 'op' : 'edit_lide_studium_znamky', 'studium_id' : studium_id, 'zverejneni_znamky': znamky }).done(function(retData) {
+				tabulka.find("._lide_studium_edit_znamky").removeClass("sbal").addClass("rozbal");
+				edit_form.hide();
+
+				/*
+				 * Mala uprava vzhledu - at je videt co jsme zmenili
+				 */
+
+				// Protoze je i stranka Vse
+				var obe_tabulky = $("table#" + studium_table_id + ", "
+							+ "table#" + studium_table_id + "_strucne, "
+							+ "table#" + studium_table_id.substr(0, studium_table_id.length - 8));
+
+				if (znamky == 'nezverejneno') {
+					obe_tabulky.find("._lide_studium_vysledky_zverejneni_ne").show();
+					obe_tabulky.find("._lide_studium_vysledky_zverejneni_ano").hide();
+				} else {
+					obe_tabulky.find("._lide_studium_vysledky_zverejneni_ne").hide();
+					obe_tabulky.find("._lide_studium_vysledky_zverejneni_ano").show();
+				}
+				// Musime prepnout radiobuttonek i na strance Vse (nebo na te druhe, kdyz na strance Vse sme my)
+				obe_tabulky.find("._lide_studium_znamky_form  input[type='radio']").each(function(){
+					if ($(this).val() == znamky) {
+						$(this).prop("checked", true);
+					} else {
+						$(this).prop("checked", false);
+					}
+				});
+				// Zmenime originalni hodnoty
+				obe_tabulky.find("._lide_orig_znamky_zverejneni").text(znamky);
+			});
+		});
+	}
+
+	/**
+	 * Umoznuje nastaveni zobrazovani studii
+	 */
+	function priprav_editaci_zobrazovani_studia (studium_table_id, studium_id) {
+		var $isrq_a;
+
+		/* Ukaz nastaveni */
+		$("#" + studium_table_id + " a._lide_edit_zobr_studia").on('click', function(e){
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			if ($(this).hasClass("rozbal")) {
+				$(this).removeClass("rozbal").addClass("sbal");
+				$(this).parents("table").find("._lide_studium_zverejneni_form").fadeIn('fast');
+			} else {
+				$(this).removeClass("sbal").addClass("rozbal");
+				$(this).parents("table").find("._lide_studium_zverejneni_form").hide();
+			}
+		});
+		$("#" + studium_table_id + " a._lide_edit_zobr_studia").on('keyup', function(e) {
+			e.stopPropagation();
+		});
+
+		/* Storno */
+		$("#" + studium_table_id + "  ._lide_studium_zverejneni_form  a._lide_storno").on('click', function(e){
+			e.preventDefault();
+			$(this).parents("table").find("a._lide_edit_zobr_studia").removeClass("sbal").addClass("rozbal");
+
+			var edit_form = $(this).parents("table").find("._lide_studium_zverejneni_form");
+			edit_form.hide();
+
+			/* Vraceni hodnot k puvodnim */
+			// Zverejneni studia
+			if (edit_form.find("input[name='" + studium_table_id + "_STUDIUM_ZVEREJNENI']").length) {
+
+				var orig = edit_form.find("._lide_orig_studium_zverejneni").text();
+				var radios = edit_form.find("input[name='" + studium_table_id + "_STUDIUM_ZVEREJNENI']");
+				radios.prop("checked", false);
+				radios.filter("[value='" + orig + "']").prop("checked", true);
+			}
+		});
+
+		/* Uloz */
+		$("#" + studium_table_id + "  ._lide_studium_zverejneni_form  input[type='button']._lide_uloz").on('click', function(e){
+			e.preventDefault();
+			var tabulka = $(this).parents("table");
+			var studium = tabulka.find("input[name='" + studium_table_id + "_STUDIUM_ZVEREJNENI']:checked").val();
+			var edit_form = tabulka.find("._lide_studium_zverejneni_form");
+
+			var $isrq;
+			var ajaxSettings;
+			if ($isrq_a) {
+				$isrq = $isrq_a;
+			} else {
+				ajaxSettings = {
+					loading: { parent: $("#" + studium_table_id + " ._lide_studium_zverejneni_form input[type='button']._lide_uloz"), insertMethod: 'after', size: 'inline' },
+					seq_request_skip: true
+				};
+				$isrq_a = $isrq = lide_request(ajaxSettings);
+			}
+
+			$isrq.request({ 'op' : 'edit_lide_studium_zobrazeni', 'studium_id' : studium_id, 'zverejneni_studium' : studium }).done(function(retData) {
+				tabulka.find("a._lide_edit_zobr_studia").removeClass("sbal").addClass("rozbal");
+				edit_form.hide();
+
+				/*
+				 * Mala uprava vzhledu - at je videt co jsme zmenili
+				 */
+
+                                // Protoze je i stranka Vse
+                                var obe_tabulky = $("table#" + studium_table_id + ", "
+                                                        + "table#" + studium_table_id + "_strucne, "
+                                                        + "table#" + studium_table_id.substr(0, studium_table_id.length - 8));
+				if (studium == 0) {
+					obe_tabulky.find("._lide_studium_skryto").show();
+					obe_tabulky.find("._lide_studium_zobraz_auth").hide();
+					obe_tabulky.find("._lide_studium_zobraz_svet").hide();
+					obe_tabulky.addClass("nedurazne");
+				} else if (studium == 1) {
+					obe_tabulky.find("._lide_studium_skryto").hide();
+					obe_tabulky.find("._lide_studium_zobraz_auth").show();
+					obe_tabulky.find("._lide_studium_zobraz_svet").hide();
+					obe_tabulky.removeClass("nedurazne");
+				} else if (studium == 2) {
+					obe_tabulky.find("._lide_studium_skryto").hide();
+					obe_tabulky.find("._lide_studium_zobraz_auth").hide();
+					obe_tabulky.find("._lide_studium_zobraz_svet").show();
+					obe_tabulky.removeClass("nedurazne");
+				}
+                                // Musime prepnout radio i na strance Vse (nebo na te druhe, kdyz na strance Vse sme my)
+                                var radios = obe_tabulky.find("input[name='" + studium_table_id + "_STUDIUM_ZVEREJNENI'], "
+						+ "input[name='" + studium_table_id + "_strucne_STUDIUM_ZVEREJNENI'], "
+                                                + "input[name='" + studium_table_id.substr(0, studium_table_id.length - 8) + "_STUDIUM_ZVEREJNENI']");
+
+				radios.prop("checked", false);
+				radios.filter("[value='" + studium + "']").prop("checked", true);
+                                // Zmenime originalni hodnoty
+                                obe_tabulky.find("._lide_orig_studium_zverejneni").text(studium);
+			});
+		});
+	}
+
+	/**
+	 * Rozbalovani neprobihajicich studii.
+	 * Je tu i hack aby se nerozbalovaly dialogy nastaveni studia (trida nerozbalovat_autom).
+	 */
+	function sbal_table_studium(studium_table_id) {
+		/* Schovame po nacteni stranky */
+		$("#" + studium_table_id + " tr").slice(1).not(".nerozbalovat_autom").hide();
+	}
+	function init_rozbalovani_table_studium() {
+		/* Po kliknuti mysi rozbalime */
+		$('#app_content').on('click', '.tab_udaje_table_rozbal', function() {
+			var $this = $(this);
+			var studium_table_id = $this.closest('table').attr('id');
+			var druha_tabulka;
+			var $prvni;
+
+			var je_rozbaleno = $this.attr('aria-expanded') === 'true';
+
+			$prvni = $("#" + studium_table_id + " tr").slice(1).not(".nerozbalovat_autom");
+
+			if (je_rozbaleno) {
+				$prvni.fadeOut('slow');
+			} else {
+				$prvni.fadeIn('slow');
+			}
+
+			$this.attr('aria-expanded', ! je_rozbaleno);
+
+//			/* Zkusime ubrat, nebo pridat '_strucne', aby se nam rozbalila i druha tabulka tohoto studia */
+//			/* Pridat */
+//			druha_tabulka = $("#" + studium_table_id + "_strucne");
+//			sbal_rozbal_table_studium(druha_tabulka, je_rozbaleno);
+//
+//			/* Ubrat */
+//			druha_tabulka = $("#" + studium_table_id.substr(0, studium_table_id.length - "_strucne".length));
+//			sbal_rozbal_table_studium(druha_tabulka, je_rozbaleno);
+		});
+		$('#app_content').on('keyup', '.tab_udaje_table_rozbal', function(e) {
+			e.stopPropagation();
+			if (event.which === 13) {
+				$(this).click();
+			}
+		});
+	}
+//	function sbal_rozbal_table_studium(druha_tabulka, je_rozbaleno) {
+//		var $druha;
+//		var odkaz_dt;
+//
+//		$druha = druha_tabulka.find("tr").slice(1).not(".nerozbalovat_autom");
+//		if (je_rozbaleno) {
+//			$druha.hide();
+//		} else {
+//			$druha.show();
+//		}
+//		odkaz_dt = druha_tabulka.find(".tab_udaje_table_rozbal");
+//		odkaz_dt.attr('aria-expanded', ! je_rozbaleno);
+//	}
+
+	/*
+	 * Prepinani profilove fotky
+	 */
+	function prepinani_profilove_fotky () {
+/*
+		$("#foto img").on('click', function (evnt) {
+			$("#foto img").toggle();
+			this.blur();
+		}).filter(".sw").toggle();
+		$("#foto a").on('click', function (evnt) {
+			$("#foto img").toggle();
+		});
+*/
+		$("#foto img, #foto a").on('click', function (evt) {
+			$("#foto img").toggle();
+			var foto_typ = $("#foto img:visible").data('foto_typ');
+			var prepnout_na = is.ldb.get('prepnout_na_'+(foto_typ == 'sek' ? 'prim' : 'sek'));
+			$("#foto a").attr('title', prepnout_na);
+			$("#foto a .show-for-sr").text(prepnout_na);
+		});
+	}
+
+	/**
+	* Umoznuje vyber, ktera funkce se zkratkou pracoviste (vcetne mistnosti) se bude zobrazovat vedle fotky
+	*/
+	function priprav_vyber_hvst (href_pro_hvst) {
+		/* Ukaz nastaveni */
+		$('#identita_profil_new').on('click', '#zmenit_u_vyber_preverovane_prac_pozice', function(e) {
+			if ($(this).hasClass("rozbal")) {
+				$(this).removeClass("rozbal").addClass("sbal");
+				$('#vyber_preverovane_prac_pozice').fadeIn('fast');
+			} else {
+				$(this).removeClass("sbal").addClass("rozbal");
+				$('#vyber_preverovane_prac_pozice').hide();
+			}
+		});
+
+		/* Neukladat */
+		$('#neukladat_pref_prac_pozici').on('click', function(e) {
+			e.preventDefault();
+			$('#zmenit_u_vyber_preverovane_prac_pozice').removeClass("sbal").addClass("rozbal");
+
+			$('#vyber_preverovane_prac_pozice').hide();
+
+			/* Vraceni hodnot k puvodnim */
+			$('#select_preferovana_pracovni_pozice').val($('#select_preferovana_pracovni_pozice').data('orig_value'));
+		});
+
+		/* Ulozit */
+		$('#ulozit_pref_prac_pozici').on('click', function(e) {
+			e.preventDefault();
+			var ajaxSettings = {
+				loading: { parent: $('#ulozit_pref_prac_pozici'), insertMethod: 'after', size: 'inline' },
+				seq_request_skip: true,
+			};
+			var $isrq = lide_request(ajaxSettings);
+			var hodnota = $('#select_preferovana_pracovni_pozice').val();
+			$isrq.request({ 'op' : 'ulozit_pref_prac_pozici', 'hodnota' : hodnota }).done(function(retData) {
+				if (retData.ok) {
+					$('#zmenit_u_vyber_preverovane_prac_pozice').removeClass("sbal").addClass("rozbal");
+					$('#vyber_preverovane_prac_pozice').hide();
+					$('#ofic_pozice_a_pracoviste').html(href_pro_hvst[hodnota]);
+				}
+			});
+		});
+	}
+
+	/* >>> --- js_pro_inpage_editaci --------------------------------------------------------------------------------------------------------------------------------- */
+
+	// FCK editory se nactou jenom jednou, pak se pouze zobrazuji a schovavaji
+	var konzultacni_fck_nacten = false;
+	// var konzultacni_strucne_fck_nacten = false;		// PRESUNUTO VYSE
+	var o_mne_fck_nacten = false;
+	var o_mne_strucne_fck_nacten = false;
+
+	/**
+	 * nedovoli pridat vicekrat udalost jednomu elementu stranky
+	 * pri opakovanem spusteni pripravEditaci se stenymi parametry
+	 */
+
+	function editaceNastavena(index, elem) {
+		var $elem = $(elem);
+
+		if ( $elem.data("editaceNastavena") ) {
+			return true;
+		}
+
+		$elem.data("editaceNastavena", true);
+		return false;
+	}
+
+	/**
+	 * Pripravi stranku na in-page editaci
+	 */
+
+	/**
+	 * Spousti se u ajaxove chyby
+	 */
+	function ajaxError(formDiv, chyba) {
+		if (! chyba) {
+			// is.ldb
+			chyba = "Chyba spojení, operace nemohla být dokončena";
+		}
+
+		formDiv.find(".cekat")
+			.hide()
+			.after('<div class="chyba chyba_mini" style="display: none;">'
+				+ chyba + '</div>')
+			.next()
+			.fadeIn();
+		window.setTimeout(function(){
+			formDiv.find(".chyba").remove();
+		}, 7000);
+	}
+
+	function parsuj_data(data, div) {
+		var vysledek = $(data).find("#vysledek").html();
+		var chyba = $(data).find("#chyba").html();
+		if (chyba) {
+			ajaxError(div, chyba);
+		} else {
+			var root = document.createElement('div');
+			root.innerHTML = vysledek;
+			return $(root);
+		}
+		return null;
+	}
+
+	function lide_inpage_edit_request (div) {
+		var ajaxSettings = {
+			loading: { parent: div.find(".cekat_loading"), insertMethod: 'html', size: 'inline' }
+		};
+		var $isrq = lide_request(ajaxSettings);
+		return $isrq;
+	}
+
+	function pripravEditaci(trida, jazyk) {
+// console.log('pripravEditaci: trida='+trida+', jazyk='+jazyk);
+
+		var pole = trida.substr(6, trida.length - 6).toUpperCase();
+		var uco = data_profil.uco;
+
+		/**
+		 * Pozor na rozdil mezi:
+		 * 	$("." + trida + " ._lide_value1")
+		 * a
+		 * 	var div = $(this).parent().parent();
+	         *      div.find("._lide_value1")
+		 *
+		 * editovaci formular se muze ve strance nachazet vickrat (tato stranka a stranka Vse)
+		 * a nektere veci se upravuji pouze v teto instanci formulare, nektere ve vsech
+		 */
+
+		/**
+		 * Zobraz editacni formular
+	         */
+		$("." + trida + " ._lide_edit").not(editaceNastavena).click(function(e){
+			e.preventDefault();
+			var div = $(this).parent().parent();
+
+			// Schovej vsechny linky na editace tohoto pole (napr. i na karte Vse)
+			// Zkousime taky v divu s id s ubranym, nebo pridanym '_strucne'
+			$("." + trida + ", ." + trida + "_strucne, ." + trida.substr(0, trida.length - 8))
+				.find("._lide_edit").hide();
+
+			div.find("._lide_edit, ._lide_value").hide('fast');
+			// div.find('.cekat_mini').hide();
+			// Aktivovat FCK editory
+			if (trida == '_lide_konzultacni_hodiny' && ! konzultacni_fck_nacten) {
+				// aktivujEditor_lide_konzultacni_hodiny();
+				$('#'+trida+'_cs').htmlEditor();
+				$('#'+trida+'_en').htmlEditor();
+				konzultacni_fck_nacten = true;
+
+			} else if (trida == '_lide_konzultacni_hodiny_strucne' && ! konzultacni_strucne_fck_nacten) {
+				// aktivujEditor_lide_konzultacni_hodiny_strucne();
+				$('#'+trida+'_cs').htmlEditor();
+				$('#'+trida+'_en').htmlEditor();
+				konzultacni_strucne_fck_nacten = true;
+
+			} else if (trida == '_lide_o_mne' && ! o_mne_fck_nacten) {
+				// aktivujEditor_lide_o_mne();
+				$('#'+trida+'_cs').htmlEditor();
+				$('#'+trida+'_en').htmlEditor();
+				o_mne_fck_nacten = true;
+
+			} else if (trida == '_lide_o_mne_strucne' && ! o_mne_strucne_fck_nacten) {
+				// aktivujEditor_lide_o_mne_strucne();
+				$('#'+trida+'_cs').htmlEditor();
+				$('#'+trida+'_en').htmlEditor();
+				o_mne_strucne_fck_nacten = true;
+			}
+			// Zobraz editacni formular
+			div.find("._lide_edit_form").show();	// 'fast' nelze, protoze pak nefunguje _update_toolbar()
+			//
+			if (
+				trida == '_lide_konzultacni_hodiny'
+				|| trida == '_lide_konzultacni_hodiny_strucne'
+				|| trida == '_lide_o_mne'
+				|| trida == '_lide_o_mne_strucne'
+			) {
+				$('#'+trida+'_cs').data('isHtmlEditor')._update_toolbar();
+				$('#'+trida+'_en').data('isHtmlEditor')._update_toolbar();
+			}
+		});
+
+		/**
+	         * Storno editace
+	         */
+		$("." + trida + " ._lide_storno").not(editaceNastavena).click(function(e){
+			e.preventDefault();
+			var div = $(this).parent().parent().parent();
+
+			// Veci pouze v tomto formulari
+	//		div.find("._lide_edit, ._lide_value").show('fast');
+			div.find("._lide_edit, ._lide_value").css('display', 'inline'); // Hack kvuli chybe v jQuery - spanum dava display: block
+			div.find("._lide_edit_form").hide('fast');
+
+			// Zobraz vsechny linky na editace tohoto pole (napr. i na karte Vse)
+			// Zkousime taky v divu s id s ubranym, nebo pridanym '_strucne'
+			$("." + trida + ", ." + trida + "_strucne, ." + trida.substr(0, trida.length - 8))
+				.find("._lide_edit").show('fast');
+
+			/* Nastaveni hodnot zpatky k tem puvodnim */
+			if (trida == '_lide_kontakty') {
+				div.find("textarea[name='KONTAKT_VEREJNY_CS']").val(div.find("._lide_orig_kontakt_verejny_cs").html());
+				div.find("textarea[name='KONTAKT_SOUKROMY_CS']").val(div.find("._lide_orig_kontakt_soukromy_cs").html());
+				div.find("textarea[name='KONTAKT_VEREJNY_EN']").val(div.find("._lide_orig_kontakt_verejny_en").html());
+				div.find("textarea[name='KONTAKT_SOUKROMY_EN']").val(div.find("._lide_orig_kontakt_soukromy_en").html());
+
+			} else if (trida == '_lide_web') {
+
+				div.find("._lide_input").val(div.find("._lide_value a").text());
+
+			} else if (trida == '_lide_telefon') {
+
+				var tlf = div.find("._lide_value").text();
+				div.find("._lide_input").val(tlf);
+
+			} else if (trida == '_lide_konzultacni_hodiny'
+					|| trida == '_lide_konzultacni_hodiny_strucne'
+					|| trida == '_lide_o_mne'
+					|| trida == '_lide_o_mne_strucne') {
+
+				// CKEDITOR.instances[trida + '_cs'].setData(div.find("._lide_orig_cs").html());
+				// CKEDITOR.instances[trida + '_en'].setData(div.find("._lide_orig_en").html());
+				$('#'+trida+'_cs').data('isHtmlEditor').set_value(div.find("._lide_orig_cs").html());
+				$('#'+trida+'_en').data('isHtmlEditor').set_value(div.find("._lide_orig_en").html());
+
+			} else if (trida == '_lide_obory'
+					|| trida == '_lide_aktualni'
+					|| trida == '_lide_profesni_prehled'
+					|| trida == '_lide_vzdelani'
+					|| trida == '_lide_kontaktujte'
+					|| trida == '_lide_zajem'
+					|| trida == '_lide_kdo_jsem') {
+
+				div.find("._lide_input_cs").val(div.find("._lide_orig_cs").text());
+				div.find("._lide_input_en").val(div.find("._lide_orig_en").text());
+
+			} else if (trida == '_lide_student_rozvrh') {
+
+				div.find("input[type='radio'][name='ROZVRH_STUDENT_SVET" + trida + "']").each(function(){
+					if ($(this).val() == div.find("._lide_orig").text()) {
+						$(this).prop("checked", true);
+					} else {
+						$(this).prop("checked", false);
+					}
+				});
+			}
+		});
+
+		/**
+		 * Uloz
+	         */
+		$("." + trida + " ._lide_uloz").not(editaceNastavena).click(function(e){
+			var div = $(this).parent().parent().parent();
+			// div.find(".cekat_mini").fadeIn('fast');
+			var $isrq = lide_inpage_edit_request(div);
+
+			/* AJAXova volani */
+			if (trida == '_lide_kontakty') {
+				var kontakt_verejny_cs = div.find("textarea[name='KONTAKT_VEREJNY_CS']").val();
+				var kontakt_verejny_en = div.find("textarea[name='KONTAKT_VEREJNY_EN']").val();
+				var kontakt_soukromy_cs = div.find("textarea[name='KONTAKT_SOUKROMY_CS']").val();
+				var kontakt_soukromy_en = div.find("textarea[name='KONTAKT_SOUKROMY_EN']").val();
+
+				$isrq.request({
+					'op' : 'edit' + trida, 'uco': uco,
+					'kontakt_verejny_cs': kontakt_verejny_cs, 'kontakt_verejny_en' : kontakt_verejny_en,
+					'kontakt_soukromy_cs' : kontakt_soukromy_cs, 'kontakt_soukromy_en' : kontakt_soukromy_en
+				}).done(
+					function(retData){
+						var data = retData.xresult;
+						data = parsuj_data(data, div);
+						if (data) {
+							var kontakt_verejny_cs_na_vypis = $(data).find("#kontakt_verejny_cs_na_vypis");
+							var kontakt_soukromy_cs_na_vypis = $(data).find("#kontakt_soukromy_cs_na_vypis");
+							var kontakt_verejny_en_na_vypis = $(data).find("#kontakt_verejny_en_na_vypis");
+							var kontakt_soukromy_en_na_vypis = $(data).find("#kontakt_soukromy_en_na_vypis");
+
+							// Ulozeni vypisu na web
+							if (jazyk == 'cs') {
+								$("." + trida + " ._lide_value1").html(kontakt_verejny_cs_na_vypis);
+								$("." + trida + " ._lide_value2").html(kontakt_soukromy_cs_na_vypis);
+							} else if (jazyk == 'en') {
+								$("." + trida + " ._lide_value1").html(kontakt_verejny_en_na_vypis);
+								$("." + trida + " ._lide_value2").html(kontakt_soukromy_en_na_vypis);
+							}
+							// Ulozeni do textareas
+							$("." + trida + " ._lide_value_kontakt_verejny_cs").html(kontakt_verejny_cs);
+							$("." + trida + " ._lide_value_kontakt_verejny_en").html(kontakt_verejny_en);
+							$("." + trida + " ._lide_value_kontakt_soukromy_cs").html(kontakt_soukromy_cs);
+							$("." + trida + " ._lide_value_kontakt_soukromy_en").html(kontakt_soukromy_en);
+							// Ulozeni do puvodnich hodnot
+							$("." + trida + " ._lide_orig_kontakt_verejny_cs").html(kontakt_verejny_cs);
+							$("." + trida + " ._lide_orig_kontakt_verejny_en").html(kontakt_verejny_en);
+							$("." + trida + " ._lide_orig_kontakt_soukromy_cs").html(kontakt_soukromy_cs);
+							$("." + trida + " ._lide_orig_kontakt_soukromy_en").html(kontakt_soukromy_en);
+
+							uklidPoSuccess(div, trida);
+						}
+	                                }
+	                        );
+			} else if (trida == '_lide_konzultacni_hodiny'
+					|| trida == '_lide_konzultacni_hodiny_strucne'
+					|| trida == '_lide_o_mne'
+					|| trida == '_lide_o_mne_strucne') {
+
+				// var hodnota_cs = CKEDITOR.instances[trida + '_cs'].getData();
+				// var hodnota_en = CKEDITOR.instances[trida + '_en'].getData();
+				var hodnota_cs = $('#'+trida+'_cs').data('isHtmlEditor').get_value();
+				var hodnota_en = $('#'+trida+'_en').data('isHtmlEditor').get_value();
+				var hodnota;
+				if (jazyk == 'cs') {
+					hodnota = hodnota_cs;
+				} else if (jazyk == 'en') {
+					hodnota = hodnota_en;
+				}
+				$isrq.request({
+					'op' : 'edit' + trida, 'uco': uco,
+					'hodnota_cs': hodnota_cs, 'hodnota_en': hodnota_en
+				}).done(
+					function(retData){
+						var data = retData.xresult;
+						data = parsuj_data(data, div); // Pouze pro kontrolu, jestli nenastala chyba
+						if (data) {
+							$("." + trida + ", ." + trida + "_strucne, ." + trida.substr(0, trida.length - 8))
+								.find("._lide_value").html(hodnota);
+
+							// Zmen obsah druhe instance editoru
+							if ((trida == '_lide_konzultacni' && konzultacni_strucne_fck_nacten)
+								|| (trida == '_lide_o_mne' && o_mne_strucne_fck_nacten) ) {
+
+								// CKEDITOR.instances[trida + '_strucne_cs'].setData(hodnota_cs);
+								// CKEDITOR.instances[trida + '_strucne_en'].setData(hodnota_en);
+								$('#'+trida+'_strucne_cs').data('isHtmlEditor').set_value(hodnota_cs);
+								$('#'+trida+'_strucne_en').data('isHtmlEditor').set_value(hodnota_en);
+
+							} else if ((trida == '_lide_konzultacni_strucne' && konzultacni_fck_nacten)
+								|| (trida == '_lide_o_mne_strucne' && o_mne_fck_nacten) ) {
+
+								var nestrucna_trida = trida.substr(0, trida.length - 8);
+								// CKEDITOR.instances[nestrucna_trida + '_cs'].setData(hodnota_cs);
+								// CKEDITOR.instances[nestrucna_trida + '_en'].setData(hodnota_en);
+								$('#'+nestrucna_trida + '_cs').data('isHtmlEditor').set_value(hodnota_cs);
+								$('#'+nestrucna_trida + '_en').data('isHtmlEditor').set_value(hodnota_en);
+							}
+
+							$("." + trida + ", ." + trida + "_strucne, ." + trida.substr(0, trida.length - 8))
+								.find("._lide_edit").show('fast');
+							div.find("._lide_value").show('fast');
+							div.find("._lide_edit_form").hide('fast');
+							// div.find(".cekat_mini").hide();
+						}
+					}
+				);
+			} else if (trida == '_lide_obory'
+					|| trida == '_lide_aktualni'
+					|| trida == '_lide_profesni_prehled'
+					|| trida == '_lide_vzdelani'
+					|| trida == '_lide_kontaktujte'
+					|| trida == '_lide_zajem') {
+
+				var hodnota_cs = div.find("textarea[name='" + pole + "_CS']").val();
+				var hodnota_en = div.find("textarea[name='" + pole + "_EN']").val();
+
+				var hodnota;
+				if (jazyk == 'cs') {
+					hodnota = hodnota_cs;
+				} else if (jazyk == 'en') {
+					hodnota = hodnota_en;
+				}
+				$isrq.request({
+					'op' : 'edit_lide_profesni_osobni', 'pole' : pole,  'uco': uco,
+					'hodnota_cs': hodnota_cs,
+					'hodnota_en': hodnota_en
+				}).done(
+					function(retData) {
+						var data = retData.xresult;
+						data = parsuj_data(data, div); // Pouze pro kontrolu, jestli nejsou chyby
+						if (data) {
+
+							// Nektere polozky se vypisuji do seznamu
+							if (trida == '_lide_aktualni'
+									|| trida == '_lide_vzdelani'
+									|| trida == '_lide_kontaktujte') {
+
+								var radky = hodnota.split('\n');
+								var ul = $('<ul></ul>');
+								for (var i = 0, radek; radek = radky[i]; i++) {
+									ul.append($('<li></li>').text(radek));
+								}
+								$("." + trida).find("._lide_value").empty().append(ul);
+							} else {
+								$("." + trida).find("._lide_value").text(hodnota);
+							}
+							$("." + trida).find("._lide_prev_value_cs").text(hodnota_cs);
+							$("." + trida).find("._lide_prev_value_en").text(hodnota_en);
+
+							// Aby se zmena projevila i v druhem editoru
+							$("." + trida).find("textarea[name='" + pole + "_CS']").val(hodnota_cs);
+							$("." + trida).find("textarea[name='" + pole + "_EN']").val(hodnota_en);
+
+							uklidPoSuccess(div, trida);
+						}
+					}
+				);
+			} else if (trida == '_lide_kdo_jsem') {
+
+				var hodnota_cs = div.find("input[name='" + pole + "_CS']").val();
+				var hodnota_en = div.find("input[name='" + pole + "_EN']").val();
+
+				if (jazyk == 'cs') {
+					hodnota = hodnota_cs;
+				} else if (jazyk == 'en') {
+					hodnota = hodnota_en;
+				}
+				$isrq.request({
+					'op' : 'edit_lide_profesni_osobni', 'pole' : pole,  'uco': uco,
+					'hodnota_cs': hodnota_cs,
+					'hodnota_en': hodnota_en
+				}).done(
+					function(retData){
+						var data = retData.xresult;
+						data = parsuj_data(data);
+						if (data) {
+							$("." + trida).find("._lide_value").text(hodnota);
+
+							$("." + trida).find("._lide_prev_value_cs").text(hodnota_cs);
+							$("." + trida).find("._lide_prev_value_en").text(hodnota_en);
+
+							// Zmena napravo od fotky
+							$("#identita_profil #pozice").text(hodnota);
+
+							// Aby se zmena projevila i v druhem editoru
+							$("." + trida).find("input[name='" + pole + "_CS']").val(hodnota_cs);
+							$("." + trida).find("input[name='" + pole + "_EN']").val(hodnota_en);
+
+							uklidPoSuccess(div, trida);
+						}
+					}
+				);
+
+			} else if (trida == '_lide_telefon') {
+				var hodnota = div.find("._lide_input").val();
+				hodnota = hodnota.replace(/ /ig,""); //Odstranim mezery
+				$isrq.request({
+					'op' : 'edit' + trida, 'uco': uco, 'hodnota': hodnota
+				}).done(
+					function(){
+						$("." + trida + " ._lide_value").html($("." + trida + " ._lide_value_" + hodnota).html());
+
+						uklidPoSuccess(div, trida);
+					}
+				);
+			} else if (trida == '_lide_web') {
+				var hodnota = div.find("._lide_input").val();
+				$isrq.request({
+					'op' : 'edit' + trida, 'uco': uco, 'hodnota': hodnota
+				}).done(
+					function(retData){
+						var data = retData.xresult;
+						data = parsuj_data(data, div);
+						if (data) {
+							$("." + trida + " ._lide_value a").text(hodnota);
+							$("." + trida + " ._lide_value a").attr("href", hodnota);
+
+							uklidPoSuccess(div, trida);
+						}
+					}
+				);
+			} else if (trida == '_lide_student_rozvrh' || trida == '_lide_student_rozvrh_strucne') {
+
+				var hodnota = div.find("input[type='radio'][name='ROZVRH_STUDENT_SVET" + trida + "']:checked").val();
+				$isrq.request({
+					'op' : 'edit_lide_student_rozvrh', 'uco': uco, 'hodnota': hodnota
+				}).done(
+					function(){
+						var forms = $("._lide_student_rozvrh, ._lide_student_rozvrh_strucne");
+						forms.find("._lide_2, ._lide_3, ._lide_4").hide();
+						if (hodnota == 2) {
+							forms.find("._lide_2").show();
+							forms.find("._lide_value p").removeClass("nedurazne");
+						} else if (hodnota == 3) {
+							forms.find("._lide_3").show();
+							forms.find("._lide_value p").removeClass("nedurazne");
+						} else if (hodnota == 4) {
+							forms.find("._lide_4").show();
+							forms.find("._lide_value p").addClass("nedurazne");
+						}
+						forms.find("._lide_edit").show('fast');
+						forms.find("._lide_value").show('fast');
+						forms.find("._lide_edit_form").hide('fast');
+						// forms.find(".cekat_mini").hide();
+					}
+				);
+			}
+		});
+	} // konec fce pripravEditaci()
+
+	/**
+	 * Schova editacni formular a zobrazi hodnotu
+	 */
+	function uklidPoSuccess(editDiv, trida) {
+		// editDiv.find(".cekat_mini").hide();
+
+		/* Hack kvuli chybe v jQuery - spanum dava display: block */
+		//$("." + trida + " ._lide_edit").show('fast');
+		//editDiv.find("._lide_value").show('fast');
+		$("." + trida + " ._lide_edit").css('display', 'inline');
+		editDiv.find("._lide_value").css('display', 'inline');
+
+		editDiv.find("._lide_edit_form").hide('fast');
+	}
+
+	/* <<< --- js_pro_inpage_editaci --------------------------------------------------------------------------------------------------------------------------------- */
+
+});
+</script>
+<script src="/js/is/Loader.js?_v=6713c23"></script>
+<script>
+(function() {
+
+"use strict";
+
+is.Design.init({
+   "js_init" : [
+      {
+         "module" : "Lide",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "module" : "Lide",
+         "method" : "set_data_cgipars",
+         "params" : [
+            {
+               "bezprav" : 1
+            }
+         ]
+      },
+      {
+         "module" : "Forms",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "module" : "Lide",
+         "params" : [
+            {
+               "uco" : "990001"
+            }
+         ],
+         "method" : "set_data_profil"
+      },
+      {
+         "params" : [],
+         "method" : "napln_muj_student",
+         "module" : "Lide"
+      },
+      {
+         "params" : [],
+         "method" : "init",
+         "module" : "Tabs"
+      },
+      {
+         "module" : "Zivot",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init",
+         "params" : [],
+         "module" : "Oblibene"
+      },
+      {
+         "params" : [
+            {
+               "ucitel" : null
+            }
+         ],
+         "method" : "init",
+         "module" : "NavMenu"
+      },
+      {
+         "module" : "HashNavigation",
+         "method" : "init",
+         "params" : []
+      },
+      {
+         "module" : "Drobecky",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init",
+         "params" : [],
+         "module" : "AppMenu"
+      },
+      {
+         "module" : "Design",
+         "method" : "init_header",
+         "params" : []
+      },
+      {
+         "params" : [],
+         "method" : "init_toolkit",
+         "module" : "Design"
+      }
+   ],
+   "isTabs_studium_pracoviste" : {
+      "url" : {},
+      "js" : {
+         "uroven" : null,
+         "uco" : "990001"
+      }
+   },
+   "isTabs_predpisy_a_skoleni" : {
+      "js" : {
+         "uroven" : null,
+         "uco" : "990001"
+      },
+      "url" : {}
+   },
+   "svatky" : {
+      "20210508" : 1,
+      "20151229" : 1,
+      "20151228" : 1,
+      "20051228" : 1,
+      "20020501" : 1,
+      "20071225" : 1,
+      "20111225" : 1,
+      "20211228" : 1,
+      "20140705" : 1,
+      "20190706" : 1,
+      "20150508" : 1,
+      "20220415" : 1,
+      "20200508" : 1,
+      "20160325" : 1,
+      "20241231" : 1,
+      "20030501" : 1,
+      "20051227" : 1,
+      "20191028" : 1,
+      "20020706" : 1,
+      "20171117" : 1,
+      "20110705" : 1,
+      "20101227" : 1,
+      "20031028" : 1,
+      "20110425" : 1,
+      "20041226" : 1,
+      "20261231" : 1,
+      "20201231" : 1,
+      "20151227" : 1,
+      "20011224" : 1,
+      "20001230" : 1,
+      "20220501" : 1,
+      "20061228" : 1,
+      "20201223" : 1,
+      "20120409" : 1,
+      "20070508" : 1,
+      "20150928" : 1,
+      "20171226" : 1,
+      "20210405" : 1,
+      "20241226" : 1,
+      "20241223" : 1,
+      "20211226" : 1,
+      "20081225" : 1,
+      "20171230" : 1,
+      "20190422" : 1,
+      "20151226" : 1,
+      "20080928" : 1,
+      "20251231" : 1,
+      "20010705" : 1,
+      "20051117" : 1,
+      "20060101" : 1,
+      "20001231" : 1,
+      "20161231" : 1,
+      "20220705" : 1,
+      "20180928" : 1,
+      "20221231" : 1,
+      "20071230" : 1,
+      "20090413" : 1,
+      "20150406" : 1,
+      "20131223" : 1,
+      "20071227" : 1,
+      "20031117" : 1,
+      "20191223" : 1,
+      "20101226" : 1,
+      "20101223" : 1,
+      "20161028" : 1,
+      "20090928" : 1,
+      "20021228" : 1,
+      "20181028" : 1,
+      "20020928" : 1,
+      "20220418" : 1,
+      "20010501" : 1,
+      "20151223" : 1,
+      "20090705" : 1,
+      "20241227" : 1,
+      "20140508" : 1,
+      "20031226" : 1,
+      "20131228" : 1,
+      "20090101" : 1,
+      "20201221" : 1,
+      "20220706" : 1,
+      "20211227" : 1,
+      "20221226" : 1,
+      "20161224" : 1,
+      "20101228" : 1,
+      "20070706" : 1,
+      "20150101" : 1,
+      "20040705" : 1,
+      "20090501" : 1,
+      "20151225" : 1,
+      "20151230" : 1,
+      "20051229" : 1,
+      "20231228" : 1,
+      "20111227" : 1,
+      "20210101" : 1,
+      "20131229" : 1,
+      "20140706" : 1,
+      "20221224" : 1,
+      "20240401" : 1,
+      "20181225" : 1,
+      "20071028" : 1,
+      "20130705" : 1,
+      "20111117" : 1,
+      "20091117" : 1,
+      "20011028" : 1,
+      "20230501" : 1,
+      "20060417" : 1,
+      "20101225" : 1,
+      "20170414" : 1,
+      "20210705" : 1,
+      "20121227" : 1,
+      "20160928" : 1,
+      "20100101" : 1,
+      "20221228" : 1,
+      "20201225" : 1,
+      "20110508" : 1,
+      "20231225" : 1,
+      "20170101" : 1,
+      "20100928" : 1,
+      "20131227" : 1,
+      "20201222" : 1,
+      "20111224" : 1,
+      "20051226" : 1,
+      "20080501" : 1,
+      "20251230" : 1,
+      "20091226" : 1,
+      "20140928" : 1,
+      "20061225" : 1,
+      "20141230" : 1,
+      "20131028" : 1,
+      "20141228" : 1,
+      "20181226" : 1,
+      "20220508" : 1,
+      "20011230" : 1,
+      "20101224" : 1,
+      "20151028" : 1,
+      "20181224" : 1,
+      "20161230" : 1,
+      "20261224" : 1,
+      "20020508" : 1,
+      "20151224" : 1,
+      "20150706" : 1,
+      "20131230" : 1,
+      "20091224" : 1,
+      "20110706" : 1,
+      "20040412" : 1,
+      "20200706" : 1,
+      "20001227" : 1,
+      "20120501" : 1,
+      "20120928" : 1,
+      "20231227" : 1,
+      "20040928" : 1,
+      "20071229" : 1,
+      "20230928" : 1,
+      "20230407" : 1,
+      "20221028" : 1,
+      "20141229" : 1,
+      "20180706" : 1,
+      "20111223" : 1,
+      "20010101" : 1,
+      "20100706" : 1,
+      "20111228" : 1,
+      "20241117" : 1,
+      "20080508" : 1,
+      "20200413" : 1,
+      "20240705" : 1,
+      "20230706" : 1,
+      "20080706" : 1,
+      "20251117" : 1,
+      "20221227" : 1,
+      "20160501" : 1,
+      "20200410" : 1,
+      "20070501" : 1,
+      "20111230" : 1,
+      "20161117" : 1,
+      "20181227" : 1,
+      "20121228" : 1,
+      "20041228" : 1,
+      "20131226" : 1,
+      "20260501" : 1,
+      "20200101" : 1,
+      "20170501" : 1,
+      "20161223" : 1,
+      "20010706" : 1,
+      "20010928" : 1,
+      "20231230" : 1,
+      "20041224" : 1,
+      "20131117" : 1,
+      "20141028" : 1,
+      "20230410" : 1,
+      "20201028" : 1,
+      "20240928" : 1,
+      "20200501" : 1,
+      "20101229" : 1,
+      "20141224" : 1,
+      "20110101" : 1,
+      "20231117" : 1,
+      "20240329" : 1,
+      "20081117" : 1,
+      "20011225" : 1,
+      "20061226" : 1,
+      "20100705" : 1,
+      "20191226" : 1,
+      "20190508" : 1,
+      "20240501" : 1,
+      "20260928" : 1,
+      "20010508" : 1,
+      "20121225" : 1,
+      "20170705" : 1,
+      "20201117" : 1,
+      "20210928" : 1,
+      "20191225" : 1,
+      "20190705" : 1,
+      "20160328" : 1,
+      "20160508" : 1,
+      "20021028" : 1,
+      "20181228" : 1,
+      "20031224" : 1,
+      "20191229" : 1,
+      "20161228" : 1,
+      "20151117" : 1,
+      "20041229" : 1,
+      "20200928" : 1,
+      "20120508" : 1,
+      "20241229" : 1,
+      "20221229" : 1,
+      "20111226" : 1,
+      "20261230" : 1,
+      "20241028" : 1,
+      "20030705" : 1,
+      "20060508" : 1,
+      "20070101" : 1,
+      "20121028" : 1,
+      "20201228" : 1,
+      "20111028" : 1,
+      "20141227" : 1,
+      "20131231" : 1,
+      "20141225" : 1,
+      "20190101" : 1,
+      "20170417" : 1,
+      "20091028" : 1,
+      "20211225" : 1,
+      "20141231" : 1,
+      "20241224" : 1,
+      "20061117" : 1,
+      "20130101" : 1,
+      "20171228" : 1,
+      "20100501" : 1,
+      "20161226" : 1,
+      "20021223" : 1,
+      "20241225" : 1,
+      "20081224" : 1,
+      "20251224" : 1,
+      "20050501" : 1,
+      "20020401" : 1,
+      "20250421" : 1,
+      "20250418" : 1,
+      "20060705" : 1,
+      "20121231" : 1,
+      "20051225" : 1,
+      "20260403" : 1,
+      "20121230" : 1,
+      "20181117" : 1,
+      "20221225" : 1,
+      "20041227" : 1,
+      "20021224" : 1,
+      "20220101" : 1,
+      "20170508" : 1,
+      "20030421" : 1,
+      "20260706" : 1,
+      "20020101" : 1,
+      "20110501" : 1,
+      "20130401" : 1,
+      "20231231" : 1,
+      "20001228" : 1,
+      "20150501" : 1,
+      "20021227" : 1,
+      "20111229" : 1,
+      "20250928" : 1,
+      "20021225" : 1,
+      "20050706" : 1,
+      "20170928" : 1,
+      "20120706" : 1,
+      "20041230" : 1,
+      "20011231" : 1,
+      "20261227" : 1,
+      "20060501" : 1,
+      "20011228" : 1,
+      "20151231" : 1,
+      "20070705" : 1,
+      "20011227" : 1,
+      "20251228" : 1,
+      "20171227" : 1,
+      "20201230" : 1,
+      "20181229" : 1,
+      "20050508" : 1,
+      "20190419" : 1,
+      "20230101" : 1,
+      "20161229" : 1,
+      "20070409" : 1,
+      "20220928" : 1,
+      "20210402" : 1,
+      "20071117" : 1,
+      "20080101" : 1,
+      "20100508" : 1,
+      "20011229" : 1,
+      "20251229" : 1,
+      "20141222" : 1,
+      "20121229" : 1,
+      "20040508" : 1,
+      "20021229" : 1,
+      "20130706" : 1,
+      "20180101" : 1,
+      "20250706" : 1,
+      "20101231" : 1,
+      "20210706" : 1,
+      "20231224" : 1,
+      "20250101" : 1,
+      "20061227" : 1,
+      "20180330" : 1,
+      "20260101" : 1,
+      "20050328" : 1,
+      "20261226" : 1,
+      "20191228" : 1,
+      "20250508" : 1,
+      "20110928" : 1,
+      "20160101" : 1,
+      "20100405" : 1,
+      "20050705" : 1,
+      "20191227" : 1,
+      "20061028" : 1,
+      "20021230" : 1,
+      "20260406" : 1,
+      "20161225" : 1,
+      "20040706" : 1,
+      "20180705" : 1,
+      "20191117" : 1,
+      "20201229" : 1,
+      "20261229" : 1,
+      "20120705" : 1,
+      "20191230" : 1,
+      "20051028" : 1,
+      "20071224" : 1,
+      "20191224" : 1,
+      "20140501" : 1,
+      "20101028" : 1,
+      "20261225" : 1,
+      "20211231" : 1,
+      "20251028" : 1,
+      "20141117" : 1,
+      "20080324" : 1,
+      "20060928" : 1,
+      "20201224" : 1,
+      "20221230" : 1,
+      "20160705" : 1,
+      "20090508" : 1,
+      "20021117" : 1,
+      "20011226" : 1,
+      "20060706" : 1,
+      "20121224" : 1,
+      "20071228" : 1,
+      "20210501" : 1,
+      "20250705" : 1,
+      "20230705" : 1,
+      "20180402" : 1,
+      "20131224" : 1,
+      "20260508" : 1,
+      "20231229" : 1,
+      "20041231" : 1,
+      "20120101" : 1,
+      "20190501" : 1,
+      "20140101" : 1,
+      "20171231" : 1,
+      "20061224" : 1,
+      "20090706" : 1,
+      "20221117" : 1,
+      "20031225" : 1,
+      "20260705" : 1,
+      "20121117" : 1,
+      "20001229" : 1,
+      "20071231" : 1,
+      "20160706" : 1,
+      "20200705" : 1,
+      "20081226" : 1,
+      "20030508" : 1,
+      "20230508" : 1,
+      "20261028" : 1,
+      "20190928" : 1,
+      "20041225" : 1,
+      "20211229" : 1,
+      "20240706" : 1,
+      "20111231" : 1,
+      "20040101" : 1,
+      "20130508" : 1,
+      "20051230" : 1,
+      "20001225" : 1,
+      "20041117" : 1,
+      "20140421" : 1,
+      "20141223" : 1,
+      "20181231" : 1,
+      "20150705" : 1,
+      "20131225" : 1,
+      "20020705" : 1,
+      "20101230" : 1,
+      "20130928" : 1,
+      "20170706" : 1,
+      "20171229" : 1,
+      "20121226" : 1,
+      "20180501" : 1,
+      "20251226" : 1,
+      "20171224" : 1,
+      "20001224" : 1,
+      "20261117" : 1,
+      "20021226" : 1,
+      "20051224" : 1,
+      "20021231" : 1,
+      "20231226" : 1,
+      "20211117" : 1,
+      "20161227" : 1,
+      "20130501" : 1,
+      "20070928" : 1,
+      "20050101" : 1,
+      "20250501" : 1,
+      "20001226" : 1,
+      "20171225" : 1,
+      "20261228" : 1,
+      "20141226" : 1,
+      "20071226" : 1,
+      "20081028" : 1,
+      "20240101" : 1,
+      "20211224" : 1,
+      "20061230" : 1,
+      "20030928" : 1,
+      "20201226" : 1,
+      "20091225" : 1,
+      "20240508" : 1,
+      "20211230" : 1,
+      "20180508" : 1,
+      "20061229" : 1,
+      "20251227" : 1,
+      "20011117" : 1,
+      "20181230" : 1,
+      "20080705" : 1,
+      "20041028" : 1,
+      "20211028" : 1,
+      "20050928" : 1,
+      "20030101" : 1,
+      "20241228" : 1,
+      "20231028" : 1,
+      "20101117" : 1,
+      "20040501" : 1,
+      "20171223" : 1,
+      "20030706" : 1,
+      "20241230" : 1,
+      "20010416" : 1,
+      "20171028" : 1,
+      "20251225" : 1,
+      "20191231" : 1,
+      "20001028" : 1,
+      "20121223" : 1
+   },
+   "session" : {
+      "cgipar" : {},
+      "remote_user" : "990001",
+      "is_design_z" : "",
+      "server_time" : "18. 9. 2026 20:28:43",
+      "pouzit_neoverene_udaje" : null,
+      "debug" : 1,
+      "session_id" : "7336817617",
+      "sn" : "/auth/lide/index.pl",
+      "is_muni_cz" : "is.muni.cz",
+      "w_log_id" : "24839343688",
+      "lang" : "cs",
+      "vidim_kazdeho" : null,
+      "skola_zkratka" : "MU",
+      "skola_id" : "14",
+      "ekurz" : false,
+      "login" : "990001",
+      "auth" : "/auth",
+      "uco" : "990001"
+   },
+   "run_data" : {
+      "prepocitej_vztahy" : 1
+   },
+   "ldb" : {
+      "odstranit" : "Odstranit",
+      "rozbalit" : "Rozbalit",
+      "error_msg_required_max" : "Je vybráno více položek, než je povoleno.",
+      "error_msg_number_integer" : "Očekáváno celé číslo (&hellip;,&nbsp;-2,&nbsp;-1,&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;&hellip;).",
+      "sbalit" : "Sbalit",
+      "isForms_invalid" : "Chybně vyplněné údaje, prosím zkontrolujte.",
+      "error_msg_required" : "Povinný údaj.",
+      "error_msg_datepicker_min_date" : "Datum a čas nelze takto nastavit.",
+      "error_msg_required_any" : "Alespoň jeden údaj musí být vyplněn.",
+      "byl_jste_odhlasen_prihlasit" : "Přihlásit",
+      "error_msg_max" : "Text je příliš dlouhý.",
+      "error_msg_min_val" : "Číslo je menší než povolená hodnota.",
+      "byl_jste_odhlasen" : "Byl jste odhlášen.",
+      "error_msg_number_natural_zero" : "Očekáváno přirozené číslo nebo nula (0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "modal_full" : "Na celou obrazovku",
+      "byl_jste_odhlasen_zavrit" : "Zavřít",
+      "odepnout" : "Odepnout menu",
+      "pripnout" : "Připnout menu",
+      "chyba_503" : "Aplikace je dočasně nedostupná pro zvýšenou zátěž systému.",
+      "upravit" : "Upravit",
+      "error_msg_required_min" : "Nebyl vybrán požadovaný počet položek.",
+      "error_msg_alpha" : "Smí obsahovat pouze znaky abecedy, mezeru, podtržítko a spojovník.",
+      "chyba" : "Došlo k chybě, operaci opakujte nebo obnovte stránku.",
+      "error_msg_number_natural" : "Očekáváno přirozené číslo (1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "error_msg_uc_first" : "Musí začínat velkým počátečním písmenem.",
+      "error_msg_datepicker_max_date" : "Datum a čas nelze takto nastavit.",
+      "error_msg_required_all" : "Všechny údaje jsou povinné.",
+      "error_msg_email" : "Nesprávný tvar e-mailové adresy",
+      "error_msg_max_val" : "Číslo je větší než povolená hodnota.",
+      "error_msg_alpha_numeric" : "Smí obsahovat pouze znaky abecedy, číslo, mezeru, podtržítko a spojovník.",
+      "error_msg" : "Nesprávný formát.",
+      "error_msg_zalozka_url" : "Nesprávný tvar adresy.",
+      "error_msg_min" : "Text je příliš krátký."
+   },
+   "isTabs_profil" : {
+      "js" : {
+         "uco" : "990001",
+         "uroven" : null
+      },
+      "url" : {}
+   }
+}
+);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2772 @@
+<!DOCTYPE html>
+<html class="no-js auth" lang="cs">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Informační systém</title>
+<link href="/favicon.ico" rel="icon" sizes="32x32">
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/css/r6/foundation.min.css?_v=ab3b2b3" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r/icons/foundation-icons.css?_v=d866a73" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/prvky.css?_v=2d7af96" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6.css?_v=f11632e" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/motiv/1.css?_v=9421c26" media="screen" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6-print.css?_v=d1a07b2" media="print" rel="stylesheet" type="text/css">
+<style>/**
+ * css pre titulku ISu
+ */
+
+/* vdropecky - vynechani */
+
+#app_header_wrapper {
+/*	min-height: 16px; */
+}
+
+.app_header_switch {
+	top: -25px;
+}
+
+.app_header_motiv_switch {
+	visibility: visible;
+}
+
+/* obsah */
+
+@media screen and (min-width: 640px) {
+	#titulka {
+		padding: 2rem 0;
+	}
+
+	#obsah #dlazdice {
+		margin-top: 2rem;
+	}
+}
+
+#obsah > .row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#obsah .dlazdice {
+	text-align: center;
+/*      padding-top: 4rem; 
+ *              padding-bottom: 4rem;*/
+ 	margin-top: .5rem; 
+        margin-bottom: .5rem;
+	height: 12rem;
+}
+
+#obsah .dlazdice a > i.ikona-agenda, #obsah .dlazdice .neklik > i.ikona-agenda {
+	border-radius: 50%;
+	text-align: center;
+	display: inline-block;
+	width: 5.5rem;
+	height: 5.5rem;
+	font-size: 2.8rem;
+	border: 1px solid;
+	padding: 0.85rem 0;
+	margin: 1rem 13% 0 0;
+}
+#obsah .dlazdice .nazev {
+	text-align: left;
+	font-weight: 700;
+	padding-top: 1.2rem;
+	text-transform: uppercase;
+	font-size: 1.143rem;
+	margin-right: 10%;
+}
+#obsah .dlazdice .nazev .neklik {
+	color: #002776;
+}
+
+#obsah .dlazdice .odkazy {
+	text-align: left;
+	margin: 1rem 11% 0 0;
+}
+
+
+@media screen and (min-width: 40em) and (max-width: 800px) {
+	#obsah .dlazdice a > i.ikona-agenda {
+		margin-right: 11%;
+		width: 4.3rem;
+		height: 4.3rem;
+		font-size: 2.2rem;
+		padding: 0.7rem;
+	}
+	#obsah .dlazdice .nazev {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 39.9375em) {
+        #obsah .dlazdice a > i.ikona-agenda {
+                margin: 0;
+                width: 18vw;
+                height: 18vw;
+                font-size: 10vw;
+                padding: 2.3vw 0;
+        }
+	#obsah .dlazdice .small-12.medium-5.text-right.column {
+		text-align: center;
+	}
+}
+
+#obsah #dlazdice > .row.vice_mene {
+	display: block;
+	border: none;
+	border-top: 2px solid #002776;
+}
+
+#obsah #dlazdice > .vice_mene.mene {
+	display: none;
+	margin-top: 1rem;
+}
+
+#obsah.vice #dlazdice .row.vice_mene {
+	display: none;
+}
+
+#obsah.vice #dlazdice > .row.vice_mene.mene {
+	display: flex;
+	margin-top: 0;
+}
+
+#obsah #dlazdice .row.vice_mene .column {
+	border: none;
+}
+
+#obsah #dlazdice > .row.vice_mene button.nazev {
+	padding: 2rem 0 0.5em 1em;
+	margin-bottom: 0;
+	font-size: 1.5rem;
+	font-weight: 300;
+	color: #002776;
+	border: none;
+	background-color: transparent;
+	font-family: inherit;
+	line-height: inherit;
+}
+
+#obsah #dlazdice .vice_mene > div {
+	position: relative;
+}
+
+#obsah #dlazdice .vice_mene.mene .nazev {
+	padding-top: 1rem;
+}
+
+#obsah #dlazdice .vice_mene.mene .nazev.lock {
+	display: none;
+}
+
+#obsah #dlazdice .vice_mene .nazev:before {
+	content: '';
+	border: 1rem solid transparent;
+	border-top-color: #002776;
+	position: absolute;
+	top: 0;
+	right: 2rem;
+	height: 1px;
+	width: 2rem;
+}
+
+#obsah #dlazdice .vice_mene.mene .nazev:before {
+	border: 1rem solid transparent;
+	border-bottom-color: #002776;
+	top: calc(-2rem - 2px);
+	right: 3rem;
+}
+
+#obsah #dlazdice .vice_mene.mene .lock {
+	position: absolute;
+	top: -2.3rem;
+	right: 0;
+	cursor: pointer!important;
+	font-size: 1.5rem;
+}
+
+@media screen and (max-width: 640px) {
+
+	#obsah.vice #dlazdice .row.vice_mene,
+	#obsah.vice #dlazdice .row.vice_mene.mene,
+	#obsah #dlazdice .row.vice_mene,
+	#obsah #dlazdice .row.vice_mene.mene {
+		margin-top: 2rem;
+	}
+	
+	#obsah .dlazdice .nazev {
+		margin-right: 0%;
+	}
+
+	#obsah .dlazdice .odkazy {
+		text-align: left;
+		margin: 1rem 0 0 0;
+	}
+}
+
+@media screen and (max-width: 640px) {
+
+	#dlazdice img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto !important;
+	}
+
+}
+
+/* dlazdice borders */
+@media print, screen and (min-width: 40em) {
+
+#obsah #dlazdice > .row > .column {
+	border-bottom: 1px solid #e8e8e8;
+}
+
+#obsah #dlazdice > div:last-child > .column, #obsah:not(.vice) #dlazdice > div:nth-child(3) > .column {
+	border-bottom: none;
+}
+
+#obsah .dlazdice {
+	border-right: 1px solid #e8e8e8;
+}
+
+#obsah #dlazdice > div:first-child {
+	border-top: 1px solid #e8e8e8;
+}
+
+#obsah #dlazdice > div:last-child, #obsah:not(.vice) #dlazdice > div:nth-child(3) {
+	border-bottom: 1px solid #e8e8e8;
+}
+
+#obsah #dlazdice > .row > div:last-child .dlazdice {
+	border-right: none;
+}
+
+#dlazdice .column {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#dlazdice > .row {
+	padding: 0px 10px;
+	margin: 0px;
+	border-left: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+}
+
+}
+
+@media print, screen and (max-width: 39.9375em) {
+
+	#obsah .dlazdice .nazev {
+		text-align: center;
+		padding-top: 0;
+		text-transform: none;
+		font-weight: 500;
+	}
+
+	#obsah .dlazdice {
+		height: initial;
+	}
+
+}
+
+#obsah #dlazdice > .row {
+	display: none;
+}
+
+#obsah.vice #dlazdice > .row {
+	display: flex;
+}
+
+#obsah #dlazdice > div:nth-child(-n+3) {
+	display: flex;
+}
+
+.dlazdice-neaktivni a {
+        color: #c5c5c5;
+        border-color: #c5c5c5;
+}
+.dlazdice-neaktivni a > i {
+        color: #c5c5c5 !important;
+        border-color: #c5c5c5;
+}
+
+/* ************ */
+/* výběr motivu */
+
+@media screen and (min-width: 64em) {
+	#motiv_reveal .large-expand {
+		min-width: 10rem;
+		-ms-flex: 0 1 0px;
+		flex: 0 1 0px;
+	}
+}
+#motiv_reveal {
+	overflow-y: scroll; /* nutné kvůli skákání při filtrování motivů */
+}
+#motiv_reveal h1 {
+	font-size: 1.5rem;
+	font-weight: 100;
+	margin-bottom: .5em;
+	margin-right: 1rem;
+}
+#motiv_reveal button.close-button {
+	color: var(--barva1);
+	margin-top: var(--11px);
+}
+#motiv_reveal label {
+	cursor: pointer;
+	margin-bottom: 1.5em;
+	display: block;
+}
+#motiv_reveal label img.motiv_reveal_nahled {
+	border: 1px solid #cacaca;
+	max-width: 95px;
+	display: block;
+	margin: 0 auto 0.4em auto;
+}
+#motiv_reveal div.column:not(.disabled) > label:hover img.motiv_reveal_nahled {
+	border-color: #00a442;
+}
+
+#motiv_reveal div.column.disabled {
+	position: relative;
+}
+
+#motiv_reveal div.column.disabled > label::before {
+	position: absolute;
+	left: calc(50% - .5em);
+	top: calc(50% - 1em);
+	color: white;
+	font-size: 4rem;
+}
+
+#motiv_reveal div.column.disabled > label {
+	color: #888;
+}
+
+#motiv_reveal div.column > label {
+	border-bottom: none;
+	font-weight: normal;
+	position: static;
+}
+#motiv_reveal div.column > label input {
+	margin-right: var(--4px);
+	vertical-align: inherit;
+}
+#motiv_reveal button.modal-button-expand {
+	position: absolute;
+	top: 0;
+	right: 50%;
+}
+#motiv_reveal .motiv-box-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 0rem; /* mezery mezi prvky */
+}
+#motiv_reveal .motiv-box {
+	max-width: 240px;
+	padding-left: .8rem;
+	padding-right: .8rem;
+}
+/* Filtr motivu */
+.reveal-overlay {
+	z-index: 200001; /*protože .ponechat-svetle ma 200000 překrytí z života leze do motivů */
+}
+#motiv_reveal .motivy-filtry {
+	margin-bottom: .5rem;
+}
+#motiv_reveal .motivy-filtry.vedlejsi {
+	min-height: 5.5rem;
+}
+#motiv_reveal .motivy-filtry label {
+	margin-bottom: .5em !important;
+	margin-right: .5em !important;
+	padding-left: var(--5px);
+}
+#motiv_reveal .stitek-inline.si-tmave-bg {
+	background-color: #287bbf;
+	color: var(--barvabila);
+}
+#motiv_reveal .checkbox-elm {
+	width: 1.14285714286rem; /*16px*/
+	height: 1.14285714286rem; /*16px*/
+	line-height: 1rem;
+	margin-right: var(--4px);
+	font-size: var(--16px);
+}
+#motiv_reveal .si-small .checkbox-elm {
+	line-height: var(--12px);
+	margin-left: var(--2px-);
+}
+#motiv_reveal .checkbox-elm::before {
+	width: 1.14285714286rem; /*16px*/
+	height: 1.14285714286rem; /*16px*/
+	line-height: var(--11px);
+}
+#motiv_reveal #motiv-svetly-reveal {
+	color: #3a3a3a; /*fix */
+	background-color: #f9f9f9; /* záměrně fixní barva */
+	border: 1px solid #ddd; /* fix */
+}
+.motiv-tmavy #motiv_reveal #motiv-svetly-reveal {
+	border-color: #f9f9f9; /* fix */
+}
+#motiv_reveal #motiv-tmavy-reveal {
+	color: #d5d5d5; /* fix */
+	background-color: #141414; /* záměrně fixní barva */
+	border: 1px solid #141414; /* fix */
+}
+.motiv-tmavy #motiv_reveal #motiv-tmavy-reveal {
+	border-color: #666;
+}
+#motiv_reveal #motiv-nove-reveal {
+	color: var(--barvabila);
+	background-color: var(--barva4);
+	border: 1px solid var(--barva4);
+}
+.motiv-tmavy #motiv_reveal .vedlejsi label {
+	background-color: #799fb0;
+	color: #1e1e1e;
+}
+/* konec - Filtr motivu */
+/* tlačítka motiv_reveal */
+#motiv_reveal #motiv_reveal_velikost {
+	position: absolute;
+	width: calc(100% - var(--r6-padding)*2);
+	top: -2px;
+}
+#motiv_reveal #motiv_reveal_velikost button {
+	display: flex;
+	position: relative;
+	padding: 2px;
+	width: 100%;
+}
+#motiv_reveal #motiv_reveal_velikost:not(.disabled):hover {
+	background-color: var(--bgbarva-seda3);
+	color: var(--barva4);
+}
+#motiv_reveal #motiv_reveal_velikost button span {
+	margin-left: auto;
+	margin-right: auto;
+}
+#motiv_reveal #motiv_reveal_velikost .isi-inline {
+	font-size: 100%;
+}
+
+/* konec - tlačítka motiv reveal  */
+/* Výběr motivu - malé obrazovky */
+@media screen and (max-height: 39.9375em) {
+	#motiv_reveal {
+		height: 100%;
+		top: 0 !important;
+	}
+}
+@media screen and (max-width: 39.9375em) and (max-height: 50em) {
+	#motiv_reveal {
+		height: 100%;
+		top: 0 !important;
+	}
+}
+@media screen and (min-width: 40em) {
+	#motiv_reveal {
+		/* max-height: 200px; */
+		/* overflow: auto; */
+		min-width: 100% !important;
+		/* top: calc(100vh - 250px) !important; */
+		top: calc(100vh - 60vh) !important;
+		height: calc(60vh);
+		/* height: 250px; */
+		position: fixed;
+		padding: 2rem;
+	}
+	#motiv_reveal.vetsi {
+		top: 0 !important;
+		height: 100vh;
+	}
+	#motiv_reveal.mensi {
+		top: calc(100vh - 120px - 180px - 2rem) !important;
+		height: calc(120px + 180px + 2rem); /* filtry 3 řádky - 1 řádek motivů - padding */
+	}
+}
+@media screen and (min-width: 1936px)  {
+	#motiv_reveal.mensi {
+		top: calc(100vh - 85px - 180px - 2rem) !important;
+		height: calc(85px + 180px + 2rem); /* filtry 2 řádky - 1 řádek motivů - padding */
+	}
+}
+/* Výběr motivu - roztažení a úprava gridu pro velké obrazovky */
+@media screen and (min-width:1936px) {
+	#motiv_reveal > .row {
+		flex-wrap: wrap;
+		max-width: 100%;
+		justify-content: flex-start;
+	}
+}
+
+
+/* konec výběr motivů */
+/* ****************** */
+
+
+/* obsah konec */
+
+/* TMAVÝ DESIGN 992 */
+.motiv-tmavy .motiv-titulka #obsah #dlazdice > .row.vice_mene {
+        border-top-color: var(--barva1) !important;
+        background: transparent;
+}
+
+.motiv-tmavy .motiv-titulka #obsah #dlazdice > .row.vice_mene button.nazev {
+        color: var(--barva1) !important;
+}
+
+.motiv-tmavy .motiv-titulka #obsah #dlazdice .vice_mene .nazev::before {
+        border-top-color: var(--barva1) !important;
+        border-bottom-color: transparent !important;
+}
+
+.motiv-tmavy .motiv-titulka #obsah #dlazdice .vice_mene.mene .nazev::before {
+        border-top-color: transparent !important;
+        border-bottom-color: var(--barva1) !important;
+}
+
+.motiv-tmavy #app_content #is_tip { background-color: var(--bg); }
+.motiv-tmavy #app_content #is_tip .wrap { border-right-color: var(--barva1); }
+
+.motiv-tmavy #app_content #is_tip .dalsi,
+.motiv-tmavy #app_content #is_tip .close,
+.motiv-tmavy #app_content #is_tip .close:hover {
+        color: var(--barva1);
+}
+
+.motiv-tmavy #app_content #is_tip .nadpis { color: var(--nadpis); }
+.motiv-tmavy #app_content #is_tip .wrap::before { border-left-color: var(--bg); }
+
+@media print, screen and (min-width: 40em) {
+        .motiv-tmavy #obsah .dlazdice { border-right-color: var(--bordersedy); }
+        .motiv-tmavy #obsah #dlazdice > div:first-child { border-top-color: var(--bordersedy); }
+        .motiv-tmavy #obsah #dlazdice > div:last-child, #obsah:not(.vice) #dlazdice > div:nth-child(3) { border-bottom-color: var(--bordersedy); }
+        .motiv-tmavy #dlazdice > .row { border-right-color: var(--bordersedy); border-left-color: var(--bordersedy); }
+        .motiv-tmavy #obsah #dlazdice > div:last-child, .motiv-tmavy #obsah:not(.vice) #dlazdice > div:nth-child(3) { border-bottom-color: var(--bordersedy); }
+        .motiv-tmavy #obsah #dlazdice > .row > .column { border-bottom-color: var(--bordersedy); }
+}
+
+</style>
+<script src="/js/r6/jquery.js?_v=3736f12"></script>
+<script src="/js/error.js?_v=e23fead"></script>
+<script src="/js/r6/foundation.js?_v=a06b727"></script>
+</head>
+<body class="cs auth skola_14 motiv-1 motiv-svetly">
+<a href="#left_menu" class="show-on-focus print-hide">Přeskočit na hlavní menu</a><a href="#sticky_panel" class="show-on-focus print-hide">Přeskočit na horní lištu</a><a href="#hlavicka" class="show-on-focus print-hide">Přeskočit na hlavičku</a><a href="#app_content" class="show-on-focus print-hide">Přeskočit na obsah</a><a href="#paticka" class="show-on-focus print-hide">Přeskočit na patičku</a>
+<div id="content" class="motiv-titulka left_menu_enabled">
+	<div id="zdurazneni-sticky" class="zdurazneni-sticky print-hide" role="alert" aria-atomic="true"></div>
+	<div id="rows_wrapper">
+		<div class="foundation-design-z">
+			<nav id="sticky_panel" >
+	<div class="row">
+		<div class="column">
+			<div class="ikony">
+				
+				<a href="#" class="sticky-icon show-for-1280-only float-right" data-toggle="header_menu" title="Hlavní menu" aria-label="Hlavní menu"><i class="isi-menu" aria-hidden="true"></i></a><nav id="header_menu" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<ul class="items">
+		<li class="ikony">
+			<a href="./?lang=en;setlang=en" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a>
+			<a href="/auth/osoba/990001" class="jmeno_small show-for-small-only">
+	Novák, J.
+</a>
+			<a href="#" title="Odhlášení ze systému" class="sticky-icon is-logout-menu show-for-small-only">
+	<i class="isi-power" aria-hidden="true"></i>
+	<span class="show-for-sr">Odhlášení ze systému</span>
+</a>
+		</li>
+		<li class="noitem">
+			<a href="/auth/" class="domu">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+			
+		</li>
+		<li class="noitem"><label class="moje_apl">Moje aplikace<a href="#" class="toggle_edit_mode"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a></label></li><li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+	</ul>
+</nav><a href="#" class="sticky-icon sticky-zivot float-right" data-toggle="header_zivot" title="Život na MU" aria-label="Život na MU"><i class="isi-zivot" aria-hidden="true"></i><span class="pocet"></span></a><div id="header_zivot" class="dropdown-pane bottom zivot_wrap" data-dropdown data-close-on-click="true" aria-labelledby="dd-lbl-zivot"></div><a href="#" class="sticky-icon show-for-medium float-right" data-toggle="header_oblibene" title="Oblíbené" aria-label="Oblíbené"><i class="isi-hvezdicka" aria-hidden="true"></i></a><div id="header_oblibene" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<div id="oblibene" class="oblib_sled">
+		<h5 class="barva4">S hvězdičkou</h5>
+		<div id="oblibene_loading" data-loading-size="medium">
+		</div>
+	</div>
+	<div id="sledovane" class="oblib_sled">
+		<h5 class="barva3"><a href="/auth/udalosti/nastav_log">Sledované</a></h5>
+		<div id="sledovane_loading" data-loading-size="medium">
+		</div>
+		<ul class="vertical menu">
+		</ul>
+	</div>
+</div><a href="#" class="sticky-icon prepinac-vyhl float-right show-for-small-only" title="Vyhledávání" aria-label="Vyhledávání" data-toggle="is_search"><i class="isi-lupa" aria-hidden="true"></i></a><div id="is_search" class="dropdown-pane bottom search-dropdown" data-dropdown data-close-on-click="true">
+	<form method="POST" action="/auth/vyhledavani/" role="search">
+		<div class="input-group">
+			<input class="input-group-field input_text" type="search" name="search" autocomplete="off" role="searchbox">
+			<div id="is_search_x" class="is_input_x input-group-button"><i class="isi-x"></i></div>
+			<div class="input-group-button">
+				<input type="submit" class="button" value="Vyhledat">
+			</div>
+		</div>
+	</form>
+	<div id="is_search_results"></div>
+</div><span style="display: none;"><a id="male_vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span><span class="hide-for-1280-only"><a href="./?lang=en;setlang=en" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a></span><a href="/auth/osoba/990001" class="jmeno sticky-item show-for-medium">	Jan Novák, učo&nbsp;990001</a><a href="#" class="sticky-icon is-logout float-right show-for-medium" title="Odhlášení ze systému" data-toggle="is_logout">
+		<i class="isi-power" aria-hidden="true"></i>
+		<span class="show-for-sr">Odhlášení ze systému</span>
+	</a>
+<div id="is_logout" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	
+	<form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" action="/auth/system/logout.pl" id="prvek_3056531"><div class="row">
+	<div class="column"><button id="prvek_7049228" class="expanded button" type="submit" name="odhlasit" value="1">Odhlásit se</button><div class="odhlasit_vse"><label class="validator-group-content" for="odhlasit_vse"><input id="odhlasit_vse" name="odhlasit_vse" type="checkbox" value="1">odhlásit ze všech zařízení</label><span class="form-error" data-form-error-for="odhlasit_vse"><span class="form-error-text"></span></span></div></div>
+</div>
+</form>
+</div>
+			</div>
+		</div>
+	</div>
+</nav>
+			<div class="row">
+	<div class="column">
+		<div id="left_menu_wrap">
+			<div id="left_menu_offset_wrap">
+				<nav id="left_menu" aria-label="Hlavní menu" role="navigation" class="hide-for-1280-only">
+					<div class="items">
+						<div>
+							<a href="/auth/" class="domu menuitem">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+						</div>
+						
+						
+						<div class="moje_apl_wrap"><a href="#" class="toggle_edit_mode menu_icon"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a><label class="moje_apl">Moje aplikace</label></div>
+						<ul class="tags" aria-label="Odkazy hlavního menu">
+							<li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+						</ul>
+						<div class="add"><a href="#" aria-label="Přidat"><i class="isi-plus isi-inline" title="Přidat" aria-hidden="true"></i></a></div>
+						<div class="buttons">
+							<button class="reset button secondary small" data-tooltip data-show-on="all" title="Obnoví implicitní položky menu.">Reset</button>
+							<button class="hotovo button small">Hotovo</button>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+			<header class="row hlavicka" id="hlavicka">
+	<div class="small-5 medium-3 columns znak skola14">
+		<a href="/auth/" class="stitek skola_14" title="Informační systém Masarykovy univerzity" aria-label="Informační systém Masarykovy univerzity"></a>
+	</div>
+	<div id="is-prepinace" class="small-7 medium-9 columns">
+		
+		<div id="prepinace">
+        <ul aria-hidden="true" class="is-switch dropdown menu" data-dropdown-menu data-click-open="true" data-closing-time="0" data-autoclose="false" data-disable-hover="true" data-close-on-click="true" data-force-follow="false" data-close-on-click-inside="false" data-alignment="right">
+                
+                
+                
+        </ul>
+        <ul class="show-for-sr">
+                
+                
+                
+        </ul>
+</div>
+	</div>
+</header>
+<div class="row" aria-hidden="true">
+	<div class="column">
+		<a href="#" class="app_header_motiv_switch show-for-medium" title="Změna motivu" aria-label="Změna motivu" data-open="motiv_reveal"><i class="isi-nastaveni isi-inline" aria-hidden="true"></i></a>
+		
+<div class="reveal" id="motiv_reveal" data-reveal data-v-offset="550" data-additional-overlay-classes="motiv" data-append-to=".foundation-design-z:first" data-deep-link="true">
+<div class="vyber-motiv">
+	<div class="row" style="max-width: 100%;"><div class="column shrink pl-0"><h1>Vyberte motiv:</h1></div><div class="motivy-filtry hlavni column small-12 medium-expand text-right pr-2"><span id="filtr-tmavost">
+	<label id="motiv-svetly-reveal" class="stitek-inline si-text si-small si-svetle-bg display-inline-block">
+		<input type="checkbox" value="0" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+		<span class="stitek-nazev">Světlý</span>
+	</label>
+	<label id="motiv-tmavy-reveal" class="stitek-inline si-text si-small si-tmave-bg display-inline-block">
+		<input type="checkbox" value="1" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+		<span class="stitek-nazev">Tmavý</span>
+	</label>
+	</span><span id="filtr-nove">
+	<label id="motiv-nove-reveal" class="stitek-inline si-text si-small si-svetle-bg si-nove display-inline-block">
+                <input type="checkbox" value="1" id="filtr-nove" class="skryt-prvek">
+                <i class="checkbox-elm" aria-hidden="true"></i>
+                <span class="stitek-nazev">Nové</span>
+        </label>
+	</span></div>
+	</div>
+	<div class="motivy-filtry vedlejsi"><span id="filtr-stitek">
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Abstraktní" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Abstraktní</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Fantasy" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Fantasy</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Jaro" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Jaro</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Krajina" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Krajina</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Kreslené" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Kreslené</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Léto" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Léto</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Podzim" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Podzim</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Příroda" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Příroda</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Tematické" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Tematické</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Velikonoce" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Velikonoce</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Vánoce" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Vánoce</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Zima" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Zima</span>
+	</label>
+		
+	<label class="stitek-inline si-text si-medium si-svetle-bg motiv-stitek" style="display: inline-block;">
+		<input type="checkbox" value="Základní" class="skryt-prvek">
+		<i class="checkbox-elm" aria-hidden="true"></i>
+	<span class="stitek-nazev">Základní</span>
+	</label>
+		</span></div>
+</div>
+<div class="motiv-box-grid" id="motivy"><div class="column text-center motiv-box" data-tags="Základní," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal0" class=" top" title="">
+		<img src="/pics/design/r6/motiv/0/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal0" value="0"  data-sezonni=35>
+		Automatický
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Základní," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal1" class=" top" title="">
+		<img src="/pics/design/r6/motiv/1/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal1" value="1" checked>
+		Základní
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Základní," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal992" class=" top" title="">
+		<img src="/pics/design/r6/motiv/992/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal992" value="992"  data-tmavy=1>
+		Tmavý
+	</label>
+</div>
+<div class="column text-center motiv-box disabled" data-tags="Základní," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal19" class="isi-lock top" title="Motiv Vesmír se odemkne po získání odznaku „Základní uživatelské dovednosti IS“ v akademii ISu." data-tooltip data-hover-delay="0" data-open="motiv_reveal_akad">
+		<img src="/pics/design/r6/motiv/19/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal19" value="19"  disabled>
+		Vesmír
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Zima,Vánoce," data-tmavy="0" data-nove="1">
+	<label for="motiv_reveal56" class=" top" title="">
+		<img src="/pics/design/r6/motiv/56/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal56" value="56"  data-reload=1>
+		Vánoční okno
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Zima,Vánoce," data-tmavy="1" data-nove="1">
+	<label for="motiv_reveal978" class=" top" title="">
+		<img src="/pics/design/r6/motiv/978/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal978" value="978"  data-tmavy=1 data-reload=1>
+		Vánoční okno
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Fantasy," data-tmavy="0" data-nove="1">
+	<label for="motiv_reveal55" class=" top" title="">
+		<img src="/pics/design/r6/motiv/55/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal55" value="55" >
+		Chobotnička
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="1" data-nove="1">
+	<label for="motiv_reveal980" class=" top" title="">
+		<img src="/pics/design/r6/motiv/980/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal980" value="980"  data-tmavy=1>
+		Stromy
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="1" data-nove="1">
+	<label for="motiv_reveal979" class=" top" title="">
+		<img src="/pics/design/r6/motiv/979/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal979" value="979"  data-tmavy=1>
+		Saguaro
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Zima,Krajina,Vánoce," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal981" class=" top" title="">
+		<img src="/pics/design/r6/motiv/981/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal981" value="981"  data-tmavy=1 data-reload=1>
+		Vánoční vesnička
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce,Krajina,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal54" class=" top" title="">
+		<img src="/pics/design/r6/motiv/54/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal54" value="54"  data-reload=1>
+		Vánoční vesnička
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce,Kreslené," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal988" class=" top" title="">
+		<img src="/pics/design/r6/motiv/988/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal988" value="988"  data-tmavy=1>
+		Baňky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce,Kreslené," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal53" class=" top" title="">
+		<img src="/pics/design/r6/motiv/53/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal53" value="53" >
+		Baňky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal982" class=" top" title="">
+		<img src="/pics/design/r6/motiv/982/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal982" value="982"  data-tmavy=1>
+		Noční stromeček
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal983" class=" top" title="">
+		<img src="/pics/design/r6/motiv/983/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal983" value="983"  data-tmavy=1>
+		Sopka
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal984" class=" top" title="">
+		<img src="/pics/design/r6/motiv/984/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal984" value="984"  data-tmavy=1>
+		Západ slunce
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal985" class=" top" title="">
+		<img src="/pics/design/r6/motiv/985/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal985" value="985"  data-tmavy=1>
+		Matterhorn
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Fantasy," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal986" class=" top" title="">
+		<img src="/pics/design/r6/motiv/986/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal986" value="986"  data-tmavy=1>
+		Oranžové hvězdy
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Fantasy," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal987" class=" top" title="">
+		<img src="/pics/design/r6/motiv/987/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal987" value="987"  data-tmavy=1>
+		Modré hvězdy
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Fantasy," data-tmavy="1" data-nove="0">
+	<label for="motiv_reveal989" class=" top" title="">
+		<img src="/pics/design/r6/motiv/989/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal989" value="989"  data-tmavy=1>
+		Drak
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal52" class=" top" title="">
+		<img src="/pics/design/r6/motiv/52/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal52" value="52" >
+		Svíčka
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal51" class=" top" title="">
+		<img src="/pics/design/r6/motiv/51/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal51" value="51" >
+		Baňky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal50" class=" top" title="">
+		<img src="/pics/design/r6/motiv/50/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal50" value="50" >
+		Čmeláci
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal49" class=" top" title="">
+		<img src="/pics/design/r6/motiv/49/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal49" value="49" >
+		Včela
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal48" class=" top" title="">
+		<img src="/pics/design/r6/motiv/48/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal48" value="48" >
+		Sakura
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal47" class=" top" title="">
+		<img src="/pics/design/r6/motiv/47/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal47" value="47" >
+		Talovín
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal46" class=" top" title="">
+		<img src="/pics/design/r6/motiv/46/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal46" value="46" >
+		Perníčky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Podzim,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal45" class=" top" title="">
+		<img src="/pics/design/r6/motiv/45/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal45" value="45" >
+		Bobule
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal42" class=" top" title="">
+		<img src="/pics/design/r6/motiv/42/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal42" value="42" >
+		Len
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal43" class=" top" title="">
+		<img src="/pics/design/r6/motiv/43/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal43" value="43" >
+		Motýlci
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal44" class=" top" title="">
+		<img src="/pics/design/r6/motiv/44/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal44" value="44" >
+		Domečky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal40" class=" top" title="">
+		<img src="/pics/design/r6/motiv/40/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal40" value="40" >
+		Hvězda
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal39" class=" top" title="">
+		<img src="/pics/design/r6/motiv/39/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal39" value="39" >
+		Panorama
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal41" class=" top" title="">
+		<img src="/pics/design/r6/motiv/41/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal41" value="41" >
+		Zimní buky 2
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal38" class=" top" title="">
+		<img src="/pics/design/r6/motiv/38/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal38" value="38" >
+		Zimní buky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal37" class=" top" title="">
+		<img src="/pics/design/r6/motiv/37/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal37" value="37" >
+		Dárky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Podzim," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal36" class=" top" title="">
+		<img src="/pics/design/r6/motiv/36/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal36" value="36" >
+		Kaštany
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Léto,Podzim," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal35" class=" top" title="">
+		<img src="/pics/design/r6/motiv/35/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal35" value="35" >
+		Hrozny
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal34" class=" top" title="">
+		<img src="/pics/design/r6/motiv/34/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal34" value="34" >
+		Buky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal33" class=" top" title="">
+		<img src="/pics/design/r6/motiv/33/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal33" value="33" >
+		Jehnědy
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Zima,Jaro," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal32" class=" top" title="">
+		<img src="/pics/design/r6/motiv/32/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal32" value="32" >
+		Sněženky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal31" class=" top" title="">
+		<img src="/pics/design/r6/motiv/31/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal31" value="31" >
+		Krmítko
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal30" class=" top" title="">
+		<img src="/pics/design/r6/motiv/30/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal30" value="30" >
+		Světýlka
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce,Abstraktní,Kreslené," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal29" class=" top" title="">
+		<img src="/pics/design/r6/motiv/29/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal29" value="29" >
+		Vločky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal28" class=" top" title="">
+		<img src="/pics/design/r6/motiv/28/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal28" value="28" >
+		Ořechy
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal27" class=" top" title="">
+		<img src="/pics/design/r6/motiv/27/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal27" value="27" >
+		Stébla
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal26" class=" top" title="">
+		<img src="/pics/design/r6/motiv/26/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal26" value="26" >
+		Loďky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal25" class=" top" title="">
+		<img src="/pics/design/r6/motiv/25/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal25" value="25" >
+		Slunečník
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal24" class=" top" title="">
+		<img src="/pics/design/r6/motiv/24/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal24" value="24" >
+		Zmrzlina
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Velikonoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal23" class=" top" title="">
+		<img src="/pics/design/r6/motiv/23/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal23" value="23" >
+		Velikonoce
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal22" class=" top" title="">
+		<img src="/pics/design/r6/motiv/22/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal22" value="22" >
+		Šípky 2
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal21" class=" top" title="">
+		<img src="/pics/design/r6/motiv/21/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal21" value="21" >
+		Chvojí
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal20" class=" top" title="">
+		<img src="/pics/design/r6/motiv/20/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal20" value="20" >
+		Lucerna
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal18" class=" top" title="">
+		<img src="/pics/design/r6/motiv/18/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal18" value="18" >
+		Vysočina
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal17" class=" top" title="">
+		<img src="/pics/design/r6/motiv/17/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal17" value="17" >
+		Jahody
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal16" class=" top" title="">
+		<img src="/pics/design/r6/motiv/16/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal16" value="16" >
+		Meloun
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal15" class=" top" title="">
+		<img src="/pics/design/r6/motiv/15/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal15" value="15" >
+		Broskvoň
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Jaro," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal14" class=" top" title="">
+		<img src="/pics/design/r6/motiv/14/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal14" value="14" >
+		Podléška
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Podzim,Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal13" class=" top" title="">
+		<img src="/pics/design/r6/motiv/13/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal13" value="13" >
+		Bobule
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Zima," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal12" class=" top" title="">
+		<img src="/pics/design/r6/motiv/12/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal12" value="12" >
+		Ledy
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Vánoce," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal11" class=" top" title="">
+		<img src="/pics/design/r6/motiv/11/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal11" value="11" >
+		Vánoce
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Podzim," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal10" class=" top" title="">
+		<img src="/pics/design/r6/motiv/10/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal10" value="10" >
+		Šípky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Podzim," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal9" class=" top" title="">
+		<img src="/pics/design/r6/motiv/9/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal9" value="9" >
+		Listí
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal8" class=" top" title="">
+		<img src="/pics/design/r6/motiv/8/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal8" value="8" >
+		Moře
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Krajina," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal7" class=" top" title="">
+		<img src="/pics/design/r6/motiv/7/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal7" value="7" >
+		Hory
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Abstraktní," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal6" class=" top" title="">
+		<img src="/pics/design/r6/motiv/6/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal6" value="6" >
+		Kaňky
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Tematické," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal5" class=" top" title="">
+		<img src="/pics/design/r6/motiv/5/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal5" value="5" >
+		Kov
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal4" class=" top" title="">
+		<img src="/pics/design/r6/motiv/4/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal4" value="4" >
+		Levandule
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Příroda,Léto," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal3" class=" top" title="">
+		<img src="/pics/design/r6/motiv/3/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal3" value="3" >
+		Kopretiny
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Tematické," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal2" class=" top" title="">
+		<img src="/pics/design/r6/motiv/2/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal2" value="2" >
+		18 let ISu
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Základní," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal1001" class=" top" title="">
+		<img src="/pics/design/r6/motiv/1001/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal1001" value="1001" >
+		Bez motivu
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Základní," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal990" class=" top" title="">
+		<img src="/pics/design/r6/motiv/990/nahled.jpg" class="motiv_reveal_nahled" loading="lazy" />
+		<input type="radio" name="motiv_reveal" id="motiv_reveal990" value="990" >
+		Šedý
+	</label>
+</div>
+<div class="column text-center motiv-box" data-tags="Základní," data-tmavy="0" data-nove="0">
+	<label for="motiv_reveal1000"><img src="/pics/design/r6/motiv/1000/nahled-1000.jpg" class="motiv_reveal_nahled" loading="lazy" />
+	<input type="radio" name="motiv_reveal" id="motiv_reveal1000" value="1000" >
+	Minimální
+	</label>
+</div>
+</div>
+
+		<div id="motiv_reveal_velikost" class="hide-for-small-only">
+			<button id="motiv_reveal_velikost_button" type="button" class="button clear">
+				<span aria-hidden="true"><i id="motiv_reveal_isi" class="isi-zobacek-nahoru isi-inline"></i></span>
+			</button>
+		</div>
+		<button class="close-button" data-close type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		
+</div>
+	</div>
+</div><div id="app_header_wrapper" class="row align-justify show-for-medium">
+	<div class="medium-12 column">
+		<h1 id="app_header"><div class="large-9 xlarge-9"><span id="app_name">Informační systém</span></div></h1>
+	</div>
+	<div class="shrink column">
+		<div id="app_header_image"></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+		<div id="app_menu" class="empty">
+			
+		</div>
+	</div>
+</div><!--[if lt IE 9]><div id="prvek_8247048" class="zdurazneni varovani ie_warning"><h3 class="zdurazneni-nadpis">Varování:</h3><h3>Váš prohlížeč Internet Explorer je zastaralý.</h3><p>Jsou známa bezpečnostní rizika a prohlížeč možná nedokáže zobrazit všechny prvky této a dalších webových stránek.</p></div><![endif]-->
+		</div>
+		<div id="app_content_row" class="row"><main id="app_content" class="column" role="main"><div id="titulka"><div id="dulezite">
+<div class="row">
+	<div class="nadpis column">Důležité</div>
+</div>
+<div class="row dulezite_data">
+	<div class="small-12 medium-6 column"><div class="sprava riziko1" title="Zvažte, zda objem zapsaných kreditů v&nbsp;tomto semestru není příliš vysoký. Nahlédněte na doporučený průchod nebo se o&nbsp;studijní zátěži poraďte na svém studijním programu."><a href="/auth/student/is_pripomina" title="Spravovat připomenutí"><i class="isi-x"></i></a><i class="isi-info-2" aria-hidden="true"></i> <a href="https://is.muni.cz/auth/student/zapis.pl?studium=1000001;obdobi=10243" class="nazev">Zvažte, zda objem zapsaných kreditů v&nbsp;tomto semestru není příliš vysoký. Nahlédněte na doporučený průchod nebo se o&nbsp;studijní zátěži poraďte na svém studijním programu.</a></div></div>
+	<div class="small-12 medium-6 column"></div>
+</div>
+
+</div>
+<div id="obsah" class="row">
+	<div class="small-12 large-9 column"><div class="show-for-medium"><div id="vyhledavani" class="row collapse">
+	<div class="small-12 large-8 column"><form data-abide novalidate method="get" enctype="application/x-www-form-urlencoded" action="/auth/vyhledavani/" id="prvek_7959946" role="search">
+
+<div class="input-group ai_style" id="vyhledavani_form">
+	 <div class="input-group-label vyhledavani_form_is_icon" aria-hidden="true"></div>
+	<input autocomplete="off" class="input-group-field" id="prvek_328956" name="search" placeholder="vyhledat v ISu" role="searchbox" type="search"><span class="form-error" data-form-error-for="prvek_328956"><span class="form-error-text"></span></span>
+	<a href="#" id="vyhledavani_form_x" class="input-group-button" aria-label="Clear input"><i class="isi-x isi-inline" aria-hidden="true"></i></a>
+	<button type="submit" id="vyhledavani_send_form" class="button clear tl_vyhledat" aria-label="Vyhledat"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 104 104" role="img" aria-labelledby="svgTitle_prvek_9987424" class="logo_ai logo_ai_lupa_tl" id="prvek_9987424"><title id="svgTitle_$id"></title><defs><clipPath id="clippathprvek_9987424"><circle cx="52" cy="52" r="49.5" fill="none"/></clipPath></defs><g id="spodni-obrazekprvek_9987424"><g id="ochranna_zona"><g clip-path="url(#clippathprvek_9987424)"><image width="418" height="418" transform="translate(1.844 1.844) scale(.24)" xlink:href="/pics/ai/spodni_obrazek.png"/></g></g><g id="lupaprvek_9987424"><path class="st0" d="M54.37,38.08c-6.18,0-11.18,5.04-11.18,11.25,0,2.13.59,4.11,1.6,5.8l-5.42,5.46.02.02c-.58.56-.94,1.35-.94,2.24,0,1.72,1.37,3.07,3.08,3.07.88,0,1.66-.35,2.22-.92v.02s5.6-5.63,5.6-5.63c1.5.76,3.2,1.19,5.01,1.19,6.18,0,11.18-5.03,11.18-11.25s-5-11.25-11.18-11.25h0ZM54.43,56.79c-4.2,0-7.62-3.44-7.62-7.67s3.42-7.67,7.62-7.67,7.63,3.44,7.63,7.67-3.42,7.67-7.63,7.67h0Z" fill="var(--barva1)"/></g></g><g id="horni-obrazekprvek_9987424" class="rotujici-vrstva"><image width="255" height="208" transform="translate(36.884 5.924) scale(.24)" xlink:href="/pics/ai/horni_obrazek.png"/><circle cx="89.984" cy="53.173" r="9.273" fill="#fff"/></g></svg><span class="show-for-sr">Vyhledat</span></button>
+	
+</div></form><span style="display: none;"><a id="vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span></div>
+	<div class="small-12 large-4 column"></div>
+</div>
+</div><div id="dlazdice"><div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/mail/" aria-hidden="true" tabindex="-1" ><i class="isi-posta ikona-agenda" title="Pošta"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/mail/" >Pošta</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/mail/mail_posli" >Poslat dopis</a></li><li><a href="/auth/mail/settings" >Nastavení</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-1">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/calendar/" aria-hidden="true" tabindex="-1" ><i class="isi-kalendar ikona-agenda" title="Kalendář"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/calendar/" >Kalendář</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/rozvrh/zobraz/muj" >Můj rozvrh</a></li><li><a href="/tudle/" >Kterou schůzku? Tudle</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/student/" aria-hidden="true" tabindex="-1" ><i class="isi-student ikona-agenda" title="Student"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/student/" >Student</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/student/moje_znamky" >Moje známky</a></li><li><a href="/auth/student/zapis" >Registrace a zápis</a></li><li><a href="/auth/student/studijni_materialy" >E-learning</a></li></ul></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-1">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/predmety/" aria-hidden="true" tabindex="-1" ><i class="isi-predmety ikona-agenda" title="Předměty"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/predmety/" >Předměty</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/predmety/katalog" >Hledání předmětu</a></li><li><a href="/auth/predmety/sylaby_plneni" >Sylaby</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/studium_spolec/" aria-hidden="true" tabindex="-1" ><i class="isi-studium ikona-agenda" title="Studium"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/studium_spolec/" >Studium</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/obory/prehled" >Programy a obory</a></li><li><a href="/auth/predmety/obdobi" >Harmonogram</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/vyveska/" aria-hidden="true" tabindex="-1" ><i class="isi-vyveska ikona-agenda" title="Vývěska"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/vyveska/" >Vývěska</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/vyveska/?typ=pozvanky" >Pozvánky</a></li><li><a href="/auth/vyveska/?typ=inzerce" >Inzerce</a></li></ul></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-2">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/diskuse/" aria-hidden="true" tabindex="-1" ><i class="isi-diskuse ikona-agenda" title="Diskuse"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/diskuse/" >Diskuse</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/blog" >Blogy</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/soubory/" aria-hidden="true" tabindex="-1" ><i class="isi-soubory ikona-agenda" title="Soubory"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/soubory/" >Soubory</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/do/" >Dokumenty</a></li><li><a href="/auth/do/mu/Uredni_deska/Predpisy_MU/" >Předpisy MU</a></li><li><a href="/auth/uschovna/" >Úschovna</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/uradovna/" aria-hidden="true" tabindex="-1" ><i class="isi-uradovna ikona-agenda" title="Úřadovna"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/uradovna/" >Úřadovna</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/uradovna/moje/" >Moje úřadovna</a></li><li><a href="/auth/uradovna/spis?zobrazit_moje_spisy=1" >Moje spisy</a></li><li><a href="/auth/uradovna/ukon" >Podat žádost</a></li></ul></div>
+</div>
+
+</div>
+</div>
+</div>
+	<div class="row vice_mene text-right">
+		<div class="small-12 column">
+			<button class="nazev" href="#">Více aplikací</button>
+		</div>
+	</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-1">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/obchod/" aria-hidden="true" tabindex="-1" ><i class="isi-obchod ikona-agenda" title="Obchodní centrum"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/obchod/" >Obchodní centrum</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/obchod/moje_objednavky" >Moje objednávky</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-2">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/stipendia/" aria-hidden="true" tabindex="-1" ><i class="isi-stipendia ikona-agenda" title="Stipendia"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/stipendia/" >Stipendia</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/stipendia/studium_stipendia_prehled_student" >Moje stipendia</a></li><li><a href="/auth/stipendia/student_cislo_uctu" >Číslo účtu</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-2">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/elportal/" aria-hidden="true" tabindex="-1" ><i class="isi-elportal ikona-agenda" title="E-learning"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/elportal/" >E-learning</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/dril/" >Dril</a></li><li><a href="/auth/elearning/peer_assessment/hodnotitel" >Vzájemné hodnocení</a></li><li><a href="/auth/elearning/" >Nepředmětový</a></li></ul></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-1">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/publikace/" aria-hidden="true" tabindex="-1" ><i class="isi-publikace ikona-agenda" title="Publikace"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/publikace/" >Publikace</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/repozitar/" >Repozitář</a></li><li><a href="/auth/knihovna/" >Knihovna</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/lide/" aria-hidden="true" tabindex="-1" ><i class="isi-lide ikona-agenda" title="Lidé"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/lide/" >Lidé</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/skupiny/" >Skupiny osob</a></li><li><a href="/auth/pers/" >Personální</a></li><li><a href="/auth/kontakty/" >Kontakty</a></li><li><a href="/auth/lide/pracoviste" >Prohlídka pracovišť</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-1">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/rozvrh/" aria-hidden="true" tabindex="-1" ><i class="isi-rozvrh ikona-agenda" title="Rozvrh"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/rozvrh/" >Rozvrh</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/rozvrh/rozvrh_zobrazeni" >Zobrazení rozvrhu</a></li><li><a href="/auth/rozvrh/rezervace_mistnosti" >Rezervace</a></li></ul></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/prihlaska/rozcesti" aria-hidden="true" tabindex="-1" ><i class="isi-prijimacky ikona-agenda" title="Přijímací řízení"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/prihlaska/rozcesti" >Přijímací řízení</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/prihlaska/" >Podání přihlášky</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/karty/" aria-hidden="true" tabindex="-1" ><i class="isi-karty ikona-agenda" title="Karty"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/karty/" >Karty</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/obchod/karty/" >Objednat</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/volby/" aria-hidden="true" tabindex="-1" ><i class="isi-e-volby ikona-agenda" title="E-volby"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/volby/" >E-volby</a></div></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/jednani/" aria-hidden="true" tabindex="-1" ><i class="isi-online ikona-agenda" title="Jednání"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/jednani/" >Jednání</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/e-ucebna/" >E-učebna</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/pruzkumy/" aria-hidden="true" tabindex="-1" ><i class="isi-pruzkumy ikona-agenda" title="Průzkumy"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/pruzkumy/" >Průzkumy</a></div></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-1">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/management/" aria-hidden="true" tabindex="-1" ><i class="isi-management ikona-agenda" title="Manažerská data"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/management/" >Manažerská data</a></div></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-2">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/skoleni/" aria-hidden="true" tabindex="-1" ><i class="isi-skoleni ikona-agenda" title="Školení"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/skoleni/" >Školení</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/predpisy/" >Předpisy</a></li><li><a href="/auth/bozp/" >BOZP</a></li><li><a href="/auth/skoleni/" >Obecná školení</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-2">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/komunita/" aria-hidden="true" tabindex="-1" ><i class="isi-komunita ikona-agenda" title="Komunita"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/komunita/" >Komunita</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/setkavani/" >Setkávání</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-1">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/system/#pomucky" aria-hidden="true" tabindex="-1" ><i class="isi-nastroje ikona-agenda" title="Nástroje"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/system/#pomucky" >Nástroje</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/ln" >Záložky</a></li><li><a href="/auth/projekty/projekt" >Projekty</a></li><li><a href="/auth/tiskarny/" >Tisk</a></li></ul></div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="row">
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-3">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/extservices/" aria-hidden="true" tabindex="-1" ><i class="isi-externi_sluzby ikona-agenda" title="Externí služby"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/extservices/" >Externí služby</a></div><ul class="odkazy show-for-medium"><li><a href="https://owncloud.is.muni.cz/" >Owncloud</a></li><li><a href="https://apps.google.com/u/1/user/hub" >Google Workspace</a></li><li><a href="https://o365.muni.cz/" >Microsoft O365</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"><div class="dlazdice dlazdice-barva-2">
+	<div class="row">
+	<div class="small-12 medium-5 text-right column"><a href="/auth/system/" aria-hidden="true" tabindex="-1" ><i class="isi-system ikona-agenda" title="Systém"></i></a></div>
+	<div class="small-12 medium-7 column"><div class="nazev"><a href="/auth/system/" >Systém</a></div><ul class="odkazy show-for-medium"><li><a href="/auth/system/heslo" >Změna hesla</a></li><li><a href="/auth/blog/is_info" >Novinky</a></li><li><a href="/auth/df/podnetovna_is/" >Podnětovna IS</a></li><li><a href="/auth/akademie/" >Akademie IS</a></li></ul></div>
+</div>
+
+</div>
+</div>
+	<div class="small-4 column"></div>
+</div>
+	<div class="row vice_mene mene text-right">
+		<div class="small-12 column">
+			<span class="lock isi-unlock" title="Ponechat více aplikací"></span>
+			<button class="nazev unlock" href="#">Méně aplikací</button>
+		</div>
+	</div>
+</div></div>
+	<div class="small-12 large-3 zivot_column column"><aside id="zivot" class="zivot_wrap menu_no_pin" labeled-by="zivot-nazev">
+	<div class="row collapse head">
+		<div class="column">
+			<a href="/auth/zivot/"><h2 class="nazev" id="zivot-nazev">Život na MU</h2></a>
+		</div>
+		<div class="column shrink show-for-medium">
+			<a href="/auth/zivot/nastaveni/" class="nastaveni" title="Nastavení Života na MU"><i class="isi-nastaveni isi-inline"></i></a>
+		</div>
+	</div>
+	
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212290" data-zid="4571664876"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212290"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212290/" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212290/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj taky si rád zahraju</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/559576"><div class="logo" style="background-image: url(/auth/lide/foto?uco=559576)"></div></a>
+	</div>
+	<div class="autor" title="Michal Kytka, 18. 9. 2026">
+		<a href="/auth/osoba/559576">Michal Kytka</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212275" data-zid="4571573837"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212275"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212275/" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212275/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Cau, taky bych se rad pridal</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/597134"><div class="logo" style="background-image: url(/auth/lide/foto?uco=597134)"></div></a>
+	</div>
+	<div class="autor" title="Jonáš Konicar, 18. 9. 2026">
+		<a href="/auth/osoba/597134">Jonáš Konicar</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212122" data-zid="4570935578"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212122"></i>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204212122/" class="read"><h3 class="nazev" title="Chat španělštinářů">Chat španělštinářů</h3></a>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204212122/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Na Duolingo bych se vůbec nespoléhala. Coche se více používá na pevnině a na ostrovech a carro v Latinské Americe a takových rozdílů je plno… radši bych našla jinou a lepší aplikaci, kterých je plno.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/566572"><div class="logo" style="background-image: url(/auth/lide/foto?uco=566572)"></div></a>
+	</div>
+	<div class="autor" title="Angela-Magdalena Santiago Quevedo, 18. 9. 2026">
+		<a href="/auth/osoba/566572">Angela-Magdalena Santiago Quevedo</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204210909" data-zid="4572305199"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204210909"></i>
+	<a href="https://www.em.muni.cz/udalosti/18820-evropsti-medialni-vedci-debatovali-v-brne-o-soucasnych-vyzvach-oboru?utm_source=is.muni&utm_campaign=is.muni&utm_medium=referral" class="read"><h3 class="nazev" title="Evropští mediální vědci debatovali v Brně o současných výzvách oboru">Evropští mediální vědci debatovali v Brně o současných výzvách oboru</h3></a>
+	<a href="/auth/noticeboard/MU/online/204210909/" class="read"></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text"><p>Na Evropské komunikační konferenci spolupořádané MU zaznělo, že výzkum v oblasti médií, komunikace a žurnalistiky čelí výzvám spojeným s rizikem oborové uzavřenosti, institucionálními tlaky na výkon a rychlým technologickým vývojem a trendy.</p>
+    <p><a href="https://www.em.muni.cz/udalosti/18820-evropsti-medialni-vedci-debatovali-v-brne-o-soucasnych-vyzvach-oboru?utm_campaign=is.muni&amp;utm_source=is.muni&amp;utm_medium=referral" target="_blank"> <img src="https://www.em.muni.cz/images/stories/2026/09_zari/ECREA.jpg" /> </a> </p></div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="https://www.em.muni.cz/"><div class="logo" style="background-image: url(/pics/design/r6/loga/profilove/M14-pracoviste.svg)"></div></a>
+	</div>
+	<div class="autor" title="Zpravodajský portál MU, 18. 9. 2026">
+		<a href="https://www.em.muni.cz/">Zpravodajský portál MU</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204213141" data-zid="4572018451"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204213141"></i>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204213141/" class="read"><h3 class="nazev" title="Chat španělštinářů">Chat španělštinářů</h3></a>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204213141/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Využiju možnost shillovat <a class="okno" href="https://is.muni.cz/auth/dril/" target="_blank">dril</a>,který je součást ISu. Člověk si do toho vyrobí kartičky dle vlastních potřeb, a pak ho to testuje z těch, které neumí. Některé jazykové kursy už mají kartičky připravené od vyučujících, ale příprava kartiček jako taková je podle mě super nástroj pro učení se sám o sobě.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/581690"><div class="logo" style="background-image: url(/auth/lide/foto?uco=581690)"></div></a>
+	</div>
+	<div class="autor" title="Zdeněk Borovec, 18. 9. 2026">
+		<a href="/auth/osoba/581690">Zdeněk Borovec</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212746" data-zid="4571812535"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212746"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212746/" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212746/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, hrála jsem volejbal přes 11 let, i když teď už pár let aktivně nehraju. Ráda bych se ale zase zapojila, hrávala jsem na pozici univerzál/nahravačka.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/601663"><div class="logo" style="background-image: url(/auth/lide/foto?uco=601663)"></div></a>
+	</div>
+	<div class="autor" title="Karolína Hájková, 18. 9. 2026">
+		<a href="/auth/osoba/601663">Karolína Hájková</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212437" data-zid="4571446300"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212437"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212437/" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212437/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, ráda bych se přidala, volejbal jsem hrála několik let na základce, takže jsem mírně pokročilá</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/597577"><div class="logo" style="background-image: url(/auth/lide/foto?uco=597577)"></div></a>
+	</div>
+	<div class="autor" title="Adéla Vaculíková, 18. 9. 2026">
+		<a href="/auth/osoba/597577">Adéla Vaculíková</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212389" data-zid="4571456580"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212389"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212389/" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212389/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Tolik odpovědí jsem nečekal. Kdyžtak mi prosím napište třeba na Instagram a vytvoříme nějakou skupinu :D j_safarik_</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/593775"><div class="logo" style="background-image: url(/auth/lide/foto?uco=593775)"></div></a>
+	</div>
+	<div class="autor" title="Jakub Šafarik, 18. 9. 2026">
+		<a href="/auth/osoba/593775">Jakub Šafarik</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212363" data-zid="4571747921"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212363"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212363/" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212363/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, můj kamarád z VUT má zájem, tak kdybyste se nad ním slitovali a odpustili mu jeho špatnej vkus na vejšky tak tady je jeho ig <br>buress_s_</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/591912"><div class="logo" style="background-image: url(/auth/lide/foto?uco=591912)"></div></a>
+	</div>
+	<div class="autor" title="Alexandr Ghimpu, 18. 9. 2026">
+		<a href="/auth/osoba/591912">Alexandr Ghimpu</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204211726" data-zid="4570777014"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204211726"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204211726/" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204211726/" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, môžem skúsiť zohnať zopár ľudí, s ktorými sme na strednej hrávali rekreačne.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/595914"><div class="logo" style="background-image: url(/auth/lide/foto?uco=595914)"></div></a>
+	</div>
+	<div class="autor" title="Milan Janiga, 18. 9. 2026">
+		<a href="/auth/osoba/595914">Milan Janiga</a>, 18. 9. 2026
+	</div>
+</div>
+
+	<a href="/auth/zivot/" class="dalsi"><h4>další příspěvky&hellip;</h4></a>
+</aside>
+</div>
+</div>
+</div></main></div>
+		
+		<div class="foundation-design-z foot_clear">
+			
+	<div class="row">
+		
+	</div>
+	<footer id="paticka" class="">
+		<div class="row">
+			<div class="columns small-12 medium-6 paticka_logo">
+	<a href="/auth/"><span class="show-for-sr">IS MU</span></a>
+	<div>
+		Informační&nbsp;systém Masarykovy&nbsp;univerzity
+		<div class="footer_about">
+			<a href="https://is.muni.cz/nas_system/">Více o IS MU</a>, provozuje <a href="https://www.fi.muni.cz/">Fakulta informatiky MU</a>
+		</div>
+		
+	</div>
+</div>
+<div class="columns small-6 medium-3">
+	<div class="footer_podpora">
+	<a href="/auth/podpora/">Potřebujete poradit?</a>
+	<span class="kont_email"><a href="/auth/mail/mail_posli?to=istech%40fi.muni.cz">istech@fi.muni.cz</a></span>
+</div>
+	<div class="footer_napoveda">
+		<a href="/auth/napoveda/">Nápověda</a>
+	</div>
+	<div class="row">
+		<div class="columns small-12 display-none">
+			<div class="footer_zoomy">
+				<a href="" rel="nofollow"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="columns small-6 medium-3 nastaveni_col">
+	<div class="footer_datum">
+		<span title="Dnes je 38. (sudý) týden.">18. 9. 2026 <span style='padding: 0 0.6em'>|</span> 20:27</span>
+		<a href="/system/cas" title="Dnes je 38. (sudý) týden." class="footer_cas">Aktuální datum a&nbsp;čas</a>
+	</div>
+	<div>
+	<div class="row collapse">
+	<div class="column small-12 medium-6 footer_nastaveni"><a href="/auth/system/nastaveni">Nastavení</a></div>
+	<div class="column small-12 medium-6 footer_privacy"><a href="/auth/privacy/">Soukromí</a></div>
+</div>
+
+	
+</div>
+</div>
+			<div class="right-border"></div>
+			<div class="left-border"></div>
+		</div>
+		<a href="#hlavicka" class="skip_up" title="Skočit na začátek stránky">
+			Nahoru
+		</a>
+	</footer>
+
+		</div>
+	</div>
+</div>
+<div class="reveal" id="vyhledavani_reklamace" role="region" data-append-to=".foundation-design-z:first" data-reveal="">
+	<div class="row">
+		<div  class="column reveal-content">
+			<h2>Nenašli jste, co jste hledali?</h2><div class="nedurazne"><h3 class="subheader">Hledaný výraz: <em id="vyhledavani_reklamace_hledany_vyraz"></em></h3></div><form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" id="prvek_213390" onsubmit="return false;"><textarea autocomplete="off" data-valid-min="3" data-validator="min" id="prvek_1560991" placeholder="Očekával jsem, že najdu..." rows="8" wrap="soft"></textarea><span class="form-error" data-form-error-for="prvek_1560991"><span class="form-error-text"></span></span><div id="vyhledavani_reklamace_bottom" class="row">
+	<div class="column"><div class="zdurazneni potvrzeni mb-0"><h3>Úspěšně uloženo. (<span id="vyhledavani_reklamace_countdown">0</span>)</h3></div><div class="zdurazneni chyba nelze_ulozit mb-0"><h3>Nelze uložit. Zkuste to prosím později.</h3></div></div>
+	<div class="shrink column"><button id="vyhledavani_reklamace_odeslat" class="mb-0 button" type="submit">Odeslat</button></div>
+</div>
+</form>
+		</div>
+	</div>
+	<div class="modal-btns"><button class="close-button" type="button" aria-label="Zavřít" data-close><span aria-hidden="true">&times;</span></button></div>
+</div>
+<div class="reveal" id="motiv_reveal_akad" role="region" data-append-to=".foundation-design-z:first" data-multiple-opened="true" data-reveal="">
+	<div class="row">
+		<div  class="column reveal-content">
+			<p>Motiv Vesmír se odemkne po získání odznaku „Základní uživatelské dovednosti IS“ v akademii ISu.</p><div class="row align-right">
+	<div class="column shrink"><a href="/auth/akademie/" class="button">Přejít do Akademie ISu</a></div>
+</div>
+
+		</div>
+	</div>
+	<div class="modal-btns"><button class="close-button" type="button" aria-label="Zavřít" data-close><span aria-hidden="true">&times;</span></button></div>
+</div>
+
+
+<script src="/js/is.js?_v=8a35e31"></script>
+<script src="/js/jquery-ui-1.12.1-sortable-r6.min.js?_v=611662c"></script>
+<script src="/js/log-kliknuto.js?_v=d448124"></script>
+<script>"use strict";
+
+is.Define.module('Titulka', function(namespace, $) {
+	var $obsah, $zivot;
+
+	$('#dlazdice button.nazev').click(function(){
+
+		$obsah = $obsah || $('#obsah');
+		$zivot = $zivot || $('#zivot');
+
+		var vice = $obsah.toggleClass('vice').hasClass('vice');
+
+		$zivot.toggleClass('vice', vice);
+		$(".uryvek:visible").each(is.Zivot.uryvek_do);
+		is.NavMenu.refresh();
+	});
+
+	$('#dlazdice span.lock').click(function(e){
+		var locked = $(this).toggleClass('isi-lock isi-unlock').hasClass('isi-lock');
+
+		$(this).prop('title', (locked ? is.ldb.get('prip_mene') : is.ldb.get('prip_vice')));
+		$('#obsah #dlazdice .vice_mene.mene .nazev').toggleClass('lock', locked);
+
+		is.Ajax.request('/auth/design_ajax', {
+			operace:	'pref',
+			nazev:		'w_titulka_vice_aplikaci',
+			hodnota:	 (locked ? 'a' : 'n'),
+		});
+
+		e.stopPropagation();
+	});
+
+	// ===== Tlačítka pro změnu velikosti modalu motivů ====
+	const $reveal = $('#motiv_reveal');
+	const $btnReveal = $('#motiv_reveal_velikost_button');
+	const $isiReveal = $('#motiv_reveal_isi');
+
+	$btnReveal.on('click', function () {
+		if ($reveal.hasClass('vetsi')) {
+			$reveal.removeClass('vetsi');
+			$isiReveal.removeClass('isi-zobacek-dolu').addClass('isi-zobacek-nahoru');
+		} else {
+			$reveal.addClass('vetsi');
+			$isiReveal.removeClass('isi-zobacek-nahoru').addClass('isi-zobacek-dolu');
+		}
+	});
+	// ===== konec - Tlačítka pro změnu velikosti modalu motivů  ====
+
+	// ===== Filtrování motivů =====
+	const motivy = $('#motivy .motiv-box');
+	const stitkyCheckboxy = $('#filtr-stitek input[type="checkbox"]');
+	const tmavostCheckboxy = $('#filtr-tmavost input[type="checkbox"]');
+	const noveCheckboxy = $('#filtr-nove input[type="checkbox"]');
+	let selectedTags = [];
+
+	function getVybraneTmavosti() {
+		const vybrane = tmavostCheckboxy.filter(':checked').map(function() {
+			return this.value;
+		}).get();
+
+		// Pokud není vybráno nic nebo obojí → vše
+		if (vybrane.length === 0 || vybrane.length === 2) {
+			return null;
+		}
+
+		return vybrane;
+	}
+	function getVybraneNove() {
+                const vybraneN = noveCheckboxy.filter(':checked').map(function() {
+                        return this.value;
+                }).get();
+
+                // Pokud není vybráno nic → vše
+                if (vybraneN.length === 0) {
+                        return null;
+                }
+
+                return vybraneN;
+        }
+	function getSelectedTags() {
+		return stitkyCheckboxy.filter(':checked').map(function() {
+			return this.value;
+		}).get();
+	}
+
+	function filterMotivy() {
+		const vybraneTmavosti = getVybraneTmavosti();
+		const vybraneNove = getVybraneNove();
+		selectedTags = getSelectedTags();
+
+		// Filtrování motivů podle tmavosti a štítků
+		motivy.each(function() {
+			const motiv = $(this);
+			const jeTmavy = String(motiv.data('tmavy'));
+			const jeNovy = String(motiv.data('nove'));
+
+			const tags = (motiv.data('tags') || '').split(',').map(s => s.trim());
+
+			const odpovidaTmavosti = !vybraneTmavosti || vybraneTmavosti.includes(jeTmavy);
+			const odpovidaNove = !vybraneNove || vybraneNove.includes(jeNovy);
+			const odpovidaStitkum = selectedTags.length === 0 || selectedTags.some(tag => tags.includes(tag));
+
+			motiv.toggle(odpovidaTmavosti && odpovidaNove && odpovidaStitkum);
+		});
+
+		// Výpočet četností jen podle tmavosti a nove
+		const pocetStitku = {};
+		motivy.each(function() {
+			const motiv = $(this);
+			const jeTmavy = String(motiv.data('tmavy'));
+			const jeNovy = String(motiv.data('nove'));
+			if (vybraneTmavosti && !vybraneTmavosti.includes(jeTmavy)) return;
+			if (vybraneNove && !vybraneNove.includes(jeNovy)) return;
+
+			const tags = (motiv.data('tags') || '').split(',').map(s => s.trim());
+			tags.forEach(tag => {
+				if (!tag) return;
+				pocetStitku[tag] = (pocetStitku[tag] || 0) + 1;
+			});
+		});
+
+		// Aktualizace zobrazení štítků a četností
+		$('#filtr-stitek .motiv-stitek').each(function() {
+			const $label = $(this);
+			const $input = $label.find('input');
+			const $nazev = $label.find('.stitek-nazev');
+			const tag = $input.val();
+
+			const count = pocetStitku[tag] || 0;
+			const visible = count > 0;
+
+			$label.toggle(visible);
+
+			const puvodniText = $nazev.data('puvodni') || $nazev.text().replace(/\s+\(\d+\)$/, '');
+			$nazev.data('puvodni', puvodniText);
+			// zatím nebudeme počty štítků zobrazovat, ale jsme připraveni
+			// $nazev.text(`${puvodniText} (${count})`);
+			$nazev.text(`${puvodniText}`);
+		});
+	}
+
+	// Reakce na změnu filtrů
+	tmavostCheckboxy.on('change', function() {
+		// reset výběru štítků při změně tmavosti
+		stitkyCheckboxy.prop('checked', false);
+		filterMotivy();
+	});
+	noveCheckboxy.on('change', function() {
+                // reset výběru štítků při vyběru nových
+                stitkyCheckboxy.prop('checked', false);
+                filterMotivy();
+        });
+	stitkyCheckboxy.on('change', function() {
+		filterMotivy();
+	});
+
+	// Spuštění při načtení
+	filterMotivy();
+
+	// ===== konec - Filtrování moti´vů ====
+
+
+	return {
+                nastavit_motiv: function() {
+                        $('#motiv_reveal').foundation('open');
+                },
+        };
+});
+</script>
+<script>
+(function() {
+
+"use strict";
+
+is.Design.init({
+   "svatky" : {
+      "20001229" : 1,
+      "20111231" : 1,
+      "20181231" : 1,
+      "20011224" : 1,
+      "20191227" : 1,
+      "20231229" : 1,
+      "20141117" : 1,
+      "20151229" : 1,
+      "20180705" : 1,
+      "20211229" : 1,
+      "20101117" : 1,
+      "20021227" : 1,
+      "20260406" : 1,
+      "20020928" : 1,
+      "20001225" : 1,
+      "20231228" : 1,
+      "20071230" : 1,
+      "20191228" : 1,
+      "20251224" : 1,
+      "20241225" : 1,
+      "20090501" : 1,
+      "20211225" : 1,
+      "20021226" : 1,
+      "20161224" : 1,
+      "20100501" : 1,
+      "20180928" : 1,
+      "20241224" : 1,
+      "20210501" : 1,
+      "20061230" : 1,
+      "20010928" : 1,
+      "20091028" : 1,
+      "20230101" : 1,
+      "20141222" : 1,
+      "20211227" : 1,
+      "20181230" : 1,
+      "20141225" : 1,
+      "20070706" : 1,
+      "20011226" : 1,
+      "20080508" : 1,
+      "20220418" : 1,
+      "20160101" : 1,
+      "20151227" : 1,
+      "20220101" : 1,
+      "20041028" : 1,
+      "20250101" : 1,
+      "20240401" : 1,
+      "20131225" : 1,
+      "20071227" : 1,
+      "20111228" : 1,
+      "20041225" : 1,
+      "20050928" : 1,
+      "20121230" : 1,
+      "20121223" : 1,
+      "20011228" : 1,
+      "20040706" : 1,
+      "20070705" : 1,
+      "20011230" : 1,
+      "20031028" : 1,
+      "20230407" : 1,
+      "20191231" : 1,
+      "20070409" : 1,
+      "20021228" : 1,
+      "20140928" : 1,
+      "20140101" : 1,
+      "20170705" : 1,
+      "20230410" : 1,
+      "20171223" : 1,
+      "20071225" : 1,
+      "20261028" : 1,
+      "20121229" : 1,
+      "20021230" : 1,
+      "20030705" : 1,
+      "20091224" : 1,
+      "20201224" : 1,
+      "20170101" : 1,
+      "20100101" : 1,
+      "20021229" : 1,
+      "20221229" : 1,
+      "20061229" : 1,
+      "20101230" : 1,
+      "20231231" : 1,
+      "20260403" : 1,
+      "20241028" : 1,
+      "20170706" : 1,
+      "20141223" : 1,
+      "20021223" : 1,
+      "20071229" : 1,
+      "20090508" : 1,
+      "20081224" : 1,
+      "20051228" : 1,
+      "20241229" : 1,
+      "20021028" : 1,
+      "20030421" : 1,
+      "20111117" : 1,
+      "20180101" : 1,
+      "20061228" : 1,
+      "20160705" : 1,
+      "20171028" : 1,
+      "20090705" : 1,
+      "20150706" : 1,
+      "20081225" : 1,
+      "20001028" : 1,
+      "20101225" : 1,
+      "20051225" : 1,
+      "20031225" : 1,
+      "20171226" : 1,
+      "20020706" : 1,
+      "20181228" : 1,
+      "20170414" : 1,
+      "20190101" : 1,
+      "20110425" : 1,
+      "20221117" : 1,
+      "20040101" : 1,
+      "20140501" : 1,
+      "20250418" : 1,
+      "20020101" : 1,
+      "20260508" : 1,
+      "20120706" : 1,
+      "20201229" : 1,
+      "20110101" : 1,
+      "20241227" : 1,
+      "20210508" : 1,
+      "20070508" : 1,
+      "20231226" : 1,
+      "20231230" : 1,
+      "20241231" : 1,
+      "20161227" : 1,
+      "20080501" : 1,
+      "20051028" : 1,
+      "20191226" : 1,
+      "20180501" : 1,
+      "20010501" : 1,
+      "20181225" : 1,
+      "20111028" : 1,
+      "20010101" : 1,
+      "20061224" : 1,
+      "20001228" : 1,
+      "20151230" : 1,
+      "20231227" : 1,
+      "20090101" : 1,
+      "20210402" : 1,
+      "20171117" : 1,
+      "20190928" : 1,
+      "20141227" : 1,
+      "20210928" : 1,
+      "20040928" : 1,
+      "20140421" : 1,
+      "20181117" : 1,
+      "20030501" : 1,
+      "20200928" : 1,
+      "20250421" : 1,
+      "20051224" : 1,
+      "20101226" : 1,
+      "20131226" : 1,
+      "20200501" : 1,
+      "20151225" : 1,
+      "20140508" : 1,
+      "20141226" : 1,
+      "20030928" : 1,
+      "20131228" : 1,
+      "20221224" : 1,
+      "20060501" : 1,
+      "20120928" : 1,
+      "20041231" : 1,
+      "20160325" : 1,
+      "20050501" : 1,
+      "20241117" : 1,
+      "20011028" : 1,
+      "20021224" : 1,
+      "20220508" : 1,
+      "20031117" : 1,
+      "20030706" : 1,
+      "20160706" : 1,
+      "20130706" : 1,
+      "20160508" : 1,
+      "20120101" : 1,
+      "20251229" : 1,
+      "20011117" : 1,
+      "20161228" : 1,
+      "20221028" : 1,
+      "20021117" : 1,
+      "20131230" : 1,
+      "20190501" : 1,
+      "20141028" : 1,
+      "20140705" : 1,
+      "20260705" : 1,
+      "20001227" : 1,
+      "20041228" : 1,
+      "20030101" : 1,
+      "20001226" : 1,
+      "20181028" : 1,
+      "20110928" : 1,
+      "20251228" : 1,
+      "20060706" : 1,
+      "20181224" : 1,
+      "20190705" : 1,
+      "20011225" : 1,
+      "20181227" : 1,
+      "20050508" : 1,
+      "20141228" : 1,
+      "20200508" : 1,
+      "20191230" : 1,
+      "20180402" : 1,
+      "20201028" : 1,
+      "20211228" : 1,
+      "20071117" : 1,
+      "20130101" : 1,
+      "20251226" : 1,
+      "20211224" : 1,
+      "20051230" : 1,
+      "20250501" : 1,
+      "20041226" : 1,
+      "20111224" : 1,
+      "20261228" : 1,
+      "20171229" : 1,
+      "20131227" : 1,
+      "20121028" : 1,
+      "20231224" : 1,
+      "20111229" : 1,
+      "20110705" : 1,
+      "20051117" : 1,
+      "20060928" : 1,
+      "20040705" : 1,
+      "20050101" : 1,
+      "20101223" : 1,
+      "20220706" : 1,
+      "20061117" : 1,
+      "20211117" : 1,
+      "20051229" : 1,
+      "20120508" : 1,
+      "20180706" : 1,
+      "20181229" : 1,
+      "20081028" : 1,
+      "20201117" : 1,
+      "20201225" : 1,
+      "20151226" : 1,
+      "20151224" : 1,
+      "20191117" : 1,
+      "20190706" : 1,
+      "20170501" : 1,
+      "20240706" : 1,
+      "20200413" : 1,
+      "20230705" : 1,
+      "20101028" : 1,
+      "20100928" : 1,
+      "20060417" : 1,
+      "20260501" : 1,
+      "20130705" : 1,
+      "20191223" : 1,
+      "20161117" : 1,
+      "20151231" : 1,
+      "20060508" : 1,
+      "20261225" : 1,
+      "20080706" : 1,
+      "20131117" : 1,
+      "20150705" : 1,
+      "20251230" : 1,
+      "20240928" : 1,
+      "20021231" : 1,
+      "20130501" : 1,
+      "20170508" : 1,
+      "20261229" : 1,
+      "20260101" : 1,
+      "20011231" : 1,
+      "20041227" : 1,
+      "20171228" : 1,
+      "20071028" : 1,
+      "20031224" : 1,
+      "20200101" : 1,
+      "20041224" : 1,
+      "20101227" : 1,
+      "20021225" : 1,
+      "20241228" : 1,
+      "20251231" : 1,
+      "20231225" : 1,
+      "20221227" : 1,
+      "20150406" : 1,
+      "20041117" : 1,
+      "20241223" : 1,
+      "20221226" : 1,
+      "20121227" : 1,
+      "20001224" : 1,
+      "20161231" : 1,
+      "20111226" : 1,
+      "20160328" : 1,
+      "20100508" : 1,
+      "20201222" : 1,
+      "20261224" : 1,
+      "20120501" : 1,
+      "20121231" : 1,
+      "20040412" : 1,
+      "20211230" : 1,
+      "20180508" : 1,
+      "20120705" : 1,
+      "20091117" : 1,
+      "20211028" : 1,
+      "20070501" : 1,
+      "20131028" : 1,
+      "20020508" : 1,
+      "20230508" : 1,
+      "20210705" : 1,
+      "20161225" : 1,
+      "20250706" : 1,
+      "20230706" : 1,
+      "20160928" : 1,
+      "20211231" : 1,
+      "20091225" : 1,
+      "20241226" : 1,
+      "20060705" : 1,
+      "20190422" : 1,
+      "20131223" : 1,
+      "20111223" : 1,
+      "20040508" : 1,
+      "20251117" : 1,
+      "20111227" : 1,
+      "20110508" : 1,
+      "20251227" : 1,
+      "20250928" : 1,
+      "20200410" : 1,
+      "20081226" : 1,
+      "20131231" : 1,
+      "20191028" : 1,
+      "20071231" : 1,
+      "20191225" : 1,
+      "20240101" : 1,
+      "20210706" : 1,
+      "20220501" : 1,
+      "20101229" : 1,
+      "20061227" : 1,
+      "20221230" : 1,
+      "20141224" : 1,
+      "20071224" : 1,
+      "20240329" : 1,
+      "20261230" : 1,
+      "20191229" : 1,
+      "20241230" : 1,
+      "20201231" : 1,
+      "20251225" : 1,
+      "20080705" : 1,
+      "20010416" : 1,
+      "20200706" : 1,
+      "20260706" : 1,
+      "20181226" : 1,
+      "20050328" : 1,
+      "20201223" : 1,
+      "20201226" : 1,
+      "20121225" : 1,
+      "20120409" : 1,
+      "20171225" : 1,
+      "20251028" : 1,
+      "20071228" : 1,
+      "20210405" : 1,
+      "20111225" : 1,
+      "20221228" : 1,
+      "20010705" : 1,
+      "20020705" : 1,
+      "20231028" : 1,
+      "20240508" : 1,
+      "20041230" : 1,
+      "20080101" : 1,
+      "20050705" : 1,
+      "20220705" : 1,
+      "20230501" : 1,
+      "20051226" : 1,
+      "20221225" : 1,
+      "20110501" : 1,
+      "20190419" : 1,
+      "20060101" : 1,
+      "20221231" : 1,
+      "20071226" : 1,
+      "20010706" : 1,
+      "20141230" : 1,
+      "20001230" : 1,
+      "20130401" : 1,
+      "20141231" : 1,
+      "20171227" : 1,
+      "20051227" : 1,
+      "20100405" : 1,
+      "20261117" : 1,
+      "20121226" : 1,
+      "20090706" : 1,
+      "20151028" : 1,
+      "20121224" : 1,
+      "20220928" : 1,
+      "20031226" : 1,
+      "20130928" : 1,
+      "20090928" : 1,
+      "20040501" : 1,
+      "20130508" : 1,
+      "20030508" : 1,
+      "20101231" : 1,
+      "20061226" : 1,
+      "20011229" : 1,
+      "20161028" : 1,
+      "20230928" : 1,
+      "20140706" : 1,
+      "20141229" : 1,
+      "20091226" : 1,
+      "20101228" : 1,
+      "20150501" : 1,
+      "20261227" : 1,
+      "20001231" : 1,
+      "20250508" : 1,
+      "20261231" : 1,
+      "20100705" : 1,
+      "20170417" : 1,
+      "20210101" : 1,
+      "20240705" : 1,
+      "20090413" : 1,
+      "20101224" : 1,
+      "20041229" : 1,
+      "20121228" : 1,
+      "20161223" : 1,
+      "20190508" : 1,
+      "20080324" : 1,
+      "20161226" : 1,
+      "20150101" : 1,
+      "20151223" : 1,
+      "20171224" : 1,
+      "20151228" : 1,
+      "20151117" : 1,
+      "20161229" : 1,
+      "20150508" : 1,
+      "20020401" : 1,
+      "20131224" : 1,
+      "20171231" : 1,
+      "20150928" : 1,
+      "20011227" : 1,
+      "20121117" : 1,
+      "20080928" : 1,
+      "20261226" : 1,
+      "20191224" : 1,
+      "20050706" : 1,
+      "20201228" : 1,
+      "20061028" : 1,
+      "20160501" : 1,
+      "20100706" : 1,
+      "20131229" : 1,
+      "20161230" : 1,
+      "20211226" : 1,
+      "20231117" : 1,
+      "20201230" : 1,
+      "20171230" : 1,
+      "20070101" : 1,
+      "20081117" : 1,
+      "20020501" : 1,
+      "20180330" : 1,
+      "20010508" : 1,
+      "20220415" : 1,
+      "20061225" : 1,
+      "20200705" : 1,
+      "20111230" : 1,
+      "20240501" : 1,
+      "20260928" : 1,
+      "20201221" : 1,
+      "20070928" : 1,
+      "20250705" : 1,
+      "20110706" : 1,
+      "20170928" : 1
+   },
+   "ldb" : {
+      "byl_jste_odhlasen_prihlasit" : "Přihlásit",
+      "error_msg_alpha_numeric" : "Smí obsahovat pouze znaky abecedy, číslo, mezeru, podtržítko a spojovník.",
+      "upravit" : "Upravit",
+      "sbalit" : "Sbalit",
+      "prip_mene" : "Ponechat méně aplikací",
+      "error_msg_number_natural" : "Očekáváno přirozené číslo (1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "error_msg_min" : "Text je příliš krátký.",
+      "error_msg_number_integer" : "Očekáváno celé číslo (&hellip;,&nbsp;-2,&nbsp;-1,&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;&hellip;).",
+      "error_msg_zalozka_url" : "Nesprávný tvar adresy.",
+      "error_msg" : "Nesprávný formát.",
+      "vice_apl" : "Více aplikací",
+      "error_msg_required" : "Povinný údaj.",
+      "error_msg_datepicker_min_date" : "Datum a čas nelze takto nastavit.",
+      "popis" : "o neexistenci příznaků virového infekčního onemocnění",
+      "odstranit" : "Odstranit",
+      "byl_jste_odhlasen" : "Byl jste odhlášen.",
+      "error_msg_required_min" : "Nebyl vybrán požadovaný počet položek.",
+      "error_msg_alpha" : "Smí obsahovat pouze znaky abecedy, mezeru, podtržítko a spojovník.",
+      "error_msg_uc_first" : "Musí začínat velkým počátečním písmenem.",
+      "error_msg_email" : "Nesprávný tvar e-mailové adresy",
+      "error_msg_required_max" : "Je vybráno více položek, než je povoleno.",
+      "error_msg_number_natural_zero" : "Očekáváno přirozené číslo nebo nula (0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "odepnout" : "Odepnout menu",
+      "error_msg_max" : "Text je příliš dlouhý.",
+      "nezobrazovat" : "Nezobrazovat",
+      "error_msg_max_val" : "Číslo je větší než povolená hodnota.",
+      "byl_jste_odhlasen_zavrit" : "Zavřít",
+      "error_msg_required_any" : "Alespoň jeden údaj musí být vyplněn.",
+      "modal_full" : "Na celou obrazovku",
+      "error_msg_datepicker_max_date" : "Datum a čas nelze takto nastavit.",
+      "nadpis" : "Čestné prohlášení",
+      "pripnout" : "Připnout menu",
+      "mene_apl" : "Méně aplikací",
+      "error_msg_min_val" : "Číslo je menší než povolená hodnota.",
+      "isForms_invalid" : "Chybně vyplněné údaje, prosím zkontrolujte.",
+      "prip_vice" : "Ponechat více aplikací",
+      "rozbalit" : "Rozbalit",
+      "chyba_503" : "Aplikace je dočasně nedostupná pro zvýšenou zátěž systému.",
+      "error_msg_required_all" : "Všechny údaje jsou povinné.",
+      "chyba" : "Došlo k chybě, operaci opakujte nebo obnovte stránku."
+   },
+   "session" : {
+      "uco" : "990001",
+      "skola_zkratka" : "MU",
+      "auth" : "/auth",
+      "pouzit_neoverene_udaje" : null,
+      "server_time" : "18. 9. 2026 20:27:18",
+      "debug" : 1,
+      "vidim_kazdeho" : null,
+      "login" : "990001",
+      "cgipar" : {},
+      "session_id" : "7336817617",
+      "is_design_z" : "",
+      "w_log_id" : "24839330614",
+      "skola_id" : "14",
+      "lang" : "cs",
+      "ekurz" : false,
+      "remote_user" : "990001",
+      "is_muni_cz" : "is.muni.cz",
+      "sn" : "/auth/index.pl"
+   },
+   "js_init" : [
+      {
+         "params" : [],
+         "module" : "Zivot",
+         "method" : "init"
+      },
+      {
+         "module" : "Zivot",
+         "params" : [],
+         "method" : "titulky_zivot_init"
+      },
+      {
+         "module" : "Forms",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init",
+         "params" : [
+            "#vyhledavani_form",
+            {
+               "clear_button" : "#vyhledavani_form_x",
+               "atributy" : {},
+               "complaint" : {},
+               "debug_wrap" : "#priv_vyhledavani_debug_options",
+               "limit" : 8,
+               "ikona" : {
+                  "class" : "vyhledavani_form_is_icon"
+               }
+            }
+         ],
+         "module" : "Search"
+      },
+      {
+         "method" : "init",
+         "params" : [],
+         "module" : "Oblibene"
+      },
+      {
+         "method" : "init",
+         "module" : "NavMenu",
+         "params" : [
+            {
+               "ucitel" : null
+            }
+         ]
+      },
+      {
+         "module" : "HashNavigation",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init_header",
+         "params" : [],
+         "module" : "Design"
+      },
+      {
+         "method" : "init_toolkit",
+         "params" : [],
+         "module" : "Design"
+      }
+   ]
+}
+);
+})();
+</script>
+
+</body>
+</html>

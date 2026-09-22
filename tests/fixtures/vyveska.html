@@ -1,0 +1,4685 @@
+<!DOCTYPE html>
+<html class="no-js auth" lang="cs">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Vývěska</title>
+<link href="/favicon.ico" rel="icon" sizes="32x32">
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/css/r6/foundation.min.css?_v=ab3b2b3" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r/icons/foundation-icons.css?_v=d866a73" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/prvky.css?_v=2d7af96" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6.css?_v=f11632e" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/motiv/1.css?_v=9421c26" media="screen" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6-print.css?_v=d1a07b2" media="print" rel="stylesheet" type="text/css">
+<style>:root, .ponechat-svetle {
+	--vyveska-dalsi-polozky: #231F20;
+}
+.motiv-tmavy {
+	--vyveska-dalsi-polozky: #e5c9d0;
+}
+
+#noticeboard .kontrola_zprava {
+	border: 1px solid silver;
+	margin-bottom: 1rem;
+	padding: .5rem;
+}
+
+#noticeboard .kontrola_zprava h4 {
+	margin-bottom: 0;
+}
+
+#noticeboard .vsechny_zpravy {
+	margin-top: 1.5rem;
+}
+
+#noticeboard .vsechny_zpravy .odkaz a {
+	display: block;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+#noticeboard .vsechny_zpravy .odkaz i {
+	font-size: 1.8rem;
+	vertical-align: -25%;
+}
+
+#noticeboard .vsechny_zpravy .odkaz .nedurazne {
+	font-size: .8rem;
+	padding-left: 2.3rem;
+}
+
+#noticeboard .vsechny_zpravy .cisla i {
+	font-size: 2rem;
+	vertical-align: -25%;
+}
+
+@media print, screen and (max-width: 40em) {
+	#noticeboard .vsechny_zpravy {
+		margin-top: -1rem;
+	}
+
+	#noticeboard .vsechny_zpravy .odkaz {
+		margin-bottom: 0.5rem;
+	}
+
+	#noticeboard .vsechny_zpravy .cisla {
+		margin-bottom: 1rem;
+	}
+}
+
+#noticeboard h2 > i {
+	color: var(--barva1);
+}
+
+#noticeboard h2 > i.isi-heart {
+	color: #c91717;
+}
+
+#noticeboard .zpravy_dlazdice {
+	margin-bottom: 2.5rem;
+}
+
+#noticeboard .zpravy_dlazdice .pagination {
+	margin-bottom: 0;
+}
+
+#noticeboard .sekce_popis_wrap {
+	border-bottom: 1px solid #EBEBEB;
+	margin-bottom: 1rem;
+	padding-top: .5rem;
+	margin-top: .5rem;
+	position: relative;
+}
+
+#noticeboard .seznam_podsekci .sekce_popis_wrap {
+	margin-bottom: 2rem;
+}
+
+#noticeboard .zpravy_dlazdice .sekce_popis_wrap::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: -4px;
+	border-top: 4px solid #6091D3;
+	width: 7rem;
+}
+
+#noticeboard .sekce_popis {
+	margin-bottom: 1rem;
+	font-family: Open Sans;
+	font-weight: 300;
+	font-size: 17px;
+	color: #184E83;
+}
+
+#noticeboard .stitky_wrap {
+	line-height: 2;
+}
+
+@media print, screen and (max-width: 40em) {
+	#noticeboard .stitky_wrap {
+		margin-bottom: 1rem;
+	}
+}
+
+#noticeboard .stitky {
+	margin: .5rem 0;
+}
+
+#noticeboard .stitky .stitek-inline.active {
+	background-color: #00a4f4;
+	color: #fff;
+	font-weight: 600;
+}
+
+#noticeboard .sekce_row_wrap {
+	margin-top: .75rem;
+	padding: calc(.75 * 1.07143rem - 0.75rem) calc(.75 * 1.07143rem);
+	background-color: var(--bgbarva-seda1);
+}
+
+#noticeboard .sekce_row_wrap .ellipsis {
+	line-height: 1;
+	display: inline-block;
+}
+
+#noticeboard .sekce_row_wrap .ellipsis .isi-tri-tecky-svisle {
+	width: 3rem;
+	height: 3rem;
+	line-height: 1;
+	display: inline-block;
+	border-radius: 50%;
+	font-size: 3rem;
+}
+
+#noticeboard .sekce_row_wrap .ellipsis:hover .isi-tri-tecky-svisle {
+	background: #dedede;
+}
+
+#noticeboard .sekce_row_wrap .ellipsis .isi-tri-tecky-svisle::before {
+	transform: rotate(90deg);
+	position: relative;
+	left: -1.6px;
+}
+
+#noticeboard .sekce_strankovani {
+	margin-top: 1.5rem;
+}
+
+#noticeboard .zadne_zpravy {
+	text-align: center;
+}
+
+#noticeboard .zadne_zpravy .isi-vyveska {
+	font-size: 3rem;
+	padding: 1rem;
+	border: 1px solid #DCDCDC;
+	border-radius: 3rem;
+	line-height: 0;
+	background-color: white;
+	color: #ccc;
+}
+
+#noticeboard .zadne_zpravy .hlaska {
+	margin-top: 1rem;
+	margin-bottom: 2.5rem;
+}
+
+#noticeboard .zadne_zpravy .nova_zprava .isi-pridat {
+	display: block;
+	font-size: 3rem;
+}
+
+#noticeboard .dlazdice {
+	background-color: #fff;
+	padding: 1rem;
+	padding-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	margin: .75rem 0;
+	box-shadow: 2px 2px 8px -2px rgba(0,0,0,0.2);
+	position: relative;
+	page-break-inside: avoid;
+}
+
+#noticeboard .dlazdice .zrusena {
+	position: absolute;
+	left: 1rem;
+	top: 0;
+	min-height: auto;
+	line-height: normal;
+	border-radius: 0;
+	font-size: .8rem;
+	background-color: #BBB;
+	border-bottom: none;
+}
+
+#noticeboard .dlazdice .nove {
+	display: none;
+	position: absolute;
+	left: 1rem;
+	top: 0;
+	min-height: 1.5rem;
+	line-height: normal;
+	border-radius: 0;
+	font-size: .8rem;
+}
+
+#noticeboard .dlazdice.modra {
+	border: 1px solid #3279B9;
+}
+
+#noticeboard .dlazdice.cervena {
+	border: 1px solid #C41F1B;
+}
+
+#noticeboard .dlazdice.nova.modra .nove {
+	background-color: #3279B9;
+}
+
+#noticeboard .dlazdice.nova.cervena .nove {
+	background-color: #C41F1B;
+}
+
+#noticeboard .dlazdice.nova .nove {
+	display: inline-block;
+}
+
+#noticeboard .dlazdice .ikony {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-right: 1rem;
+}
+
+#noticeboard .dlazdice .hlavicka {
+	-webkit-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+}
+
+#noticeboard .dlazdice .nastroje {
+	text-align: right;
+}
+
+#noticeboard .dlazdice .hvezdicka,
+#noticeboard .dlazdice .precteni {
+	color: #dadada;
+	font-size: 1.4rem;
+}
+
+#noticeboard .dlazdice .isi-oko {
+	vertical-align: -6%;
+}
+
+#noticeboard .dlazdice .nastroje .isi-wrench {
+	color: #002776;
+}
+
+#noticeboard .grafika,
+.noticeboard_zprava .grafika {
+	background: url(/pics/mu/noticeboard/default.svg) no-repeat;
+	background-size: cover;
+	background-position: center;
+	-webkit-flex: 0 1 auto;
+	-ms-flex: 0 1 auto;
+	flex: 0 1 auto;
+	position: relative;
+	print-color-adjust: exact;
+	-webkit-print-color-adjust: exact;
+}
+
+#noticeboard .grafika > .grafika_nazev {
+	padding: 1.5rem 2rem;
+	font-size: 16px;
+	font-family: Muni;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #3c3cb1;
+	display: inline-block;
+}
+
+.noticeboard_zprava .perex {
+	font-size: 1.5rem;
+	font-weight: 100;
+}
+
+#noticeboard .grafika_wrap,
+.noticeboard_zprava .grafika_wrap {
+	margin-bottom: 1rem;
+}
+
+#noticeboard .grafika .logo {
+	position: absolute;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	right: .75rem;
+	bottom: .75rem;
+	border: none;
+	box-shadow: 2px 2px 8px -2px rgba(0,0,0,0.2);
+}
+
+.noticeboard_zprava .grafika .logo {
+	position: absolute;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	right: 1rem;
+	bottom: 1rem;
+	border: none;
+	box-shadow: 2px 2px 8px -2px rgba(0,0,0,0.2);
+}
+
+#noticeboard .grafika .grafika_datum {
+	position: absolute;
+	left: 0;
+	bottom: .75rem;
+	padding: .5rem 1.25rem;
+	background-color: #00000075;
+	color: white;
+	font-weight: 600;
+}
+
+#noticeboard .grafika::before,
+.noticeboard_zprava .grafika::before {
+	content: "";
+	width: 1px;
+	margin-left: -1px;
+	float: left;
+	height: 0;
+	padding-top: calc(1 / 2 * 100%);
+}
+
+.noticeboard_zprava .grafika.default::before {
+	padding-top: calc(1 / 5 * 100%);
+}
+
+.noticeboard_zprava .grafika > .grafika_nazev,
+#noticeboard.uprav_zpravu .grafika > .grafika_nazev,
+#noticeboard.nova_zprava .grafika > .grafika_nazev,
+.pool_grafika_nazev {
+	padding: 1.5rem 2rem;
+	font-size: 22px;
+	font-family: Muni;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #3c3cb1;
+}
+
+.pool_grafika_nazev {
+	font-size: 1rem;
+}
+
+.noticeboard_zprava .grafika.p1411 > .grafika_nazev,
+#noticeboard .grafika.p1411 > .grafika_nazev,
+.p1411 .pool_grafika_nazev {
+	color: #F01928;
+}
+
+.noticeboard_zprava .grafika.p1416 > .grafika_nazev,
+#noticeboard .grafika.p1416 > .grafika_nazev,
+.p1416 .pool_grafika_nazev {
+	color: #56788d;
+}
+
+.noticeboard_zprava .grafika.p1421 > .grafika_nazev,
+#noticeboard .grafika.p1421 > .grafika_nazev,
+.p1421 .pool_grafika_nazev {
+	color: #29A3D9;
+}
+
+.noticeboard_zprava .grafika.p1422 > .grafika_nazev,
+#noticeboard .grafika.p1422 > .grafika_nazev,
+.p1422 .pool_grafika_nazev {
+	color: #9100DC;
+}
+
+.noticeboard_zprava .grafika.p1423 > .grafika_nazev,
+#noticeboard .grafika.p1423 > .grafika_nazev,
+.p1423 .pool_grafika_nazev {
+	color: #008C78;
+}
+
+.noticeboard_zprava .grafika.p1431 > .grafika_nazev,
+#noticeboard .grafika.p1431 > .grafika_nazev,
+.p1431 .pool_grafika_nazev {
+	color: #00AF3F;
+}
+
+.noticeboard_zprava .grafika.p1433 > .grafika_nazev,
+#noticeboard .grafika.p1433 > .grafika_nazev,
+.p1433 .pool_grafika_nazev {
+	color: #d7ab00;
+}
+
+.noticeboard_zprava .grafika.p1441 > .grafika_nazev,
+#noticeboard .grafika.p1441 > .grafika_nazev,
+.p1441 .pool_grafika_nazev {
+	color: #FF7300;
+}
+
+.noticeboard_zprava .grafika.p1451 > .grafika_nazev,
+#noticeboard .grafika.p1451 > .grafika_nazev,
+.p1451 .pool_grafika_nazev {
+	color: #23A88A;
+}
+
+.noticeboard_zprava .grafika.p1456 > .grafika_nazev,
+#noticeboard .grafika.p1456 > .grafika_nazev,
+.p1456 .pool_grafika_nazev {
+	color: #B9006E;
+}
+
+@media print, screen and (max-width: 40em) {
+
+	.noticeboard_zprava .grafika > .grafika_nazev,
+	.pool_grafika_nazev {
+		padding: .5rem 1rem;
+		font-size: 1.3rem;
+	}
+
+	.noticeboard_zprava .grafika .logo {
+		width: 2rem;
+		height: 2rem;
+		right: .5rem;
+		bottom: .5rem;
+	}
+}
+
+#noticeboard .grafika::after,
+.noticeboard_zprava .grafika::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+body.background-slider-moving,
+body.background-slider-moving #noticeboard label,
+body.background-slider-moving #noticeboard .grafika_vlozit {
+	cursor: grabbing!important;
+}
+
+#noticeboard .grafika_vlozit {
+	cursor: move;
+}
+
+#noticeboard .grafika_vlozit .close-button {
+	top: 1rem;
+	background-color: rgb(245 245 245 / .7);
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0;
+	color: #666;
+}
+
+#noticeboard .grafika_vlozit .close-button:hover {
+	color: #002776;
+}
+
+#noticeboard .form_files_ajax {
+	margin-bottom: 1rem;
+}
+
+#noticeboard .form_files_ajax ul.soubory {
+	margin-bottom: 0;
+}
+
+#noticeboard .form_files_ajax ul.soubory > li {
+	list-style-type: circle;
+}
+
+#noticeboard .form_files_ajax ul.soubory > li > a.odstranit {
+	display: none;
+}
+
+#noticeboard .form_files_ajax ul.soubory > li:hover > a.odstranit {
+	display: inline;
+}
+
+#noticeboard .form_files_ajax .actual_info {
+	display: none;
+}
+
+.noticeboard_zprava .zrusene {
+	margin-top: 1rem;
+}
+
+.noticeboard_zprava .obsah {
+	margin-bottom: 1rem;
+	font-size: 1.142857rem;
+}
+
+.noticeboard_zprava .obsah.ponechat-svetle {
+	padding: .5rem;
+}
+
+.noticeboard_zprava .zprava_fieldset {
+	border-radius: 1rem;
+	padding-top: .5rem;
+	margin-top: 0;
+	word-break: break-word;
+}
+.noticeboard_zprava .zprava_fieldset legend {
+	background-color: var(--bg);
+	border: none;
+	font-weight: 400;
+}
+
+.noticeboard_zprava .zprava_fieldset i {
+	font-size: 2rem;
+}
+
+.noticeboard_zprava .zprava_fieldset .nazev {
+	padding-right: .3rem;
+	display: inline-block;
+	position: relative;
+	top: -4px;
+	text-transform: uppercase;
+}
+
+@media print, screen and (min-width: 40em) {
+	.noticeboard_zprava .zprava_fieldset .fieldset_obsah {
+		padding-left: 1.2rem;
+	}
+}
+
+.noticeboard_zprava .zprava_fieldset .fieldset_obsah a:not(.button) {
+	font-weight: 600;
+}
+
+.noticeboard_zprava .zprava_fieldset.poradajici {
+	border-color: #9d61b1;
+}
+
+.noticeboard_zprava .zprava_fieldset.poradajici .nazev,
+.noticeboard_zprava .zprava_fieldset.poradajici i {
+	color: #8430a0;
+}
+
+.noticeboard_zprava .zprava_fieldset.poradajici a.has-tip {
+	border: none;
+	cursor: pointer;
+}
+
+.noticeboard_zprava .zprava_fieldset.poradajici_isep .fieldset_obsah  {
+	font-weight: 600;
+}
+
+.noticeboard_zprava .zprava_fieldset.poradajici_isep {
+	border-color: #bb6c99;
+}
+
+.noticeboard_zprava .zprava_fieldset.poradajici_isep .nazev,
+.noticeboard_zprava .zprava_fieldset.poradajici_isep i {
+	color: #b03a7d;
+}
+
+.tooltip.pprac {
+	word-break: break-word;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory {
+	border-color: #8589A4;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .nazev,
+.noticeboard_zprava .zprava_fieldset.soubory i {
+	color: var(--barva1);
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony {
+	display: inline;
+	transition: margin .5s;
+	margin-left: 21.5px;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony:hover,
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony:hover > a,
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony.open,
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony.open > a {
+	margin-left: 0;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony > a {
+	position: relative;
+	margin-left: -21.5px;
+	transition: margin .5s;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor .ikona {
+	margin: 0 1px;
+	font-weight: normal;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony > a,
+.noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony .ikona::before {
+	cursor: pointer;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor a {
+	border: none;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor .soubor_nazev {
+	margin-left: .5rem;
+}
+
+.noticeboard_zprava .zprava_fieldset.por_pracoviste {
+	border-color: #00a1de;
+}
+
+.noticeboard_zprava .zprava_fieldset.por_pracoviste .nazev,
+.noticeboard_zprava .zprava_fieldset.por_pracoviste i {
+	color: #00a1de;
+}
+
+.noticeboard_zprava .zprava_fieldset.odkaz_udalost {
+	border-color: #fecd00;
+}
+
+.noticeboard_zprava .zprava_fieldset.odkaz_udalost .nazev,
+.noticeboard_zprava .zprava_fieldset.odkaz_udalost i {
+	color: #fecd00;
+}
+
+.noticeboard_zprava .zprava_fieldset.akce {
+	border-color: #61A23A;
+}
+
+.noticeboard_zprava .zprava_fieldset.akce .fieldset_obsah > .row > .column:first-child:not(:last-child) {
+	border-right: 1px solid #e6e6e6;
+	padding: 1rem 2rem;
+}
+
+.noticeboard_zprava .zprava_fieldset.akce .oddo {
+	font-weight: 600;
+}
+
+.noticeboard_zprava .zprava_fieldset.akce .oddo span:nth-child(even) {
+	margin-left: 1rem;
+}
+.noticeboard_zprava .zprava_fieldset.akce .nazev,
+.noticeboard_zprava .zprava_fieldset.akce i {
+	color: #61A23A;
+}
+.noticeboard_zprava .zprava_fieldset.akce .button {
+	margin: 1rem 2rem;
+}
+
+.noticeboard_zprava .zprava_fieldset.akce .column:last-child:first-child > .button {
+	margin: 0 2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.noticeboard_zprava .zprava_fieldset.soubory .soubor {
+	margin-bottom: .5rem;
+}
+
+.noticeboard_zprava #discussion {
+	margin-top: 1.5rem;
+}
+
+.noticeboard_zprava .zprava_dalsi_polozky .hodnota {
+	color: var(--vyveska-dalsi-polozky);
+	word-break: break-word;
+	font-weight: 600;
+}
+
+.noticeboard_zprava .zprava_dalsi_polozky i {
+	font-size: 1.6rem;
+	color: var(--vyveska-dalsi-polozky);
+}
+
+.noticeboard_zprava .zprava_dalsi_polozky a {
+	color: var(--vyveska-dalsi-polozky);
+}
+
+.noticeboard_zprava .zprava_dalsi_polozky .column {
+	margin: 1rem 0 0.5rem;
+	padding-top: .5rem;
+	padding-bottom: 1rem;
+}
+
+.noticeboard_zprava .zprava_dalsi_polozky .column:nth-child(even) {
+	border-left: 2px solid var(--bordersedy);
+	padding-left: 2rem;
+}
+
+.noticeboard_zprava .zprava_dalsi_polozky h5 {
+	color: var(--vyveska-dalsi-polozky);
+	font-weight: 400;
+}
+
+.noticeboard_zprava .trziste_prace_mam_zajem {
+	margin-bottom: 1.5rem;
+}
+
+.noticeboard_zprava .trziste_prace_reakce_odeslana {
+	margin-bottom: 1.5rem;
+	display: inline-block;
+	padding: 0.6em 1em;
+	vertical-align: middle;
+}
+
+/**
+ * Dlazdice prepinani
+ **/
+
+/* small */
+#noticeboard .dlazdice_column {
+	-webkit-flex: 0 0 100%;
+	    -ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+	max-width: 100%;
+}
+
+/* medium */
+@media print, screen and (min-width: 40em) {
+
+#noticeboard .sekce_row_wrap {
+	margin-top: .75rem;
+	padding: calc(2 * 1.07143rem - 0.75rem) calc(2 * 1.07143rem);
+}
+
+#noticeboard .row.two > .dlazdice_column,
+#noticeboard .dlazdice_column /* medium default */ {
+	-webkit-flex: 0 0 50%;
+	    -ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+	max-width: 50%;
+}
+
+#noticeboard .row.one > .dlazdice_column {
+	-webkit-flex: 0 0 100%;
+	    -ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+	max-width: 100%;
+}
+
+}
+
+/* large */
+@media print, screen and (min-width: 64em) {
+
+#noticeboard .row.three > .dlazdice_column,
+#noticeboard .dlazdice_column /* large default */ {
+	-webkit-flex: 0 0 33.33333%;
+	    -ms-flex: 0 0 33.33333%;
+		flex: 0 0 33.33333%;
+	max-width: 33.33333%;
+}
+
+#noticeboard .row.one > .dlazdice_column {
+	-webkit-flex: 0 0 75%;
+	    -ms-flex: 0 0 75%;
+		flex: 0 0 75%;
+	max-width: 75%;
+}
+
+#noticeboard .one .dlazdice {
+	flex-direction: row;
+}
+
+#noticeboard .one .dlazdice .hlavicka {
+	-webkit-flex: 0 0 58.33333%;
+	    -ms-flex: 0 0 58.33333%;
+		flex: 0 0 58.33333%;
+	max-width: 58.33333%;
+	padding-right: 1rem;
+}
+
+#noticeboard .one .dlazdice .grafika {
+	-webkit-flex: 0 0 41.66667%;
+	    -ms-flex: 0 0 41.66667%;
+		flex: 0 0 41.66667%;
+	max-width: 41.66667%;
+}
+
+#noticeboard .one .dlazdice.zrusena .grafika {
+	flex: auto;
+	max-width: none;
+}
+
+#noticeboard .one .dlazdice.zrusena .obnovit_wrap {
+	-webkit-flex: 0 0 41.66667%;
+	    -ms-flex: 0 0 41.66667%;
+		flex: 0 0 41.66667%;
+	max-width: 41.66667%;
+}
+
+}
+/**
+ * Dlazdice prepinani konec
+ **/
+
+#noticeboard .dlazdice .hlavicka {
+	padding-bottom: 1rem;
+}
+
+#noticeboard .dlazdice .hlavicka .top {
+	padding-bottom: .5rem;
+}
+
+#noticeboard .dlazdice .hlavicka .isi-stitek {
+	float: left;
+	font-size: 2.5rem;
+	margin-top: -6px;
+	color: var(--barva1);
+	margin-left: -0.5rem;
+}
+
+#noticeboard .dlazdice .hlavicka .nazev,
+#noticeboard .dlazdice .hlavicka .kdy_kdo {
+	padding-left: 2rem;
+}
+
+#noticeboard .dlazdice .hlavicka .nazev a {
+	font-family: Roboto;
+	font-size: 17px;
+}
+
+#noticeboard .dlazdice .hlavicka .kdy_kdo .kdy {
+	font-size: .8rem;
+	color: var(--barva5);
+}
+
+#noticeboard .dlazdice .hlavicka .kdy_kdo .kdo,
+#noticeboard .dlazdice .hlavicka .kdy_kdo .comma {
+	font-size: .8rem;
+	color: var(--text-nedurazny);
+}
+
+#noticeboard .dlazdice .obnovit {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+#noticeboard .dlazdice .obnovit_wrap {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+#noticeboard .dlazdice .obnovit:hover .isi-loop {
+	color: #002776;
+}
+
+#noticeboard .dlazdice .obnovit > div {
+	height: 100%;
+}
+
+#noticeboard .dlazdice .obnovit  .isi-loop {
+	font-size: 7rem;
+	color: white;
+}
+
+#noticeboard .dlazdice.zrusena .grafika {
+	filter: grayscale(100%);
+}
+
+#noticeboard .column_switch {
+	line-height: 2;
+}
+
+#noticeboard .column_switch a {
+	margin-right: .8em;
+}
+#noticeboard .column_switch a:last-child {
+	margin-right: 0;
+}
+
+#noticeboard .column_switch .double {
+	box-sizing: content-box;
+	font-size: 1.1rem;
+	height: 1px;
+	width: calc(.5em - .5px);
+	border-top: calc(.5em - .5px) solid #8C8C8C;
+	border-bottom: calc(.5em - .5px) solid #8C8C8C;
+	margin-right: 1px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#noticeboard .column_switch .active .double {
+	border-color: #FACD3B;
+}
+
+#noticeboard .seznam_podsekci {
+	margin-bottom: 1.25rem;
+	background-color: var(--bgbarva-seda1);
+	border: 1px solid var(--bordersedy);
+	padding: 1rem;
+}
+
+#noticeboard .seznam_podsekci .no-logo {
+	color: var(--barva1);
+	float: left;
+	font-size: 3rem;
+}
+
+#noticeboard .seznam_podsekci .logo {
+	height: 3rem;
+	float: left;
+	border-radius: 50%;
+	margin-right: 1rem;
+}
+
+#noticeboard .seznam_podsekci h3 {
+	line-height: 3rem;
+	margin-bottom: 0;
+}
+
+#noticeboard .seznam_podsekci h4:first-letter {
+	text-transform: uppercase;
+}
+
+#noticeboard .seznam_podsekci ul {
+	padding-left: 4rem;
+	margin-top: .5rem;
+}
+
+@media print, screen and (max-width: 40em) {
+	#noticeboard .seznam_podsekci ul {
+		padding-left: 0;
+	}
+}
+
+#noticeboard .seznam_podsekci .isi-nahoru {
+	float: left;
+	font-size: 2.25rem;
+}
+
+#noticeboard .pocet_nove.right {
+	margin-right: .5rem;
+}
+
+#noticeboard .pocet_nove.left {
+	margin-left: .5rem;
+}
+
+#noticeboard .pocet_nove.pocet0 {
+	display: none;
+}
+
+#noticeboard .sekce_moznosti .pocet_nove.pocet0 {
+	display: inline-block;
+	background: grey;
+}
+
+#noticeboard .sledovat {
+	color: #c1c1c1;
+}
+
+#noticeboard .sledovat > i {
+	position: relative;
+	padding-top: 1px;
+	top: -.5px;
+	line-height: 1.2;
+}
+
+#noticeboard .sledovat.active {
+	color: red;
+}
+
+#noticeboard .at {
+	font-weight: 600;
+	color: #c1c1c1;
+	font-size: 1.1rem;
+	text-decoration: none;
+}
+
+#noticeboard .zpravy_dlazdice .at {
+	font-weight: 500;
+	font-size: 1.3rem;
+	vertical-align: 8%;
+	margin-left: 0.3em;
+}
+
+#noticeboard .at.active {
+	color: #f9a500;
+}
+
+#noticeboard .sep {
+	border-right: 1px solid #e0e0e0;
+	margin: 0 .7rem;
+	padding: .1rem 0;
+}
+
+@media print, screen and (max-width: 40em) {
+	#noticeboard .sekce_moznosti {
+		margin-bottom: 1rem;
+	}
+}
+
+#noticeboard .sekce_moznosti i {
+	font-size: 1.6rem;
+}
+
+#noticeboard .sekce_moznosti .rss {
+	display: inline-block;
+	vertical-align: -10%;
+}
+
+#noticeboard .sekce_moznosti .isi-nastaveni {
+	vertical-align: -16%;
+}
+
+#noticeboard .sekce_moznosti .nova_zprava {
+	white-space: nowrap;
+}
+
+#noticeboard .sekce_moznosti .rss i {
+	font-size: 1.4rem;
+}
+
+.reveal.rss .fi-rss {
+	display: inline-block;
+	width: 2.6rem;
+	margin-left: -2.6rem;
+	font-size: 125%;
+	vertical-align: -2px;
+	color: #002776;
+	line-height: 1;
+}
+
+.reveal.rss img[alt=RSS] {
+	display: none;
+}
+
+#noticeboard .zprava .obsah br.para {
+	content: "";
+	display: block;
+	margin-bottom: 1rem;
+}
+
+.noticeboard_zprava .hlavicka .drobecky {
+	margin-bottom: 1rem;
+	font-size: 13px;
+}
+
+.noticeboard_zprava .hlavicka .drobecek {
+	color: #969696;
+}
+
+.noticeboard_zprava .hlavicka .drobecek.zprava {
+	color: #00a442;
+}
+
+.noticeboard_zprava .hlavicka .isi-zobacek-vpravo {
+	font-size: 1.15rem;
+	font-weight: 300;
+	vertical-align: -9%;
+	color: #5a5a5a;
+	margin: 0 5px;
+}
+
+.noticeboard_zprava .nazev h2 {
+	font-size: 2rem;
+	font-weight: 500;
+	color: #1B214A;
+}
+
+#noticeboard .hvezdicka,
+.noticeboard_zprava .hvezdicka {
+	color: #e3e3e3;
+}
+
+#noticeboard .dlazdice .hvezdicka.active,
+.noticeboard_zprava .hvezdicka.active {
+	color: #f9a500;
+}
+
+.noticeboard_zprava .isi-oko {
+	line-height: 0.5;
+	color: #e3e3e3;
+}
+
+#noticeboard .precteni.active > .isi-oko,
+.noticeboard_zprava .precteni.active > .isi-oko {
+	color: var(--barva1);
+}
+
+.noticeboard_zprava .vlozeno_autor .sep {
+	border-right: 1px solid #e0e0e0;
+	margin: 0 .7rem;
+	padding: .1rem 0;
+}
+
+.noticeboard_zprava .hlavicka {
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.noticeboard_zprava .hlavicka .nazev i,
+.noticeboard_zprava .hlavicka .nazev i:before {
+	display: inline;
+}
+
+.noticeboard_zprava .hlavicka .nazev a:focus,
+.noticeboard_zprava .hlavicka .nazev a:hover {
+	text-decoration: none;
+}
+
+.noticeboard_zprava .jmeno {
+	color: #7C7C7C;
+}
+
+.noticeboard_zprava .vlozeno {
+	color: #287BBF;
+}
+
+.noticeboard_zprava .kdy_kde {
+	padding: 0.7rem 0 1rem;
+	margin: 1rem 0 2rem;
+	border-top: 1px solid #F7C9A8;
+	border-bottom: 1px solid #F7C9A8;
+}
+
+.noticeboard_zprava .kdy_kde .isi-marker {
+	position: relative;
+	top: 2px;
+}
+
+.noticeboard_zprava .kdy,
+.noticeboard_zprava .kde,
+.noticeboard_zprava .kde a {
+	color: #FF6B01;
+	font-weight: 600;
+	font-size: 1.142857rem;
+}
+
+.noticeboard_zprava .kdy i,
+.noticeboard_zprava .kde i {
+	font-size: 2rem;
+}
+
+@media print, screen and (min-width: 40em) {
+
+	.noticeboard-zprava .reveal-content > div {
+		padding: 0 2rem;
+	}
+
+	.noticeboard_zprava .ikony {
+		text-align: right;
+	}
+}
+
+@media print, screen and (max-width: 40em) {
+	.noticeboard_zprava .ikony {
+		margin-top: 1rem;
+	}
+}
+
+.noticeboard_zprava .ikony .ikona {
+	padding: .25rem;
+	margin: 0 .5rem;
+	background-color: #f3f3f3;
+	width: 2.5rem;
+	height: 2.5rem;
+	text-align: center;
+	display: inline-block;
+	line-height: 1;
+}
+
+.noticeboard_zprava .ikony .ikona:first-child {
+	margin-left: 0;
+}
+
+.noticeboard_zprava .ikony .ikona .isi-inline {
+	font-size: 1.8rem;
+}
+
+.noticeboard_zprava .ikony .ikona.hodnotit {
+	color: var(--text-nedurazny);
+}
+
+.noticeboard_zprava .ikony .ikona.hodnotit.active.spoko {
+	color: var(--barva2);
+}
+.noticeboard_zprava .ikony .ikona.hodnotit.active.nespoko {
+	color: var(--barva3);
+}
+
+.noticeboard_zprava .dropdown.menu.zprava_menu > li > ul > li > a {
+	line-height: 1.4;
+	padding: .5rem 1rem;
+	text-align: left;
+}
+
+.noticeboard_zprava .zprava_menu > li > a:after {
+	display: none!important;
+}
+
+.noticeboard_zprava .zprava_menu > li > a {
+	padding: 0;
+}
+
+.noticeboard_zprava .stitky {
+	padding-top: 1rem;
+}
+
+.noticeboard_zprava .stitky .stitek-inline {
+	background-color: #00a4f4;
+	color: white;
+	margin-bottom: .35rem;
+}
+
+.reveal.noticeboard-zprava {
+	max-width: 85rem;
+}
+
+.reveal.noticeboard-zprava.nb_red {
+	border-top: 3px solid #C41F1B;
+}
+
+.reveal.noticeboard-zprava.nb_blue {
+	border-top: 3px solid #006BD6;
+}
+
+.noticeboard-zprava .reveal-content > .is-loading {
+	min-height: 35vh;
+	margin-top: calc( 35vh - 25px );
+}
+
+.noticeboard-zprava .buttons {
+	position: relative;
+}
+
+@media print, screen and (max-width: 40em) {
+	.noticeboard-zprava .buttons {
+		display: none;
+	}
+}
+
+.noticeboard-zprava .buttons .left_wrap {
+	position: absolute;
+	left: 0;
+}
+
+.noticeboard-zprava .buttons .right_wrap {
+	position: absolute;
+	right: 0;
+}
+
+.noticeboard-zprava .buttons .left_wrap .button {
+	position: relative;
+}
+
+.noticeboard-zprava .buttons .right_wrap .button {
+	position: relative;
+}
+
+.noticeboard-zprava .buttons .button {
+	padding: 0;
+	background: #e6e6e6;
+	color: #002164;
+	width: 3.2rem;
+	height: 3.2rem;
+}
+
+html[data-whatintent="mouse"] .noticeboard-zprava .buttons .button {
+	background: transparent;
+}
+
+html[data-whatintent="mouse"] .noticeboard-zprava:hover .buttons .button:not(.none) {
+	background: #002776;
+}
+
+@media print, screen and (min-width: 40em) {
+
+	.noticeboard-zprava .buttons .left_wrap .button {
+		transform: translateX(calc(-100% + 7px));
+	}
+
+	.noticeboard-zprava .buttons .right_wrap .button {
+		transform: translateX(calc(100% - 7px));
+	}
+}
+
+.noticeboard-zprava .buttons .button.none {
+	cursor: not-allowed;
+	color: var(--text-nedurazny);
+}
+
+.noticeboard-zprava .buttons .button:before {
+	font-family: "is-icons" !important;
+        font-size: 2rem;
+        position: relative;
+        top: .357142857rem;
+}
+
+.noticeboard-zprava .buttons .left_wrap .button:before {
+	content: "\e0b2";
+}
+
+.noticeboard-zprava .buttons .right_wrap .button:before {
+        content: "\e0b3";
+}
+
+html[data-whatintent="mouse"] .noticeboard-zprava:hover .buttons .button:not(.none):before {
+	color: #fff;
+}
+
+#noticeboard .chosen-container-multi .chosen-choices li {
+	float: none;
+}
+
+#noticeboard .chosen-container-multi .chosen-choices {
+	background-position: calc(100% - 9px) calc(100% - (2rem / 2));
+}
+
+#noticeboard .navodek.vkladani {
+	margin-bottom: 1rem;
+	display: inline-block;
+}
+
+#noticeboard #vyber_zvyrazneni_chosen .search-choice {
+	border: 1px solid #245ed4;
+}
+
+#noticeboard #vyber_zvyrazneni_chosen .search-choice.red {
+	border-color: #c41818;
+}
+
+.reveal.pool .thumbnail  {
+	cursor: pointer;
+	display: block;
+}
+
+.reveal.pool .thumbnail[data-default] {
+	line-height: 1.5;
+}
+
+.reveal.pool .thumbnail:hover {
+	box-shadow: 0 0 6px 1px rgba(0,39,118,.5);
+}
+
+.reveal.vyber_sekce_modal,
+.reveal.obnovit_zpravu_form,
+.reveal.kopirovat_zpravu,
+.reveal.presun_zpravu {
+	overflow-y: visible;
+}
+
+#noticeboard.rozcestnik .nova_zprava {
+	display: block;
+	margin: 2rem 0;
+}
+
+@media print, screen and (max-width: 40em) {
+	#noticeboard.rozcestnik .nova_zprava {
+		margin: 0 0 1rem 0;
+	}
+}
+
+#noticeboard .nova_zprava.big {
+	font-size: 1.2rem;
+}
+
+#noticeboard .nova_zprava.big .isi-pridat {
+	font-size: 2rem;
+	vertical-align: -6px;
+}
+
+#noticeboard .zpravy_dlazdice .nova_zprava {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+#noticeboard.nova_zprava .pravidla .isi-vykricnik {
+	font-size: 2.7rem;
+	float: left;
+	line-height: 1;
+	color: #fc9603;
+}
+
+#noticeboard.nova_zprava .pravidla .dulezite_caps {
+	text-transform: uppercase;
+	color: #fc9603;
+	display: inline-block;
+	margin-top: .5rem;
+	margin-right: 1rem;
+}
+
+#noticeboard.nova_zprava .pravidla .rozklikavatko-nadpis {
+	font-weight: 600;
+}
+
+#noticeboard.nova_zprava .zobrazit_en {
+	line-height: 2.5;
+}
+
+#noticeboard.nova_zprava .navodek-obsah {
+	clear: both;
+	margin-bottom: 1rem;
+}
+
+#noticeboard.nova_zprava .vice_moznosti,
+#noticeboard.uprav_zpravu .vice_moznosti {
+	margin-bottom: 1rem;
+}
+
+#noticeboard.nastaveni_sekce .tahat {
+	cursor: grab;
+}
+
+#noticeboard.nastaveni_sekce .tahat i {
+	font-size: 1.5rem;
+	vertical-align: -20%;
+}
+
+#noticeboard.nastaveni_sekce h2.polozky {
+	display: inline-block;
+}
+#noticeboard.nastaveni_sekce .pridat_polozku i,
+#noticeboard.nastaveni_sekce .pridat_sekci i {
+	font-size: 1.5rem;
+	line-height: 1.2;
+}
+
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .podsekce .upravit,
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .dpolozky .upravit,
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .dpolozky .smazat,
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .podsekce .smazat {
+	display: none;
+}
+
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .podsekce > li:hover .upravit,
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .dpolozky > li:hover .upravit,
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .dpolozky > li:hover .smazat,
+[data-whatintent=mouse] #noticeboard.nastaveni_sekce .podsekce > li:hover .smazat {
+	display: inline-block;
+}
+
+.prava_sekce_modal iframe,
+.trziste_prace_mam_zajem iframe {
+	width: 100%;
+	height: 60vh;
+}
+
+#noticeboard .ignorovane_osoby {
+	overflow-y: auto;
+	max-height: 25vh;
+}
+
+#noticeboard.ignorovane_osoby .moje_ignorovane_osoby .zrus {
+	display: none;
+}
+
+#noticeboard.ignorovane_osoby .moje_ignorovane_osoby:hover .zrus {
+	display: inline;
+}
+
+.reveal.rozeslat_email iframe {
+	width: 100%;
+	height: 35vh;
+	margin-bottom: 1rem;
+}
+
+/* TMAVÝ DESIGN 992 */
+.motiv-tmavy .noticeboard_zprava .nazev h2 {
+	color: var(--nadpis-sekce);
+}
+
+.motiv-tmavy .noticeboard_zprava .ikony .ikona {
+	background-color: var(--bgbarva-seda3);
+}
+
+.motiv-tmavy #noticeboard .dlazdice {
+	background-color: var(--bgbarva-seda3);
+}
+
+.motiv-tmavy #noticeboard .sekce_popis {
+	color: var(--barva1);
+}
+
+.motiv-tmavy #noticeboard .zpravy_dlazdice .sekce_popis_wrap::before {
+	border-top-color: var(--barva1);
+}
+</style>
+<script src="/js/r6/jquery.js?_v=3736f12"></script>
+<script src="/js/error.js?_v=e23fead"></script>
+<script src="/js/r6/foundation.js?_v=a06b727"></script>
+</head>
+<body class="cs auth skola_14 motiv-1 motiv-svetly">
+<a href="#left_menu" class="show-on-focus print-hide">Přeskočit na hlavní menu</a><a href="#sticky_panel" class="show-on-focus print-hide">Přeskočit na horní lištu</a><a href="#hlavicka" class="show-on-focus print-hide">Přeskočit na hlavičku</a><a href="#app_menu_items" class="show-on-focus print-hide">Přeskočit na aplikační menu</a><a href="#app_content" class="show-on-focus print-hide">Přeskočit na obsah</a><a href="#paticka" class="show-on-focus print-hide">Přeskočit na patičku</a>
+<div id="content" class="left_menu_enabled">
+	<div id="zdurazneni-sticky" class="zdurazneni-sticky print-hide" role="alert" aria-atomic="true"></div>
+	<div id="rows_wrapper">
+		<div class="foundation-design-z">
+			<nav id="sticky_panel" >
+	<div class="row">
+		<div class="column">
+			<div class="ikony">
+				
+				<a href="#" class="sticky-icon show-for-1280-only float-right" data-toggle="header_menu" title="Hlavní menu" aria-label="Hlavní menu"><i class="isi-menu" aria-hidden="true"></i></a><nav id="header_menu" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<ul class="items">
+		<li class="ikony">
+			<a href="./?lang=en;setlang=en" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a>
+			<a href="/auth/osoba/990001" class="jmeno_small show-for-small-only">
+	Novák, J.
+</a>
+			<a href="#" title="Odhlášení ze systému" class="sticky-icon is-logout-menu show-for-small-only">
+	<i class="isi-power" aria-hidden="true"></i>
+	<span class="show-for-sr">Odhlášení ze systému</span>
+</a>
+		</li>
+		<li class="noitem">
+			<a href="/auth/" class="domu">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+			
+		</li>
+		<li class="noitem"><label class="moje_apl">Moje aplikace<a href="#" class="toggle_edit_mode"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a></label></li><li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+	</ul>
+</nav><a href="#" class="sticky-icon sticky-zivot float-right" data-toggle="header_zivot" title="Život na MU" aria-label="Život na MU"><i class="isi-zivot" aria-hidden="true"></i><span class="pocet"></span></a><div id="header_zivot" class="dropdown-pane bottom zivot_wrap" data-dropdown data-close-on-click="true" aria-labelledby="dd-lbl-zivot"></div><a href="#" class="sticky-icon show-for-medium float-right" data-toggle="header_oblibene" title="Oblíbené" aria-label="Oblíbené"><i class="isi-hvezdicka" aria-hidden="true"></i></a><div id="header_oblibene" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<div id="oblibene" class="oblib_sled">
+		<h5 class="barva4">S hvězdičkou</h5>
+		<div id="oblibene_loading" data-loading-size="medium">
+		</div>
+	</div>
+	<div id="sledovane" class="oblib_sled">
+		<h5 class="barva3"><a href="/auth/udalosti/nastav_log">Sledované</a></h5>
+		<div id="sledovane_loading" data-loading-size="medium">
+		</div>
+		<ul class="vertical menu">
+		</ul>
+	</div>
+</div><a href="#" class="sticky-icon prepinac-vyhl float-right" title="Vyhledávání" aria-label="Vyhledávání" data-toggle="is_search"><i class="isi-lupa" aria-hidden="true"></i></a><div id="is_search" class="dropdown-pane bottom search-dropdown" data-dropdown data-close-on-click="true">
+	<form method="POST" action="/auth/vyhledavani/" role="search">
+		<div class="input-group">
+			<input class="input-group-field input_text" type="search" name="search" autocomplete="off" role="searchbox">
+			<div id="is_search_x" class="is_input_x input-group-button"><i class="isi-x"></i></div>
+			<div class="input-group-button">
+				<input type="submit" class="button" value="Vyhledat">
+			</div>
+		</div>
+	</form>
+	<div id="is_search_results"></div>
+</div><span style="display: none;"><a id="male_vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span><span class="hide-for-1280-only"><a href="./?lang=en;setlang=en" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a></span><a href="/auth/osoba/990001" class="jmeno sticky-item show-for-medium">	Jan Novák, učo&nbsp;990001</a><a href="#" class="sticky-icon is-logout float-right show-for-medium" title="Odhlášení ze systému" data-toggle="is_logout">
+		<i class="isi-power" aria-hidden="true"></i>
+		<span class="show-for-sr">Odhlášení ze systému</span>
+	</a>
+<div id="is_logout" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	
+	<form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" action="/auth/system/logout.pl" id="prvek_7979258"><div class="row">
+	<div class="column"><button id="prvek_4072409" class="expanded button" type="submit" name="odhlasit" value="1">Odhlásit se</button><div class="odhlasit_vse"><label class="validator-group-content" for="odhlasit_vse"><input id="odhlasit_vse" name="odhlasit_vse" type="checkbox" value="1">odhlásit ze všech zařízení</label><span class="form-error" data-form-error-for="odhlasit_vse"><span class="form-error-text"></span></span></div></div>
+</div>
+</form>
+</div>
+			</div>
+		</div>
+	</div>
+</nav>
+			<div class="row">
+	<div class="column">
+		<div id="left_menu_wrap">
+			<div id="left_menu_offset_wrap">
+				<nav id="left_menu" aria-label="Hlavní menu" role="navigation" class="hide-for-1280-only">
+					<div class="items">
+						<div>
+							<a href="/auth/" class="domu menuitem">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+						</div>
+						
+						
+						<div class="moje_apl_wrap"><a href="#" class="toggle_edit_mode menu_icon"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a><label class="moje_apl">Moje aplikace</label></div>
+						<ul class="tags" aria-label="Odkazy hlavního menu">
+							<li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+						</ul>
+						<div class="add"><a href="#" aria-label="Přidat"><i class="isi-plus isi-inline" title="Přidat" aria-hidden="true"></i></a></div>
+						<div class="buttons">
+							<button class="reset button secondary small" data-tooltip data-show-on="all" title="Obnoví implicitní položky menu.">Reset</button>
+							<button class="hotovo button small">Hotovo</button>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+			<header class="row hlavicka" id="hlavicka">
+	<div class="small-5 medium-3 columns znak skola14">
+		<a href="/auth/" class="stitek skola_14" title="Informační systém Masarykovy univerzity" aria-label="Informační systém Masarykovy univerzity"></a>
+	</div>
+	<div id="is-prepinace" class="small-7 medium-9 columns">
+		
+		<div id="prepinace">
+        <ul aria-hidden="true" class="is-switch dropdown menu" data-dropdown-menu data-click-open="true" data-closing-time="0" data-autoclose="false" data-disable-hover="true" data-close-on-click="true" data-force-follow="false" data-close-on-click-inside="false" data-alignment="right">
+                
+                
+                
+        </ul>
+        <ul class="show-for-sr">
+                
+                
+                
+        </ul>
+</div>
+	</div>
+</header><div id="drobecky" class="row">
+	<div class="column">
+		<span class="wrap"><a href="/auth/" title="Informační systém MU" accesskey="0" class="drobecek_logo"> </a><span class="sep last"> <i class="isi-zobacek-vpravo"></i><span class="show-for-sr">&gt;</span> </span><a href="/auth/noticeboard/" class="drobecek_app" accesskey="1">Vývěska</a> <a class="pin_red" title="Přidat tuto aplikaci mezi MOJE APLIKACE" aria-label="Přidat tuto aplikaci mezi MOJE APLIKACE"><i class="isi-pripinacek sponka" aria-hidden="true"></i></a></span>
+	</div>
+</div><div id="app_header_wrapper" class="row align-justify show-for-medium">
+	<div class="medium-12 column">
+		<h1 id="app_header"><div class="large-9 xlarge-9"><span id="app_name">Vývěska</span></div></h1>
+	</div>
+	<div class="shrink column">
+		<div id="app_header_image"></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+		<div id="app_menu" class="">
+			<nav role="navigation" id="app_menu_items" aria-label="Aplikační menu">
+	<a href="/auth/noticeboard/" accesskey="1" class="polozka app-menu-hidden active vyveska drobecek_app isi-rozcestnik">Vývěska</a><a href="/auth/noticeboard/sledovane/" class="polozka app-menu-hidden sledovane">Sledované</a><a href="/auth/noticeboard/fakultni/" class="polozka app-menu-hidden fakultni">Fakultní</a><a href="/auth/noticeboard/tematicke/" class="polozka app-menu-hidden tematicke">Tematické vývěsky</a><a href="/auth/noticeboard/pozvanky/" class="polozka app-menu-hidden pozvanky">Pozvánky</a><a href="/auth/noticeboard/cela_inzerce/" class="polozka app-menu-hidden cela_inzerce">Inzerce</a><a href="/auth/noticeboard/moje/" class="polozka app-menu-hidden moje">Moje zprávy</a>
+	<ul role="menu" aria-label="Další položky" class="dropdown menu" data-dropdown-menu id="app_menu_small" data-disable-hover="true" data-autoclose="false" data-click-open="true">
+		<li>
+			<a href="#">Více</a>
+			<ul class="menu">
+				<li class='polozka_parent'><a href="/auth/noticeboard/" accesskey="1" class="polozka app-menu-hidden active vyveska drobecek_app isi-rozcestnik">Vývěska</a></li><li class='polozka_parent'><a href="/auth/noticeboard/sledovane/" class="polozka app-menu-hidden sledovane">Sledované</a></li><li class='polozka_parent'><a href="/auth/noticeboard/fakultni/" class="polozka app-menu-hidden fakultni">Fakultní</a></li><li class='polozka_parent'><a href="/auth/noticeboard/tematicke/" class="polozka app-menu-hidden tematicke">Tematické vývěsky</a></li><li class='polozka_parent'><a href="/auth/noticeboard/pozvanky/" class="polozka app-menu-hidden pozvanky">Pozvánky</a></li><li class='polozka_parent'><a href="/auth/noticeboard/cela_inzerce/" class="polozka app-menu-hidden cela_inzerce">Inzerce</a></li><li class='polozka_parent'><a href="/auth/noticeboard/moje/" class="polozka app-menu-hidden moje">Moje zprávy</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+		</div>
+	</div>
+</div><!--[if lt IE 9]><div id="prvek_6195860" class="zdurazneni varovani ie_warning"><h3 class="zdurazneni-nadpis">Varování:</h3><h3>Váš prohlížeč Internet Explorer je zastaralý.</h3><p>Jsou známa bezpečnostní rizika a prohlížeč možná nedokáže zobrazit všechny prvky této a dalších webových stránek.</p></div><![endif]-->
+		</div>
+		<div id="app_content_row" class="row"><main id="app_content" class="column" role="main"><div id="noticeboard" class="rozcestnik"><div class="row">
+	<div class="column small-12 medium-8 large-6"><form data-abide novalidate method="get" enctype="application/x-www-form-urlencoded" action="/auth/vyhledavani/" id="prvek_1702270" role="search">
+<input type="hidden" name="ag" value="bb">
+<div class="input-group ai_style" id="vyhledavani_form">
+	 <div class="input-group-label isi-vyveska" aria-hidden="true"></div>
+	<input autocomplete="off" class="input-group-field" id="prvek_2351749" name="search" placeholder="vyhledat na Vývěsce" role="searchbox" type="search"><span class="form-error" data-form-error-for="prvek_2351749"><span class="form-error-text"></span></span>
+	<a href="#" id="vyhledavani_form_x" class="input-group-button" aria-label="Clear input"><i class="isi-x isi-inline" aria-hidden="true"></i></a>
+	<button type="submit" id="vyhledavani_send_form" class="button clear tl_vyhledat" aria-label="Vyhledat"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 104 104" role="img" aria-labelledby="svgTitle_prvek_2075115" class="logo_ai logo_ai_lupa_tl" id="prvek_2075115"><title id="svgTitle_$id"></title><defs><clipPath id="clippathprvek_2075115"><circle cx="52" cy="52" r="49.5" fill="none"/></clipPath></defs><g id="spodni-obrazekprvek_2075115"><g id="ochranna_zona"><g clip-path="url(#clippathprvek_2075115)"><image width="418" height="418" transform="translate(1.844 1.844) scale(.24)" xlink:href="/pics/ai/spodni_obrazek.png"/></g></g><g id="lupaprvek_2075115"><path class="st0" d="M54.37,38.08c-6.18,0-11.18,5.04-11.18,11.25,0,2.13.59,4.11,1.6,5.8l-5.42,5.46.02.02c-.58.56-.94,1.35-.94,2.24,0,1.72,1.37,3.07,3.08,3.07.88,0,1.66-.35,2.22-.92v.02s5.6-5.63,5.6-5.63c1.5.76,3.2,1.19,5.01,1.19,6.18,0,11.18-5.03,11.18-11.25s-5-11.25-11.18-11.25h0ZM54.43,56.79c-4.2,0-7.62-3.44-7.62-7.67s3.42-7.67,7.62-7.67,7.63,3.44,7.63,7.67-3.42,7.67-7.63,7.67h0Z" fill="var(--barva1)"/></g></g><g id="horni-obrazekprvek_2075115" class="rotujici-vrstva"><image width="255" height="208" transform="translate(36.884 5.924) scale(.24)" xlink:href="/pics/ai/horni_obrazek.png"/><circle cx="89.984" cy="53.173" r="9.273" fill="#fff"/></g></svg><span class="show-for-sr">Vyhledat</span></button>
+	
+</div></form><span style="display: none;"><a id="vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span></div>
+	<div class="small-12 medium-4 large-6 column"><div class="row align-right">
+	<div class="small-12 medium-shrink column"><a href="#" class="nova_zprava modal big"><i class="isi-inline-right isi-pridat" aria-hidden="true"></i>Vložit novou zprávu</a></div>
+</div>
+</div>
+</div>
+<div class="zpravy_dlazdice" data-typ="dulezite" data-id_typu="" data-nove_do="20260918202841">
+	<div class="row">
+		<div class="column small-12 medium-expand">
+			<h2 class="nadpis-sekce"><i class="isi-inline-right isi-vyveska" aria-hidden="true"></i>Důležité zprávy</h2>
+		</div>
+		<div class="column shrink"><div class="column_switch show-for-medium">
+	<a href="#" class="one" data-sq="one"><span class="double"></span></a><a href="#" class="two" data-sq="two"><span class="double"></span><span class="double"></span></a><a href="#" class="three active" data-sq="three"><span class="double"></span><span class="double"></span><span class="double"></span></a>
+</div>
+</div>
+	</div>
+	
+	
+	<div class="sekce_row_wrap">
+		<div class="row sekce_row three" data-equalizer data-equalize-by-row="true"><div class="column dlazdice_column">
+	<div class="dlazdice nova modra" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="172148957"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="172148957"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/skas/mame-vyvesku/" class="noticeboard_zprava" data-zprava_id="172148957">SKAS FI: Máme vývěsku</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 20. 3. 2025 10:08, expiruje 31. 8. 2027">20. 3. 2025</span><span class="comma">,</span>
+				<a href="/auth/osoba/514205" class="kdo" data-vizitka="514205">Bc. Jan Hrdlička</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/skas/mame-vyvesku/" class="grafika noticeboard_zprava" style="background: url('/imgx/g/s/h/sqldcskjke_3njaift_-x/1.png') 50% 50%/cover" data-url="" data-zprava_id="172148957"><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova modra" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="173200815"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="173200815"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/zfakulty/studenti-fi-mu-se-podileli-na-vitezstvi-slovak-cyber-teamu-v-nejvetsi-i/" class="noticeboard_zprava" data-zprava_id="173200815">Studenti FI MU se podíleli na vítězství Slovak Cyber Teamu v největší irské kybersoutěži</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 8. 4. 2025 10:26, expiruje 23. 4. 2029">8. 4. 2025</span><span class="comma">,</span>
+				<a href="/auth/osoba/105317" class="kdo" data-vizitka="105317">Marta Vrlová, M.A., MPH</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/zfakulty/studenti-fi-mu-se-podileli-na-vitezstvi-slovak-cyber-teamu-v-nejvetsi-i/" class="grafika noticeboard_zprava" style="background: url('/imgx/w/l/j/stc7p0jkxuzlj_tmufha7/foto-teamu-2-1.jpg') 50% 50%/cover" data-url="" data-zprava_id="173200815"><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova modra" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="192634027"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="192634027"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/o_nas/lekar-tolar-a-informatik-mittelbach-prevezmou-doktoraty-masarykovy-univ/" class="noticeboard_zprava" data-zprava_id="192634027">Lékař Tolar a informatik Mittelbach převezmou doktoráty Masarykovy univerzity</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 19. 3. 2026 09:29, expiruje 3. 4. 2029">19. března</span><span class="comma">,</span>
+				<a href="/auth/osoba/105317" class="kdo" data-vizitka="105317">Marta Vrlová, M.A., MPH</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/o_nas/lekar-tolar-a-informatik-mittelbach-prevezmou-doktoraty-masarykovy-univ/" class="grafika noticeboard_zprava" style="background: url('/imgx/b/z/p/lepqah4n6c6z9l5acazj4/Frank_Mittelbach_-_IS.png') 50% 50%/cover" data-url="" data-zprava_id="192634027"><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+</div>
+		
+	</div>
+	<div class="sekce_strankovani">
+		
+	</div>
+</div>
+<div class="zpravy_dlazdice" data-typ="sledovane" data-id_typu="rozcestnik" data-nove_do="20260918202841">
+	<div class="row">
+		<div class="column small-12 medium-expand">
+			<h2 class="nadpis-sekce"><i class="isi-inline-right isi-heart" aria-hidden="true"></i><a href="/auth/noticeboard/sledovane/">Sledované zprávy</a></h2>
+		</div>
+		<div class="column shrink"></div>
+	</div>
+	
+	
+	<div class="sekce_row_wrap">
+		<div class="row sekce_row three" data-equalizer data-equalize-by-row="true"><div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204210909"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204210909"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/online/204210909/" class="noticeboard_zprava" data-zprava_id="204210909">Evropští mediální vědci debatovali v Brně o současných výzvách oboru</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 18. 9. 2026 15:44, expiruje 19. 9. 2027">5 hod</span><span class="comma">,</span>
+				<a href="/auth/osoba/242359" class="kdo" data-vizitka="242359">Mgr. Gabriela Peringerová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/online/204210909/" class="grafika noticeboard_zprava" style="background-image: url('https://www.em.muni.cz/images/stories/2026/09_zari/ECREA.jpg')" data-url="https://www.em.muni.cz/images/stories/2026/09_zari/ECREA.jpg" data-zprava_id="204210909"><img src="/pics/design/r6/loga/profilove/M14-pracoviste.svg" class="logo" title="Zpravodajský portál MU" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204150431"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204150431"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/akce_aktuality/prac/kuc/muni_akce/mendelovy-dny-2026/" class="noticeboard_zprava" data-zprava_id="204150431">Mendelovy dny 2026</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 17. 9. 2026 13:53, expiruje 30. 11. 2026">včera</span><span class="comma">,</span>
+				<a href="/auth/osoba/250404" class="kdo" data-vizitka="250404">Ing. Daniela Schön</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/akce_aktuality/prac/kuc/muni_akce/mendelovy-dny-2026/" class="grafika noticeboard_zprava" style="background: url('/imgx/p/b/c/4doxs6szy0cszjytqap5l/MD-2026-BANNER.jpg') 50% 50%/cover" data-url="" data-zprava_id="204150431"><div class="grafika_datum">4. 11. 2026 16:00 &ndash; 5. 11. 2026 13:00</div><img src="/pics/design/r6/loga/profilove/M14.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203791917"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="203791917"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/studijni_odbor/sber-zadosti-o-stipendium-rektora-mu-na-podporu-studentskych-aktivit/" class="noticeboard_zprava" data-zprava_id="203791917">Sběr žádostí o stipendium rektora MU na podporu studentských aktivit</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 11. 9. 2026 13:08, expiruje 20. 10. 2026">11. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/210547" class="kdo" data-vizitka="210547">Mgr. et Mgr. Bc. Michaela Hufová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/studijni_odbor/sber-zadosti-o-stipendium-rektora-mu-na-podporu-studentskych-aktivit/" class="grafika noticeboard_zprava" style="background: url('/imgx/l/t/l/nh0846_buvgfzulooifje/Rektor_CZ.png') 50% 50%/100% 133.333%" data-url="" data-zprava_id="203791917"><img src="/pics/design/r6/loga/profilove/M14.svg" class="logo" title="Studijní odbor" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203341343"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="203341342"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/poradenske_centrum/203341343/" class="noticeboard_zprava" data-zprava_id="203341343">Wellbeing days</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 3. 9. 2026 13:31, změněno 17. 9. 2026 19:52, expiruje 9. 10. 2026">3. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/250915" class="kdo" data-vizitka="250915">Mgr. Dagmar Čaďová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/poradenske_centrum/203341343/" class="grafika noticeboard_zprava" style="background: url('/imgx/5/p/g/nltcranecznawknhoekat/content.webp') 50% 50%/100% 112.3%" data-url="" data-zprava_id="203341343"><div class="grafika_datum">8. 10. 2026 09:00 &ndash; 9. 10. 2026 17:00</div><img src="/pics/design/r6/loga/profilove/M14-pracoviste.svg" class="logo" title="Poradenské centrum" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="202110931"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="202110926"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/akce_aktuality/FSS/muni_akce/202110931/" class="noticeboard_zprava" data-zprava_id="202110931">Setkání s řediteli a zástupci středních škol</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 10. 8. 2026 15:53, expiruje 31. 12. 2026">10. srpna</span><span class="comma">,</span>
+				<a href="/auth/osoba/254830" class="kdo" data-vizitka="254830">Ing. Kateřina Pešková</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/akce_aktuality/FSS/muni_akce/202110931/" class="grafika noticeboard_zprava" style="background: url('/galerie_is/tematicke/Komenskeho_Masaryk.jpg') 50% 50%/cover" data-url="" data-zprava_id="202110931"><div class="grafika_datum">24. 9. 2026 09:15&ndash;15:30</div><img src="/pics/design/r6/loga/profilove/M14.svg" class="logo" title="Kalendář akcí MU" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="67285444"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="67285444"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/redakceMU/casopis_atrium/67285444/" class="noticeboard_zprava" data-zprava_id="67285444">Magisterští studenti radí: Nervozitu si na přijímačky nenoste</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 18. 1. 2017 10:37">18. 1. 2017</span><span class="comma">,</span>
+				<a href="/auth/osoba/348294" class="kdo" data-vizitka="348294">Mgr. Iva Milošová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/redakceMU/casopis_atrium/67285444/" class="grafika noticeboard_zprava" style="background-image: url('/pics/mu/noticeboard/default.svg')" data-url="/pics/mu/noticeboard/default.svg" data-zprava_id="67285444"><img src="/pics/design/r/zivot/atrium.png" class="logo" title="Časopis Atrium" data-tooltip></a>
+	</div>
+</div>
+</div>
+		<div class="ellipsis_row row align-right"><div class="column shrink"><a href="/auth/noticeboard/sledovane/" class="ellipsis" title="Všechny zprávy"><i class="isi-tri-tecky-svisle isi-inline" aria-hidden="true"></i></a></div></div>
+	</div>
+	<div class="sekce_strankovani">
+		
+	</div>
+</div>
+<div class="zpravy_dlazdice" data-typ="pracoviste" data-id_typu="1423" data-nove_do="20260918202842">
+	<div class="row">
+		<div class="column small-12 medium-expand">
+			<h2 class="nadpis-sekce"><i class="isi-inline-right isi-vyveska" aria-hidden="true"></i><a href="/auth/noticeboard/FSS/zpravy/">Fakulta sociálních studií</a></h2>
+		</div>
+		<div class="column shrink"></div>
+	</div>
+	
+	
+	<div class="sekce_row_wrap">
+		<div class="row sekce_row three" data-equalizer data-equalize-by-row="true"><div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203976735"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="201490575"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FSS/muni_akce/203976735/" class="noticeboard_zprava" data-zprava_id="203976735">Kam na vysokú Roadshow 2026 – Trip 3 (Poprad – Prešov – Košice)</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 29. 7. 2026 14:57, expiruje 31. 12. 2026">29. července</span><span class="comma">,</span>
+				<a href="/auth/osoba/254830" class="kdo" data-vizitka="254830">Ing. Kateřina Pešková</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FSS/muni_akce/203976735/" class="grafika noticeboard_zprava" style="background: url('/galerie_is/tematicke/Campus_MU.jpg') 50% 50%/cover" data-url="" data-zprava_id="203976735"><div class="grafika_datum">29. 9. 2026 09:00 &ndash; 1. 10. 2026 12:30</div><img src="/pics/design/r6/loga/profilove/M1423.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203930331"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="203930331"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FSS/dalsi/aktualni-nabidka-stipendii-daad-na-akademicky-rok-2027-2028/" class="noticeboard_zprava" data-zprava_id="203930331">Aktuální nabídka stipendií DAAD na akademický rok 2027-2028</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 14. 9. 2026 13:17, expiruje 29. 9. 2026">14. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/218957" class="kdo" data-vizitka="218957">Mgr. Roman Bureš</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FSS/dalsi/aktualni-nabidka-stipendii-daad-na-akademicky-rok-2027-2028/" class="grafika noticeboard_zprava" style="background: url('/imgx/u/n/v/axuvcla9wz6n6xdzqscnu/Snimek_obrazovky_2026-09-14_131208.png') 23% 2.50464%/100% 289.123%" data-url="" data-zprava_id="203930331"><img src="/pics/design/r6/loga/profilove/M1423.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203696878"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="201490500"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FSS/muni_akce/203696878/" class="noticeboard_zprava" data-zprava_id="203696878">Kam na vysokú Roadshow 2026 – Trip 2 (Banská Bystrica)</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 29. 7. 2026 14:51, expiruje 31. 12. 2026">29. července</span><span class="comma">,</span>
+				<a href="/auth/osoba/254830" class="kdo" data-vizitka="254830">Ing. Kateřina Pešková</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FSS/muni_akce/203696878/" class="grafika noticeboard_zprava" style="background: url('/galerie_is/tematicke/Campus_MU.jpg') 50% 50%/cover" data-url="" data-zprava_id="203696878"><div class="grafika_datum">24. 9. 2026 09:00&ndash;12:30</div><img src="/pics/design/r6/loga/profilove/M1423.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203537771"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="194137231"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FSS/dalsi/203537771/" class="noticeboard_zprava" data-zprava_id="203537771">Minikurz finanční gramotnosti: studenti a absolventi</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 9. 4. 2026 09:22, změněno 7. 9. 2026 10:50, expiruje 31. 10. 2026">9. dubna</span><span class="comma">,</span>
+				<a href="/auth/osoba/551607" class="kdo" data-vizitka="551607">Mgr. Eva Pavla Mitrová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FSS/dalsi/203537771/" class="grafika noticeboard_zprava" style="background: url('/imgx/h/b/s/brds1vudhfouxv3m-ny0q/WisdomvsKnowledge_1000x700_jpg_OHVUvmTo-768x538.jpg') 50% 50%/100% 140.104172%" data-url="" data-zprava_id="203537771"><img src="/pics/design/r6/loga/profilove/M1423.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203235568"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="201490337"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FSS/muni_akce/203235568/" class="noticeboard_zprava" data-zprava_id="203235568">Kam na vysokú Roadshow 2026 – Trip 1 (Trenčín – Žilina – Trnava)</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 29. 7. 2026 14:43, expiruje 31. 12. 2026">29. července</span><span class="comma">,</span>
+				<a href="/auth/osoba/254830" class="kdo" data-vizitka="254830">Ing. Kateřina Pešková</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FSS/muni_akce/203235568/" class="grafika noticeboard_zprava" style="background: url('/galerie_is/tematicke/Campus_MU.jpg') 50% 50%/cover" data-url="" data-zprava_id="203235568"><div class="grafika_datum">16. 9. 2026 09:00 &ndash; 18. 9. 2026 12:30</div><img src="/pics/design/r6/loga/profilove/M1423.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="203161772"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="197726768"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FSS/muni_akce/203161772/" class="noticeboard_zprava" data-zprava_id="203161772">Vokolo priglu 2026 - Akademická vlna</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 1. 6. 2026 10:02, změněno 31. 8. 2026 11:43, expiruje 30. 11. 2026">1. června</span><span class="comma">,</span>
+				<a href="/auth/osoba/254830" class="kdo" data-vizitka="254830">Ing. Kateřina Pešková</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FSS/muni_akce/203161772/" class="grafika noticeboard_zprava p1423" style="background-image: url('/pics/mu/noticeboard/1423.svg')" data-url="/pics/mu/noticeboard/1423.svg" data-zprava_id="203161772"><div class="grafika_nazev">Fakulta sociálních studií</div><div class="grafika_datum">1. 9. 2026 10:00 &ndash; 10. 10. 2026 18:00</div><img src="/pics/design/r6/loga/profilove/M1423.svg" class="logo"></a>
+	</div>
+</div>
+</div>
+		<div class="ellipsis_row row align-right"><div class="column shrink"><a href="/auth/noticeboard/FSS/zpravy/" class="ellipsis" title="Všechny zprávy"><i class="isi-tri-tecky-svisle isi-inline" aria-hidden="true"></i></a></div></div>
+	</div>
+	<div class="sekce_strankovani">
+		
+	</div>
+</div>
+<div class="zpravy_dlazdice" data-typ="pracoviste" data-id_typu="1433" data-nove_do="20260918202842">
+	<div class="row">
+		<div class="column small-12 medium-expand">
+			<h2 class="nadpis-sekce"><i class="isi-inline-right isi-vyveska" aria-hidden="true"></i><a href="/auth/noticeboard/FI/zpravy/">Fakulta informatiky</a></h2>
+		</div>
+		<div class="column shrink"></div>
+	</div>
+	
+	
+	<div class="sekce_row_wrap">
+		<div class="row sekce_row three" data-equalizer data-equalize-by-row="true"><div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204133354"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204133354"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/POFI/vzdelavaci-workshopy-muni-podzim-2026/" class="noticeboard_zprava" data-zprava_id="204133354">Vzdělávací workshopy MUNI – podzim 2026</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 17. 9. 2026 07:32, expiruje 2. 10. 2026">včera</span><span class="comma">,</span>
+				<a href="/auth/osoba/251898" class="kdo" data-vizitka="251898">Mgr. Hana Bahulová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/POFI/vzdelavaci-workshopy-muni-podzim-2026/" class="grafika noticeboard_zprava" style="background: url('/imgx/f/a/c/0jzldnyzgfhqpkog1bgij/20944381.jpg') 50% 50%/cover" data-url="" data-zprava_id="204133354"><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204101890"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204101887"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/dalsi/204101890/" class="noticeboard_zprava" data-zprava_id="204101890">Benefiční Beach🏐</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 16. 9. 2026 20:07, expiruje 30. 9. 2026">16. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/563561" class="kdo" data-vizitka="563561">Nikola Novotná</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/dalsi/204101890/" class="grafika noticeboard_zprava" style="background: url('/imgx/4/_/j/r7xyprh-cvp3ydwqnrlz9/Screenshot_20260915_144539_Instagram.jpg') 32.7608% 36.7137%/100% 278.148%" data-url="" data-zprava_id="204101890"><div class="grafika_datum">Datum konání: 22. 9. 2026 16:00</div><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204092355"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204092355"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/zfakulty/prednaska-rndr-vita-musila-ph-d-pro-odbornou-verejnost-v-ramci-habilita/" class="noticeboard_zprava" data-zprava_id="204092355">Přednáška RNDr. Víta Musila, Ph.D. pro odbornou veřejnost v rámci habilitačního řízení</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 16. 9. 2026 15:48, expiruje 1. 10. 2026">16. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/472790" class="kdo" data-vizitka="472790">Bc. Romana Břízová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/zfakulty/prednaska-rndr-vita-musila-ph-d-pro-odbornou-verejnost-v-ramci-habilita/" class="grafika noticeboard_zprava" style="background: url('/galerie_is/tematicke/FI.jpg') 50% 50%/100% 119.5%" data-url="" data-zprava_id="204092355"><div class="grafika_datum">Datum konání: 22. 9. 2026 14:30</div><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204080358"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204080358"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/udrzitelnost/sustainmap-muni/" class="noticeboard_zprava" data-zprava_id="204080358">SustainMap MUNI</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 16. 9. 2026 12:12, expiruje 31. 1. 2027">16. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/166252" class="kdo" data-vizitka="166252">Bc. Dorota Jůvová, DiS.</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/udrzitelnost/sustainmap-muni/" class="grafika noticeboard_zprava" style="background: url('/imgx/x/w/5/j-tscoexfhhpdphqozr8f/maps.png') 50% 50%/cover" data-url="" data-zprava_id="204080358"><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204066453"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204066453"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/skas/dotaznik-ohledne-zavedeni-potitek-na-bakalarskych-statnicich-fi-mu/" class="noticeboard_zprava" data-zprava_id="204066453">Dotazník ohledně zavedení „potítek“ na bakalářských státnicích FI MU</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 16. 9. 2026 08:24, expiruje 1. 10. 2026">16. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/485053" class="kdo" data-vizitka="485053">RNDr. Jakub Balabán</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/skas/dotaznik-ohledne-zavedeni-potitek-na-bakalarskych-statnicich-fi-mu/" class="grafika noticeboard_zprava" style="background: url('/imgx/h/c/v/kzwpwxhqkadwpfwt9igzx/SKAS_-_vyveska_IS_21.png') 50% 50%/100% 100%" data-url="" data-zprava_id="204066453"><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204009962"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204009962"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/FI/POFI/nova-detska-skupina-v-univerzitnim-kampusu-bohunice/" class="noticeboard_zprava" data-zprava_id="204009962">Nová dětská skupina v Univerzitním kampusu Bohunice</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 15. 9. 2026 11:45, expiruje 30. 9. 2026">15. září</span><span class="comma">,</span>
+				<a href="/auth/osoba/251898" class="kdo" data-vizitka="251898">Mgr. Hana Bahulová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/FI/POFI/nova-detska-skupina-v-univerzitnim-kampusu-bohunice/" class="grafika noticeboard_zprava" style="background: url('/imgx/d/s/i/rpkhhy6c5nfho4f-rpqb_/j72n_mmgb_201014.jpg') 50% 50%/100% 143.994%" data-url="" data-zprava_id="204009962"><img src="/pics/design/r6/loga/profilove/M1433.svg" class="logo"></a>
+	</div>
+</div>
+</div>
+		<div class="ellipsis_row row align-right"><div class="column shrink"><a href="/auth/noticeboard/FI/zpravy/" class="ellipsis" title="Všechny zprávy"><i class="isi-tri-tecky-svisle isi-inline" aria-hidden="true"></i></a></div></div>
+	</div>
+	<div class="sekce_strankovani">
+		
+	</div>
+</div>
+<div class="zpravy_dlazdice" data-typ="pracoviste" data-id_typu="14" data-nove_do="20260918202842">
+	<div class="row">
+		<div class="column small-12 medium-expand">
+			<h2 class="nadpis-sekce"><i class="isi-inline-right isi-vyveska" aria-hidden="true"></i><a href="/auth/noticeboard/MU/zpravy/">Masarykova univerzita</a></h2>
+		</div>
+		<div class="column shrink"></div>
+	</div>
+	
+	
+	<div class="sekce_row_wrap">
+		<div class="row sekce_row three" data-equalizer data-equalize-by-row="true"><div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204201934"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204201934"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/online/204201934/" class="noticeboard_zprava" data-zprava_id="204201934">Nemusíte znát správnou technologii. Stačí vědět, na koho se obrátit</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 18. 9. 2026 11:46, expiruje 19. 9. 2027">9 hod</span><span class="comma">,</span>
+				<a href="/auth/osoba/242359" class="kdo" data-vizitka="242359">Mgr. Gabriela Peringerová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/online/204201934/" class="grafika noticeboard_zprava" style="background-image: url('https://www.em.muni.cz/images/stories/2026/09_zari/20260916_Core_Facility_Day.jpg')" data-url="https://www.em.muni.cz/images/stories/2026/09_zari/20260916_Core_Facility_Day.jpg" data-zprava_id="204201934"><img src="/pics/design/r6/loga/profilove/M14-pracoviste.svg" class="logo" title="Zpravodajský portál MU" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204200414"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204200414"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/online/204200414/" class="noticeboard_zprava" data-zprava_id="204200414">MUNI online: Stetoskop</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 18. 9. 2026 11:30, expiruje 19. 9. 2027">9 hod</span><span class="comma">,</span>
+				<a href="/auth/osoba/242359" class="kdo" data-vizitka="242359">Mgr. Gabriela Peringerová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/online/204200414/" class="grafika noticeboard_zprava" style="background-image: url('https://www.em.muni.cz/images/stories/2026/09_zari/Stetoskop1_tit.png')" data-url="https://www.em.muni.cz/images/stories/2026/09_zari/Stetoskop1_tit.png" data-zprava_id="204200414"><img src="/pics/design/r6/loga/profilove/M14-pracoviste.svg" class="logo" title="Zpravodajský portál MU" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204172046"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="202933703"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/muni_akce/204172046/" class="noticeboard_zprava" data-zprava_id="204172046">Setkání RVH MU s garanty a garantkami studijních programů</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 27. 8. 2026 17:07, expiruje 3. 10. 2026">27. srpna</span><span class="comma">,</span>
+				<a href="/auth/osoba/52050" class="kdo" data-vizitka="52050">Mgr. Lenka Kotková</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/muni_akce/204172046/" class="grafika noticeboard_zprava" style="background: url('/galerie_is/tematicke/Komenskeho_Masaryk.jpg') 50% 50%/cover" data-url="" data-zprava_id="204172046"><div class="grafika_datum">2. 10. 2026 10:00&ndash;12:00</div><img src="/pics/design/r6/loga/profilove/M14.svg" class="logo"></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204157417"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204157417"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/cerpek/na-cerpek-vznika-novy-system-podpory-a-rozvoje-zkusenych-vyucujicich/" class="noticeboard_zprava" data-zprava_id="204157417">Na CERPEK vzniká nový systém podpory a rozvoje zkušených vyučujících</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 17. 9. 2026 16:28, expiruje 2. 10. 2026">včera</span><span class="comma">,</span>
+				<a href="/auth/osoba/527505" class="kdo" data-vizitka="527505">Mgr. Bc. Jitka Holíková</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/cerpek/na-cerpek-vznika-novy-system-podpory-a-rozvoje-zkusenych-vyucujicich/" class="grafika noticeboard_zprava p14" style="background-image: url('/pics/mu/noticeboard/14.svg')" data-url="/pics/mu/noticeboard/14.svg" data-zprava_id="204157417"><div class="grafika_nazev">Masarykova univerzita</div><img src="/pics/design/r/zivot/cerpek.png" class="logo" title="CERPEK" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204152591"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204152591"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/online/204152591/" class="noticeboard_zprava" data-zprava_id="204152591">Nový začátek pro farmacii: fakulta se zabydluje v kampusu  </a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 17. 9. 2026 14:05, expiruje 18. 9. 2027">včera</span><span class="comma">,</span>
+				<a href="/auth/osoba/242359" class="kdo" data-vizitka="242359">Mgr. Gabriela Peringerová</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/online/204152591/" class="grafika noticeboard_zprava" style="background-image: url('https://www.em.muni.cz/images/stories/MBPH_tituln.jpg')" data-url="https://www.em.muni.cz/images/stories/MBPH_tituln.jpg" data-zprava_id="204152591"><img src="/pics/design/r6/loga/profilove/M14-pracoviste.svg" class="logo" title="Zpravodajský portál MU" data-tooltip></a>
+	</div>
+</div>
+<div class="column dlazdice_column">
+	<div class="dlazdice nova" data-equalizer-watch>
+		<div class="hlavicka">
+			<div class="nove stitek-inline si-text si-novinky">nové</div>
+			<div class="ikony">
+				<a href="#" class="hvezdicka" title="Poznačit si hvězdičkou" data-id="204145181"><i class="isi-star isi-inline-left" aria-hidden="true"></i></a><a href="#" class="precteni" title="Označit zprávu za přečtenou" data-id="204145181"><i class="isi-oko isi-inline-left" aria-hidden="true"></i></a>
+			</div>
+			<i class="isi-stitek isi-inline" aria-hidden="true"></i>
+			<div class="nazev">
+				<a href="/auth/noticeboard/MU/dalsi/zacni-na-muni-bezpecne-online/" class="noticeboard_zprava" data-zprava_id="204145181">Začni na MUNI bezpečně | Online</a>
+			</div>
+			<div class="kdy_kdo">
+				<span class="kdy" title="vloženo 17. 9. 2026 12:00, expiruje 2. 10. 2026">včera</span><span class="comma">,</span>
+				<a href="/auth/osoba/524415" class="kdo" data-vizitka="524415">Mgr. Dávid Magušin</a>
+			</div>
+		</div>
+		<a href="/auth/noticeboard/MU/dalsi/zacni-na-muni-bezpecne-online/" class="grafika noticeboard_zprava" style="background: url('/imgx/r/b/u/7f3oi5fjpdkbvl0rnrpzm/Zacni_na_MUNI_bezpecne_5_nejlepsich_tipu_od_kybertymu_30_9_2026.png') 50% 100%/100% 112.5%" data-url="" data-zprava_id="204145181"><img src="/pics/design/r6/loga/profilove/M14.svg" class="logo" title="Další" data-tooltip></a>
+	</div>
+</div>
+</div>
+		<div class="ellipsis_row row align-right"><div class="column shrink"><a href="/auth/noticeboard/MU/zpravy/" class="ellipsis" title="Všechny zprávy"><i class="isi-tri-tecky-svisle isi-inline" aria-hidden="true"></i></a></div></div>
+	</div>
+	<div class="sekce_strankovani">
+		
+	</div>
+</div>
+<div id="odkazy-rel" class="row">
+	<div class="small-12 medium-6 column"><h3>Další možnosti</h3><ul><li><a href="/auth/noticeboard/stitek/" class="stitek" >Zprávy se štítkem</a></li><li><a href="/auth/noticeboard/ignorovane_osoby/" class="ignorovane" >Moje ignorované osoby</a></li></div>
+</div>
+</div></main></div>
+		
+		<div class="foundation-design-z foot_clear">
+			
+	<div class="row">
+		
+	</div>
+	<footer id="paticka" class="">
+		<div class="row">
+			<div class="columns small-12 medium-6 paticka_logo">
+	<a href="/auth/"><span class="show-for-sr">IS MU</span></a>
+	<div>
+		Informační&nbsp;systém Masarykovy&nbsp;univerzity
+		<div class="footer_about">
+			<a href="https://is.muni.cz/nas_system/">Více o IS MU</a>, provozuje <a href="https://www.fi.muni.cz/">Fakulta informatiky MU</a>
+		</div>
+		
+	</div>
+</div>
+<div class="columns small-6 medium-3">
+	<div class="footer_podpora">
+	<a href="/auth/podpora/">Potřebujete poradit?</a>
+	<span class="kont_email"><a href="/auth/mail/mail_posli?to=istech%40fi.muni.cz">istech@fi.muni.cz</a></span>
+</div>
+	<div class="footer_napoveda">
+		<a href="/auth/napoveda/komunikace/vyveska">Nápověda</a>
+	</div>
+	<div class="row">
+		<div class="columns small-12 display-none">
+			<div class="footer_zoomy">
+				<a href="" rel="nofollow"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="columns small-6 medium-3 nastaveni_col">
+	<div class="footer_datum">
+		<span title="Dnes je 38. (sudý) týden.">18. 9. 2026 <span style='padding: 0 0.6em'>|</span> 20:28</span>
+		<a href="/system/cas" title="Dnes je 38. (sudý) týden." class="footer_cas">Aktuální datum a&nbsp;čas</a>
+	</div>
+	<div>
+	<div class="row collapse">
+	<div class="column small-12 medium-6 footer_nastaveni"><a href="/auth/system/nastaveni">Nastavení</a></div>
+	<div class="column small-12 medium-6 footer_privacy"><a href="/auth/privacy/">Soukromí</a></div>
+</div>
+
+	
+</div>
+</div>
+			<div class="right-border"></div>
+			<div class="left-border"></div>
+		</div>
+		<a href="#hlavicka" class="skip_up" title="Skočit na začátek stránky">
+			Nahoru
+		</a>
+	</footer>
+
+		</div>
+	</div>
+</div>
+<div class="reveal" id="vyhledavani_reklamace" role="region" data-append-to=".foundation-design-z:first" data-reveal="">
+	<div class="row">
+		<div  class="column reveal-content">
+			<h2>Nenašli jste, co jste hledali?</h2><div class="nedurazne"><h3 class="subheader">Hledaný výraz: <em id="vyhledavani_reklamace_hledany_vyraz"></em></h3></div><form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" id="prvek_2560634" onsubmit="return false;"><textarea autocomplete="off" data-valid-min="3" data-validator="min" id="prvek_9941111" placeholder="Očekával jsem, že najdu..." rows="8" wrap="soft"></textarea><span class="form-error" data-form-error-for="prvek_9941111"><span class="form-error-text"></span></span><div id="vyhledavani_reklamace_bottom" class="row">
+	<div class="column"><div class="zdurazneni potvrzeni mb-0"><h3>Úspěšně uloženo. (<span id="vyhledavani_reklamace_countdown">0</span>)</h3></div><div class="zdurazneni chyba nelze_ulozit mb-0"><h3>Nelze uložit. Zkuste to prosím později.</h3></div></div>
+	<div class="shrink column"><button id="vyhledavani_reklamace_odeslat" class="mb-0 button" type="submit">Odeslat</button></div>
+</div>
+</form>
+		</div>
+	</div>
+	<div class="modal-btns"><button class="close-button" type="button" aria-label="Zavřít" data-close><span aria-hidden="true">&times;</span></button></div>
+</div>
+
+
+<script src="/js/is.js?_v=8a35e31"></script>
+<script src="/js/jquery-ui-1.12.1-sortable-r6.min.js?_v=611662c"></script>
+<script src="/js/log-kliknuto.js?_v=d448124"></script>
+<script>"use strict";
+
+is.Define.module('Noticeboard', function(namespace, $) {
+
+	var loader;
+
+	is.Forms.set_validator('zkratka_pro_url', 'error_msg', new RegExp(/^[a-zA-Z0-9_-]*$/));
+	is.Forms.set_validator('doesnt_contain_html', 'error_msg', function(val, $input) {
+		return $('<div />').html( val ).text() === val;
+	});
+
+	var uc_regex = /(?:[A-Z\xC0-\xD6\xD8-\xDE\u0100\u0102\u0104\u0106\u0108\u010A\u010C\u010E\u0110\u0112\u0114\u0116\u0118\u011A\u011C\u011E\u0120\u0122\u0124\u0126\u0128\u012A\u012C\u012E\u0130\u0132\u0134\u0136\u0139\u013B\u013D\u013F\u0141\u0143\u0145\u0147\u014A\u014C\u014E\u0150\u0152\u0154\u0156\u0158\u015A\u015C\u015E\u0160\u0162\u0164\u0166\u0168\u016A\u016C\u016E\u0170\u0172\u0174\u0176\u0178\u0179\u017B\u017D\u0181\u0182\u0184\u0186\u0187\u0189-\u018B\u018E-\u0191\u0193\u0194\u0196-\u0198\u019C\u019D\u019F\u01A0\u01A2\u01A4\u01A6\u01A7\u01A9\u01AC\u01AE\u01AF\u01B1-\u01B3\u01B5\u01B7\u01B8\u01BC\u01C4\u01C7\u01CA\u01CD\u01CF\u01D1\u01D3\u01D5\u01D7\u01D9\u01DB\u01DE\u01E0\u01E2\u01E4\u01E6\u01E8\u01EA\u01EC\u01EE\u01F1\u01F4\u01F6-\u01F8\u01FA\u01FC\u01FE\u0200\u0202\u0204\u0206\u0208\u020A\u020C\u020E\u0210\u0212\u0214\u0216\u0218\u021A\u021C\u021E\u0220\u0222\u0224\u0226\u0228\u022A\u022C\u022E\u0230\u0232\u023A\u023B\u023D\u023E\u0241\u0243-\u0246\u0248\u024A\u024C\u024E\u0370\u0372\u0376\u037F\u0386\u0388-\u038A\u038C\u038E\u038F\u0391-\u03A1\u03A3-\u03AB\u03CF\u03D2-\u03D4\u03D8\u03DA\u03DC\u03DE\u03E0\u03E2\u03E4\u03E6\u03E8\u03EA\u03EC\u03EE\u03F4\u03F7\u03F9\u03FA\u03FD-\u042F\u0460\u0462\u0464\u0466\u0468\u046A\u046C\u046E\u0470\u0472\u0474\u0476\u0478\u047A\u047C\u047E\u0480\u048A\u048C\u048E\u0490\u0492\u0494\u0496\u0498\u049A\u049C\u049E\u04A0\u04A2\u04A4\u04A6\u04A8\u04AA\u04AC\u04AE\u04B0\u04B2\u04B4\u04B6\u04B8\u04BA\u04BC\u04BE\u04C0\u04C1\u04C3\u04C5\u04C7\u04C9\u04CB\u04CD\u04D0\u04D2\u04D4\u04D6\u04D8\u04DA\u04DC\u04DE\u04E0\u04E2\u04E4\u04E6\u04E8\u04EA\u04EC\u04EE\u04F0\u04F2\u04F4\u04F6\u04F8\u04FA\u04FC\u04FE\u0500\u0502\u0504\u0506\u0508\u050A\u050C\u050E\u0510\u0512\u0514\u0516\u0518\u051A\u051C\u051E\u0520\u0522\u0524\u0526\u0528\u052A\u052C\u052E\u0531-\u0556\u10A0-\u10C5\u10C7\u10CD\u13A0-\u13F5\u1C90-\u1CBA\u1CBD-\u1CBF\u1E00\u1E02\u1E04\u1E06\u1E08\u1E0A\u1E0C\u1E0E\u1E10\u1E12\u1E14\u1E16\u1E18\u1E1A\u1E1C\u1E1E\u1E20\u1E22\u1E24\u1E26\u1E28\u1E2A\u1E2C\u1E2E\u1E30\u1E32\u1E34\u1E36\u1E38\u1E3A\u1E3C\u1E3E\u1E40\u1E42\u1E44\u1E46\u1E48\u1E4A\u1E4C\u1E4E\u1E50\u1E52\u1E54\u1E56\u1E58\u1E5A\u1E5C\u1E5E\u1E60\u1E62\u1E64\u1E66\u1E68\u1E6A\u1E6C\u1E6E\u1E70\u1E72\u1E74\u1E76\u1E78\u1E7A\u1E7C\u1E7E\u1E80\u1E82\u1E84\u1E86\u1E88\u1E8A\u1E8C\u1E8E\u1E90\u1E92\u1E94\u1E9E\u1EA0\u1EA2\u1EA4\u1EA6\u1EA8\u1EAA\u1EAC\u1EAE\u1EB0\u1EB2\u1EB4\u1EB6\u1EB8\u1EBA\u1EBC\u1EBE\u1EC0\u1EC2\u1EC4\u1EC6\u1EC8\u1ECA\u1ECC\u1ECE\u1ED0\u1ED2\u1ED4\u1ED6\u1ED8\u1EDA\u1EDC\u1EDE\u1EE0\u1EE2\u1EE4\u1EE6\u1EE8\u1EEA\u1EEC\u1EEE\u1EF0\u1EF2\u1EF4\u1EF6\u1EF8\u1EFA\u1EFC\u1EFE\u1F08-\u1F0F\u1F18-\u1F1D\u1F28-\u1F2F\u1F38-\u1F3F\u1F48-\u1F4D\u1F59\u1F5B\u1F5D\u1F5F\u1F68-\u1F6F\u1FB8-\u1FBB\u1FC8-\u1FCB\u1FD8-\u1FDB\u1FE8-\u1FEC\u1FF8-\u1FFB\u2102\u2107\u210B-\u210D\u2110-\u2112\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u2130-\u2133\u213E\u213F\u2145\u2183\u2C00-\u2C2E\u2C60\u2C62-\u2C64\u2C67\u2C69\u2C6B\u2C6D-\u2C70\u2C72\u2C75\u2C7E-\u2C80\u2C82\u2C84\u2C86\u2C88\u2C8A\u2C8C\u2C8E\u2C90\u2C92\u2C94\u2C96\u2C98\u2C9A\u2C9C\u2C9E\u2CA0\u2CA2\u2CA4\u2CA6\u2CA8\u2CAA\u2CAC\u2CAE\u2CB0\u2CB2\u2CB4\u2CB6\u2CB8\u2CBA\u2CBC\u2CBE\u2CC0\u2CC2\u2CC4\u2CC6\u2CC8\u2CCA\u2CCC\u2CCE\u2CD0\u2CD2\u2CD4\u2CD6\u2CD8\u2CDA\u2CDC\u2CDE\u2CE0\u2CE2\u2CEB\u2CED\u2CF2\uA640\uA642\uA644\uA646\uA648\uA64A\uA64C\uA64E\uA650\uA652\uA654\uA656\uA658\uA65A\uA65C\uA65E\uA660\uA662\uA664\uA666\uA668\uA66A\uA66C\uA680\uA682\uA684\uA686\uA688\uA68A\uA68C\uA68E\uA690\uA692\uA694\uA696\uA698\uA69A\uA722\uA724\uA726\uA728\uA72A\uA72C\uA72E\uA732\uA734\uA736\uA738\uA73A\uA73C\uA73E\uA740\uA742\uA744\uA746\uA748\uA74A\uA74C\uA74E\uA750\uA752\uA754\uA756\uA758\uA75A\uA75C\uA75E\uA760\uA762\uA764\uA766\uA768\uA76A\uA76C\uA76E\uA779\uA77B\uA77D\uA77E\uA780\uA782\uA784\uA786\uA78B\uA78D\uA790\uA792\uA796\uA798\uA79A\uA79C\uA79E\uA7A0\uA7A2\uA7A4\uA7A6\uA7A8\uA7AA-\uA7AE\uA7B0-\uA7B4\uA7B6\uA7B8\uA7BA\uA7BC\uA7BE\uA7C2\uA7C4-\uA7C7\uA7C9\uA7F5\uFF21-\uFF3A]|\uD801[\uDC00-\uDC27\uDCB0-\uDCD3]|\uD803[\uDC80-\uDCB2]|\uD806[\uDCA0-\uDCBF]|\uD81B[\uDE40-\uDE5F]|\uD835[\uDC00-\uDC19\uDC34-\uDC4D\uDC68-\uDC81\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB5\uDCD0-\uDCE9\uDD04\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD38\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD6C-\uDD85\uDDA0-\uDDB9\uDDD4-\uDDED\uDE08-\uDE21\uDE3C-\uDE55\uDE70-\uDE89\uDEA8-\uDEC0\uDEE2-\uDEFA\uDF1C-\uDF34\uDF56-\uDF6E\uDF90-\uDFA8\uDFCA]|\uD83A[\uDD00-\uDD21])/g;
+	var lc_regex = /(?:[a-z\xB5\xDF-\xF6\xF8-\xFF\u0101\u0103\u0105\u0107\u0109\u010B\u010D\u010F\u0111\u0113\u0115\u0117\u0119\u011B\u011D\u011F\u0121\u0123\u0125\u0127\u0129\u012B\u012D\u012F\u0131\u0133\u0135\u0137\u0138\u013A\u013C\u013E\u0140\u0142\u0144\u0146\u0148\u0149\u014B\u014D\u014F\u0151\u0153\u0155\u0157\u0159\u015B\u015D\u015F\u0161\u0163\u0165\u0167\u0169\u016B\u016D\u016F\u0171\u0173\u0175\u0177\u017A\u017C\u017E-\u0180\u0183\u0185\u0188\u018C\u018D\u0192\u0195\u0199-\u019B\u019E\u01A1\u01A3\u01A5\u01A8\u01AA\u01AB\u01AD\u01B0\u01B4\u01B6\u01B9\u01BA\u01BD-\u01BF\u01C6\u01C9\u01CC\u01CE\u01D0\u01D2\u01D4\u01D6\u01D8\u01DA\u01DC\u01DD\u01DF\u01E1\u01E3\u01E5\u01E7\u01E9\u01EB\u01ED\u01EF\u01F0\u01F3\u01F5\u01F9\u01FB\u01FD\u01FF\u0201\u0203\u0205\u0207\u0209\u020B\u020D\u020F\u0211\u0213\u0215\u0217\u0219\u021B\u021D\u021F\u0221\u0223\u0225\u0227\u0229\u022B\u022D\u022F\u0231\u0233-\u0239\u023C\u023F\u0240\u0242\u0247\u0249\u024B\u024D\u024F-\u0293\u0295-\u02AF\u0371\u0373\u0377\u037B-\u037D\u0390\u03AC-\u03CE\u03D0\u03D1\u03D5-\u03D7\u03D9\u03DB\u03DD\u03DF\u03E1\u03E3\u03E5\u03E7\u03E9\u03EB\u03ED\u03EF-\u03F3\u03F5\u03F8\u03FB\u03FC\u0430-\u045F\u0461\u0463\u0465\u0467\u0469\u046B\u046D\u046F\u0471\u0473\u0475\u0477\u0479\u047B\u047D\u047F\u0481\u048B\u048D\u048F\u0491\u0493\u0495\u0497\u0499\u049B\u049D\u049F\u04A1\u04A3\u04A5\u04A7\u04A9\u04AB\u04AD\u04AF\u04B1\u04B3\u04B5\u04B7\u04B9\u04BB\u04BD\u04BF\u04C2\u04C4\u04C6\u04C8\u04CA\u04CC\u04CE\u04CF\u04D1\u04D3\u04D5\u04D7\u04D9\u04DB\u04DD\u04DF\u04E1\u04E3\u04E5\u04E7\u04E9\u04EB\u04ED\u04EF\u04F1\u04F3\u04F5\u04F7\u04F9\u04FB\u04FD\u04FF\u0501\u0503\u0505\u0507\u0509\u050B\u050D\u050F\u0511\u0513\u0515\u0517\u0519\u051B\u051D\u051F\u0521\u0523\u0525\u0527\u0529\u052B\u052D\u052F\u0560-\u0588\u10D0-\u10FA\u10FD-\u10FF\u13F8-\u13FD\u1C80-\u1C88\u1D00-\u1D2B\u1D6B-\u1D77\u1D79-\u1D9A\u1E01\u1E03\u1E05\u1E07\u1E09\u1E0B\u1E0D\u1E0F\u1E11\u1E13\u1E15\u1E17\u1E19\u1E1B\u1E1D\u1E1F\u1E21\u1E23\u1E25\u1E27\u1E29\u1E2B\u1E2D\u1E2F\u1E31\u1E33\u1E35\u1E37\u1E39\u1E3B\u1E3D\u1E3F\u1E41\u1E43\u1E45\u1E47\u1E49\u1E4B\u1E4D\u1E4F\u1E51\u1E53\u1E55\u1E57\u1E59\u1E5B\u1E5D\u1E5F\u1E61\u1E63\u1E65\u1E67\u1E69\u1E6B\u1E6D\u1E6F\u1E71\u1E73\u1E75\u1E77\u1E79\u1E7B\u1E7D\u1E7F\u1E81\u1E83\u1E85\u1E87\u1E89\u1E8B\u1E8D\u1E8F\u1E91\u1E93\u1E95-\u1E9D\u1E9F\u1EA1\u1EA3\u1EA5\u1EA7\u1EA9\u1EAB\u1EAD\u1EAF\u1EB1\u1EB3\u1EB5\u1EB7\u1EB9\u1EBB\u1EBD\u1EBF\u1EC1\u1EC3\u1EC5\u1EC7\u1EC9\u1ECB\u1ECD\u1ECF\u1ED1\u1ED3\u1ED5\u1ED7\u1ED9\u1EDB\u1EDD\u1EDF\u1EE1\u1EE3\u1EE5\u1EE7\u1EE9\u1EEB\u1EED\u1EEF\u1EF1\u1EF3\u1EF5\u1EF7\u1EF9\u1EFB\u1EFD\u1EFF-\u1F07\u1F10-\u1F15\u1F20-\u1F27\u1F30-\u1F37\u1F40-\u1F45\u1F50-\u1F57\u1F60-\u1F67\u1F70-\u1F7D\u1F80-\u1F87\u1F90-\u1F97\u1FA0-\u1FA7\u1FB0-\u1FB4\u1FB6\u1FB7\u1FBE\u1FC2-\u1FC4\u1FC6\u1FC7\u1FD0-\u1FD3\u1FD6\u1FD7\u1FE0-\u1FE7\u1FF2-\u1FF4\u1FF6\u1FF7\u210A\u210E\u210F\u2113\u212F\u2134\u2139\u213C\u213D\u2146-\u2149\u214E\u2184\u2C30-\u2C5E\u2C61\u2C65\u2C66\u2C68\u2C6A\u2C6C\u2C71\u2C73\u2C74\u2C76-\u2C7B\u2C81\u2C83\u2C85\u2C87\u2C89\u2C8B\u2C8D\u2C8F\u2C91\u2C93\u2C95\u2C97\u2C99\u2C9B\u2C9D\u2C9F\u2CA1\u2CA3\u2CA5\u2CA7\u2CA9\u2CAB\u2CAD\u2CAF\u2CB1\u2CB3\u2CB5\u2CB7\u2CB9\u2CBB\u2CBD\u2CBF\u2CC1\u2CC3\u2CC5\u2CC7\u2CC9\u2CCB\u2CCD\u2CCF\u2CD1\u2CD3\u2CD5\u2CD7\u2CD9\u2CDB\u2CDD\u2CDF\u2CE1\u2CE3\u2CE4\u2CEC\u2CEE\u2CF3\u2D00-\u2D25\u2D27\u2D2D\uA641\uA643\uA645\uA647\uA649\uA64B\uA64D\uA64F\uA651\uA653\uA655\uA657\uA659\uA65B\uA65D\uA65F\uA661\uA663\uA665\uA667\uA669\uA66B\uA66D\uA681\uA683\uA685\uA687\uA689\uA68B\uA68D\uA68F\uA691\uA693\uA695\uA697\uA699\uA69B\uA723\uA725\uA727\uA729\uA72B\uA72D\uA72F-\uA731\uA733\uA735\uA737\uA739\uA73B\uA73D\uA73F\uA741\uA743\uA745\uA747\uA749\uA74B\uA74D\uA74F\uA751\uA753\uA755\uA757\uA759\uA75B\uA75D\uA75F\uA761\uA763\uA765\uA767\uA769\uA76B\uA76D\uA76F\uA771-\uA778\uA77A\uA77C\uA77F\uA781\uA783\uA785\uA787\uA78C\uA78E\uA791\uA793-\uA795\uA797\uA799\uA79B\uA79D\uA79F\uA7A1\uA7A3\uA7A5\uA7A7\uA7A9\uA7AF\uA7B5\uA7B7\uA7B9\uA7BB\uA7BD\uA7BF\uA7C3\uA7C8\uA7CA\uA7F6\uA7FA\uAB30-\uAB5A\uAB60-\uAB68\uAB70-\uABBF\uFB00-\uFB06\uFB13-\uFB17\uFF41-\uFF5A]|\uD801[\uDC28-\uDC4F\uDCD8-\uDCFB]|\uD803[\uDCC0-\uDCF2]|\uD806[\uDCC0-\uDCDF]|\uD81B[\uDE60-\uDE7F]|\uD835[\uDC1A-\uDC33\uDC4E-\uDC54\uDC56-\uDC67\uDC82-\uDC9B\uDCB6-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDCCF\uDCEA-\uDD03\uDD1E-\uDD37\uDD52-\uDD6B\uDD86-\uDD9F\uDDBA-\uDDD3\uDDEE-\uDE07\uDE22-\uDE3B\uDE56-\uDE6F\uDE8A-\uDEA5\uDEC2-\uDEDA\uDEDC-\uDEE1\uDEFC-\uDF14\uDF16-\uDF1B\uDF36-\uDF4E\uDF50-\uDF55\uDF70-\uDF88\uDF8A-\uDF8F\uDFAA-\uDFC2\uDFC4-\uDFC9\uDFCB]|\uD83A[\uDD22-\uDD43])/g;
+
+	is.Forms.set_validator('vela_velk_pismen', 'error_vela_velk_pismen', function(val, $input) {
+		var val_for_check	= val;
+		var exceptions		= is('noticeboard_validators.upper_case_exceptions') || [];
+		for (var i = 0; i < exceptions.length; ++i) {
+			val_for_check	= val_for_check.replaceAll(exceptions[i], exceptions[i].toLowerCase());
+		}
+		return (val_for_check.match(uc_regex) || []).length * 2 <= (val_for_check.match(lc_regex) || []).length;
+	});
+
+
+	is.Forms.set_validator('jeden_vykricnik', 'error_jeden_vykricnik', function(val, $input) {
+		return (val.match(/[!]/g) || []).length < 2;
+	});
+	is.Forms.set_validator('jeden_otaznik', 'error_jeden_otaznik', function(val, $input) {
+		return (val.match(/[?]/g) || []).length < 2;
+	});
+
+	return {
+		init: function() {
+			loader = new is.Loader(
+				'#app_content',
+				'#app_content a[href*="/noticeboard"]:not(.noticeboard_zprava):not([target=_blank])'
+				+ ', #drobecky a[href*="/noticeboard"], #app_menu_items .polozka'
+				+ ', .noticeboard_zprava  a[href*="/noticeboard"]'
+			).before(function(target_href, evt) {
+				var popstate		= evt && evt.type == 'popstate';
+				var zprava_params	= loader.data('zprava');
+
+				var $zprava_reveal = $('.reveal.noticeboard-zprava:visible');
+				if ($zprava_reveal.length) {
+					$zprava_reveal.trigger('zprava.closed.zf.reveal', [evt, { no_push: true }]);
+				}
+				hide_tooltips();
+			}).after(function(target_href, evt) {
+				var popstate		= evt && evt.type == 'popstate';
+				var zprava_params	= loader.data('zprava');
+
+				var $zprava_reveal = $('.reveal.noticeboard-zprava:visible');
+				if (!zprava_params && popstate && $zprava_reveal.length) {
+					$zprava_reveal.trigger('zprava.closed.zf.reveal', [evt]);
+				}
+
+				if( zprava_params ) {
+					is.Noticeboard.zprava( zprava_params, evt);
+				}
+				grafika_update( '#noticeboard' );
+				$('.grafika_vlozit[style]:not([data-default])').backgroundSlider();
+			});
+
+			events_init();
+			grafika_update( '#noticeboard' );
+			$('.grafika_vlozit[style]:not([data-default])').backgroundSlider();
+		},
+
+		zprava: function(zprava_params, evt) {
+
+			if (!zprava_params || !zprava_params.zprava_id || !zprava_params.url_zprava || !zprava_params.url_zpet) {
+				throw "Noticeboard - spatne parametry funkce zprava()!";
+			}
+
+			hide_tooltips();
+			var $reveal = $('.reveal.noticeboard-zprava');
+			if ($reveal.length) {
+				$reveal.find('.reveal-content').html( is.Loading.get$loading() );
+			} else {
+				$reveal = is.Reveal.create( zprava_params.zprava_html ? zprava_params.zprava_html : is.Loading.get$loading(), {
+					open:	1,
+					class:	'large noticeboard-zprava',
+					data: {
+						closeOnClick: false,
+					},
+				});
+
+				$reveal.on('zprava.closed.zf.reveal', function(evt, orig_evt, eparams) {
+					$reveal.off('closed.zf.reveal');
+					$reveal.foundation('close');
+					if ((
+						!orig_evt
+						|| orig_evt.type !== 'popstate'
+					) && (
+						!eparams 
+						|| eparams['no_push'] !== true
+					)) {
+						loader.push(zprava_params.url_zpet);
+					}
+					$(document).off('keydown.nb.buttons');
+					$reveal.parent().remove();
+				});
+				$reveal.on('closed.zf.reveal', function() {
+					loader.push(zprava_params.url_zpet);
+					$(document).off('keydown.nb.buttons');
+					$reveal.parent().remove();
+				});
+
+				$reveal.closest('.reveal-overlay').on('scroll', function() {
+					zprava_buttons_update($reveal);
+				});
+
+				$(window).off('resize.nb.buttons').on('resize.nb.buttons', function() {
+					zprava_buttons_update($reveal);
+				});
+
+				$reveal.onSwipe(function(e) {
+					if (e.right) {
+						$reveal.find('.buttons .left_wrap a:not(.none)').trigger('click');
+					} else if (e.left) {
+						$reveal.find('.buttons .right_wrap a:not(.none)').trigger('click');
+					}
+				}, 100, window.innerWidth * (1/2));
+				$(document).on('keydown.nb.buttons', function(evt) {
+					if ($(evt.target).closest('#discussion').length) {
+						return;
+					}
+
+					if (evt.which == 37) { // left
+						$reveal.find('.buttons .left_wrap a:not(.none)').trigger('click');
+						evt.preventDefault();
+					} else if (evt.which == 39) { // right
+						$reveal.find('.buttons .right_wrap a:not(.none)').trigger('click');
+						evt.preventDefault();
+					}
+				});
+			}
+
+			if (!zprava_params.zprava_html) {
+				is.Ajax.request('', {
+					operace:	'dej_zpravu',
+					zprava_id:	zprava_params.zprava_id,
+					typ:		zprava_params.typ,
+					id_typu:	zprava_params.id_typu,
+					nove_do:	zprava_params.nove_do,
+				}).done(function(data) {
+					if (!$reveal.parents('html').length) { // modal not in DOM
+						return;
+					}
+
+					$reveal.data('id', zprava_params.zprava_id);
+					$reveal.find('.reveal-content').fhtml( data.html );
+					grafika_update( $reveal );
+					$reveal.foundation('_updatePosition');
+					zprava_buttons_update($reveal);
+					gallery_init();
+					if (!evt || evt.type !== 'popstate') {
+						loader.push(zprava_params.url_zprava);
+					}
+					loader.data('zprava', zprava_params);
+					$reveal.removeClass('nb_red nb_blue').addClass( $reveal.find('.reveal-content > .noticeboard_zprava').data('barva') );
+				}).fail(function() {
+					$reveal.foundation('close');
+				});
+			} else {
+				$reveal.data('id', zprava_params.zprava_id);
+				$reveal.find('.reveal-content').fhtml( zprava_params.zprava_html );
+				grafika_update( $reveal );
+				$reveal.foundation('_updatePosition');
+				zprava_buttons_update($reveal);
+				gallery_init();
+				loader.data('zprava', zprava_params);
+				$reveal.removeClass('nb_red nb_blue').addClass( $reveal.find('.reveal-content > .noticeboard_zprava').data('barva') );
+			}
+
+			return $reveal;
+		},
+		nastaveni: function() {
+			$('#noticeboard.nastaveni_sekce .podsekce').sortable({
+				handle: '.tahat',
+				update: function(evt) {
+					var order = {};
+					$(evt.target).find('> li').each(function(i, el){
+						order[ $(this).data('id') ] = i;
+					});
+
+					if (!Object.keys(order).length) {
+						return;
+					}
+
+					is.Ajax.request('', {
+						operace:	'uloz_poradi_sekce',
+						sekce:		JSON.stringify(order),
+					});
+				},
+			});
+			$('#noticeboard.nastaveni_sekce .dpolozky').sortable({
+				handle: '.tahat',
+				update: function(evt) {
+					var order 	= {};
+					var sekce_id	= $(evt.target).find('> li:first').data('id');
+					$(evt.target).find('> li').each(function(i, el){
+						order[ $(this).data('klic') ] = i;
+					});
+
+					if (!Object.keys(order).length) {
+						return;
+					}
+
+					is.Ajax.request('', {
+						operace:	'uloz_poradi_dyn_polozek',
+						poradi:		JSON.stringify(order),
+						sekce_id:	sekce_id,
+					});
+
+				},
+			});
+
+			is.Foundation.safe_init('#noticeboard');
+			var $form = $('#noticeboard form.zmen_sekci');
+			is.Forms.ajax_submit($form, {
+				data: {
+					operace: 'zmen_sekci',
+				},
+				url: is('session.auth') + '/noticeboard/',
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+				if (data.errors) {
+					$.each(data.errors, function(key, val) {
+						var $item = $form.find('[name=' + key + ']');
+						is.Forms.change_input_err_msg( $item, val, true );
+					});
+				}
+			});
+
+		},
+	};
+
+	function events_init() {
+
+		$(document).on('click', '#noticeboard .nova_zprava.modal', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'vyber_sekce_modal',
+			});
+
+			is.Ajax.request('', {
+				operace:	'nova_zprava_vyber_sekce',
+				sekce_id:	$(this).data('sekce-id'),
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			e.stopPropagation();
+			return false;
+		});
+
+		$(document).on('submit', '.vyber_sekce_modal form', function(e) {
+			loader.load( $('.vyber_sekce_modal select[name=sekce]').val() );
+			$('.reveal.vyber_sekce_modal').foundation('close');
+			return false;
+		});
+
+		function set_image($grafika_vlozit, url, params) {
+			params = params || {};
+
+			$grafika_vlozit.siblings('.grafika_form').addClass('hide');
+			$grafika_vlozit
+				.removeClass('hide')
+				.css('background-image', 'url(' + url + ')')
+			var $grafika_style_bgr = $grafika_vlozit.siblings('.grafika_style_bgr');
+			$grafika_style_bgr.val( get_background_setting($grafika_vlozit) );
+
+			if (params['default']) {
+				$grafika_style_bgr.val( 'default' );
+				$grafika_vlozit.children('.grafika_nazev').removeClass('hide');
+				$grafika_vlozit.attr('data-default', '1');
+			} else {
+				$grafika_vlozit.children('.grafika_nazev').addClass('hide');
+				$grafika_vlozit.backgroundSlider();
+				$grafika_vlozit.removeAttr('data-default');
+			}
+
+			is.Foundation.get_plugin( $('#noticeboard form.zprava').closest('form') ).validateInput( $grafika_style_bgr );
+		}
+
+		function get_background_setting($element) {
+			var	image		= $element[0].style.backgroundImage,
+				size		= $element.css('background-size'),
+				position	= $element.css('background-position');
+
+			var position_size = [position, size].filter(function(e) { return !!e; }).join('/');
+
+			return [image, position_size].filter(function(e) { return !!e; }).join(' ');
+		}
+
+		$(document).on('ajax_done.isUploadFiles', '#noticeboard .grafika_form .form_files_ajax', function(evt, data, self) {
+
+			if (data.result.chyba) {
+				is.Zdurazneni.chyba( data.result.chyba );
+			} else if (data.ok_urls.length) {
+				set_image( $(this).closest('.grafika_form').siblings('.grafika_vlozit'), data.ok_urls[0] );
+			} else {
+				is.Zdurazneni.chyba(is.ldb.error_msg);
+			}
+		});
+
+		$(document).on('click', '.reveal.pool .vyber', function() {
+			set_image( $('.grafika_vlozit.cs'), $(this).data('url'), { default: $(this).data('default') } );
+			$(this).closest('.reveal').foundation('close');
+		})
+
+		$(document).on('ajax_done.isUploadFiles', '#noticeboard .soubory_wrap .form_files_ajax', function(evt, data, self) {
+			$('#noticeboard .soubory_wrap ul.soubory').append(data.html);
+			$('#noticeboard .soubory_wrap .prilozene').toggleClass('hide', !$('#noticeboard .soubory_wrap ul.soubory > li').length);
+		});
+
+		$(document).on('click', '#noticeboard .soubory_wrap ul.soubory .odstranit', function(evt) {
+			$(this).closest('li').remove();
+			$('#noticeboard .soubory_wrap .prilozene').toggleClass('hide', !$('#noticeboard .soubory_wrap ul.soubory > li').length);
+		});
+
+		$(document).on('click', '#noticeboard .grafika_vlozit .close-button', function(evt) {
+			var $grafika_vlozit = $(this).closest('.grafika_vlozit');
+			$grafika_vlozit.css('background', '').addClass('hide').backgroundSlider('destroy');
+			$grafika_vlozit.siblings('.grafika_form').removeClass('hide');
+			$grafika_vlozit.siblings('input.grafika_style_bgr').val( '' );
+		});
+
+		$(document).on('change.isBackgroundSlider', '#noticeboard .grafika_vlozit', function(evt) {
+			var $grafika_vlozit = $(this);
+			$grafika_vlozit.siblings('input.grafika_style_bgr').val( get_background_setting( $(this) ) );
+		});
+
+		$(document).on('click', '#noticeboard .column_switch > a', function(evt) {
+			var $column_switch	= $('#noticeboard .column_switch');
+			var this_class		= $(this).data('sq');
+
+			$column_switch.find('> a')
+				.removeClass('active')
+				.filter('.' + this_class)
+				.addClass('active');
+
+			var $sekce_row = $('#noticeboard .sekce_row');
+
+			$sekce_row.removeClass('one two three').addClass( this_class );
+
+			is.Ajax.request('', {
+				operace:	'uloz_pref',
+				nazev:		'g_noticeboard_dlazdice',
+				hodnota:	this_class,
+			});
+
+			update_sekce_row();
+		});
+
+		$(document).on('click', '.noticeboard_zprava', function(evt) {
+
+			var zprava_id		= $(evt.target).data('zprava_id');
+			var url_zprava		= $(evt.target).attr('href');
+			var $zpravy_dlazdice	= $(evt.target).closest('.zpravy_dlazdice');
+
+			if (!zprava_id || !url_zprava) {
+				return true;
+			}
+
+			is.Noticeboard.zprava($.extend({
+				url_zprava:	url_zprava,
+				url_zpet:	location.pathname + location.search,
+			}, $zpravy_dlazdice.data(), $(evt.target).data()));
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard .kontrola_zprava .zobraz_obsah', function(evt) {
+
+			var zprava_id		= $(evt.target).data('zprava_id');
+			var $kontrola_zprava	= $(evt.target).closest('.kontrola_zprava');
+			var $obsah		= $kontrola_zprava.find('.obsah');
+			var $loading		= is.Loading.get$loading();
+
+			$kontrola_zprava.find('.isi-rozbalit, .isi-sbalit').toggleClass('isi-rozbalit isi-sbalit');
+
+			if ($obsah.children().length) {
+				$obsah.children().remove();
+			} else {
+				$obsah.html($loading);
+
+				is.Ajax.request('', {
+					operace:	'kontrola_zobraz_obsah',
+					zprava_id:	zprava_id,
+				}).done(function(data) {
+					$obsah.html( data.html );
+				}).fail(function() {
+					$loading.remove();
+					$kontrola_zprava.find('.isi-sbalit').removeClass('isi-sbalit');
+				});
+			}
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard .zobrazit_en', function() {
+			$('#noticeboard form.zprava .column.en').toggleClass('hide');
+			$(this).children('i').toggleClass('isi-rozbalit').toggleClass('isi-sbalit');
+			$(window).trigger('scroll');
+		});
+
+		function chosen_reinit(chosen) {
+			var $chosen = $(chosen), params;
+			if ($chosen.data('chosen')) {
+				params = $chosen.data('chosen').options;
+				$chosen.chosen('destroy');
+			}
+
+			$chosen.children('option').filter(function(i, element) {
+				return $(element).attr('value').length === 1;
+			}).prop('selected', false);
+
+			$chosen.chosen(params);
+		}
+
+		$(document).on('chosen:ready', '#noticeboard #vyber_zvyrazneni', function(evt) {
+			$.each( $('#vyber_zvyrazneni')[0].options , function(i, el) {
+				$('#vyber_zvyrazneni_chosen').find('[data-option-array-index='+i+']').closest('li').toggleClass('red', $(el).is('[value$=1]'));
+			});
+		});
+
+		$(document).on('change', '#noticeboard #vyber_zvyrazneni', function(evt, change) {
+			var $target	= $(evt.target);
+
+			if (change.hasOwnProperty('selected')) {
+				var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+					open:	1,
+				});
+
+				is.Ajax.request('', {
+					operace:	'dej_zprava_zvyrazneni_modal',
+					kategorie_id:	change.selected,
+					skip:		$target.children('[value^=' + change.selected + ']:selected').map(function() { return $(this).data('pracoviste') }).get().join(','),
+					sekce_zpravy:	$('#noticeboard input[name=sekce_id]').val(),
+				}).done(function(data) {
+					$reveal.find('.reveal-content').html( data.html );
+					var $form = $reveal.find('form');
+					$form.on('submit', function() {
+						var $pracoviste	= $form.find('[name=pracoviste_id]');
+						var $dulezite	= $form.find('[name=dulezite]');
+						if (is.Forms.is_valid($form)) {
+							var text	= $target.children('[value=' + change.selected + ']').text() + ' &ndash; ' + $pracoviste.children(':selected').text();
+							var value	= [
+								change.selected,
+								$pracoviste.val(),
+								$dulezite.is(':checked') ? 1 : 0,
+							].join('_');
+
+							var option		= document.createElement('option');
+							option.value		= value;
+							option.innerHTML	= text;
+							option.selected		= true;
+							$(option).data('pracoviste', $pracoviste.val());
+							$target.append(option);
+
+							$reveal.foundation('close');
+						}
+						return false;
+					});
+
+					$form.find('[name=pracoviste_id]').change(function(e) {
+						var $selected = $(e.target.options[ e.target.selectedIndex ]);
+						$form.find('[name=dulezite]').parent().toggle( $selected.data('n_manip') != null );
+					}).trigger('change');
+
+					$reveal.foundation('_updatePosition');
+				}).fail(function() {
+					$reveal.foundation('close');
+				});
+
+				$reveal.on('closed.zf.reveal', function() {
+					$reveal.parent().remove();
+
+					chosen_reinit($target);
+
+					$.each( $('#vyber_zvyrazneni')[0].options , function(i, el) {
+						$('#vyber_zvyrazneni_chosen').find('[data-option-array-index='+i+']').closest('li').toggleClass('red', $(el).is('[value$=1]'));
+					});
+				});
+
+			} else if (change.hasOwnProperty('deselected')) {
+				$target.children('[value=' + change.deselected + ']').remove();
+				chosen_reinit($target);
+			}
+
+		});
+
+		$(document).on('formvalid.zf.abide', '#noticeboard form.zprava', function(evt) {
+			var $form	= $(evt.target);
+			var $submit	= $form.find('[type=submit]');
+
+			$submit.prop('disabled', true);
+			is.Ajax.request('', $form.serializeArray(), { nanobar: true, }).done(function( data ) {
+				if (data.chyba) {
+					$submit.prop('disabled', false);
+					return;
+				}
+				if (data.errors) {
+					$submit.prop('disabled', false);
+					$.each(data.errors, function(key, val) {
+						var $item = $form.find('[name=' + key + ']');
+						is.Forms.change_input_err_msg( $item, val, true );
+					});
+
+					var $target = $form.find(
+						$.map(data.errors, function(val, key) { return '[name=' + key + ']'; }).join(', ')
+					).first().closest(':visible');
+					if ($target.siblings('label').length) {
+						$target = $target.siblings('label');
+					} else {
+						var id = $target.attr('id');
+						if (id) {
+							var $label = $form.find('label[for="' + id + '"]');
+							if ($label.length) {
+								$target = $label;
+							}
+						}
+					}
+					is.HashNavigation.scrollTo($target, 100);
+					is.Zdurazneni.chyba(is.ldb.isForms_invalid, { fade_out: 5 });
+				} else { // OK
+					loader.load( data.forward );
+				}
+			}).fail(function() {
+				$submit.prop('disabled', false);
+			});
+		});
+
+		$(document).on('forminvalid.zf.abide', '#noticeboard form.zprava', function(evt) {
+			var $form = $(evt.target);
+
+			var $target = $( '#' + $form.find('.form-error.is-visible').data('form-error-for') ).closest(':visible');
+			if ($target.siblings('label').length) {
+				$target = $target.siblings('label');
+			} else {
+				var id = $target.attr('id');
+				if (id) {
+					var $label = $form.find('label[for="' + id + '"]');
+					if ($label.length) {
+						$target = $label;
+					}
+				}
+			}
+			is.HashNavigation.scrollTo($target, 100);
+		});
+
+		$(document).on('submit', '#noticeboard form.zprava', function(evt) {
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .uzel_id, .noticeboard_zprava .zprava_menu .rodic_id', function(evt) {
+			var id = $(this).data('copy_id');
+			if ( copy_string_to_clipboard(id) ) {
+				is.Zdurazneni.potvrzeni('Zkopírováno do schránky.', { fade_out: true });
+			} else {
+				is.Zdurazneni.chyba('Chyba při kopírování do schránky.', { fade_out: true });
+			}
+
+			evt.preventDefault();
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .smaz_zpravu, #noticeboard .smaz_zpravu', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'smaz_zpravu large',
+				data: {
+					multipleOpened: true,
+				},
+			});
+			var zprava_id = $(this).data('this_id');
+
+			is.Ajax.request('', {
+				operace:	'smazani_zpravy_form',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				is.Forms.ajax_submit($reveal.find('form'), {
+					data: {
+						operace: 'smaz_zpravu',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+					$reveal.foundation('close');
+
+					$('.reveal:visible').trigger('close.zf.trigger');
+					$('.noticeboard_zprava[data-zprava_id='+ zprava_id +']')
+						.closest('.dlazdice_column')
+						.slideUp(function() {
+							$(this).remove()
+						});
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .presun_zpravu', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'presun_zpravu',
+				data: {
+					multipleOpened: true,
+				},
+			});
+			var zprava_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'presun_zpravu_form',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				is.Forms.ajax_submit($reveal.find('form'), {
+					data: {
+						operace: 'presun_zpravu',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+					$reveal.foundation('close');
+
+					loader.load( data.url );
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .precist, .noticeboard_zprava .zprava_menu .odprecist, #noticeboard .precteni, .noticeboard_zprava .precteni', function(e) {
+			var $this	= $(this);
+			var zprava_id	= $this.data('id');
+			var precist	= (!$this.hasClass('active') ? 1 : 0);
+
+			is.Ajax.request('', {
+				operace:	'uloz_cteni',
+				zprava_id:	zprava_id,
+				precist:	precist,
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+				$this.closest('.noticeboard_zprava').find('.zprava_menu').replaceWith( $(data.html).foundation() );
+
+				$('#noticeboard .precteni[data-id="' + zprava_id + '"], .noticeboard_zprava .precteni[data-id="' + zprava_id + '"]')
+					.toggleClass('active', precist)
+					.attr('title', precist ? is.ldb.vratit_neprect : is.ldb.pozn_prect)
+					.closest('.dlazdice').toggleClass('nova', !precist)
+					;
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .ignorovat, .noticeboard_zprava .zprava_menu .neignorovat', function(e) {
+			var $this	= $(this);
+			var zprava_id	= $this.data('id');
+			var people_id	= $this.data('people_id');
+			var ignorovat	= $this.hasClass('ignorovat') ? 1 : 0;
+
+			is.Ajax.request('', {
+				operace:	'uloz_ignorovani_osoby',
+				zprava_id:	zprava_id,
+				ignorovat:	ignorovat,
+				people_id:	people_id,
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+				$this.closest('.zprava_menu').replaceWith( $(data.html).foundation() );
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .kopirovat', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'kopirovat_zpravu',
+				data: {
+					multipleOpened: true,
+				},
+			});
+			var zprava_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'kopirovat_zpravu_form',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				is.Forms.ajax_submit($reveal.find('form'), {
+					data: {
+						operace: 'kopirovat_zpravu',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+					$reveal.foundation('close');
+
+					loader.load( data.url );
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .stitky', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'stitky',
+				data: {
+					multipleOpened: true,
+				},
+			});
+			var zprava_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'stitky_form',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				is.Forms.ajax_submit($reveal.find('form'), {
+					data: {
+						operace: 'uloz_stitky',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+					$reveal.foundation('close');
+				});
+
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard .rss', function(evt) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class:	'rss',
+			});
+
+			is.Ajax.request('', {
+				operace:	'rss',
+				sekce_id:	$(evt.currentTarget).data('id'),
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+		});
+
+		$(document).on('click', '#noticeboard .sledovat', function(e) {
+			var $this	= $(this);
+			var zprava_id	= $this.data('id');
+			var active	= $this.hasClass('active') ? 0 : 1
+
+			is.Ajax.request('', {
+				operace:	'uloz_oblibene',
+				uzel_id:	zprava_id,
+				active:		active,
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+
+				$this.toggleClass('active', !!data.active)
+					.attr('title', data.active ? is.ldb.nesledovat : is.ldb.sledovat)
+					;
+				if (!active) {
+					$this.siblings('.at').removeClass('active');
+				}
+			});
+
+			return false;
+
+		});
+
+		$(document).on('click', '#noticeboard .at', function(e) {
+			var $this	= $(this);
+			var sekce_id	= $this.data('id');
+			var active	= $this.hasClass('active') ? 0 : 1
+
+			is.Ajax.request('', {
+				operace:	'uloz_nast_zasilani_emailem',
+				uzel_id:	sekce_id,
+				active:		active,
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+
+				$this.toggleClass('active');
+				$this.siblings('.sledovat').toggleClass('active', active === 1);
+			});
+
+			return false;
+
+		});
+
+		$(document).on('click', '.noticeboard_zprava .hlavicka .hvezdicka, #noticeboard .dlazdice .hvezdicka', function(e) {
+			var $this	= $(this);
+			var zprava_id	= $this.data('id');
+
+			is.Ajax.request('', {
+				operace:	'uloz_oblibene',
+				uzel_id:	zprava_id,
+				active:		($this.hasClass('active') ? 0 : 1),
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+				$('#noticeboard .hvezdicka[data-id="'+ zprava_id +'"], .noticeboard_zprava .hvezdicka[data-id="'+ zprava_id +'"]')
+					.toggleClass('active', !!data.active)
+					.attr('title', data.active ? is.ldb.odebrat_hvezd : is.ldb.pozn_hvezd)
+					;
+			});
+
+			return false;
+
+		});
+
+		$(document).on('click', '.noticeboard_zprava > .hlavicka .hodnotit', function(e) {
+			var $this	= $(this);
+			var $i		= $(this).children('i');
+			var zprava_id	= $this.data('id');
+			var hodnoceni	= $i.hasClass('isi-face-vtipne') && $this.hasClass('active')	?	'12'
+					: $i.hasClass('isi-face-vtipne')				?	'11'
+					: ''
+					;
+
+			is.Ajax.request('', {
+				operace:	'uloz_hodnoceni',
+				zprava_id:	zprava_id,
+				hodnoceni:	hodnoceni,
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+
+				if ($i.hasClass('isi-face-vtipne') && $this.hasClass('active')) {
+					$i.removeClass('isi-face-vtipne').addClass('isi-face-otravne');
+					$this.removeClass('spoko').addClass('nespoko');
+					$this.attr('title', is.ldb.nespoko);
+				} else if ($i.hasClass('isi-face-vtipne')) {
+					$this.addClass('active');
+					$this.addClass('spoko');
+					$this.attr('title', is.ldb.spoko);
+				} else {
+					$i.addClass('isi-face-vtipne').removeClass('isi-face-otravne');
+					$this.removeClass('active');
+					$this.removeClass('nespoko').addClass('spoko');
+					$this.attr('title', is.ldb.spoko);
+				}
+			});
+
+			return false;
+
+		});
+
+		$(document).on('click', '.noticeboard_zprava .sdilet', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'sdilet',
+				data: {
+					multipleOpened: true,
+				},
+			});
+			var zprava_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'sdilet_form',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .hlavicka .drobecek.tecky', function(e) {
+			var $parent = $(this).parent();
+			$parent.find('.tecky, .tecky_zobacek').remove();
+			$parent.find('.hide').removeClass('hide');
+		});
+
+		$(document).on('click', '.reveal.sdilet .zkratit', function(e) {
+			var $input	= $(this).closest('.input-group').find('input');
+			is.Ajax.request('', {
+				operace:	'zkratit_url',
+				url:		$input.val(),
+			}).done(function(data) {
+				if (data.chyba) {
+					return;
+				}
+
+				$input.val( data.url );
+				$(this).parent().remove();
+			});		
+		});
+
+		$(document).on('click', '.reveal.sdilet .zkopirovat', function(e) {
+			var $input	= $(this).closest('.input-group').find('input');
+			copy_string_to_clipboard( $input.val() );
+		});
+
+		$(document).on('click', '#noticeboard.nastaveni_sekce .pridat_sekci', function(e) {
+
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'pridat_sekci_form',
+			});
+
+			var sekce_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'pridat_sekci_form',
+				sekce_id:	sekce_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html ).find('input:first').focus();
+				$reveal.foundation('_updatePosition');
+				var $form = $reveal.find('form');
+
+				is.Forms.ajax_submit($form, {
+					data: {
+						operace: 'uloz_sekci',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+
+					if (data.errors) {
+						$.each(data.errors, function(key, val) {
+							var $item = $form.find('[name=' + key + ']');
+							is.Forms.change_input_err_msg( $item, val, true );
+						});
+
+						is.Zdurazneni.chyba(is.ldb.isForms_invalid, { fade_out: 5 });
+					} else { // OK
+
+						$('#noticeboard .podsekce').append( data.html ).sortable('refresh');
+						$reveal.foundation('close');
+					}
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard.nastaveni_sekce .podsekce .smazat', function(e) {
+
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'smazat_sekci_form',
+			});
+
+			var sekce_id	= $(this).data('id');
+			var $li		= $(this).closest('li');
+
+			is.Ajax.request('', {
+				operace:	'smazani_sekce_form',
+				sekce_id:	sekce_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				var $form = $reveal.find('form');
+
+				is.Forms.ajax_submit($form, {
+					data: {
+						operace: 'smaz_sekci',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+
+					$li.remove();
+
+					$reveal.foundation('close');
+				});
+
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard.nastaveni_sekce .prava_sekce', function(e) {
+
+			if (!Foundation.MediaQuery.atLeast('medium')) {
+				return true;
+			}
+			var $a		= $(this);
+			var $iframe	= $('<iframe/>').attr('src', $a.attr('href'));
+
+			var $reveal = is.Reveal.create( $iframe, {
+				class:	'prava_sekce_modal large',
+				open:	1,
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			e.stopPropagation();
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard.nastaveni_sekce .pridat_polozku', function(e) {
+
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'pridat_polozku',
+			});
+
+			var sekce_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'nova_dyn_polozka_form',
+				sekce_id:	sekce_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html ).find('input:first').focus();
+				$reveal.foundation('_updatePosition');
+				var $form = $reveal.find('form');
+
+				is.Forms.ajax_submit($form, {
+					data: {
+						operace: 'uloz_dyn_polozku',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+
+					if (data.errors) {
+						$.each(data.errors, function(key, val) {
+							var $item = $form.find('[name=' + key + ']');
+							is.Forms.change_input_err_msg( $item, val, true );
+						});
+
+						is.Zdurazneni.chyba(is.ldb.isForms_invalid, { fade_out: 5 });
+					} else { // OK
+
+						$('#noticeboard .dpolozky').append( data.html ).sortable('refresh');
+						$reveal.foundation('close');
+					}
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard.nastaveni_sekce .dpolozky .upravit', function(e) {
+
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'upravit_polozku',
+			});
+
+			var $li		= $(this).closest('li');
+			var $ul		= $li.parent();
+			var sekce_id	= $li.data('id');
+			var klic	= $li.data('klic');
+
+			is.Ajax.request('', {
+				operace:	'uprav_dyn_polozku_form',
+				sekce_id:	sekce_id,
+				klic:		klic,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html ).find('input:first').focus();
+				$reveal.foundation('_updatePosition');
+				var $form = $reveal.find('form');
+
+				is.Forms.ajax_submit($form, {
+					data: {
+						operace: 'zmen_dyn_polozku',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+
+					if (data.errors) {
+						$.each(data.errors, function(key, val) {
+							var $item = $form.find('[name=' + key + ']');
+							is.Forms.change_input_err_msg( $item, val, true );
+						});
+
+						is.Zdurazneni.chyba(is.ldb.isForms_invalid, { fade_out: 5 });
+					} else { // OK
+
+						$li.replaceWith( data.html );
+						$ul.sortable('refresh');
+						$reveal.foundation('close');
+					}
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard.nastaveni_sekce .dpolozky .smazat', function(e) {
+
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'smazat_polozku_form',
+			});
+
+			var $li		= $(this).closest('li');
+			var sekce_id	= $li.data('id');
+			var klic	= $li.data('klic');
+
+			is.Ajax.request('', {
+				operace:	'smazani_dyn_polozky_form',
+				sekce_id:	sekce_id,
+				klic:		klic
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				var $form = $reveal.find('form');
+
+				is.Forms.ajax_submit($form, {
+					data: {
+						operace: 'smaz_dyn_polozku',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+
+					$li.remove();
+
+					$reveal.foundation('close');
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .obnovit, #noticeboard .dlazdice .obnovit', function(e) {
+
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'obnovit_zpravu_form',
+				data: {
+					multipleOpened: true,
+				},
+			});
+
+			var zprava_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'obnovit_zpravu_form',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+
+				if (data.chyba) {
+					return;
+				}
+
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+				var $form = $reveal.find('form');
+
+				is.Forms.ajax_submit($form, {
+					data: {
+						operace: 'obnovit_zpravu',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+
+					loader.load( data.forward );
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('change', '#noticeboard #vyber_stitku', function(e) {
+			loader.load( $(this).find('option:selected').data('url') );
+		});
+
+		$(document).on('click', '#noticeboard.ignorovane_osoby .moje_ignorovane_osoby .zrus', function(e) {
+			$(this).closest('li').remove();
+		});
+
+		$(document).on('click', 'html[data-whatintent=touch] .noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony', function(e) {
+			var $this = $(this);
+
+			if (!$this.hasClass('open')) {
+				$this.addClass('open');
+				return false;
+			}
+			e.stopPropagation();
+		});
+
+		$(document).on('click', function() {
+			$('html[data-whatintent=touch] .noticeboard_zprava .zprava_fieldset.soubory .soubor_ikony').removeClass('open');
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .rozeslat_email', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'rozeslat_email large',
+				data: {
+					multipleOpened: true,
+				},
+			});
+			var zprava_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'rozeslat_email_form',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				is.Forms.ajax_submit($reveal.find('form'), {
+					data: {
+						operace: 'rozeslat_email',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+					$reveal.foundation('close');
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '#noticeboard .prodlouzit_expiraci', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'prodlouzit_expiraci_form',
+			});
+
+			is.Ajax.request('', {
+				operace:	'prodlouzit_expiraci_form',
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+
+				var $form = $reveal.find('form');
+				is.Forms.ajax_submit($form, {
+					data: {
+						operace: 'prodlouzit_expiraci',
+					},
+					url: is('session.auth') + '/noticeboard/',
+				}).done(function(data) {
+					if (data.chyba) {
+						return;
+					}
+					if (data.errors) {
+						$.each(data.errors, function(key, val) {
+							var $item = $form.find('[name=' + key + ']');
+							is.Forms.change_input_err_msg( $item, val, true );
+						});
+					} else {
+						$reveal.foundation('close');
+					}
+				});
+
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+		$(document).on('click', '.noticeboard_zprava .zprava_menu .force_fast_red_blue', function(e) {
+			var $reveal = is.Reveal.create( is.Loading.get$loading(), {
+				open:	1,
+				class: 'force_fast_red_blue',
+				data: {
+					multipleOpened: true,
+				},
+			});
+			var zprava_id = $(this).data('id');
+
+			is.Ajax.request('', {
+				operace:	'force_fast_red_blue',
+				zprava_id:	zprava_id,
+			}).done(function(data) {
+				$reveal.find('.reveal-content').html( data.html );
+				$reveal.foundation('_updatePosition');
+			}).fail(function() {
+				$reveal.foundation('close');
+			});
+
+			// cleanup
+			$reveal.on('closed.zf.reveal', function() {
+				$reveal.parent().remove();
+			});
+
+			return false;
+		});
+
+	}
+
+	function gallery_init() {
+		$('.noticeboard-zprava:visible .noticeboard_zprava .obsah img').each(function(){
+			var $img	= $(this);
+			var $reveal	= $img.closest('.reveal');
+
+			if ($img.closest('.no-gallery').length || ($img.attr('src') || '').match(/^\/system\/tex2img/)) {
+				return;
+			}
+
+			var $parent = $img.parent();
+
+			if (! $parent.is('a')) { // obrazok nie je klikatelny, vyrobime odkaz
+				$img.wrap('<a></a>');
+				$parent = $img.parent();
+				$parent.attr('href', $img.attr('src'));
+
+				$parent.addClass('gallery-open thumbnail')
+					.attr('data-gallery-group', 'zprava_' + $reveal.data('id'));
+			} else if (($parent.attr('href') || '').match(/\/imgx\//) || $img.attr('src') === $parent.attr('href')) {
+				$parent.addClass('gallery-open thumbnail')
+					.attr('data-gallery-group', 'zprava_' + $reveal.data('id'));
+			}
+
+		});
+
+		$('.noticeboard-zprava:visible .noticeboard_zprava .zprava_fieldset.soubory .soubor.img').each(function(){
+			var $soubor	= $(this);
+			var $ikony	= $soubor.find('.soubor_ikony > a');
+			var $nazev	= $soubor.children('.soubor_nazev');
+			var $reveal	= $soubor.closest('.reveal');
+
+			$ikony.addClass('gallery-open')
+				.attr('data-gallery-group', 'zprava_soubory_ikony' + $reveal.data('id'));
+			$nazev.addClass('gallery-open')
+				.attr('data-gallery-group', 'zprava_soubory_nazev' + $reveal.data('id'));
+		});
+
+	}
+
+	function copy_string_to_clipboard(str) {
+		var el = document.createElement('textarea');
+		el.value = str;
+		el.setAttribute('readonly', '');
+		el.style = { position: 'absolute', left: -99999 };
+		document.body.appendChild(el);
+		el.select();
+		var ret = document.execCommand('copy');
+		document.body.removeChild(el);
+		return ret;
+	}
+
+	function update_sekce_row() {
+		$('#noticeboard .sekce_row').each(function() {
+			is.Foundation.get_plugin(this)._reflow();
+		});
+	}
+
+	function grafika_update(context) {
+		$('.grafika[data-url]', $(context) || document).each(function() {
+			var $grafika	= $(this);
+			var url		= $grafika.data('url');
+
+			if (url) {
+				var img = new Image();
+				img.onload = function() {
+					if (this.height > this.width) {
+						$grafika.css('background-position', 'top');
+					}
+				};
+				img.src = url;
+			}
+		});
+	}
+
+	function hide_tooltips() {
+		$('[data-tooltip]').filter(function() {
+			return is.Foundation.get_plugin(this) instanceof Foundation.Tooltip;
+		}).each(function() {
+			$(this).foundation('hide');
+		});
+	}
+
+	function zprava_buttons_update($reveal) {
+		var $buttons	= $reveal.find('.buttons:first');
+		var $divs	= $buttons.children('div');
+
+		if ($reveal.length && $buttons.length) {
+			var base	= $reveal.position().top + $buttons.position().top;
+			$divs.css('top', ($(window).height() / 2) + 21 - base);
+		}
+	}
+
+});
+
+(function($){
+
+$.fn.cssFloat = function (prop) {
+	return parseFloat(this.css(prop)) || 0;
+};
+
+})(jQuery);
+
+(function( $ ){
+
+    function calculateResults(startX, startY, endX, endY, tresholdX, tresholdY){
+        var swipeDirection = {up:false, right:false, down: false, left:false};
+        if(startX > endX && startX - endX >= tresholdX)
+            swipeDirection.left = true;
+        else if(startX < endX && endX - startX >= tresholdX)
+            swipeDirection.right = true;
+
+        if(startY < endY && endY - startY >= tresholdY)
+            swipeDirection.down = true
+        else if(startY > endY && startY - endY >=tresholdY)
+            swipeDirection.up = true;
+
+        return swipeDirection;
+
+    }
+    $.fn.onSwipe = function(f, timeTreshold, tresholdX, tresholdY){
+        if(jQuery.isFunction(f)){ //We are only going to do our thing if the user passed a function
+
+        if(typeof timeTreshold === 'undefined' || timeTreshold === null)
+            timeTreshold = 100;//ms
+
+        if(typeof tresholdX === 'undefined' || tresholdX === null)
+            tresholdX = 250;//px
+
+        if(typeof tresholdY === 'undefined' || tresholdY === null)
+            tresholdY = 250;//px
+
+        var startX,  startY; //Position when touch begins
+        var endX, endY; //Position when touch ends
+
+        var time; //Our timer variable
+        var totalTime = 0; //Total time that the swipe took
+
+        //When a touch starts on this element.
+            //We can start a timer, and start getting coordinates.
+        $(this).on("touchstart", function(e){
+
+            //Let's get our touch coordinates
+            startX = e.originalEvent.touches[0].clientX; //This is where touchstart coordinates are stored
+            startY = e.originalEvent.touches[0].clientY;
+
+            time = setInterval(function(){ //Let's see how long the swipe lasts.
+                totalTime += 10;
+            }, 10);
+        });
+
+        $(this).on("touchend", function(e){
+
+            endX = e.originalEvent.changedTouches[0].clientX; //This is where touchend coordinates are stored.
+            endY = e.originalEvent.changedTouches[0].clientY;
+
+            clearInterval(time); //Let's stop calculating time and free up resources.
+
+            if(totalTime >= timeTreshold) //If swipe time is less than our treshold we won't do anything. Useful for preventing spam and accidental swipes.
+                f(calculateResults(startX, startY, endX, endY, tresholdX, tresholdY)); //Send results to user's function
+
+            totalTime = 0;
+        });
+        } else console.error("You need to pass a function in order to process swipe data.");
+
+        return $(this);
+    }
+})( jQuery );
+
+
+</script>
+<script src="/js/is/Loader.js?_v=6713c23"></script>
+<script>
+(function() {
+
+"use strict";
+
+is.Design.init({
+   "ldb" : {
+      "rozbalit" : "Rozbalit",
+      "odstranit" : "Odstranit",
+      "isForms_invalid" : "Chybně vyplněné údaje, prosím zkontrolujte.",
+      "error_msg_required" : "Povinný údaj.",
+      "error_msg_datepicker_min_date" : "Datum a čas nelze takto nastavit.",
+      "vratit_neprect" : "Vrátit zprávu mezi nepřečtené",
+      "error_msg_number_integer" : "Očekáváno celé číslo (&hellip;,&nbsp;-2,&nbsp;-1,&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;&hellip;).",
+      "error_msg_required_max" : "Je vybráno více položek, než je povoleno.",
+      "sbalit" : "Sbalit",
+      "pozn_prect" : "Označit zprávu za přečtenou",
+      "byl_jste_odhlasen_prihlasit" : "Přihlásit",
+      "error_msg_required_any" : "Alespoň jeden údaj musí být vyplněn.",
+      "error_msg_max" : "Text je příliš dlouhý.",
+      "error_msg_min_val" : "Číslo je menší než povolená hodnota.",
+      "modal_full" : "Na celou obrazovku",
+      "byl_jste_odhlasen" : "Byl jste odhlášen.",
+      "error_msg_number_natural_zero" : "Očekáváno přirozené číslo nebo nula (0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "byl_jste_odhlasen_zavrit" : "Zavřít",
+      "odepnout" : "Odepnout menu",
+      "pripnout" : "Připnout menu",
+      "odebrat_hvezd" : "Odebrat hvězdičku",
+      "error_msg_number_natural" : "Očekáváno přirozené číslo (1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "error_msg_uc_first" : "Musí začínat velkým počátečním písmenem.",
+      "chyba" : "Došlo k chybě, operaci opakujte nebo obnovte stránku.",
+      "error_msg_datepicker_max_date" : "Datum a čas nelze takto nastavit.",
+      "upravit" : "Upravit",
+      "chyba_503" : "Aplikace je dočasně nedostupná pro zvýšenou zátěž systému.",
+      "error_msg_alpha" : "Smí obsahovat pouze znaky abecedy, mezeru, podtržítko a spojovník.",
+      "error_msg_required_min" : "Nebyl vybrán požadovaný počet položek.",
+      "error_msg_required_all" : "Všechny údaje jsou povinné.",
+      "sledovat" : "Sledovat",
+      "pozn_hvezd" : "Poznačit si hvězdičkou",
+      "nesledovat" : "Zrušit sledování",
+      "error_msg_email" : "Nesprávný tvar e-mailové adresy",
+      "error_msg_max_val" : "Číslo je větší než povolená hodnota.",
+      "error_msg_alpha_numeric" : "Smí obsahovat pouze znaky abecedy, číslo, mezeru, podtržítko a spojovník.",
+      "error_msg_min" : "Text je příliš krátký.",
+      "error_msg" : "Nesprávný formát.",
+      "error_msg_zalozka_url" : "Nesprávný tvar adresy."
+   },
+   "svatky" : {
+      "20241224" : 1,
+      "20141231" : 1,
+      "20061117" : 1,
+      "20141227" : 1,
+      "20131231" : 1,
+      "20141225" : 1,
+      "20190101" : 1,
+      "20170417" : 1,
+      "20211225" : 1,
+      "20091028" : 1,
+      "20161226" : 1,
+      "20021223" : 1,
+      "20241225" : 1,
+      "20130101" : 1,
+      "20100501" : 1,
+      "20171228" : 1,
+      "20030705" : 1,
+      "20241028" : 1,
+      "20060508" : 1,
+      "20221229" : 1,
+      "20241229" : 1,
+      "20120508" : 1,
+      "20261230" : 1,
+      "20111226" : 1,
+      "20070101" : 1,
+      "20121028" : 1,
+      "20201228" : 1,
+      "20111028" : 1,
+      "20260706" : 1,
+      "20110501" : 1,
+      "20020101" : 1,
+      "20130401" : 1,
+      "20231231" : 1,
+      "20001228" : 1,
+      "20170508" : 1,
+      "20030421" : 1,
+      "20041230" : 1,
+      "20170928" : 1,
+      "20120706" : 1,
+      "20011231" : 1,
+      "20150501" : 1,
+      "20111229" : 1,
+      "20021227" : 1,
+      "20250928" : 1,
+      "20021225" : 1,
+      "20050706" : 1,
+      "20060705" : 1,
+      "20121231" : 1,
+      "20051225" : 1,
+      "20081224" : 1,
+      "20050501" : 1,
+      "20251224" : 1,
+      "20020401" : 1,
+      "20250421" : 1,
+      "20250418" : 1,
+      "20221225" : 1,
+      "20181117" : 1,
+      "20041227" : 1,
+      "20220101" : 1,
+      "20021224" : 1,
+      "20260403" : 1,
+      "20121230" : 1,
+      "20080101" : 1,
+      "20011229" : 1,
+      "20100508" : 1,
+      "20141222" : 1,
+      "20251229" : 1,
+      "20121229" : 1,
+      "20040508" : 1,
+      "20021229" : 1,
+      "20070409" : 1,
+      "20210402" : 1,
+      "20220928" : 1,
+      "20071117" : 1,
+      "20250706" : 1,
+      "20180101" : 1,
+      "20101231" : 1,
+      "20130706" : 1,
+      "20070705" : 1,
+      "20151231" : 1,
+      "20011227" : 1,
+      "20261227" : 1,
+      "20060501" : 1,
+      "20011228" : 1,
+      "20230101" : 1,
+      "20161229" : 1,
+      "20251228" : 1,
+      "20171227" : 1,
+      "20181229" : 1,
+      "20201230" : 1,
+      "20050508" : 1,
+      "20190419" : 1,
+      "20120705" : 1,
+      "20261229" : 1,
+      "20191230" : 1,
+      "20051028" : 1,
+      "20040706" : 1,
+      "20180705" : 1,
+      "20191117" : 1,
+      "20201229" : 1,
+      "20261225" : 1,
+      "20211231" : 1,
+      "20251028" : 1,
+      "20071224" : 1,
+      "20191224" : 1,
+      "20140501" : 1,
+      "20101028" : 1,
+      "20180330" : 1,
+      "20050328" : 1,
+      "20260101" : 1,
+      "20210706" : 1,
+      "20231224" : 1,
+      "20250101" : 1,
+      "20061227" : 1,
+      "20191227" : 1,
+      "20061028" : 1,
+      "20021230" : 1,
+      "20260406" : 1,
+      "20161225" : 1,
+      "20191228" : 1,
+      "20261226" : 1,
+      "20110928" : 1,
+      "20250508" : 1,
+      "20160101" : 1,
+      "20100405" : 1,
+      "20050705" : 1,
+      "20230705" : 1,
+      "20180402" : 1,
+      "20131224" : 1,
+      "20260508" : 1,
+      "20231229" : 1,
+      "20041231" : 1,
+      "20121224" : 1,
+      "20071228" : 1,
+      "20250705" : 1,
+      "20210501" : 1,
+      "20140101" : 1,
+      "20171231" : 1,
+      "20061224" : 1,
+      "20190501" : 1,
+      "20120101" : 1,
+      "20060928" : 1,
+      "20201224" : 1,
+      "20141117" : 1,
+      "20080324" : 1,
+      "20060706" : 1,
+      "20011226" : 1,
+      "20090508" : 1,
+      "20221230" : 1,
+      "20160705" : 1,
+      "20021117" : 1,
+      "20211229" : 1,
+      "20240706" : 1,
+      "20230508" : 1,
+      "20190928" : 1,
+      "20261028" : 1,
+      "20041225" : 1,
+      "20141223" : 1,
+      "20181231" : 1,
+      "20040101" : 1,
+      "20111231" : 1,
+      "20130508" : 1,
+      "20001225" : 1,
+      "20051230" : 1,
+      "20041117" : 1,
+      "20140421" : 1,
+      "20121117" : 1,
+      "20001229" : 1,
+      "20221117" : 1,
+      "20090706" : 1,
+      "20031225" : 1,
+      "20260705" : 1,
+      "20160706" : 1,
+      "20200705" : 1,
+      "20081226" : 1,
+      "20030508" : 1,
+      "20071231" : 1,
+      "20130501" : 1,
+      "20070928" : 1,
+      "20050101" : 1,
+      "20250501" : 1,
+      "20021226" : 1,
+      "20051224" : 1,
+      "20021231" : 1,
+      "20231226" : 1,
+      "20211117" : 1,
+      "20161227" : 1,
+      "20081028" : 1,
+      "20240101" : 1,
+      "20211224" : 1,
+      "20061230" : 1,
+      "20001226" : 1,
+      "20261228" : 1,
+      "20171225" : 1,
+      "20141226" : 1,
+      "20071226" : 1,
+      "20130928" : 1,
+      "20121226" : 1,
+      "20171229" : 1,
+      "20170706" : 1,
+      "20251226" : 1,
+      "20180501" : 1,
+      "20150705" : 1,
+      "20020705" : 1,
+      "20131225" : 1,
+      "20101230" : 1,
+      "20171224" : 1,
+      "20001224" : 1,
+      "20261117" : 1,
+      "20040501" : 1,
+      "20231028" : 1,
+      "20101117" : 1,
+      "20171223" : 1,
+      "20030101" : 1,
+      "20241228" : 1,
+      "20251225" : 1,
+      "20191231" : 1,
+      "20001028" : 1,
+      "20121223" : 1,
+      "20030706" : 1,
+      "20241230" : 1,
+      "20010416" : 1,
+      "20171028" : 1,
+      "20180508" : 1,
+      "20251227" : 1,
+      "20061229" : 1,
+      "20201226" : 1,
+      "20030928" : 1,
+      "20091225" : 1,
+      "20211230" : 1,
+      "20240508" : 1,
+      "20080705" : 1,
+      "20041028" : 1,
+      "20211028" : 1,
+      "20050928" : 1,
+      "20181230" : 1,
+      "20011117" : 1,
+      "20191028" : 1,
+      "20020706" : 1,
+      "20160325" : 1,
+      "20030501" : 1,
+      "20241231" : 1,
+      "20051227" : 1,
+      "20041226" : 1,
+      "20261231" : 1,
+      "20201231" : 1,
+      "20151227" : 1,
+      "20011224" : 1,
+      "20171117" : 1,
+      "20110705" : 1,
+      "20101227" : 1,
+      "20031028" : 1,
+      "20110425" : 1,
+      "20020501" : 1,
+      "20051228" : 1,
+      "20111225" : 1,
+      "20071225" : 1,
+      "20211228" : 1,
+      "20210508" : 1,
+      "20151229" : 1,
+      "20151228" : 1,
+      "20200508" : 1,
+      "20140705" : 1,
+      "20190706" : 1,
+      "20150508" : 1,
+      "20220415" : 1,
+      "20151226" : 1,
+      "20080928" : 1,
+      "20171230" : 1,
+      "20190422" : 1,
+      "20220705" : 1,
+      "20180928" : 1,
+      "20071230" : 1,
+      "20221231" : 1,
+      "20090413" : 1,
+      "20010705" : 1,
+      "20251231" : 1,
+      "20051117" : 1,
+      "20060101" : 1,
+      "20001231" : 1,
+      "20161231" : 1,
+      "20061228" : 1,
+      "20070508" : 1,
+      "20201223" : 1,
+      "20120409" : 1,
+      "20001230" : 1,
+      "20220501" : 1,
+      "20241226" : 1,
+      "20241223" : 1,
+      "20211226" : 1,
+      "20081225" : 1,
+      "20150928" : 1,
+      "20171226" : 1,
+      "20210405" : 1,
+      "20090101" : 1,
+      "20201221" : 1,
+      "20220706" : 1,
+      "20211227" : 1,
+      "20221226" : 1,
+      "20241227" : 1,
+      "20031226" : 1,
+      "20140508" : 1,
+      "20131228" : 1,
+      "20070706" : 1,
+      "20150101" : 1,
+      "20161224" : 1,
+      "20101228" : 1,
+      "20031117" : 1,
+      "20071227" : 1,
+      "20191223" : 1,
+      "20150406" : 1,
+      "20131223" : 1,
+      "20161028" : 1,
+      "20021228" : 1,
+      "20090928" : 1,
+      "20181028" : 1,
+      "20020928" : 1,
+      "20220418" : 1,
+      "20090705" : 1,
+      "20010501" : 1,
+      "20151223" : 1,
+      "20101223" : 1,
+      "20101226" : 1,
+      "20091117" : 1,
+      "20011028" : 1,
+      "20071028" : 1,
+      "20130705" : 1,
+      "20111117" : 1,
+      "20151230" : 1,
+      "20051229" : 1,
+      "20040705" : 1,
+      "20090501" : 1,
+      "20151225" : 1,
+      "20131229" : 1,
+      "20140706" : 1,
+      "20240401" : 1,
+      "20221224" : 1,
+      "20181225" : 1,
+      "20231228" : 1,
+      "20111227" : 1,
+      "20210101" : 1,
+      "20251230" : 1,
+      "20140928" : 1,
+      "20091226" : 1,
+      "20061225" : 1,
+      "20141230" : 1,
+      "20111224" : 1,
+      "20051226" : 1,
+      "20080501" : 1,
+      "20181226" : 1,
+      "20220508" : 1,
+      "20011230" : 1,
+      "20151028" : 1,
+      "20101224" : 1,
+      "20181224" : 1,
+      "20131028" : 1,
+      "20141228" : 1,
+      "20210705" : 1,
+      "20121227" : 1,
+      "20160928" : 1,
+      "20100101" : 1,
+      "20221228" : 1,
+      "20201225" : 1,
+      "20230501" : 1,
+      "20060417" : 1,
+      "20101225" : 1,
+      "20170414" : 1,
+      "20131227" : 1,
+      "20100928" : 1,
+      "20201222" : 1,
+      "20110508" : 1,
+      "20170101" : 1,
+      "20231225" : 1,
+      "20221028" : 1,
+      "20141229" : 1,
+      "20180706" : 1,
+      "20040928" : 1,
+      "20230928" : 1,
+      "20071229" : 1,
+      "20230407" : 1,
+      "20100706" : 1,
+      "20111228" : 1,
+      "20200413" : 1,
+      "20241117" : 1,
+      "20080508" : 1,
+      "20111223" : 1,
+      "20010101" : 1,
+      "20091224" : 1,
+      "20110706" : 1,
+      "20040412" : 1,
+      "20261224" : 1,
+      "20020508" : 1,
+      "20161230" : 1,
+      "20151224" : 1,
+      "20150706" : 1,
+      "20131230" : 1,
+      "20001227" : 1,
+      "20120501" : 1,
+      "20120928" : 1,
+      "20231227" : 1,
+      "20200706" : 1,
+      "20230410" : 1,
+      "20231230" : 1,
+      "20141028" : 1,
+      "20131117" : 1,
+      "20041224" : 1,
+      "20141224" : 1,
+      "20110101" : 1,
+      "20201028" : 1,
+      "20240928" : 1,
+      "20200501" : 1,
+      "20101229" : 1,
+      "20111230" : 1,
+      "20181227" : 1,
+      "20161117" : 1,
+      "20240705" : 1,
+      "20230706" : 1,
+      "20080706" : 1,
+      "20200410" : 1,
+      "20251117" : 1,
+      "20221227" : 1,
+      "20160501" : 1,
+      "20070501" : 1,
+      "20200101" : 1,
+      "20260501" : 1,
+      "20170501" : 1,
+      "20161223" : 1,
+      "20010706" : 1,
+      "20010928" : 1,
+      "20121228" : 1,
+      "20041228" : 1,
+      "20131226" : 1,
+      "20191225" : 1,
+      "20210928" : 1,
+      "20160508" : 1,
+      "20190705" : 1,
+      "20160328" : 1,
+      "20021028" : 1,
+      "20121225" : 1,
+      "20170705" : 1,
+      "20201117" : 1,
+      "20200928" : 1,
+      "20181228" : 1,
+      "20031224" : 1,
+      "20191229" : 1,
+      "20161228" : 1,
+      "20041229" : 1,
+      "20151117" : 1,
+      "20081117" : 1,
+      "20011225" : 1,
+      "20061226" : 1,
+      "20231117" : 1,
+      "20240329" : 1,
+      "20260928" : 1,
+      "20010508" : 1,
+      "20190508" : 1,
+      "20191226" : 1,
+      "20100705" : 1,
+      "20240501" : 1
+   },
+   "noticeboard_validators" : {
+      "upper_case_exceptions" : [
+         "MED",
+         "PHARM",
+         "ARTS",
+         "LAW",
+         "FSS",
+         "SCI",
+         "FI",
+         "PED",
+         "ECON",
+         "SPORT",
+         "ÚVT",
+         "ICS",
+         "CJV",
+         "CZS",
+         "CTT",
+         "TTO",
+         "KC",
+         "UCT",
+         "SKM",
+         "CEITEC",
+         "SUKB",
+         "IBA",
+         "MUNI",
+         "FSpS",
+         "FSPS",
+         "HELPS",
+         "POMÁHÁ",
+         "MU"
+      ]
+   },
+   "js_init" : [
+      {
+         "module" : "Noticeboard",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init",
+         "params" : [],
+         "module" : "Forms"
+      },
+      {
+         "method" : "init",
+         "params" : [
+            "#vyhledavani_form",
+            {
+               "debug_wrap" : "#priv_vyhledavani_debug_options",
+               "ikona" : {
+                  "class" : "isi-vyveska"
+               },
+               "placeholder" : "vyhledat na Vývěsce",
+               "clear_button" : "#vyhledavani_form_x",
+               "agenda" : [
+                  "v",
+                  "n"
+               ],
+               "limit" : 8,
+               "atributy" : {},
+               "complaint" : {}
+            }
+         ],
+         "module" : "Search"
+      },
+      {
+         "method" : "init",
+         "params" : [],
+         "module" : "Zivot"
+      },
+      {
+         "params" : [],
+         "method" : "init",
+         "module" : "Oblibene"
+      },
+      {
+         "module" : "NavMenu",
+         "method" : "init",
+         "params" : [
+            {
+               "ucitel" : null
+            }
+         ]
+      },
+      {
+         "params" : [],
+         "method" : "init",
+         "module" : "HashNavigation"
+      },
+      {
+         "module" : "Drobecky",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "module" : "AppMenu",
+         "method" : "init",
+         "params" : []
+      },
+      {
+         "params" : [],
+         "method" : "init_header",
+         "module" : "Design"
+      },
+      {
+         "params" : [],
+         "method" : "init_toolkit",
+         "module" : "Design"
+      }
+   ],
+   "session" : {
+      "login" : "990001",
+      "ekurz" : false,
+      "skola_id" : "14",
+      "uco" : "990001",
+      "auth" : "/auth",
+      "lang" : "cs",
+      "w_log_id" : "24839343322",
+      "skola_zkratka" : "MU",
+      "vidim_kazdeho" : null,
+      "debug" : 1,
+      "is_muni_cz" : "is.muni.cz",
+      "session_id" : "7336817617",
+      "sn" : "/auth/noticeboard/index.pl",
+      "remote_user" : "990001",
+      "cgipar" : {},
+      "pouzit_neoverene_udaje" : 1,
+      "server_time" : "18. 9. 2026 20:28:42",
+      "is_design_z" : ""
+   }
+}
+);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html class="no-js auth" lang="cs">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Student</title>
+<link href="/favicon.ico" rel="icon" sizes="32x32">
+<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="/css/r6/foundation.min.css?_v=ab3b2b3" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r/icons/foundation-icons.css?_v=d866a73" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/prvky.css?_v=2d7af96" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6.css?_v=f11632e" media="screen,print" rel="stylesheet" type="text/css">
+<link href="/css/r6/motiv/1.css?_v=9421c26" media="screen" rel="stylesheet" type="text/css">
+<link href="/css/r6/r6-print.css?_v=d1a07b2" media="print" rel="stylesheet" type="text/css">
+<style>#tab-content-predmety.tab-content.row {
+	margin-left: var(--r6-padding-);
+	margin-right: var(--r6-padding-);
+}
+#tab-content-predmety.tab-content.row > .column {
+	padding-right: var(--r6-padding);
+	padding-left: var(--r6-padding);
+}
+.predmet_conteiner {
+	border: 1px solid var(--bordersedy);
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.predmet_conteiner.active {
+	border-color: var(--bordersedy-dark);
+}
+
+.predmet_header {
+	position: relative;
+	padding: .2rem .2rem .2rem .25rem;
+}
+
+.predmet_header > .predmet_header_more {
+	padding: .4444rem;
+	text-decoration: none !important;
+	display: block;
+	font-size: 1.0714rem;
+	transition: all 200ms ease;
+	color: var(--text-mene-vyrazny);
+}
+
+.predmet_conteiner.active .predmet_header a {
+	background: var(--bgbarva-seda3);
+	font-weight: 600;
+}
+
+.predmet_header > a.sbal, .predmet_header > a.rozbal {
+	padding-right: 4rem;
+	background: none;
+}
+
+.predmet_header > a:hover, .predmet_conteiner > a:active {
+	background: var(--bgbarva-seda3);
+}
+
+.predmet_header_more > .isi-potvrzeni:before {
+	position: absolute;
+	right: 2.2rem;
+	top: calc(50% - 10.5px);
+}
+
+.predmet_header_more .hvezdicka {
+	color: transparent;
+}
+
+.predmet_header_more:hover .hvezdicka,
+.predmet_header_more:focus .hvezdicka,
+.predmet_header_more .hvezdicka:focus {
+	color: var(--text-mene-vyrazny);
+}
+
+.predmet_header_more .hvezdicka.hvezdicka-oblibene {
+	color: #f6a514;
+}
+
+.predmet_header > a.sbal::after,
+.predmet_header > a.rozbal:after {
+	border-color: #002776 transparent transparent;
+	border-image: none;
+	border-style: solid;
+	border-width: 5px 5px 0 5px;
+	content: "";
+	display: block;
+	height: 0;
+	top: 50%;
+	top: calc(50% - 2.5px);
+	right: 1rem;
+	width: 0;
+	position: absolute;
+}
+
+.predmet_header > a.sbal::after {
+	border-width: 0 5px 5px 5px;
+	border-color: transparent transparent #002776 transparent;
+}
+
+.predmet_conteiner .predmet_header .predmet_header_name img {
+	width: 2.5rem;
+	height: auto;
+	margin-right: 0.5rem;
+	vertical-align: -54%;
+}
+
+.predmet_conteiner.active .predmet_header > a span.predmet_header_name_fakulta {
+	font-weight: 400;
+	color: var(--text-mene-vyrazny);
+}
+
+.predmet_conteiner .predmet_body {
+	display: none;
+}
+
+.predmet_conteiner.active .predmet_body {
+	display: block;
+}
+
+.predmet_body > div > div:last-child{
+	background-color: var(--bgbarva-seda3);
+	margin: 0 -0.9rem 0.2rem -0.8rem;
+	padding: 0.4rem 0.9rem;
+}
+
+.student_row_a {
+	padding: 1rem 0;
+}
+
+.student_row_a > div:first-child > div {
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+}
+
+.student_row_a > div > div.hodnoceni {
+	padding: 0rem 1.5rem 1rem 1rem;
+	text-align: right;
+}
+
+.student_row_a > div > div.hodnoceni .studium-id {
+	font-size: 0.926rem;
+	margin-right: 1em;
+	font-weight: 400;
+	color: #8a8a8a;
+}
+
+.student_row_a > div:last-child > div > div:first-child {
+	color: #8a8a8a;
+}
+
+.student_row_a > div:last-child > div > div:last-child {
+	font-weight: 600;
+}
+
+.student_row_a .podnadpis {
+	display: block;
+	font-size: 0.714rem;
+	font-weight: 600;
+	color: #9b9b9b;
+	text-transform: uppercase;
+}
+
+.student_row_a div .vyucujici {
+	font-size: 1.143rem;
+}
+
+.student_row_a .hodnoceni {
+	font-size: 2.2rem;
+	font-weight: 600;
+	color: var(--text-mene-vyrazny);
+}
+
+.student_row_a .male {
+	font-size: 1rem;
+}
+
+.student_row_a .oddelovac {
+	border-left: 1px solid #dbdbdb;
+	margin: 0 1.5rem;
+}
+
+.student_row_b, .student_row_c {
+	padding: 1rem 0;
+}
+
+.student_row_b a i[class|="isi"] {
+	border: 1px solid;
+	border-radius: 3rem;
+	display: inline-block;
+	float: left;
+	margin: -0.5rem 1rem 0 0;
+	padding-top: 0.2rem;
+	vertical-align: middle;
+	font-size: 1.6rem;
+	height: 2.6rem;
+	width: 2.6rem;
+	background: var(--bg);
+	text-align: center;
+}
+
+.student_row_b > div > a {
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	margin: 0.8rem 0;
+	font-size: 0.9rem;
+	padding: 0.4rem 0;
+}
+
+.student_row_b > div > a:hover {
+	text-decoration: underline;
+}
+
+.student_row_b > div > a.disabled {
+	color: #8a8a8a;
+	cursor: inherit;
+}
+
+.student_row_b > div > a.disabled i {
+	color: #8a8a8a;
+	border-color: #8a8a8a;
+}
+
+.student_row_b .dropdown-pane {
+	text-align: left;
+	width: auto;
+	min-width: 180px;
+	max-width: 300px;
+}
+
+.student_row_b .dropdown-pane div a {
+	padding: 0.5rem 0;
+	display: block;
+}
+
+.student_row_c a i[class|="isi"] {
+	display: inline-block;
+	font-size: 1.7em;
+	margin: -7px 11px -7px 0;
+	text-align: center;
+	vertical-align: -5px;
+	width: 2.6rem;
+}
+
+@media screen and (min-width: 64em) {
+	.row.student_row_d > .column {
+		flex: 0 0 auto;
+		max-width: 100%;
+		padding-right: 2rem;
+	}
+}
+
+.student_row_d {
+	margin-bottom: 0.8rem;
+}
+
+.student_row_d a > i {
+	display: inline-block;
+	margin-right: 0.5rem;
+	font-size: 1.286rem;
+	vertical-align: middle;
+}
+
+.student_row_d > div > a.disabled {
+	color: #8a8a8a;
+	cursor: inherit;
+}
+
+.predmet_conteiner .button {
+	display: block !important;
+}
+
+.box {
+	display: block;
+	height: 100%;
+	width: 100%;
+
+	padding-top: 2em;
+	padding-right: 2em;
+	padding-bottom: 2em;
+	padding-left: 2em;
+
+	border-style: solid;
+	border-color: grey;
+	border-width: 1px;
+}
+
+._udalost_simple {
+	border-style: solid;
+	border-color: grey;
+	border-width: 1px;
+}
+
+.nabidka_content {
+	border-style: solid;
+	border-color: grey;
+	border-width: 1px;
+	position: absolute;
+
+	padding-top: 1em;
+	padding-right: 1em;
+	padding-bottom: 1em;
+	padding-left: 1em;
+
+	background-color: white;
+}
+
+.pocet_nectene1 {
+	background-color: #ed4f00;
+	height: 1.4rem;
+	min-width: 1.4rem;
+	display: inline-block;
+	color: #fff;
+	border-radius: 0.7rem;
+	font-size: 0.8571rem;
+	font-weight: 600;
+	padding: 0 0.4rem;
+	margin-left: 0.5rem;
+	line-height: 1.6;
+	text-align: center;
+}
+
+.pocet_nectene2 {
+	background-color: #ed4f00;
+	height: 1.4rem;
+	min-width: 1.4rem;
+	position: absolute;
+	color: #fff;
+	font-size: 0.8571rem;
+	top: 1.6rem;
+	left: 1.7rem;
+	z-index: 1;
+	border-radius: 0.7rem;
+	line-height: 1.6;
+	font-weight: 600;
+	padding: 0 0.4rem;
+	text-align: center;
+}
+
+.isi-potvrzeni {
+	float: right;
+	margin-top: 6px;
+	margin-right: 25px;
+	font-size: 1.5rem;
+}
+
+.preruseni-dny {
+	font-size: 1.8751rem;
+	color: #636363;
+	font-family: Roboto,Helvetica,Open Sans,Arial,sans-serif;
+}
+
+.motiv-tmavy .predmet_header > a.sbal::after,
+.motiv-tmavy .predmet_header > a.rozbal:after {
+	border-color: #8aadd9 transparent transparent;
+}
+
+.motiv-tmavy .predmet_header > a.sbal::after {
+	border-color: transparent transparent #8aadd9 transparent;	
+}
+</style>
+<script src="/js/r6/jquery.js?_v=3736f12"></script>
+<script src="/js/error.js?_v=e23fead"></script>
+<script src="/js/r6/foundation.js?_v=a06b727"></script>
+</head>
+<body class="cs auth skola_14 motiv-1 motiv-svetly">
+<a href="#left_menu" class="show-on-focus print-hide">Přeskočit na hlavní menu</a><a href="#sticky_panel" class="show-on-focus print-hide">Přeskočit na horní lištu</a><a href="#hlavicka" class="show-on-focus print-hide">Přeskočit na hlavičku</a><a href="#app_menu_items" class="show-on-focus print-hide">Přeskočit na aplikační menu</a><a href="#app_content" class="show-on-focus print-hide">Přeskočit na obsah</a><a href="#paticka" class="show-on-focus print-hide">Přeskočit na patičku</a>
+<div id="content" class="left_menu_enabled">
+	<div id="zdurazneni-sticky" class="zdurazneni-sticky print-hide" role="alert" aria-atomic="true"></div>
+	<div id="rows_wrapper">
+		<div class="foundation-design-z">
+			<nav id="sticky_panel" >
+	<div class="row">
+		<div class="column">
+			<div class="ikony">
+				
+				<a href="#" class="sticky-icon show-for-1280-only float-right" data-toggle="header_menu" title="Hlavní menu" aria-label="Hlavní menu"><i class="isi-menu" aria-hidden="true"></i></a><nav id="header_menu" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<ul class="items">
+		<li class="ikony">
+			<a href="/auth/student/predmety?lang=en;setlang=en;fakulta=1423;obdobi=10243;studium=1000001" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a>
+			<a href="/auth/osoba/990001" class="jmeno_small show-for-small-only">
+	Novák, J.
+</a>
+			<a href="#" title="Odhlášení ze systému" class="sticky-icon is-logout-menu show-for-small-only">
+	<i class="isi-power" aria-hidden="true"></i>
+	<span class="show-for-sr">Odhlášení ze systému</span>
+</a>
+		</li>
+		<li class="noitem">
+			<a href="/auth/?fakulta=1423;obdobi=10243;studium=1000001" class="domu">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+			
+		</li>
+		<li class="noitem"><label class="moje_apl">Moje aplikace<a href="#" class="toggle_edit_mode"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a></label></li><li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+	</ul>
+</nav><a href="#" class="sticky-icon sticky-zivot float-right" data-toggle="header_zivot" title="Život na MU" aria-label="Život na MU"><i class="isi-zivot" aria-hidden="true"></i><span class="pocet"></span></a><div id="header_zivot" class="dropdown-pane bottom zivot_wrap" data-dropdown data-close-on-click="true" aria-labelledby="dd-lbl-zivot"></div><a href="#" class="sticky-icon show-for-medium float-right" data-toggle="header_oblibene" title="Oblíbené" aria-label="Oblíbené"><i class="isi-hvezdicka" aria-hidden="true"></i></a><div id="header_oblibene" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	<div id="oblibene" class="oblib_sled">
+		<h5 class="barva4">S hvězdičkou</h5>
+		<div id="oblibene_loading" data-loading-size="medium">
+		</div>
+	</div>
+	<div id="sledovane" class="oblib_sled">
+		<h5 class="barva3"><a href="/auth/udalosti/nastav_log?fakulta=1423;obdobi=10243;studium=1000001">Sledované</a></h5>
+		<div id="sledovane_loading" data-loading-size="medium">
+		</div>
+		<ul class="vertical menu">
+		</ul>
+	</div>
+</div><a href="#" class="sticky-icon prepinac-vyhl float-right show-for-small-only" title="Vyhledávání" aria-label="Vyhledávání" data-toggle="is_search"><i class="isi-lupa" aria-hidden="true"></i></a><div id="is_search" class="dropdown-pane bottom search-dropdown" data-dropdown data-close-on-click="true">
+	<form method="POST" action="/auth/vyhledavani/" role="search">
+		<div class="input-group">
+			<input class="input-group-field input_text" type="search" name="search" autocomplete="off" role="searchbox">
+			<div id="is_search_x" class="is_input_x input-group-button"><i class="isi-x"></i></div>
+			<div class="input-group-button">
+				<input type="submit" class="button" value="Vyhledat">
+			</div>
+		</div>
+	</form>
+	<div id="is_search_results"></div>
+</div><span style="display: none;"><a id="male_vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span><span class="hide-for-1280-only"><a href="/auth/student/predmety?lang=en;setlang=en;fakulta=1423;obdobi=10243;studium=1000001" class="sticky-item prepinac-jazyk jazyk-en" aria-label="switches IS into English" title="switches IS into English" >EN</a></span><a href="/auth/osoba/990001" class="jmeno sticky-item show-for-medium">	Jan Novák, učo&nbsp;990001</a><a href="#" class="sticky-icon is-logout float-right show-for-medium" title="Odhlášení ze systému" data-toggle="is_logout">
+		<i class="isi-power" aria-hidden="true"></i>
+		<span class="show-for-sr">Odhlášení ze systému</span>
+	</a>
+<div id="is_logout" class="dropdown-pane bottom" data-dropdown data-close-on-click="true">
+	
+	<form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" action="/auth/system/logout.pl" id="prvek_456761"><INPUT TYPE=hidden NAME="fakulta" VALUE="1423"><INPUT TYPE=hidden NAME="obdobi" VALUE="10243"><INPUT TYPE=hidden NAME="studium" VALUE="1000001"><div class="row">
+	<div class="column"><button id="prvek_3161720" class="expanded button" type="submit" name="odhlasit" value="1">Odhlásit se</button><div class="odhlasit_vse"><label class="validator-group-content" for="odhlasit_vse"><input id="odhlasit_vse" name="odhlasit_vse" type="checkbox" value="1">odhlásit ze všech zařízení</label><span class="form-error" data-form-error-for="odhlasit_vse"><span class="form-error-text"></span></span></div></div>
+</div>
+</form>
+</div>
+			</div>
+		</div>
+	</div>
+</nav>
+			<div class="row">
+	<div class="column">
+		<div id="left_menu_wrap">
+			<div id="left_menu_offset_wrap">
+				<nav id="left_menu" aria-label="Hlavní menu" role="navigation" class="hide-for-1280-only">
+					<div class="items">
+						<div>
+							<a href="/auth/" class="domu menuitem">Domů <i class="isi-home isi-inline" aria-hidden="true"></i></a>
+						</div>
+						
+						
+						<div class="moje_apl_wrap"><a href="#" class="toggle_edit_mode menu_icon"><i class="isi-nastaveni isi-inline" title="Upravit menu" aria-hidden="true"></i></a><label class="moje_apl">Moje aplikace</label></div>
+						<ul class="tags" aria-label="Odkazy hlavního menu">
+							<li>
+	<a href="https://is.muni.cz/auth/mail/" class=" menuitem">Po&scaron;ta</a>
+	<i class="menu_icon pin " data-id="1608895" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608895" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608895" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/calendar/" class=" menuitem">Kalend&aacute;&#x159;</a>
+	<i class="menu_icon pin " data-id="1608896" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608896" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608896" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/student/" class=" menuitem">Student</a>
+	<i class="menu_icon pin " data-id="1608897" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608897" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608897" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/predmety/" class=" menuitem">P&#x159;edm&#x11B;ty</a>
+	<i class="menu_icon pin " data-id="1608898" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608898" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608898" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+<li>
+	<a href="https://is.muni.cz/auth/studium_spolec/" class=" menuitem">Studium</a>
+	<i class="menu_icon pin " data-id="1608899" aria-hidden="true"></i>
+	<a href="#" class="menu_icon edit" data-id="1608899" aria-label="Upravit"><i class="isi-tuzka isi-inline" title="Upravit" aria-hidden="true"></i></a>
+	<a href="#" class="menu_icon remove" data-id="1608899" aria-label="Odstranit"><i class="isi-x isi-inline" title="Odstranit" aria-hidden="true"></i></a>
+</li>
+
+						</ul>
+						<div class="add"><a href="#" aria-label="Přidat"><i class="isi-plus isi-inline" title="Přidat" aria-hidden="true"></i></a></div>
+						<div class="buttons">
+							<button class="reset button secondary small" data-tooltip data-show-on="all" title="Obnoví implicitní položky menu.">Reset</button>
+							<button class="hotovo button small">Hotovo</button>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+			<header class="row hlavicka" id="hlavicka">
+	<div class="small-5 medium-3 columns znak skola14">
+		<a href="/auth/" class="stitek skola_14" title="Informační systém Masarykovy univerzity" aria-label="Informační systém Masarykovy univerzity"></a>
+	</div>
+	<div id="is-prepinace" class="small-7 medium-9 columns">
+		
+		<div id="prepinace">
+        <ul aria-hidden="true" class="is-switch dropdown menu" data-dropdown-menu data-click-open="true" data-closing-time="0" data-autoclose="false" data-disable-hover="true" data-close-on-click="true" data-force-follow="false" data-close-on-click-inside="false" data-alignment="right">
+                
+                <li>
+	<a href="#" class="display-inline-block"><b title="Fakulta sociálních studií">FSS</b> <span title="Bezpečnostní a strategická studia">B-BSS</span> <span title="Bezpečnostní a strategická studia">BSS02</span> [sem 1], <span title="Politologie">POL03</span> [sem 1]</a>
+	<ul class="menu">
+		<form>
+		<INPUT TYPE=hidden NAME="fakulta" VALUE="1423"><INPUT TYPE=hidden NAME="obdobi" VALUE="10243">
+		<li><button type="submit" class="no-design logo-1423 vybrane" name="studium" value="1000001"><a><b title="Fakulta sociálních studií">FSS</b> <span title="Bezpečnostní a strategická studia">B-BSS</span> <span title="Bezpečnostní a strategická studia">BSS02</span> [sem 1], <span title="Politologie">POL03</span> [sem 1]</a></button></li><li><button type="submit" class="no-design logo-" name="studium" value="vse"><a><span style="font-weight:500;">Všechna studia</span></a></button></li><li><button type="submit" class="no-design logo-1433" name="studium" value="1320248"><a><b title="Fakulta informatiky">FI</b> <span title="Kyberbezpečnost">B-CS</span> <span title="Kyberbezpečnost">BCS</span> (ukonč.)</a></button></li>
+		
+		</form>
+	</ul>
+</li>
+                <li>
+	<button class="obd-minus button clear isi-zobacek-vlevo-bold" data-obd="9904" title="Předchozí"><span class="show-for-sr">&lt;</span></button><a href="#" class="display-inline-block">podzim 2026</a><button class="obd-plus button clear isi-zobacek-vpravo-bold" data-obd="10263" title="Následující"><span class="show-for-sr">&gt;</span></button>
+	<ul class="menu">
+		<form>
+		<INPUT TYPE=hidden NAME="fakulta" VALUE="1423"><INPUT TYPE=hidden NAME="studium" VALUE="1000001">
+		<li><button class="no-design vyber_obd_small jaro2027 verejne1 obvykly1" type="submit" name="obdobi" value="10263"><a>jaro 2027</a></button></li><li><button class="no-design vyber_obd_small podzim2026 verejne1 obvykly1 vybrane" type="submit" name="obdobi" value="10243"><a>podzim 2026</a></button></li><li><button class="no-design vyber_obd_small jaro2026 verejne1 obvykly1" type="submit" name="obdobi" value="9904"><a>jaro 2026</a></button></li><li><button class="no-design vyber_obd_small podzim2025 verejne1 obvykly1" type="submit" name="obdobi" value="9903"><a>podzim 2025</a></button></li><li><button class="no-design vyber_obd_small jaro2025 verejne1 obvykly1" type="submit" name="obdobi" value="9724"><a>jaro 2025</a></button></li><li><button class="no-design vyber_obd_small podzim2024 verejne1 obvykly1" type="submit" name="obdobi" value="9723"><a>podzim 2024</a></button></li><li><button class="no-design vyber_obd_small jaro2024 verejne1 obvykly1" type="submit" name="obdobi" value="9163"><a>jaro 2024</a></button></li><li><button class="no-design vyber_obd_small podzim2023 verejne1 obvykly1" type="submit" name="obdobi" value="9023"><a>podzim 2023</a></button></li><li><button class="no-design vyber_obd_small jaro2023 verejne1 obvykly1" type="submit" name="obdobi" value="8763"><a>jaro 2023</a></button></li><li aria-hidden="true"><hr aria-hidden="true"></li><li><button class="no-design " type="submit" name="obdobi" value="-"><a>vybrat i ze starších období</a></button></li>
+		<li class="zapamatat_li">
+	<div class="zapamatat">
+		<label for="zapamatat_obdobi">
+			<input id="zapamatat_obdobi" type="checkbox" name="save_obd_pref" value="1" checked="checked">
+			zapamatovat výběr
+		</label>
+	</div>
+</li>
+
+		</form>
+	</ul>
+</li>
+        </ul>
+        <ul class="show-for-sr">
+                
+                <li><a href="./predmety?fakulta=1423;obdobi=10243;studium=-">Změnit studium <b title="Fakulta sociálních studií">FSS</b> <span title="Bezpečnostní a strategická studia">B-BSS</span> <span title="Bezpečnostní a strategická studia">BSS02</span> [sem 1], <span title="Politologie">POL03</span> [sem 1]</a></li>
+                <li><a href="./predmety?fakulta=1423;studium=1000001;obdobi=-">Změnit období podzim 2026</a></li>
+        </ul>
+</div>
+	</div>
+</header><div id="drobecky" class="row">
+	<div class="column">
+		<span class="wrap"><a href="/auth/" class="drobecek_logo" accesskey="0" title="Informační systém MU"> </a><span class="sep last"> <i class="isi-zobacek-vpravo"></i><span class="show-for-sr">&gt;</span> </span><a href="https://is.muni.cz/auth/student/predmety?fakulta=1423;obdobi=10243;studium=1000001" class="drobecek_app" accesskey="1" title="Student">Student</a> <a class="pin_red" title="Přidat tuto aplikaci mezi MOJE APLIKACE" aria-label="Přidat tuto aplikaci mezi MOJE APLIKACE"><i class="isi-pripinacek sponka" aria-hidden="true"></i></a></span>
+	</div>
+</div><div id="app_header_wrapper" class="row align-justify show-for-medium">
+	<div class="medium-12 column">
+		<h1 id="app_header"><div class="large-9 xlarge-9"><span id="app_name">Student</span></div></h1>
+	</div>
+	<div class="shrink column">
+		<div id="app_header_image"></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+		<div id="app_menu" class="">
+			<nav role="navigation" id="app_menu_items" aria-label="Aplikační menu">
+	<a href="/auth/student/predmety?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-predmety active isi-rozcestnik" data-tab-key="predmety">STUDENT / MOJE PŘEDMĚTY</a><a href="/auth/student/zacatek?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-zacatek" data-tab-key="zacatek">ZAČÁTEK SEMESTRU</a><a href="/auth/student/vyuka?fakulta=1423;obdobi=10243;studium=1000001" data-tab-key="vyuka" class="polozka app-menu-hidden tab-button-vyuka">VÝUKA</a><a href="/auth/student/konec?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-konec" data-tab-key="konec">KONEC SEMESTRU</a><a href="/auth/student/behem?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-behem" data-tab-key="behem">BĚHEM STUDIA</a><a href="/auth/student/zaver?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-zaver" data-tab-key="zaver">ZÁVĚR STUDIA</a>
+	<ul role="menu" aria-label="Další položky" class="dropdown menu" data-dropdown-menu id="app_menu_small" data-disable-hover="true" data-autoclose="false" data-click-open="true">
+		<li>
+			<a href="#">Více</a>
+			<ul class="menu">
+				<li class='polozka_parent'><a href="/auth/student/predmety?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-predmety active isi-rozcestnik" data-tab-key="predmety">STUDENT / MOJE PŘEDMĚTY</a></li><li class='polozka_parent'><a href="/auth/student/zacatek?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-zacatek" data-tab-key="zacatek">ZAČÁTEK SEMESTRU</a></li><li class='polozka_parent'><a href="/auth/student/vyuka?fakulta=1423;obdobi=10243;studium=1000001" data-tab-key="vyuka" class="polozka app-menu-hidden tab-button-vyuka">VÝUKA</a></li><li class='polozka_parent'><a href="/auth/student/konec?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-konec" data-tab-key="konec">KONEC SEMESTRU</a></li><li class='polozka_parent'><a href="/auth/student/behem?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-behem" data-tab-key="behem">BĚHEM STUDIA</a></li><li class='polozka_parent'><a href="/auth/student/zaver?fakulta=1423;obdobi=10243;studium=1000001" class="polozka app-menu-hidden tab-button-zaver" data-tab-key="zaver">ZÁVĚR STUDIA</a></li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+		</div>
+	</div>
+</div><!--[if lt IE 9]><div id="prvek_6958437" class="zdurazneni varovani ie_warning"><h3 class="zdurazneni-nadpis">Varování:</h3><h3>Váš prohlížeč Internet Explorer je zastaralý.</h3><p>Jsou známa bezpečnostní rizika a prohlížeč možná nedokáže zobrazit všechny prvky této a dalších webových stránek.</p></div><![endif]-->
+		</div>
+		<div id="app_content_row" class="row"><main id="app_content" class="column" role="main"><div id="tab-content-predmety" class="row tab-content">
+	<div class="small-12 large-9 column"><div class="row">
+	<div class="small-12 column"><div class="show-for-medium"><div id="vyhledavani" class="row collapse">
+	<div class="small-12 large-8 column"><form data-abide novalidate method="get" enctype="application/x-www-form-urlencoded" action="/auth/vyhledavani/" id="prvek_7646813" role="search"><INPUT TYPE=hidden NAME="fakulta" VALUE="1423"><INPUT TYPE=hidden NAME="obdobi" VALUE="10243"><INPUT TYPE=hidden NAME="studium" VALUE="1000001">
+
+<div id="vyhledavani_form" class="input-group ai_style">
+	 <div class="input-group-label vyhledavani_form_is_icon" aria-hidden="true"></div>
+	<input autocomplete="off" class="input-group-field" id="prvek_5312345" name="search" placeholder="vyhledat v ISu" role="searchbox" type="search"><span class="form-error" data-form-error-for="prvek_5312345"><span class="form-error-text"></span></span>
+	<a href="#" id="vyhledavani_form_x" class="input-group-button" aria-label="Clear input"><i class="isi-x isi-inline" aria-hidden="true"></i></a>
+	<button type="submit" id="vyhledavani_send_form" class="button clear tl_vyhledat" aria-label="Vyhledat"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 104 104" role="img" aria-labelledby="svgTitle_prvek_2816810" class="logo_ai logo_ai_lupa_tl" id="prvek_2816810"><title id="svgTitle_$id"></title><defs><clipPath id="clippathprvek_2816810"><circle cx="52" cy="52" r="49.5" fill="none"/></clipPath></defs><g id="spodni-obrazekprvek_2816810"><g id="ochranna_zona"><g clip-path="url(#clippathprvek_2816810)"><image width="418" height="418" transform="translate(1.844 1.844) scale(.24)" xlink:href="/pics/ai/spodni_obrazek.png"/></g></g><g id="lupaprvek_2816810"><path class="st0" d="M54.37,38.08c-6.18,0-11.18,5.04-11.18,11.25,0,2.13.59,4.11,1.6,5.8l-5.42,5.46.02.02c-.58.56-.94,1.35-.94,2.24,0,1.72,1.37,3.07,3.08,3.07.88,0,1.66-.35,2.22-.92v.02s5.6-5.63,5.6-5.63c1.5.76,3.2,1.19,5.01,1.19,6.18,0,11.18-5.03,11.18-11.25s-5-11.25-11.18-11.25h0ZM54.43,56.79c-4.2,0-7.62-3.44-7.62-7.67s3.42-7.67,7.62-7.67,7.63,3.44,7.63,7.67-3.42,7.67-7.63,7.67h0Z" fill="var(--barva1)"/></g></g><g id="horni-obrazekprvek_2816810" class="rotujici-vrstva"><image width="255" height="208" transform="translate(36.884 5.924) scale(.24)" xlink:href="/pics/ai/horni_obrazek.png"/><circle cx="89.984" cy="53.173" r="9.273" fill="#fff"/></g></svg><span class="show-for-sr">Vyhledat</span></button>
+	
+</div></form><span style="display: none;"><a id="vyhledavani_reklamace_otevrit" data-open="vyhledavani_reklamace" class="button">Nenašli jste, co jste hledali?</a></span></div>
+	<div class="small-12 large-4 column"></div>
+</div>
+</div></div>
+	<div id="tab-content-predmety-subcontent" class="small-12 column"><h2 class='nadpis-sekce'>Moje předměty</h2><div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1783609'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>BSSb1101</strong> Úvod do bezpečnostních a strategických studií
+			</span>
+			<span id="prvek_6454546" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1783609' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1783615'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>BSSb1109</strong> Dějiny vojenství
+			</span>
+			<span id="prvek_5829821" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1783615' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1783617'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>BSSb1113</strong> Základy veřejného práva
+			</span>
+			<span id="prvek_6760206" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1783617' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1783620'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>BSSb1117</strong> Hrozby a rizika v soudobém světě
+			</span>
+			<span id="prvek_2428375" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1783620' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1783638'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>BSSb1189</strong> Psychological Warfare: From Trojan Horse to Algorithmic Manipulation
+			</span>
+			<span id="prvek_9179728" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1783638' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1777821'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>BSSb1193</strong> Ochrana obyvatelstva
+			</span>
+			<span id="prvek_4971971" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1777821' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1784509'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>POLb1001</strong> Úvod do politologie
+			</span>
+			<span id="prvek_6357680" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1784509' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1784510'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>POLb1002</strong> Moderní politické dějiny
+			</span>
+			<span id="prvek_4641209" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1784510' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1784513'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1423.svg' alt='' /> <strong>POLb1008</strong> Tradice politického myšlení
+			</span>
+			<span id="prvek_6367518" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1784513' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1726781'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1433.svg' alt='' /> <strong>CORE012</strong> Information Society
+			</span>
+			<span id="prvek_1152411" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1726781' class='predmet_body column' >
+	</div>
+</div>
+<div class='predmet_conteiner' >
+	<div class='predmet_header' >
+		<a class='predmet_header_more rozbal' href="#" title='Operace a soubory k&nbsp;tomuto předmětu' id='predmet-button-1790813'>
+			<span class='predmet_header_name' >
+				<img src='/pics/design/r6/loga/1490.svg' alt='' /> <strong>CORE042</strong> Data – odpověď na základní otázku života, vesmíru a vůbec...
+			</span>
+			<span id="prvek_4210878" class="isi-hvezdicka hvezdicka" role="link" tabindex="0"
+		aria-label="Přidat/odebrat z oblíbených" title="Přidat/odebrat z oblíbených"></span>
+			
+		</a>
+	</div>
+	<div id='predmet-content-1790813' class='predmet_body column' >
+	</div>
+</div>
+<div id="prvek_4415625"></div></div>
+</div>
+</div>
+	<div class="small-12 large-3 zivot_column column"><aside id="zivot" class="zivot_wrap menu_no_pin" labeled-by="zivot-nazev">
+	<div class="row collapse head">
+		<div class="column">
+			<a href="/auth/zivot/?fakulta=1423;obdobi=10243;studium=1000001"><h2 class="nazev" id="zivot-nazev">Život na MU</h2></a>
+		</div>
+		<div class="column shrink show-for-medium">
+			<a href="/auth/zivot/nastaveni/?fakulta=1423;obdobi=10243;studium=1000001" class="nastaveni" title="Nastavení Života na MU"><i class="isi-nastaveni isi-inline"></i></a>
+		</div>
+	</div>
+	
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212275" data-zid="4571573837"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212275"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212275/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212275/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Cau, taky bych se rad pridal</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/597134"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=597134)"></div></a>
+	</div>
+	<div class="autor" title="Jonáš Konicar, 18. 9. 2026">
+		<a href="/auth/osoba/597134">Jonáš Konicar</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212122" data-zid="4570935578"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212122"></i>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204212122/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Chat španělštinářů">Chat španělštinářů</h3></a>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204212122/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Na Duolingo bych se vůbec nespoléhala. Coche se více používá na pevnině a na ostrovech a carro v Latinské Americe a takových rozdílů je plno… radši bych našla jinou a lepší aplikaci, kterých je plno.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/566572"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=566572)"></div></a>
+	</div>
+	<div class="autor" title="Angela-Magdalena Santiago Quevedo, 18. 9. 2026">
+		<a href="/auth/osoba/566572">Angela-Magdalena Santiago Quevedo</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204210909" data-zid="4572305199"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204210909"></i>
+	<a href="https://www.em.muni.cz/udalosti/18820-evropsti-medialni-vedci-debatovali-v-brne-o-soucasnych-vyzvach-oboru?utm_source=is.muni&utm_campaign=is.muni&utm_medium=referral" class="read"><h3 class="nazev" title="Evropští mediální vědci debatovali v Brně o současných výzvách oboru">Evropští mediální vědci debatovali v Brně o současných výzvách oboru</h3></a>
+	<a href="/auth/noticeboard/MU/online/204210909/?fakulta=1423;obdobi=10243;studium=1000001" class="read"></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text"><p>Na Evropské komunikační konferenci spolupořádané MU zaznělo, že výzkum v oblasti médií, komunikace a žurnalistiky čelí výzvám spojeným s rizikem oborové uzavřenosti, institucionálními tlaky na výkon a rychlým technologickým vývojem a trendy.</p>
+    <p><a href="https://www.em.muni.cz/udalosti/18820-evropsti-medialni-vedci-debatovali-v-brne-o-soucasnych-vyzvach-oboru?utm_campaign=is.muni&amp;utm_source=is.muni&amp;utm_medium=referral" target="_blank"> <img src="https://www.em.muni.cz/images/stories/2026/09_zari/ECREA.jpg" /> </a> </p></div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="https://www.em.muni.cz/"><div class="logo" style="background-image: url(/pics/design/r6/loga/profilove/M14-pracoviste.svg)"></div></a>
+	</div>
+	<div class="autor" title="Zpravodajský portál MU, 18. 9. 2026">
+		<a href="https://www.em.muni.cz/">Zpravodajský portál MU</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204213141" data-zid="4572018451"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204213141"></i>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204213141/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Chat španělštinářů">Chat španělštinářů</h3></a>
+	<a href="/auth/discussion/MU/chat_spanelstinaru/-/204213141/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Využiju možnost shillovat <a class="okno" href="https://is.muni.cz/auth/dril/" target="_blank">dril</a>,který je součást ISu. Člověk si do toho vyrobí kartičky dle vlastních potřeb, a pak ho to testuje z těch, které neumí. Některé jazykové kursy už mají kartičky připravené od vyučujících, ale příprava kartiček jako taková je podle mě super nástroj pro učení se sám o sobě.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/581690"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=581690)"></div></a>
+	</div>
+	<div class="autor" title="Zdeněk Borovec, 18. 9. 2026">
+		<a href="/auth/osoba/581690">Zdeněk Borovec</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212746" data-zid="4571812535"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212746"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212746/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212746/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, hrála jsem volejbal přes 11 let, i když teď už pár let aktivně nehraju. Ráda bych se ale zase zapojila, hrávala jsem na pozici univerzál/nahravačka.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/601663"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=601663)"></div></a>
+	</div>
+	<div class="autor" title="Karolína Hájková, 18. 9. 2026">
+		<a href="/auth/osoba/601663">Karolína Hájková</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212437" data-zid="4571446300"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212437"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212437/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212437/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, ráda bych se přidala, volejbal jsem hrála několik let na základce, takže jsem mírně pokročilá</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/597577"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=597577)"></div></a>
+	</div>
+	<div class="autor" title="Adéla Vaculíková, 18. 9. 2026">
+		<a href="/auth/osoba/597577">Adéla Vaculíková</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212389" data-zid="4571456580"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212389"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212389/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212389/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Tolik odpovědí jsem nečekal. Kdyžtak mi prosím napište třeba na Instagram a vytvoříme nějakou skupinu :D j_safarik_</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/593775"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=593775)"></div></a>
+	</div>
+	<div class="autor" title="Jakub Šafarik, 18. 9. 2026">
+		<a href="/auth/osoba/593775">Jakub Šafarik</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212363" data-zid="4571747921"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212363"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212363/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212363/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, můj kamarád z VUT má zájem, tak kdybyste se nad ním slitovali a odpustili mu jeho špatnej vkus na vejšky tak tady je jeho ig <br>buress_s_</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/591912"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=591912)"></div></a>
+	</div>
+	<div class="autor" title="Alexandr Ghimpu, 18. 9. 2026">
+		<a href="/auth/osoba/591912">Alexandr Ghimpu</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204212290" data-zid="4571664876"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204212290"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212290/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204212290/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj taky si rád zahraju</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/559576"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=559576)"></div></a>
+	</div>
+	<div class="autor" title="Michal Kytka, 18. 9. 2026">
+		<a href="/auth/osoba/559576">Michal Kytka</a>, 18. 9. 2026
+	</div>
+</div>
+
+<div class="prispevek">
+	<i class="isi-x barva1 isi-inline zrus" title="Poznačit přečtení" data-uzel="204211726" data-zid="4570777014"></i>
+	<i class="isi-heart barva3 isi-inline odmitnout" title="Zrušit sledování" data-id="204211726"></i>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204211726/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><h3 class="nazev" title="Volejbal v Brně">Volejbal v Brně</h3></a>
+	<a href="/auth/discussion/MU/volejbal_v_brne/-/204211726/?fakulta=1423;obdobi=10243;studium=1000001" class="read"><div class="zdroj_pr">DF: celá Masarykova univerzita</div></a>
+	<div class="text">
+		<div class="uryvek mh">
+			
+			<div class="text">Ahoj, môžem skúsiť zohnať zopár ľudí, s ktorými sme na strednej hrávali rekreačne.</div>
+			
+		</div>
+		
+<div class="vice_mene vm_content">
+	<a href="#" class="vice">více<i class="isi-zobacek-dolu isi-inline-left"></i></a>
+	<a href="#" class="mene">méně<i class="isi-zobacek-nahoru isi-inline-left"></i></a>
+</div>
+
+	</div>
+	<div class="crazy_border">
+		<a href="/auth/osoba/595914"><div class="logo" style="background-image: url(/auth/lide/foto?fakulta=1423;obdobi=10243;studium=1000001;uco=595914)"></div></a>
+	</div>
+	<div class="autor" title="Milan Janiga, 18. 9. 2026">
+		<a href="/auth/osoba/595914">Milan Janiga</a>, 18. 9. 2026
+	</div>
+</div>
+
+	<a href="/auth/zivot/?fakulta=1423;obdobi=10243;studium=1000001" class="dalsi"><h4>další příspěvky&hellip;</h4></a>
+</aside>
+</div>
+</div>
+<div class='tab-content row hide' id='tab-content-zacatek'></div><div class='tab-content row hide' id='tab-content-vyuka'></div><div class='tab-content row hide' id='tab-content-konec'></div><div class='tab-content row hide' id='tab-content-behem'></div><div class='tab-content row hide' id='tab-content-zaver'></div></main></div>
+		
+		<div class="foundation-design-z foot_clear">
+			
+	<div class="row">
+		
+	</div>
+	<footer id="paticka" class="">
+		<div class="row">
+			<div class="columns small-12 medium-6 paticka_logo">
+	<a href="/auth/"><span class="show-for-sr">IS MU</span></a>
+	<div>
+		Informační&nbsp;systém Masarykovy&nbsp;univerzity
+		<div class="footer_about">
+			<a href="https://is.muni.cz/nas_system/">Více o IS MU</a>, provozuje <a href="https://www.fi.muni.cz/">Fakulta informatiky MU</a>
+		</div>
+		
+	</div>
+</div>
+<div class="columns small-6 medium-3">
+	<div class="footer_podpora">
+	<a href="/auth/podpora/">Potřebujete poradit?</a>
+	<span class="kont_email"><a href="/auth/mail/mail_posli?to=istech%40fi.muni.cz">istech@fi.muni.cz</a></span>
+</div>
+	<div class="footer_napoveda">
+		<a href="/auth/napoveda/student/zaciname">Nápověda</a>
+	</div>
+	<div class="row">
+		<div class="columns small-12 display-none">
+			<div class="footer_zoomy">
+				<a href="" rel="nofollow"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="columns small-6 medium-3 nastaveni_col">
+	<div class="footer_datum">
+		<span title="Dnes je 38. (sudý) týden.">18. 9. 2026 <span style='padding: 0 0.6em'>|</span> 20:27</span>
+		<a href="/system/cas" title="Dnes je 38. (sudý) týden." class="footer_cas">Aktuální datum a&nbsp;čas</a>
+	</div>
+	<div>
+	<div class="row collapse">
+	<div class="column small-12 medium-6 footer_nastaveni"><a href="/auth/system/nastaveni">Nastavení</a></div>
+	<div class="column small-12 medium-6 footer_privacy"><a href="/auth/privacy/">Soukromí</a></div>
+</div>
+
+	
+</div>
+</div>
+			<div class="right-border"></div>
+			<div class="left-border"></div>
+		</div>
+		<a href="#hlavicka" class="skip_up" title="Skočit na začátek stránky">
+			Nahoru
+		</a>
+	</footer>
+
+		</div>
+	</div>
+</div>
+<div class="reveal" id="vyhledavani_reklamace" role="region" data-append-to=".foundation-design-z:first" data-reveal="">
+	<div class="row">
+		<div  class="column reveal-content">
+			<h2>Nenašli jste, co jste hledali?</h2><div class="nedurazne"><h3 class="subheader">Hledaný výraz: <em id="vyhledavani_reklamace_hledany_vyraz"></em></h3></div><form data-abide novalidate method="post" enctype="application/x-www-form-urlencoded" id="prvek_1091774" onsubmit="return false;"><textarea autocomplete="off" data-valid-min="3" data-validator="min" id="prvek_4229201" placeholder="Očekával jsem, že najdu..." rows="8" wrap="soft"></textarea><span class="form-error" data-form-error-for="prvek_4229201"><span class="form-error-text"></span></span><div id="vyhledavani_reklamace_bottom" class="row">
+	<div class="column"><div class="zdurazneni potvrzeni mb-0"><h3>Úspěšně uloženo. (<span id="vyhledavani_reklamace_countdown">0</span>)</h3></div><div class="zdurazneni chyba nelze_ulozit mb-0"><h3>Nelze uložit. Zkuste to prosím později.</h3></div></div>
+	<div class="shrink column"><button id="vyhledavani_reklamace_odeslat" class="mb-0 button" type="submit">Odeslat</button></div>
+</div>
+</form>
+		</div>
+	</div>
+	<div class="modal-btns"><button class="close-button" type="button" aria-label="Zavřít" data-close><span aria-hidden="true">&times;</span></button></div>
+</div>
+
+
+<script src="/js/is.js?_v=8a35e31"></script>
+<script src="/js/jquery-ui-1.12.1-sortable-r6.min.js?_v=611662c"></script>
+<script src="/js/log-kliknuto.js?_v=d448124"></script>
+<script>"use strict";
+
+is.Define.module('Student', function (namespace, $) {
+
+	function _tab_show_content ( $this ) {
+		$('#app_content').children('.tab-content').toggleClass('hide', true);
+		$('#tab-content-' + $this.data('tab-key')).removeClass('hide');
+	}
+
+	function _tab_set_history ( $this ) {
+		var url, new_alias, old_alias, arr;
+
+		if ( !window.history ) {
+			return;
+		}
+
+		url = window.location.pathname;
+		new_alias = $this.data('tab-key');
+		old_alias = url.substring(url.lastIndexOf('/')+1, url.length );
+		if ( old_alias && new_alias && old_alias !== new_alias ) {
+			window.history.pushState({}, '', window.location.href.replace(old_alias, new_alias) );
+		} else if ( new_alias && !old_alias ) {
+			arr = window.location.href.split('');
+			arr.splice(arr.lastIndexOf('/')+1, 0, new_alias);
+			window.history.pushState({}, '', arr.join('') );
+		}
+	}
+
+	window.onpopstate = function (ev) {
+		var oldone, newone, $this;
+
+		oldone = $('#app_menu').find('.polozka.active').data('tab-key') || '';
+
+		newone = window.location.pathname || '';
+		newone = newone.substring(newone.lastIndexOf('/')+1, newone.length);
+		newone = newone || 'predmety';
+
+		if ( oldone && newone && oldone !== newone ) {
+			$this = $('.tab-button-'+newone).first();
+			if ( $this.length ) {
+				_tab_show_content( $this );
+				is.AppMenu.set_active($this);
+			}
+		}
+	}
+
+return {
+
+	init: function() {
+		var $predmety_tab;
+
+		$('#app_menu')
+			.off('.'+namespace)
+			.on('click.'+namespace, '.polozka:not(.ekurzy-titulka)', function () {
+				var $this = $(this);
+				_tab_show_content( $this );
+				_tab_set_history( $this );
+			});
+
+		$('#app_content')
+			.off('.'+namespace)
+			// zastavi proklik hvezdicky
+			.on('click.'+namespace, '.hvezdicka', function (evt) {
+				evt.stopPropagation();
+			})
+			// zobrazi obsah predmetu
+			.on('click.'+namespace, '.predmet_header_more', function (evt) {
+				var $this = $(this);
+				$this.toggleClass('rozbal sbal');
+				$this.closest('.predmet_conteiner').toggleClass('active');
+			});
+
+		$predmety_tab = $('.tab-button-predmety');
+		if ( $predmety_tab.length && $predmety_tab[0].isLinkEvent) {
+			$predmety_tab[0].isLinkEvent.events_trigger(); // prednacteni tabu
+		}
+	},
+
+	init_udalosti: function (opt) {
+		if (!opt.container_id) {
+			console.error('Chybi informace kam se maji na strance vlozit udalosti (opt.container_id)', opt);
+		}
+
+		is.Ajax.request({
+			url: '/auth/student/index_ajax',
+			data: {
+				option: 'udalosti-init',
+				obdobi: is.session.get('cgipar').obdobi[0],
+				studium: is.session.get('cgipar').studium[0],
+				sysdate: opt.sysdate,
+			},
+			loading: '#'+opt.container_id,
+		}).done(function(data) {
+			var $html, anchor;
+
+			if (!$.isPlainObject(data)) {
+				is.Console.log('Data nejsou ve forme objektu.', data);
+				return;
+			}
+
+			$html = $(data.html);
+			anchor = window.location.hash;
+			$('#'+opt.container_id).fhtml($html);
+			if (anchor && $html.find(anchor).length) {
+				// timer se snazi pockat dokud se nevykresli obsah panelu
+				setTimeout(function(){
+					is.HashNavigation.scrollTo('#'+opt.container_id);
+				}, 200);
+			}
+		});
+	},
+};
+
+});
+</script>
+<script src="/js/r6/predmety.js?_v=c34b3b3"></script>
+<script>
+(function() {
+
+"use strict";
+
+is.Design.init({
+   "js_init" : [
+      {
+         "method" : "titulky_zivot_init",
+         "params" : [],
+         "module" : "Zivot"
+      },
+      {
+         "module" : "Forms",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init",
+         "params" : [
+            "#vyhledavani_form",
+            {
+               "limit" : 8,
+               "debug_wrap" : "#priv_vyhledavani_debug_options",
+               "atributy" : {},
+               "ikona" : {
+                  "class" : "vyhledavani_form_is_icon"
+               },
+               "clear_button" : "#vyhledavani_form_x",
+               "complaint" : {}
+            }
+         ],
+         "module" : "Search"
+      },
+      {
+         "module" : "LinkEvent",
+         "method" : "init_one",
+         "params" : [
+            ".tab-button-predmety",
+            null,
+            {
+               "js" : null,
+               "data" : {
+                  "insertMethod" : "fhtml",
+                  "selector" : ".tab-button-predmety",
+                  "contentId" : "tab-content-predmety-subcontent",
+                  "ajaxExecute" : 0,
+                  "url" : "index_ajax.pl"
+               },
+               "url" : {
+                  "option" : "tab-option-predmety",
+                  "studium" : "1000001",
+                  "obdobi" : "10243",
+                  "vsechna_studia" : "0",
+                  "fakulta" : "1423"
+               },
+               "loading" : null
+            }
+         ]
+      },
+      {
+         "params" : [],
+         "method" : "init_hvezdicka",
+         "module" : "Predmety"
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            "#prvek_6454546",
+            null,
+            {
+               "url" : {
+                  "fakulta_id" : "1423",
+                  "operace" : "hvezdicka",
+                  "predmet_kod" : "BSSb1101"
+               },
+               "data" : {
+                  "url" : "/auth/predmety/predmety_ajax",
+                  "contentId" : "prvek_6454546",
+                  "selector" : "#prvek_6454546"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "params" : [
+            "#predmet-button-1783609",
+            null,
+            {
+               "js" : null,
+               "data" : {
+                  "url" : "index_ajax",
+                  "insertMethod" : "fhtml",
+                  "selector" : "#predmet-button-1783609",
+                  "ajaxExecute" : 1,
+                  "contentId" : "predmet-content-1783609"
+               },
+               "url" : {
+                  "predmet_id" : "1783609",
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "fakulta" : "1423",
+                  "option" : "predmet-option-info",
+                  "studium" : "1000001"
+               },
+               "loading" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            "#prvek_5829821",
+            null,
+            {
+               "js" : null,
+               "loading" : null,
+               "url" : {
+                  "predmet_kod" : "BSSb1109",
+                  "operace" : "hvezdicka",
+                  "fakulta_id" : "1423"
+               },
+               "data" : {
+                  "url" : "/auth/predmety/predmety_ajax",
+                  "selector" : "#prvek_5829821",
+                  "contentId" : "prvek_5829821"
+               }
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "params" : [
+            "#predmet-button-1783615",
+            null,
+            {
+               "url" : {
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "predmet_id" : "1783615",
+                  "fakulta" : "1423",
+                  "option" : "predmet-option-info",
+                  "studium" : "1000001"
+               },
+               "data" : {
+                  "selector" : "#predmet-button-1783615",
+                  "insertMethod" : "fhtml",
+                  "ajaxExecute" : 1,
+                  "contentId" : "predmet-content-1783615",
+                  "url" : "index_ajax"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "method" : "init_one",
+         "params" : [
+            "#prvek_6760206",
+            null,
+            {
+               "loading" : null,
+               "url" : {
+                  "operace" : "hvezdicka",
+                  "fakulta_id" : "1423",
+                  "predmet_kod" : "BSSb1113"
+               },
+               "data" : {
+                  "url" : "/auth/predmety/predmety_ajax",
+                  "selector" : "#prvek_6760206",
+                  "contentId" : "prvek_6760206"
+               },
+               "js" : null
+            }
+         ],
+         "module" : "LinkEvent"
+      },
+      {
+         "params" : [
+            "#predmet-button-1783617",
+            null,
+            {
+               "loading" : null,
+               "url" : {
+                  "option" : "predmet-option-info",
+                  "studium" : "1000001",
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "predmet_id" : "1783617",
+                  "fakulta" : "1423"
+               },
+               "data" : {
+                  "selector" : "#predmet-button-1783617",
+                  "insertMethod" : "fhtml",
+                  "contentId" : "predmet-content-1783617",
+                  "ajaxExecute" : 1,
+                  "url" : "index_ajax"
+               },
+               "js" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            "#prvek_2428375",
+            null,
+            {
+               "js" : null,
+               "loading" : null,
+               "url" : {
+                  "predmet_kod" : "BSSb1117",
+                  "fakulta_id" : "1423",
+                  "operace" : "hvezdicka"
+               },
+               "data" : {
+                  "contentId" : "prvek_2428375",
+                  "selector" : "#prvek_2428375",
+                  "url" : "/auth/predmety/predmety_ajax"
+               }
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "params" : [
+            "#predmet-button-1783620",
+            null,
+            {
+               "loading" : null,
+               "url" : {
+                  "predmet_id" : "1783620",
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "fakulta" : "1423",
+                  "option" : "predmet-option-info",
+                  "studium" : "1000001"
+               },
+               "data" : {
+                  "url" : "index_ajax",
+                  "insertMethod" : "fhtml",
+                  "selector" : "#predmet-button-1783620",
+                  "contentId" : "predmet-content-1783620",
+                  "ajaxExecute" : 1
+               },
+               "js" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "LinkEvent",
+         "method" : "init_one",
+         "params" : [
+            "#prvek_9179728",
+            null,
+            {
+               "url" : {
+                  "operace" : "hvezdicka",
+                  "fakulta_id" : "1423",
+                  "predmet_kod" : "BSSb1189"
+               },
+               "data" : {
+                  "url" : "/auth/predmety/predmety_ajax",
+                  "contentId" : "prvek_9179728",
+                  "selector" : "#prvek_9179728"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ]
+      },
+      {
+         "module" : "LinkEvent",
+         "method" : "init_one",
+         "params" : [
+            "#predmet-button-1783638",
+            null,
+            {
+               "js" : null,
+               "loading" : null,
+               "url" : {
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "predmet_id" : "1783638",
+                  "fakulta" : "1423",
+                  "option" : "predmet-option-info",
+                  "studium" : "1000001"
+               },
+               "data" : {
+                  "ajaxExecute" : 1,
+                  "contentId" : "predmet-content-1783638",
+                  "selector" : "#predmet-button-1783638",
+                  "insertMethod" : "fhtml",
+                  "url" : "index_ajax"
+               }
+            }
+         ]
+      },
+      {
+         "module" : "LinkEvent",
+         "method" : "init_one",
+         "params" : [
+            "#prvek_4971971",
+            null,
+            {
+               "js" : null,
+               "loading" : null,
+               "data" : {
+                  "url" : "/auth/predmety/predmety_ajax",
+                  "selector" : "#prvek_4971971",
+                  "contentId" : "prvek_4971971"
+               },
+               "url" : {
+                  "predmet_kod" : "BSSb1193",
+                  "fakulta_id" : "1423",
+                  "operace" : "hvezdicka"
+               }
+            }
+         ]
+      },
+      {
+         "method" : "init_one",
+         "params" : [
+            "#predmet-button-1777821",
+            null,
+            {
+               "data" : {
+                  "url" : "index_ajax",
+                  "insertMethod" : "fhtml",
+                  "selector" : "#predmet-button-1777821",
+                  "contentId" : "predmet-content-1777821",
+                  "ajaxExecute" : 1
+               },
+               "url" : {
+                  "fakulta" : "1423",
+                  "obdobi" : "10243",
+                  "vsechna_studia" : "0",
+                  "predmet_id" : "1777821",
+                  "studium" : "1000001",
+                  "option" : "predmet-option-info"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ],
+         "module" : "LinkEvent"
+      },
+      {
+         "params" : [
+            "#prvek_6357680",
+            null,
+            {
+               "js" : null,
+               "data" : {
+                  "contentId" : "prvek_6357680",
+                  "selector" : "#prvek_6357680",
+                  "url" : "/auth/predmety/predmety_ajax"
+               },
+               "url" : {
+                  "predmet_kod" : "POLb1001",
+                  "operace" : "hvezdicka",
+                  "fakulta_id" : "1423"
+               },
+               "loading" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            "#predmet-button-1784509",
+            null,
+            {
+               "loading" : null,
+               "url" : {
+                  "option" : "predmet-option-info",
+                  "studium" : "1000001",
+                  "predmet_id" : "1784509",
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "fakulta" : "1423"
+               },
+               "data" : {
+                  "insertMethod" : "fhtml",
+                  "selector" : "#predmet-button-1784509",
+                  "ajaxExecute" : 1,
+                  "contentId" : "predmet-content-1784509",
+                  "url" : "index_ajax"
+               },
+               "js" : null
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "params" : [
+            "#prvek_4641209",
+            null,
+            {
+               "loading" : null,
+               "url" : {
+                  "fakulta_id" : "1423",
+                  "operace" : "hvezdicka",
+                  "predmet_kod" : "POLb1002"
+               },
+               "data" : {
+                  "contentId" : "prvek_4641209",
+                  "selector" : "#prvek_4641209",
+                  "url" : "/auth/predmety/predmety_ajax"
+               },
+               "js" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            "#predmet-button-1784510",
+            null,
+            {
+               "loading" : null,
+               "data" : {
+                  "ajaxExecute" : 1,
+                  "contentId" : "predmet-content-1784510",
+                  "insertMethod" : "fhtml",
+                  "selector" : "#predmet-button-1784510",
+                  "url" : "index_ajax"
+               },
+               "url" : {
+                  "vsechna_studia" : "0",
+                  "predmet_id" : "1784510",
+                  "obdobi" : "10243",
+                  "fakulta" : "1423",
+                  "option" : "predmet-option-info",
+                  "studium" : "1000001"
+               },
+               "js" : null
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            "#prvek_6367518",
+            null,
+            {
+               "url" : {
+                  "fakulta_id" : "1423",
+                  "operace" : "hvezdicka",
+                  "predmet_kod" : "POLb1008"
+               },
+               "data" : {
+                  "selector" : "#prvek_6367518",
+                  "contentId" : "prvek_6367518",
+                  "url" : "/auth/predmety/predmety_ajax"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            "#predmet-button-1784513",
+            null,
+            {
+               "js" : null,
+               "loading" : null,
+               "data" : {
+                  "url" : "index_ajax",
+                  "insertMethod" : "fhtml",
+                  "selector" : "#predmet-button-1784513",
+                  "ajaxExecute" : 1,
+                  "contentId" : "predmet-content-1784513"
+               },
+               "url" : {
+                  "studium" : "1000001",
+                  "option" : "predmet-option-info",
+                  "fakulta" : "1423",
+                  "vsechna_studia" : "0",
+                  "predmet_id" : "1784513",
+                  "obdobi" : "10243"
+               }
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "method" : "init_one",
+         "params" : [
+            "#prvek_1152411",
+            null,
+            {
+               "js" : null,
+               "data" : {
+                  "url" : "/auth/predmety/predmety_ajax",
+                  "contentId" : "prvek_1152411",
+                  "selector" : "#prvek_1152411"
+               },
+               "url" : {
+                  "operace" : "hvezdicka",
+                  "fakulta_id" : "1433",
+                  "predmet_kod" : "CORE012"
+               },
+               "loading" : null
+            }
+         ],
+         "module" : "LinkEvent"
+      },
+      {
+         "params" : [
+            "#predmet-button-1726781",
+            null,
+            {
+               "data" : {
+                  "url" : "index_ajax",
+                  "insertMethod" : "fhtml",
+                  "selector" : "#predmet-button-1726781",
+                  "ajaxExecute" : 1,
+                  "contentId" : "predmet-content-1726781"
+               },
+               "url" : {
+                  "fakulta" : "1433",
+                  "predmet_id" : "1726781",
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "studium" : "1000001",
+                  "option" : "predmet-option-info"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "params" : [
+            "#prvek_4210878",
+            null,
+            {
+               "data" : {
+                  "contentId" : "prvek_4210878",
+                  "selector" : "#prvek_4210878",
+                  "url" : "/auth/predmety/predmety_ajax"
+               },
+               "url" : {
+                  "fakulta_id" : "1490",
+                  "operace" : "hvezdicka",
+                  "predmet_kod" : "CORE042"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ],
+         "method" : "init_one",
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "LinkEvent",
+         "method" : "init_one",
+         "params" : [
+            "#predmet-button-1790813",
+            null,
+            {
+               "loading" : null,
+               "url" : {
+                  "fakulta" : "1490",
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "predmet_id" : "1790813",
+                  "studium" : "1000001",
+                  "option" : "predmet-option-info"
+               },
+               "data" : {
+                  "selector" : "#predmet-button-1790813",
+                  "insertMethod" : "fhtml",
+                  "contentId" : "predmet-content-1790813",
+                  "ajaxExecute" : 1,
+                  "url" : "index_ajax"
+               },
+               "js" : null
+            }
+         ]
+      },
+      {
+         "module" : "Student",
+         "params" : [
+            {
+               "sysdate" : null,
+               "container_id" : "prvek_4415625"
+            }
+         ],
+         "method" : "init_udalosti"
+      },
+      {
+         "module" : "LinkEvent",
+         "method" : "init_one",
+         "params" : [
+            ".tab-button-zacatek",
+            null,
+            {
+               "data" : {
+                  "url" : "index_ajax.pl",
+                  "selector" : ".tab-button-zacatek",
+                  "insertMethod" : "fhtml",
+                  "ajaxExecute" : 1,
+                  "contentId" : "tab-content-zacatek"
+               },
+               "url" : {
+                  "fakulta" : "1423",
+                  "obdobi" : "10243",
+                  "vsechna_studia" : "0",
+                  "studium" : "1000001",
+                  "option" : "tab-option-zacatek"
+               },
+               "loading" : null,
+               "js" : null
+            }
+         ]
+      },
+      {
+         "module" : "LinkEvent",
+         "params" : [
+            ".tab-button-vyuka",
+            null,
+            {
+               "js" : null,
+               "loading" : null,
+               "url" : {
+                  "obdobi" : "10243",
+                  "vsechna_studia" : "0",
+                  "fakulta" : "1423",
+                  "option" : "tab-option-vyuka",
+                  "studium" : "1000001"
+               },
+               "data" : {
+                  "contentId" : "tab-content-vyuka",
+                  "ajaxExecute" : 1,
+                  "selector" : ".tab-button-vyuka",
+                  "insertMethod" : "fhtml",
+                  "url" : "index_ajax.pl"
+               }
+            }
+         ],
+         "method" : "init_one"
+      },
+      {
+         "method" : "init_one",
+         "params" : [
+            ".tab-button-konec",
+            null,
+            {
+               "loading" : null,
+               "data" : {
+                  "insertMethod" : "fhtml",
+                  "selector" : ".tab-button-konec",
+                  "contentId" : "tab-content-konec",
+                  "ajaxExecute" : 1,
+                  "url" : "index_ajax.pl"
+               },
+               "url" : {
+                  "studium" : "1000001",
+                  "option" : "tab-option-konec",
+                  "fakulta" : "1423",
+                  "obdobi" : "10243",
+                  "vsechna_studia" : "0"
+               },
+               "js" : null
+            }
+         ],
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "LinkEvent",
+         "method" : "init_one",
+         "params" : [
+            ".tab-button-behem",
+            null,
+            {
+               "js" : null,
+               "url" : {
+                  "vsechna_studia" : "0",
+                  "obdobi" : "10243",
+                  "fakulta" : "1423",
+                  "option" : "tab-option-behem",
+                  "studium" : "1000001"
+               },
+               "data" : {
+                  "url" : "index_ajax.pl",
+                  "ajaxExecute" : 1,
+                  "contentId" : "tab-content-behem",
+                  "selector" : ".tab-button-behem",
+                  "insertMethod" : "fhtml"
+               },
+               "loading" : null
+            }
+         ]
+      },
+      {
+         "method" : "init_one",
+         "params" : [
+            ".tab-button-zaver",
+            null,
+            {
+               "loading" : null,
+               "url" : {
+                  "studium" : "1000001",
+                  "option" : "tab-option-zaver",
+                  "fakulta" : "1423",
+                  "obdobi" : "10243",
+                  "vsechna_studia" : "0"
+               },
+               "data" : {
+                  "url" : "index_ajax.pl",
+                  "selector" : ".tab-button-zaver",
+                  "insertMethod" : "fhtml",
+                  "ajaxExecute" : 1,
+                  "contentId" : "tab-content-zaver"
+               },
+               "js" : null
+            }
+         ],
+         "module" : "LinkEvent"
+      },
+      {
+         "module" : "Student",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "module" : "Zivot",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init",
+         "params" : [],
+         "module" : "Oblibene"
+      },
+      {
+         "module" : "NavMenu",
+         "params" : [
+            {
+               "ucitel" : null
+            }
+         ],
+         "method" : "init"
+      },
+      {
+         "params" : [],
+         "method" : "init",
+         "module" : "HashNavigation"
+      },
+      {
+         "method" : "init_obdobi",
+         "params" : [],
+         "module" : "Design"
+      },
+      {
+         "module" : "Drobecky",
+         "params" : [],
+         "method" : "init"
+      },
+      {
+         "method" : "init",
+         "params" : [],
+         "module" : "AppMenu"
+      },
+      {
+         "module" : "Design",
+         "params" : [],
+         "method" : "init_header"
+      },
+      {
+         "params" : [],
+         "method" : "init_toolkit",
+         "module" : "Design"
+      }
+   ],
+   "session" : {
+      "remote_user" : "990001",
+      "cgipar" : {
+         "studium" : [
+            "1000001"
+         ],
+         "fakulta" : [
+            "1423"
+         ],
+         "obdobi" : [
+            "10243"
+         ]
+      },
+      "pouzit_neoverene_udaje" : null,
+      "server_time" : "18. 9. 2026 20:27:19",
+      "is_design_z" : "",
+      "debug" : 1,
+      "is_muni_cz" : "is.muni.cz",
+      "session_id" : "7336817617",
+      "sn" : "/auth/student/index.pl",
+      "w_log_id" : "24839330744",
+      "lang" : "cs",
+      "skola_zkratka" : "MU",
+      "vidim_kazdeho" : null,
+      "ekurz" : false,
+      "login" : "990001",
+      "skola_id" : "14",
+      "uco" : "990001",
+      "auth" : "/auth"
+   },
+   "ldb" : {
+      "error_msg_min" : "Text je příliš krátký.",
+      "error_msg_zalozka_url" : "Nesprávný tvar adresy.",
+      "error_msg" : "Nesprávný formát.",
+      "error_msg_max_val" : "Číslo je větší než povolená hodnota.",
+      "error_msg_alpha_numeric" : "Smí obsahovat pouze znaky abecedy, číslo, mezeru, podtržítko a spojovník.",
+      "error_msg_email" : "Nesprávný tvar e-mailové adresy",
+      "error_msg_required_all" : "Všechny údaje jsou povinné.",
+      "error_msg_datepicker_max_date" : "Datum a čas nelze takto nastavit.",
+      "chyba" : "Došlo k chybě, operaci opakujte nebo obnovte stránku.",
+      "error_msg_uc_first" : "Musí začínat velkým počátečním písmenem.",
+      "error_msg_number_natural" : "Očekáváno přirozené číslo (1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "error_msg_required_min" : "Nebyl vybrán požadovaný počet položek.",
+      "error_msg_alpha" : "Smí obsahovat pouze znaky abecedy, mezeru, podtržítko a spojovník.",
+      "upravit" : "Upravit",
+      "chyba_503" : "Aplikace je dočasně nedostupná pro zvýšenou zátěž systému.",
+      "pripnout" : "Připnout menu",
+      "odepnout" : "Odepnout menu",
+      "byl_jste_odhlasen_zavrit" : "Zavřít",
+      "error_msg_number_natural_zero" : "Očekáváno přirozené číslo nebo nula (0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;&hellip;).",
+      "byl_jste_odhlasen" : "Byl jste odhlášen.",
+      "modal_full" : "Na celou obrazovku",
+      "error_msg_min_val" : "Číslo je menší než povolená hodnota.",
+      "error_msg_max" : "Text je příliš dlouhý.",
+      "error_msg_required_any" : "Alespoň jeden údaj musí být vyplněn.",
+      "byl_jste_odhlasen_prihlasit" : "Přihlásit",
+      "error_msg_required" : "Povinný údaj.",
+      "error_msg_datepicker_min_date" : "Datum a čas nelze takto nastavit.",
+      "isForms_invalid" : "Chybně vyplněné údaje, prosím zkontrolujte.",
+      "sbalit" : "Sbalit",
+      "error_msg_number_integer" : "Očekáváno celé číslo (&hellip;,&nbsp;-2,&nbsp;-1,&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;&hellip;).",
+      "error_msg_required_max" : "Je vybráno více položek, než je povoleno.",
+      "rozbalit" : "Rozbalit",
+      "odstranit" : "Odstranit"
+   },
+   "svatky" : {
+      "20070706" : 1,
+      "20150101" : 1,
+      "20101228" : 1,
+      "20161224" : 1,
+      "20220706" : 1,
+      "20201221" : 1,
+      "20090101" : 1,
+      "20221226" : 1,
+      "20211227" : 1,
+      "20241227" : 1,
+      "20131228" : 1,
+      "20140508" : 1,
+      "20031226" : 1,
+      "20020928" : 1,
+      "20181028" : 1,
+      "20161028" : 1,
+      "20021228" : 1,
+      "20090928" : 1,
+      "20010501" : 1,
+      "20090705" : 1,
+      "20151223" : 1,
+      "20220418" : 1,
+      "20101226" : 1,
+      "20101223" : 1,
+      "20031117" : 1,
+      "20071227" : 1,
+      "20191223" : 1,
+      "20131223" : 1,
+      "20150406" : 1,
+      "20011028" : 1,
+      "20091117" : 1,
+      "20071028" : 1,
+      "20111117" : 1,
+      "20130705" : 1,
+      "20131229" : 1,
+      "20221224" : 1,
+      "20240401" : 1,
+      "20181225" : 1,
+      "20140706" : 1,
+      "20231228" : 1,
+      "20111227" : 1,
+      "20210101" : 1,
+      "20151230" : 1,
+      "20051229" : 1,
+      "20040705" : 1,
+      "20151225" : 1,
+      "20090501" : 1,
+      "20201231" : 1,
+      "20151227" : 1,
+      "20261231" : 1,
+      "20041226" : 1,
+      "20011224" : 1,
+      "20171117" : 1,
+      "20110705" : 1,
+      "20031028" : 1,
+      "20101227" : 1,
+      "20110425" : 1,
+      "20191028" : 1,
+      "20020706" : 1,
+      "20160325" : 1,
+      "20051227" : 1,
+      "20241231" : 1,
+      "20030501" : 1,
+      "20200508" : 1,
+      "20190706" : 1,
+      "20140705" : 1,
+      "20220415" : 1,
+      "20150508" : 1,
+      "20020501" : 1,
+      "20051228" : 1,
+      "20211228" : 1,
+      "20071225" : 1,
+      "20111225" : 1,
+      "20151228" : 1,
+      "20210508" : 1,
+      "20151229" : 1,
+      "20220705" : 1,
+      "20071230" : 1,
+      "20221231" : 1,
+      "20090413" : 1,
+      "20180928" : 1,
+      "20001231" : 1,
+      "20060101" : 1,
+      "20051117" : 1,
+      "20251231" : 1,
+      "20010705" : 1,
+      "20161231" : 1,
+      "20151226" : 1,
+      "20080928" : 1,
+      "20171230" : 1,
+      "20190422" : 1,
+      "20241226" : 1,
+      "20081225" : 1,
+      "20211226" : 1,
+      "20241223" : 1,
+      "20210405" : 1,
+      "20171226" : 1,
+      "20150928" : 1,
+      "20061228" : 1,
+      "20201223" : 1,
+      "20120409" : 1,
+      "20070508" : 1,
+      "20001230" : 1,
+      "20220501" : 1,
+      "20110101" : 1,
+      "20141224" : 1,
+      "20101229" : 1,
+      "20200501" : 1,
+      "20201028" : 1,
+      "20240928" : 1,
+      "20230410" : 1,
+      "20231230" : 1,
+      "20041224" : 1,
+      "20131117" : 1,
+      "20141028" : 1,
+      "20010706" : 1,
+      "20260501" : 1,
+      "20200101" : 1,
+      "20161223" : 1,
+      "20170501" : 1,
+      "20010928" : 1,
+      "20121228" : 1,
+      "20041228" : 1,
+      "20131226" : 1,
+      "20111230" : 1,
+      "20181227" : 1,
+      "20161117" : 1,
+      "20080706" : 1,
+      "20240705" : 1,
+      "20230706" : 1,
+      "20160501" : 1,
+      "20251117" : 1,
+      "20221227" : 1,
+      "20200410" : 1,
+      "20070501" : 1,
+      "20200928" : 1,
+      "20031224" : 1,
+      "20191229" : 1,
+      "20161228" : 1,
+      "20041229" : 1,
+      "20151117" : 1,
+      "20181228" : 1,
+      "20210928" : 1,
+      "20160328" : 1,
+      "20191225" : 1,
+      "20190705" : 1,
+      "20160508" : 1,
+      "20021028" : 1,
+      "20121225" : 1,
+      "20201117" : 1,
+      "20170705" : 1,
+      "20010508" : 1,
+      "20260928" : 1,
+      "20191226" : 1,
+      "20190508" : 1,
+      "20100705" : 1,
+      "20240501" : 1,
+      "20081117" : 1,
+      "20011225" : 1,
+      "20061226" : 1,
+      "20231117" : 1,
+      "20240329" : 1,
+      "20181226" : 1,
+      "20220508" : 1,
+      "20011230" : 1,
+      "20181224" : 1,
+      "20151028" : 1,
+      "20101224" : 1,
+      "20141228" : 1,
+      "20131028" : 1,
+      "20140928" : 1,
+      "20251230" : 1,
+      "20091226" : 1,
+      "20141230" : 1,
+      "20061225" : 1,
+      "20080501" : 1,
+      "20051226" : 1,
+      "20111224" : 1,
+      "20201222" : 1,
+      "20131227" : 1,
+      "20100928" : 1,
+      "20110508" : 1,
+      "20231225" : 1,
+      "20170101" : 1,
+      "20210705" : 1,
+      "20100101" : 1,
+      "20160928" : 1,
+      "20121227" : 1,
+      "20201225" : 1,
+      "20221228" : 1,
+      "20060417" : 1,
+      "20230501" : 1,
+      "20170414" : 1,
+      "20101225" : 1,
+      "20100706" : 1,
+      "20200413" : 1,
+      "20241117" : 1,
+      "20080508" : 1,
+      "20111228" : 1,
+      "20111223" : 1,
+      "20010101" : 1,
+      "20141229" : 1,
+      "20221028" : 1,
+      "20180706" : 1,
+      "20071229" : 1,
+      "20230928" : 1,
+      "20040928" : 1,
+      "20230407" : 1,
+      "20120928" : 1,
+      "20001227" : 1,
+      "20120501" : 1,
+      "20231227" : 1,
+      "20200706" : 1,
+      "20110706" : 1,
+      "20091224" : 1,
+      "20040412" : 1,
+      "20151224" : 1,
+      "20020508" : 1,
+      "20261224" : 1,
+      "20161230" : 1,
+      "20131230" : 1,
+      "20150706" : 1,
+      "20250706" : 1,
+      "20180101" : 1,
+      "20101231" : 1,
+      "20130706" : 1,
+      "20011229" : 1,
+      "20100508" : 1,
+      "20080101" : 1,
+      "20021229" : 1,
+      "20040508" : 1,
+      "20251229" : 1,
+      "20141222" : 1,
+      "20121229" : 1,
+      "20070409" : 1,
+      "20071117" : 1,
+      "20220928" : 1,
+      "20210402" : 1,
+      "20161229" : 1,
+      "20230101" : 1,
+      "20171227" : 1,
+      "20251228" : 1,
+      "20050508" : 1,
+      "20190419" : 1,
+      "20201230" : 1,
+      "20181229" : 1,
+      "20011227" : 1,
+      "20151231" : 1,
+      "20070705" : 1,
+      "20261227" : 1,
+      "20011228" : 1,
+      "20060501" : 1,
+      "20251028" : 1,
+      "20261225" : 1,
+      "20211231" : 1,
+      "20191224" : 1,
+      "20071224" : 1,
+      "20101028" : 1,
+      "20140501" : 1,
+      "20191230" : 1,
+      "20261229" : 1,
+      "20120705" : 1,
+      "20051028" : 1,
+      "20040706" : 1,
+      "20180705" : 1,
+      "20191117" : 1,
+      "20201229" : 1,
+      "20061028" : 1,
+      "20191227" : 1,
+      "20161225" : 1,
+      "20021230" : 1,
+      "20260406" : 1,
+      "20110928" : 1,
+      "20250508" : 1,
+      "20261226" : 1,
+      "20191228" : 1,
+      "20050705" : 1,
+      "20100405" : 1,
+      "20160101" : 1,
+      "20180330" : 1,
+      "20260101" : 1,
+      "20050328" : 1,
+      "20250101" : 1,
+      "20231224" : 1,
+      "20210706" : 1,
+      "20061227" : 1,
+      "20161226" : 1,
+      "20241225" : 1,
+      "20021223" : 1,
+      "20130101" : 1,
+      "20100501" : 1,
+      "20171228" : 1,
+      "20241224" : 1,
+      "20141231" : 1,
+      "20061117" : 1,
+      "20190101" : 1,
+      "20141227" : 1,
+      "20131231" : 1,
+      "20141225" : 1,
+      "20211225" : 1,
+      "20091028" : 1,
+      "20170417" : 1,
+      "20121028" : 1,
+      "20070101" : 1,
+      "20111028" : 1,
+      "20201228" : 1,
+      "20241028" : 1,
+      "20030705" : 1,
+      "20060508" : 1,
+      "20241229" : 1,
+      "20221229" : 1,
+      "20120508" : 1,
+      "20261230" : 1,
+      "20111226" : 1,
+      "20041230" : 1,
+      "20170928" : 1,
+      "20120706" : 1,
+      "20011231" : 1,
+      "20150501" : 1,
+      "20111229" : 1,
+      "20021227" : 1,
+      "20050706" : 1,
+      "20021225" : 1,
+      "20250928" : 1,
+      "20130401" : 1,
+      "20020101" : 1,
+      "20260706" : 1,
+      "20110501" : 1,
+      "20001228" : 1,
+      "20231231" : 1,
+      "20170508" : 1,
+      "20030421" : 1,
+      "20221225" : 1,
+      "20181117" : 1,
+      "20041227" : 1,
+      "20021224" : 1,
+      "20220101" : 1,
+      "20121230" : 1,
+      "20260403" : 1,
+      "20060705" : 1,
+      "20051225" : 1,
+      "20121231" : 1,
+      "20020401" : 1,
+      "20251224" : 1,
+      "20050501" : 1,
+      "20081224" : 1,
+      "20250421" : 1,
+      "20250418" : 1,
+      "20240101" : 1,
+      "20081028" : 1,
+      "20061230" : 1,
+      "20211224" : 1,
+      "20001226" : 1,
+      "20071226" : 1,
+      "20171225" : 1,
+      "20261228" : 1,
+      "20141226" : 1,
+      "20070928" : 1,
+      "20050101" : 1,
+      "20130501" : 1,
+      "20250501" : 1,
+      "20021231" : 1,
+      "20021226" : 1,
+      "20051224" : 1,
+      "20161227" : 1,
+      "20211117" : 1,
+      "20231226" : 1,
+      "20171224" : 1,
+      "20001224" : 1,
+      "20261117" : 1,
+      "20121226" : 1,
+      "20171229" : 1,
+      "20170706" : 1,
+      "20130928" : 1,
+      "20180501" : 1,
+      "20251226" : 1,
+      "20150705" : 1,
+      "20101230" : 1,
+      "20020705" : 1,
+      "20131225" : 1,
+      "20251225" : 1,
+      "20191231" : 1,
+      "20121223" : 1,
+      "20001028" : 1,
+      "20241230" : 1,
+      "20030706" : 1,
+      "20010416" : 1,
+      "20171028" : 1,
+      "20101117" : 1,
+      "20231028" : 1,
+      "20040501" : 1,
+      "20171223" : 1,
+      "20030101" : 1,
+      "20241228" : 1,
+      "20211028" : 1,
+      "20041028" : 1,
+      "20080705" : 1,
+      "20050928" : 1,
+      "20011117" : 1,
+      "20181230" : 1,
+      "20180508" : 1,
+      "20061229" : 1,
+      "20251227" : 1,
+      "20091225" : 1,
+      "20201226" : 1,
+      "20030928" : 1,
+      "20240508" : 1,
+      "20211230" : 1,
+      "20171231" : 1,
+      "20140101" : 1,
+      "20061224" : 1,
+      "20190501" : 1,
+      "20120101" : 1,
+      "20131224" : 1,
+      "20180402" : 1,
+      "20230705" : 1,
+      "20041231" : 1,
+      "20260508" : 1,
+      "20231229" : 1,
+      "20250705" : 1,
+      "20210501" : 1,
+      "20071228" : 1,
+      "20121224" : 1,
+      "20060706" : 1,
+      "20011226" : 1,
+      "20160705" : 1,
+      "20221230" : 1,
+      "20090508" : 1,
+      "20021117" : 1,
+      "20060928" : 1,
+      "20201224" : 1,
+      "20141117" : 1,
+      "20080324" : 1,
+      "20141223" : 1,
+      "20181231" : 1,
+      "20130508" : 1,
+      "20040101" : 1,
+      "20111231" : 1,
+      "20140421" : 1,
+      "20041117" : 1,
+      "20051230" : 1,
+      "20001225" : 1,
+      "20211229" : 1,
+      "20240706" : 1,
+      "20261028" : 1,
+      "20190928" : 1,
+      "20230508" : 1,
+      "20041225" : 1,
+      "20160706" : 1,
+      "20081226" : 1,
+      "20200705" : 1,
+      "20030508" : 1,
+      "20071231" : 1,
+      "20001229" : 1,
+      "20121117" : 1,
+      "20090706" : 1,
+      "20221117" : 1,
+      "20031225" : 1,
+      "20260705" : 1
+   }
+}
+);
+})();
+</script>
+
+</body>
+</html>
